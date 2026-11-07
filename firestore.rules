@@ -2,11 +2,21 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
+    // Czy właściciel ma aktywny dostęp? (okres próbny 3 h od założenia profilu LUB opłacona subskrypcja)
+    function ownerActive(o) {
+      let u = /databases/$(database)/documents/users/$(o);
+      let s = /databases/$(database)/documents/subs/$(o);
+      return (exists(u) && get(u).data.createdAt + duration.value(3, 'h') > request.time)
+          || (exists(s) && get(s).data.accessUntil > request.time);
+    }
+    function signedIn() { return request.auth != null; }
+    function isAdmin()  { return signedIn() && request.auth.token.admin == true; }
+
     // Profil nauczyciela. Zakłada go sam użytkownik po potwierdzeniu e-maila.
     // createdAt musi być czasem serwera, więc nie da się wydłużyć próby ręcznie.
     match /users/{uid} {
-      allow read: if request.auth != null && (request.auth.uid == uid || request.auth.token.admin == true);
-      allow create: if request.auth != null
+      allow read: if signedIn() && (request.auth.uid == uid || isAdmin());
+      allow create: if signedIn()
         && request.auth.uid == uid
         && request.auth.token.email_verified == true
         && request.resource.data.keys().hasOnly(['name', 'email', 'createdAt'])
@@ -18,10 +28,55 @@ service cloud.firestore {
       allow update, delete: if false;
     }
 
-    // Subskrypcja. Zapisuje ją tylko serwer (Stripe webhook), użytkownik może ją odczytać.
+    // Subskrypcja. Zapisuje ją tylko serwer (Stripe webhook).
     match /subs/{uid} {
-      allow read: if request.auth != null && (request.auth.uid == uid || request.auth.token.admin == true);
+      allow read: if signedIn() && (request.auth.uid == uid || isAdmin());
       allow write: if false;
+    }
+
+    // Stan panelu nauczyciela (ćwiczenia, foldery, wyniki). Tylko właściciel.
+    match /panels/{uid} {
+      allow read, write: if signedIn() && request.auth.uid == uid;
+      match /chunks/{n} {
+        allow read, write: if signedIn() && request.auth.uid == uid;
+      }
+    }
+
+    // Ćwiczenie opublikowane pod linkiem dla uczniów.
+    // Uczeń czyta pojedynczy dokument po identyfikatorze z linku (bez listowania), ale tylko gdy właściciel ma dostęp.
+    match /ex/{id} {
+      allow get: if ownerActive(resource.data.owner);
+      allow list: if false;
+      allow create: if signedIn()
+        && request.resource.data.owner == request.auth.uid
+        && ownerActive(request.auth.uid)
+        && request.resource.data.keys().hasOnly(['owner', 'p', 'at'])
+        && request.resource.data.p is string
+        && request.resource.data.p.size() < 900000;
+      allow update: if signedIn()
+        && resource.data.owner == request.auth.uid
+        && request.resource.data.owner == request.auth.uid
+        && ownerActive(request.auth.uid)
+        && request.resource.data.keys().hasOnly(['owner', 'p', 'at'])
+        && request.resource.data.p is string
+        && request.resource.data.p.size() < 900000;
+      allow delete: if signedIn() && resource.data.owner == request.auth.uid;
+    }
+
+    // Wyniki uczniów: res/<id ćwiczenia>/items/<wynik>.
+    // Uczeń może dodać wynik tylko znając prawdziwy link ćwiczenia, a ranking jest widoczny dla uczestników.
+    // Wyników nie da się zmieniać, usunąć może je tylko nauczyciel.
+    match /res/{exId}/items/{rid} {
+      allow read: if true;
+      allow create: if request.resource.data.keys().hasOnly(['n', 'c', 't', 'd', 'aj', 'at', 'owner', 'lk'])
+        && request.resource.data.keys().hasAll(['n', 'c', 't', 'owner', 'lk'])
+        && request.resource.data.n is string && request.resource.data.n.size() <= 60
+        && request.resource.data.c is number && request.resource.data.t is number
+        && request.resource.data.at == request.time
+        && ownerActive(request.resource.data.owner)
+        && get(/databases/$(database)/documents/ex/$(request.resource.data.lk)).data.owner == request.resource.data.owner;
+      allow update: if false;
+      allow delete: if signedIn() && resource.data.owner == request.auth.uid;
     }
 
     match /{document=**} {
