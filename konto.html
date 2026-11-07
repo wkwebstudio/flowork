@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Moje konto – Flowork</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/auth.css"></head><body>
+<div class="top"><a class="logo" href="/"><i>F</i>Flowork</a></div>
+<main><div class="box wide" id="bx">
+<h1 id="hi">Moje konto</h1><p class="sub" id="em"></p>
+<div id="st"></div>
+<div id="pl" hidden>
+ <h2 style="font:700 20px 'Fraunces',Georgia,serif;margin:6px 0 4px">Wybierz plan</h2>
+ <div class="plans">
+  <button class="plan" data-plan="monthly"><span><b>Miesięczny</b><small>płatność co miesiąc</small></span><em>35 zł</em></button>
+  <button class="plan" data-plan="quarterly"><span><b>Kwartalny <span class="tag">−15 zł</span></b><small>30 zł miesięcznie</small></span><em>90 zł</em></button>
+  <button class="plan" data-plan="yearly"><span><b>Roczny <span class="tag">−70 zł</span></b><small>ok. 29 zł miesięcznie</small></span><em>350 zł</em></button>
+ </div>
+ <div class="msg" id="pm"></div>
+</div>
+<div style="display:grid;gap:10px;margin-top:16px">
+ <a class="btn full" id="op" href="/panel.html" hidden>Otwórz panel</a>
+ <button class="btn g full" id="lo">Wyloguj się</button>
+</div>
+</div></main>
+<div class="foot">© <span id="yr"></span> Flowork · <a href="/regulamin.html">Regulamin</a> · <a href="/prywatnosc.html">Polityka prywatności</a></div>
+<script>document.getElementById('yr').textContent=new Date().getFullYear()</script>
+
+<script type="module">
+import {auth,db,onAuthStateChanged,signOut,doc,getDoc,ensureProfile,accessState,errMsg} from "/fb.js";
+const $=s=>document.querySelector(s);
+$('#lo').onclick=async()=>{await signOut(auth);location.href='/'};
+const fmt=ms=>{ms=Math.max(0,ms);const h=Math.floor(ms/3.6e6),m=Math.floor(ms%3.6e6/6e4),s=Math.floor(ms%6e4/1e3);return (h?h+' h ':'')+String(m).padStart(h?2:1,'0')+' min '+String(s).padStart(2,'0')+' s'};
+const d=ms=>new Date(ms).toLocaleDateString('pl-PL',{day:'numeric',month:'long',year:'numeric'});
+let timer;
+onAuthStateChanged(auth,async u=>{
+  if(!u){location.href='/logowanie.html';return}
+  if(!u.emailVerified){await signOut(auth);location.href='/logowanie.html';return}
+  try{
+    const p=await ensureProfile(u);
+    let sub=null;try{const s=await getDoc(doc(db,'subs',u.uid));if(s.exists())sub=s.data()}catch(e){}
+    $('#hi').textContent='Cześć'+(p.name?', '+p.name.split(' ')[0]:'')+' 👋';$('#em').textContent=u.email;
+    const draw=()=>{
+      const a=accessState(p,sub);
+      const st=$('#st');
+      if(a.state==='paid'){st.innerHTML='<div class="stat good"><small>Subskrypcja aktywna</small><b>Masz dostęp</b><span>Opłacone do '+d(a.until)+'</span></div>';$('#pl').hidden=true;$('#op').hidden=false}
+      else if(a.state==='trial'){st.innerHTML='<div class="stat"><small>Okres próbny</small><b>'+fmt(a.until-Date.now())+'</b><span>do końca darmowej próby. Potem wygasa dostęp do panelu i linków uczniów.</span></div>';$('#pl').hidden=false;$('#op').hidden=false}
+      else{st.innerHTML='<div class="stat bad"><small>Dostęp wygasł</small><b>Okres próbny się skończył</b><span>Panel i linki wysłane uczniom są wstrzymane. Wykup plan, aby je odblokować. Twoje dane zostają zapisane.</span></div>';$('#pl').hidden=false;$('#op').hidden=true}
+    };
+    draw();clearInterval(timer);timer=setInterval(draw,1000);
+    const want=(()=>{try{return sessionStorage.getItem('flowork_plan')}catch(e){return null}})();
+    document.querySelectorAll('.plan').forEach(b=>{
+      if(b.dataset.plan===want)b.classList.add('on');
+      b.onclick=()=>{const m=$('#pm');m.textContent='Płatności zostaną uruchomione w następnym etapie.';m.className='msg ok on'};
+    });
+  }catch(e){$('#st').innerHTML='<div class="msg err on">'+errMsg(e)+'</div>'}
+});
+</script></body></html>

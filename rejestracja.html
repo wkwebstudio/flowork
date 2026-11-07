@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rejestracja – Flowork</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/auth.css"></head><body>
+<div class="top"><a class="logo" href="/"><i>F</i>Flowork</a></div>
+<main><div class="box wide">
+<div id="f1">
+<h1>Załóż konto</h1><p class="sub">Przez 3 godziny wypróbujesz panel za darmo. Karta nie jest potrzebna.</p>
+<form id="rf" novalidate>
+ <div class="two"><label>Imię<input type="text" id="fn" autocomplete="given-name" required></label><label>Nazwisko<input type="text" id="ln" autocomplete="family-name" required></label></div>
+ <label>Adres e-mail<input type="email" id="em" autocomplete="email" required></label>
+ <label>Hasło (min. 8 znaków)<span class="pw"><input type="password" id="pw" autocomplete="new-password" minlength="8" required><button type="button" id="sp">Pokaż</button></span></label>
+ <label class="chk"><input type="checkbox" id="ac"><span>Akceptuję <a href="/regulamin.html" target="_blank">Regulamin</a> i zapoznałem(-am) się z <a href="/prywatnosc.html" target="_blank">Polityką prywatności</a>.</span></label>
+ <div class="msg err" id="er"></div>
+ <button class="btn full" id="go" type="submit">Utwórz konto</button>
+</form>
+<p class="alt">Masz już konto? <a href="/logowanie.html">Zaloguj się</a></p>
+</div>
+<div id="f2" hidden>
+<h1>Sprawdź skrzynkę ✉️</h1><p class="sub">Wysłaliśmy link potwierdzający na <b id="sent"></b>. Kliknij go, a potem zaloguj się. <b>Okres próbny zacznie się dopiero po pierwszym zalogowaniu</b>, więc nic Ci nie ucieka.</p>
+<div class="msg ok" id="ok"></div>
+<a class="btn full" href="/logowanie.html">Przejdź do logowania</a>
+<p class="alt">Nie widzisz maila? Zajrzyj do spamu albo <button class="lnk" id="re">wyślij ponownie</button>.</p>
+</div>
+</div></main>
+<div class="foot">© <span id="yr"></span> Flowork · <a href="/regulamin.html">Regulamin</a> · <a href="/prywatnosc.html">Polityka prywatności</a></div>
+<script>document.getElementById('yr').textContent=new Date().getFullYear()</script>
+
+<script type="module">
+import {auth,createUserWithEmailAndPassword,updateProfile,sendEmailVerification,errMsg} from "/fb.js";
+const $=s=>document.querySelector(s);
+const params=new URLSearchParams(location.search);const plan=params.get('plan');
+if(plan){try{sessionStorage.setItem('flowork_plan',plan)}catch(e){}}
+$('#sp').onclick=()=>{const p=$('#pw');const h=p.type==='password';p.type=h?'text':'password';$('#sp').textContent=h?'Ukryj':'Pokaż'};
+const showErr=m=>{const e=$('#er');e.textContent=m;e.classList.toggle('on',!!m)};
+$('#rf').onsubmit=async ev=>{
+  ev.preventDefault();showErr('');
+  const fn=$('#fn').value.trim(),ln=$('#ln').value.trim(),em=$('#em').value.trim(),pw=$('#pw').value;
+  if(!fn||!ln)return showErr('Podaj imię i nazwisko.');
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em))return showErr('Podaj poprawny adres e-mail.');
+  if(pw.length<8)return showErr('Hasło musi mieć co najmniej 8 znaków.');
+  if(!$('#ac').checked)return showErr('Zaakceptuj regulamin i politykę prywatności.');
+  $('#go').disabled=true;$('#go').textContent='Tworzę konto…';
+  try{
+    const c=await createUserWithEmailAndPassword(auth,em,pw);
+    await updateProfile(c.user,{displayName:(fn+' '+ln).slice(0,100)});
+    await sendEmailVerification(c.user);
+    $('#sent').textContent=em;$('#f1').hidden=true;$('#f2').hidden=false;
+  }catch(e){showErr(errMsg(e));$('#go').disabled=false;$('#go').textContent='Utwórz konto'}
+};
+$('#re').onclick=async()=>{
+  try{if(auth.currentUser){await sendEmailVerification(auth.currentUser);const o=$('#ok');o.textContent='Wysłano ponownie.';o.classList.add('on')}}
+  catch(e){const o=$('#ok');o.textContent=errMsg(e);o.classList.remove('ok');o.classList.add('err','on')}
+};
+</script></body></html>

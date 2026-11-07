@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Logowanie – Flowork</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/auth.css"></head><body>
+<div class="top"><a class="logo" href="/"><i>F</i>Flowork</a></div>
+<main><div class="box">
+<div id="lg">
+<h1>Zaloguj się</h1><p class="sub">Wejdź do swojego panelu nauczyciela.</p>
+<form id="lf" novalidate>
+ <label>Adres e-mail<input type="email" id="em" autocomplete="email" required></label>
+ <label>Hasło<span class="pw"><input type="password" id="pw" autocomplete="current-password" required><button type="button" id="sp">Pokaż</button></span></label>
+ <div class="row"><span></span><button type="button" class="lnk" id="fg">Nie pamiętam hasła</button></div>
+ <div class="msg err" id="er"></div>
+ <div class="msg ok" id="ok"></div>
+ <button class="btn full" id="go" type="submit">Zaloguj się</button>
+</form>
+<p class="alt">Nie masz konta? <a href="/rejestracja.html">Wypróbuj za darmo</a></p>
+</div>
+<div id="nv" hidden>
+<h1>Potwierdź e-mail</h1><p class="sub">Zanim wejdziesz, kliknij link potwierdzający z maila, który wysłaliśmy przy rejestracji.</p>
+<div class="msg ok" id="ok2"></div>
+<button class="btn full" id="rs">Wyślij link ponownie</button>
+<p class="alt"><button class="lnk" id="bk">Wróć do logowania</button></p>
+</div>
+</div></main>
+<div class="foot">© <span id="yr"></span> Flowork · <a href="/regulamin.html">Regulamin</a> · <a href="/prywatnosc.html">Polityka prywatności</a></div>
+<script>document.getElementById('yr').textContent=new Date().getFullYear()</script>
+
+<script type="module">
+import {auth,signInWithEmailAndPassword,sendEmailVerification,sendPasswordResetEmail,signOut,ensureProfile,errMsg} from "/fb.js";
+const $=s=>document.querySelector(s);
+const msg=(id,t,kind)=>{const e=$(id);e.textContent=t||'';e.classList.toggle('on',!!t)};
+$('#sp').onclick=()=>{const p=$('#pw');const h=p.type==='password';p.type=h?'text':'password';$('#sp').textContent=h?'Ukryj':'Pokaż'};
+$('#lf').onsubmit=async ev=>{
+  ev.preventDefault();msg('#er','');msg('#ok','');
+  const em=$('#em').value.trim(),pw=$('#pw').value;
+  if(!em||!pw)return msg('#er','Podaj e-mail i hasło.');
+  $('#go').disabled=true;$('#go').textContent='Loguję…';
+  try{
+    const c=await signInWithEmailAndPassword(auth,em,pw);
+    if(!c.user.emailVerified){$('#lg').hidden=true;$('#nv').hidden=false;$('#go').disabled=false;$('#go').textContent='Zaloguj się';return}
+    await ensureProfile(c.user);
+    location.href='/konto.html';
+  }catch(e){msg('#er',errMsg(e));$('#go').disabled=false;$('#go').textContent='Zaloguj się'}
+};
+$('#fg').onclick=async()=>{
+  msg('#er','');msg('#ok','');const em=$('#em').value.trim();
+  if(!em)return msg('#er','Wpisz adres e-mail, a wyślemy link do zmiany hasła.');
+  try{await sendPasswordResetEmail(auth,em);msg('#ok','Jeśli konto istnieje, wysłaliśmy link do zmiany hasła.')}
+  catch(e){msg('#er',errMsg(e))}
+};
+$('#rs').onclick=async()=>{try{await sendEmailVerification(auth.currentUser);msg('#ok2','Wysłano ponownie. Sprawdź skrzynkę i spam.')}catch(e){msg('#ok2',errMsg(e))}};
+$('#bk').onclick=async()=>{await signOut(auth);$('#nv').hidden=true;$('#lg').hidden=false};
+</script></body></html>
