@@ -58,11 +58,42 @@ section{padding:clamp(48px,7vw,88px) 0}
 /* features */
 .fg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 @media(max-width:900px){.fg{grid-template-columns:1fr 1fr}}@media(max-width:560px){.fg{grid-template-columns:1fr}}
-.f{background:var(--card);border:1.5px solid var(--line);border-radius:var(--r);padding:22px;transition:transform .2s,border-color .2s}
-.f:hover{transform:translateY(-3px);border-color:var(--c)}
-.f .ic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:23px;background:color-mix(in srgb,var(--c) 16%,transparent);box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--c) 35%,transparent);margin-bottom:14px}
-.f h3{font-size:20px;margin-bottom:6px;font-family:'Plus Jakarta Sans';font-weight:800}
-.f p{color:var(--mut);font-size:14.5px}
+.f{background:var(--card);border:1.5px solid var(--line);border-radius:24px;padding:14px 14px 22px;transition:transform .25s,border-color .25s,box-shadow .25s;display:flex;flex-direction:column}
+.f:hover{transform:translateY(-4px);border-color:var(--c);box-shadow:0 18px 40px -18px color-mix(in srgb,var(--c) 60%,transparent)}
+.pv{height:150px;border-radius:16px;background:linear-gradient(135deg,color-mix(in srgb,var(--c) 14%,var(--bg)),color-mix(in srgb,var(--c) 5%,var(--bg)));border:1px solid color-mix(in srgb,var(--c) 22%,transparent);padding:16px;display:flex;flex-direction:column;justify-content:center;gap:12px;margin-bottom:18px;overflow:hidden}
+.ft{display:flex;align-items:center;gap:10px;padding:0 8px;margin-bottom:6px}
+.f .ic{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-size:20px;background:color-mix(in srgb,var(--c) 16%,transparent);box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--c) 35%,transparent)}
+.f h3{font:800 20px 'Plus Jakarta Sans'}
+.f>p{color:var(--mut);font-size:14.5px;padding:0 8px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;padding:12px 8px 0;margin-top:auto}
+.tags span{font-size:12px;font-weight:700;padding:4px 10px;border-radius:99px;background:color-mix(in srgb,var(--c) 12%,transparent);color:color-mix(in srgb,var(--c) 70%,var(--ink))}
+.pv .sent{font-weight:600;font-size:15px}
+.pv u{text-decoration:none;border-bottom:2px solid var(--c);padding:0 3px;font-weight:800;color:var(--c)}.pv u.e{display:inline-block;min-width:54px;border-bottom:2px dashed var(--c);color:transparent}
+.chips{display:flex;gap:6px;flex-wrap:wrap}.chips i,.sl i{font-style:normal;font-size:13px;font-weight:700;padding:5px 11px;border-radius:99px;background:var(--card);border:1.5px solid var(--line)}
+.chips i.on{border-color:var(--c);color:var(--c);box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 18%,transparent)}
+.qq{display:flex;justify-content:space-between;align-items:center;font-size:14px}
+.qq .tm{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:13px;border:3px solid var(--c);background:var(--card)}
+.qa{display:grid;grid-template-columns:1fr 1fr;gap:6px}.qa i{font-style:normal;color:#fff;font-weight:700;font-size:12.5px;padding:8px;border-radius:10px;text-align:center}
+.fc{align-self:flex-start;background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:8px 16px;box-shadow:0 6px 14px #0001;transform:rotate(-3deg)}.fc b{display:block;font-size:16px}.fc small{color:var(--mut)}
+.pairs{display:grid;grid-template-columns:repeat(6,auto);gap:5px 6px;font-size:12.5px;font-weight:700;align-items:center;justify-content:start}
+.pairs i,.pairs em{font-style:normal;padding:3px 9px;border-radius:8px;background:var(--card);border:1.5px solid var(--line)}.pairs em{color:var(--c);border-color:color-mix(in srgb,var(--c) 40%,transparent)}
+.cw{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;max-width:130px;margin:auto}.cw i{aspect-ratio:1;border-radius:6px;font-style:normal;display:grid;place-items:center;font-weight:800;font-size:15px}.cw i.l{background:var(--card);border:1.5px solid var(--c);color:var(--ink)}
+.bub{max-width:88%;padding:8px 13px;border-radius:16px;font-size:13.5px;font-weight:600;background:var(--card);border:1.5px solid var(--line)}.bub.l{border-bottom-left-radius:4px;align-self:flex-start}.bub.r{border-bottom-right-radius:4px;align-self:flex-end;background:var(--c);border-color:var(--c);color:#fff}.bub.r u{color:#fff;border-color:#fff}
+.sl{display:flex;gap:6px;flex-wrap:wrap}.sl i{background:var(--c);color:#fff;border-color:var(--c)}.sl i.g{background:transparent;color:var(--c);border:2px dashed var(--c)}
+.pv.lk{gap:10px}.doc{background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:10px 14px;font-size:13.5px;font-weight:600;line-height:1.5}
+.doc p{margin:0}.gp{display:inline-block;min-width:52px;text-align:center;padding:0 8px;border-radius:7px;border-bottom:2px dashed var(--c);font-weight:800;color:var(--c)}
+.gp.ok{background:#17a67322;border:none;border-bottom:2px solid #17a673;color:#0d7a54}.gp.act{background:color-mix(in srgb,var(--c) 18%,transparent);border:none;border-bottom:2px solid var(--c);box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 18%,transparent)}
+.pv.lk .chips i{padding:3px 11px}
+.pv.vc{flex-direction:row;align-items:center;gap:18px;justify-content:center}
+.stack{position:relative;width:104px;height:96px;flex:none}.stack .fc{position:absolute;inset:0;margin:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(-4deg);padding:6px}
+.stack .fc.back{transform:rotate(5deg);background:color-mix(in srgb,var(--c) 22%,var(--card));box-shadow:0 4px 10px #0001}
+.stack .fc b{font-size:20px}.stack .fc small{font-size:10px;font-weight:800;color:var(--c);letter-spacing:.08em}.stack .fl{font-size:9px;color:var(--mut);margin-top:4px;text-align:center;line-height:1.2}
+.mp{display:grid;gap:5px;flex:1;max-width:170px}
+.mr{display:grid;grid-template-columns:1fr 18px 1fr;gap:5px;align-items:center;font-size:12.5px;font-weight:700}
+.mr i,.mr em{font-style:normal;padding:4px 8px;border-radius:8px;background:var(--card);border:1.5px solid var(--line);text-align:center}
+.mr b{text-align:center;color:var(--mut);font-size:12px}.mr.ok i,.mr.ok em{background:#17a67318;border-color:#17a67366;color:#0d7a54}.mr.ok b{color:#17a673}
+.mr.sel i{border-color:var(--c);color:var(--c);box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 18%,transparent)}.mr.sel em{border-style:dashed;color:var(--mut)}
+.pr2{height:6px;border-radius:9px;background:var(--line);overflow:hidden;margin-top:3px}.pr2 span{display:block;height:100%;background:var(--c);border-radius:9px}
 /* benefits */
 .bn{background:var(--ink);color:#fff;border-radius:32px;padding:clamp(28px,5vw,56px)}
 @media(prefers-color-scheme:dark){.bn{background:var(--card);border:1.5px solid var(--line)}}
@@ -152,14 +183,51 @@ footer a:hover{color:var(--ink)}
 </div></header>
 
 <section id="funkcje"><div class="w">
-  <div class="head"><h2>Sześć typów ćwiczeń w jednym miejscu</h2><p class="lead">Każde ćwiczenie ma własny edytor, podgląd i link dla uczniów.</p></div>
+  <div class="head"><h2>Sześć typów ćwiczeń w jednym miejscu</h2><p class="lead">Każde ćwiczenie ma własny edytor, podgląd tak, jak zobaczy go uczeń, i link do wysłania.</p></div>
   <div class="fg">
-    <div class="f" style="--c:#7758e8"><div class="ic">📝</div><h3>Luki</h3><p>Wklejasz tekst, zaznaczasz brakujące słowa. Uczeń wpisuje albo wybiera z banku słów.</p></div>
-    <div class="f" style="--c:#ff6b9d"><div class="ic">🎯</div><h3>Quiz</h3><p>Pytania z czasem, punktami i bonusem za szybkość. Ranking i podsumowanie na końcu.</p></div>
-    <div class="f" style="--c:#20b486"><div class="ic">📚</div><h3>Słówka</h3><p>Fiszki, parowanie i test. Listę wklejasz hurtem, w formacie „słowo – tłumaczenie”.</p></div>
-    <div class="f" style="--c:#f59e0b"><div class="ic">🧩</div><h3>Krzyżówki</h3><p>Hasła z podpowiedziami, obrazkami przy pytaniach i własnym tłem. Działa na telefonie.</p></div>
-    <div class="f" style="--c:#0ea5e9"><div class="ic">💬</div><h3>Dialogi</h3><p>Rozmowy z lukami w czytelnym wyglądzie, z rozmówcami po lewej i prawej stronie.</p></div>
-    <div class="f" style="--c:#e0457b"><div class="ic">🔤</div><h3>Układanie zdań</h3><p>Uczeń układa słowa w kolejności przez dotknięcie albo przeciągnięcie. Możesz dopuścić kilka poprawnych wariantów.</p></div>
+
+    <article class="f" style="--c:#7758e8">
+      <div class="pv lk"><div class="doc"><p>Last summer we <span class="gp ok">went ✓</span> to Spain.</p><p>We <span class="gp act">took</span> a lot of photos.</p><p>It <span class="gp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> very hot every day.</p></div><div class="chips"><i>was</i><i>were</i><i>is</i><i class="on">be</i></div></div>
+      <div class="ft"><span class="ic">📝</span><h3>Luki</h3></div>
+      <p>Wklejasz tekst i zaznaczasz brakujące słowa. Uczeń wpisuje odpowiedź albo wybiera ją z banku słów.</p>
+      <div class="tags"><span>Bank słów</span><span>Wpisywanie</span><span>Podpowiedzi</span></div>
+    </article>
+
+    <article class="f" style="--c:#ff6b9d">
+      <div class="pv"><div class="qq"><b>Which tense is it?</b><span class="tm">12</span></div><div class="qa"><i style="background:#dc2f5a">Present</i><i style="background:#2a5bd7">Past</i><i style="background:#d99a0b">Future</i><i style="background:#475569">Perfect</i></div></div>
+      <div class="ft"><span class="ic">🎯</span><h3>Quiz</h3></div>
+      <p>Pytania z czasem na odpowiedź, punktami i bonusem za szybkość. Na końcu ranking i podsumowanie.</p>
+      <div class="tags"><span>Odliczanie</span><span>Punkty</span><span>Ranking</span></div>
+    </article>
+
+    <article class="f" style="--c:#20b486">
+      <div class="pv vc"><div class="stack"><div class="fc back"></div><div class="fc"><small>EN</small><b>apple</b><span class="fl">stuknij, aby odwrócić</span></div></div><div class="mp"><div class="mr ok"><i>cat</i><b>✓</b><em>kot</em></div><div class="mr ok"><i>dog</i><b>✓</b><em>pies</em></div><div class="mr sel"><i>bird</i><b>↔</b><em>?</em></div><div class="pr2"><span style="width:66%"></span></div></div></div>
+      <div class="ft"><span class="ic">📚</span><h3>Słówka</h3></div>
+      <p>Fiszki, parowanie i test. Całą listę wklejasz naraz, w formacie „słowo – tłumaczenie”.</p>
+      <div class="tags"><span>Fiszki</span><span>Parowanie</span><span>Test</span></div>
+    </article>
+
+    <article class="f" style="--c:#f59e0b">
+      <div class="pv"><div class="cw"><i class="l">C</i><i class="l">A</i><i class="l">T</i><i class="l">O</i><i></i><i class="l">E</i><i class="l">W</i><i></i><i class="l">N</i></div></div>
+      <div class="ft"><span class="ic">🧩</span><h3>Krzyżówki</h3></div>
+      <p>Hasła z podpowiedziami, obrazki przy pytaniach i własne tło. Układ dopasowuje się do ekranu telefonu.</p>
+      <div class="tags"><span>Obrazki</span><span>Własne tło</span><span>Telefon</span></div>
+    </article>
+
+    <article class="f" style="--c:#0ea5e9">
+      <div class="pv"><div class="bub l">Hi Tom, how <u class="e">&nbsp;&nbsp;&nbsp;&nbsp;</u> you?</div><div class="bub r">I <u>am</u> fine, thanks!</div></div>
+      <div class="ft"><span class="ic">💬</span><h3>Dialogi</h3></div>
+      <p>Rozmowy z lukami w wyglądzie czatu: rozmówcy po lewej i prawej stronie, czytelnie jak w komunikatorze.</p>
+      <div class="tags"><span>Wygląd czatu</span><span>Luki w rozmowie</span><span>Bank słów</span></div>
+    </article>
+
+    <article class="f" style="--c:#e0457b">
+      <div class="pv"><div class="sl"><i>I</i><i>like</i><i class="g">…</i><i>.</i></div><div class="chips"><i>pizza</i><i>very</i><i>much</i></div></div>
+      <div class="ft"><span class="ic">🔤</span><h3>Układanie zdań</h3></div>
+      <p>Uczeń składa zdanie z rozsypanych słów, dotykiem albo przeciągnięciem. Możesz dopuścić kilka poprawnych wariantów.</p>
+      <div class="tags"><span>Przeciąganie</span><span>Warianty</span><span>Podpowiedź</span></div>
+    </article>
+
   </div>
 </div></section>
 
@@ -210,7 +278,7 @@ footer a:hover{color:var(--ink)}
       <button class="btn g" data-act="buy" data-plan="yearly">Wybierz roczny</button>
     </div>
   </div>
-  <div class="trial"><div><b>Najpierw wypróbuj przez 3 godziny</b><span class="fine">Załóż konto i sprawdź panel. Bez podawania karty.</span></div><button class="btn p" data-act="trial">Zacznij próbę</button></div>
+  <div class="trial"><div><b>Najpierw wypróbuj przez 3 godziny</b><span class="fine">Załóż konto i sprawdź panel, bez podawania karty. Po 3 godzinach wygasa dostęp do panelu i linków dla uczniów.</span></div><button class="btn p" data-act="trial">Zacznij próbę</button></div>
   <p class="note">Płatności obsługuje Stripe. Subskrypcja odnawia się automatycznie, a anulujesz ją sam w panelu.</p>
 </div></section>
 
@@ -226,7 +294,7 @@ footer a:hover{color:var(--ink)}
 <section id="faq"><div class="w" style="max-width:760px">
   <div class="head"><h2>Pytania i odpowiedzi</h2></div>
   <details><summary>Czy uczniowie muszą zakładać konta?</summary><p>Nie. Uczeń otwiera link, wpisuje imię i rozwiązuje ćwiczenie.</p></details>
-  <details><summary>Jak działa okres próbny?</summary><p>Zakładasz konto i przez 3 godziny korzystasz z panelu. Po tym czasie dostęp wygasa, chyba że wykupisz subskrypcję.</p></details>
+  <details><summary>Jak działa okres próbny?</summary><p>Zakładasz konto bez podawania karty i przez 3 godziny korzystasz z panelu. Po tym czasie dostęp do panelu i do linków wysłanych uczniom wygasa, chyba że wykupisz subskrypcję.</p></details>
   <details><summary>Jak anulować subskrypcję?</summary><p>W panelu klikasz zarządzanie subskrypcją. Dostęp zostaje do końca opłaconego okresu.</p></details>
   <details><summary>Jakie metody płatności są dostępne?</summary><p>Płatność kartą, także przez Apple Pay i Google Pay. Subskrypcja odnawia się automatycznie.</p></details>
   <details><summary>Co się dzieje z moimi ćwiczeniami po zakończeniu subskrypcji?</summary><p>Twoje dane zostają zapisane. Po wznowieniu subskrypcji masz do nich dostęp.</p></details>
@@ -234,8 +302,8 @@ footer a:hover{color:var(--ink)}
 </div></section>
 
 <section id="kontakt"><div class="w ct">
-  <div><h2>Masz pytanie?</h2><p class="lead">Napisz, a odpowiemy najszybciej, jak się da.</p><p style="margin-top:18px"><b>E-mail:</b> <a href="mailto:kontakt@flowork.pl" style="color:var(--acc)">kontakt@flowork.pl</a></p></div>
-  <form id="cf" action="mailto:kontakt@flowork.pl" method="post" enctype="text/plain">
+  <div><h2>Masz pytanie?</h2><p class="lead">Napisz, a odpowiemy najszybciej, jak się da.</p><p style="margin-top:18px"><b>E-mail:</b> <a href="mailto:kontakt@wkstudio.com.pl" style="color:var(--acc)">kontakt@wkstudio.com.pl</a></p></div>
+  <form id="cf" action="mailto:kontakt@wkstudio.com.pl" method="post" enctype="text/plain">
     <input name="imie" placeholder="Imię" required autocomplete="name">
     <input name="email" type="email" placeholder="Adres e-mail" required autocomplete="email">
     <textarea name="wiadomosc" placeholder="Twoja wiadomość" required></textarea>
@@ -252,14 +320,11 @@ footer a:hover{color:var(--ink)}
 <script>
 const PRICES={monthly:'price_1UZFRyR2DU617T5kj2icIaB0',quarterly:'price_1UZFWVR2DU617T5k9q5mzOKs',yearly:'price_1UZFW9R2DU617T5kIuP74wiN'};
 document.getElementById('yr').textContent=new Date().getFullYear();
-const toast=m=>{const t=document.getElementById('toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('on'),3200)};
 document.addEventListener('click',e=>{
   const b=e.target.closest('[data-act]');if(!b)return;
   const a=b.dataset.act;
-  if(a==='buy'||a==='trial'||a==='login'){
-    // Podłączymy w następnym etapie: rejestracja, logowanie i Stripe Checkout.
-    if(a==='login'||a==='trial'||a==='buy'){e.preventDefault();toast('Rejestracja i płatności będą dostępne wkrótce.')}
-  }
+  if(a==='buy'){e.preventDefault();location.href='/rejestracja.html?plan='+encodeURIComponent(b.dataset.plan)}
+  else if(a==='trial'){e.preventDefault();location.href='/rejestracja.html'}
 });
 </script>
 </body>
