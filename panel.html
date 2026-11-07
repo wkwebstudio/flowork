@@ -1418,30 +1418,36 @@ window.__start=init;
 })();
 </script>
 <div id="accbar" hidden></div>
-<style>#accbar{position:fixed;left:12px;bottom:12px;z-index:70;display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:8px 14px;border-radius:99px;background:var(--card);border:1.5px solid var(--line);box-shadow:0 6px 20px #0004;font:600 12.5px Poppins,sans-serif;color:var(--ink);max-width:calc(100vw - 24px)}#accbar a,#accbar button{color:var(--purple);background:none;border:0;font:700 12.5px Poppins,sans-serif;cursor:pointer;text-decoration:none;padding:0}#accbar .tr{color:var(--mut)}#accbar[hidden]{display:none}body.smopen #accbar{visibility:hidden}</style>
+<style>#accbar{position:fixed;left:12px;bottom:12px;z-index:70;display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:8px 14px;border-radius:99px;background:var(--card);border:1.5px solid var(--line);box-shadow:0 6px 20px #0004;font:600 12.5px Poppins,sans-serif;color:var(--ink);max-width:calc(100vw - 24px)}#accbar a,#accbar button{color:var(--purple);background:none;border:0;font:700 12.5px Poppins,sans-serif;cursor:pointer;text-decoration:none;padding:0}#accbar .tr{color:var(--mut)}#accbar[hidden]{display:none}body.smopen #accbar{visibility:hidden}
+#fwerr{position:fixed;inset:0;z-index:200;display:none;place-items:center;padding:20px;background:#000c}#fwerr.on{display:grid}#fwerr div{background:var(--card,#fff);color:var(--ink,#111);border-radius:20px;padding:24px;max-width:520px;font:500 15px/1.5 Poppins,sans-serif}#fwerr b{display:block;font-size:18px;margin-bottom:8px}#fwerr code{display:block;margin:10px 0;padding:10px;border-radius:10px;background:#0002;font-size:12.5px;word-break:break-word}#fwerr a{color:var(--purple,#6340ff);font-weight:700}</style>
+<div id="fwerr"><div><b>Nie udało się uruchomić panelu</b><span id="fwmsg"></span><code id="fwcode"></code><a href="/konto.html">Wróć do konta</a> · <a href="javascript:location.reload()">Odśwież</a></div></div>
 <script type="module">
-import {auth,db,onAuthStateChanged,signOut,doc,getDoc,ensureProfile,accessState} from "/fb.js";
-import {makeReq} from "/fw.js";
-const bar=document.getElementById('accbar');
-const fmt=ms=>{ms=Math.max(0,ms);const h=Math.floor(ms/3.6e6),m=Math.floor(ms%3.6e6/6e4);return (h?h+' h ':'')+m+' min'};
-let started=false;
-onAuthStateChanged(auth,async u=>{
-  if(!u||!u.emailVerified){location.replace('/logowanie.html');return}
-  if(started)return;
-  try{
-    const p=await ensureProfile(u);let sub=null;
-    try{const s=await getDoc(doc(db,'subs',u.uid));if(s.exists())sub=s.data()}catch(e){}
-    const a=accessState(p,sub);
-    if(a.state==='expired'){location.replace('/konto.html');return}
-    started=true;
-    window.__UID=u.uid;window.__FW={req:makeReq(u.uid)};
-    const draw=()=>{const b=accessState(p,sub);if(b.state==='expired'){location.replace('/konto.html');return}
-      bar.hidden=false;bar.innerHTML='<span>👤 '+(u.email||'')+'</span>'+(b.state==='trial'?'<span class="tr">Próba: '+fmt(b.until-Date.now())+'</span><a href="/konto.html">Wykup plan</a>':'<a href="/konto.html">Konto</a>')+'<button id="lo">Wyloguj</button>';
-      document.getElementById('lo').onclick=async()=>{await signOut(auth);location.href='/'}};
-    draw();setInterval(draw,30000);
-    window.__start();
-  }catch(e){document.body.insertAdjacentHTML('afterbegin','<div style="padding:20px;font:600 15px sans-serif">Nie udało się wczytać konta: '+(e&&e.code||e)+'. <a href="/konto.html">Wróć do konta</a></div>')}
-});
+const showErr=(m,c)=>{document.getElementById('fwmsg').textContent=m;document.getElementById('fwcode').textContent=c||'';document.getElementById('fwerr').classList.add('on')};
+try{
+  const [fb,fw]=await Promise.all([import("/fb.js"),import("/fw.js")]);
+  const {auth,db,onAuthStateChanged,signOut,doc,getDoc,ensureProfile,accessState}=fb;const {makeReq}=fw;
+  const bar=document.getElementById('accbar');
+  const fmt=ms=>{ms=Math.max(0,ms);const h=Math.floor(ms/3.6e6),m=Math.floor(ms%3.6e6/6e4);return (h?h+' h ':'')+m+' min'};
+  let started=false;
+  const guard=setTimeout(()=>{if(!started)showErr('Logowanie trwa zbyt długo albo nie udało się sprawdzić konta.','Odśwież stronę (Ctrl+F5) i upewnij się, że jesteś zalogowany.')},12000);
+  onAuthStateChanged(auth,async u=>{
+    if(!u||!u.emailVerified){location.replace('/logowanie.html');return}
+    if(started)return;
+    try{
+      const p=await ensureProfile(u);let sub=null;
+      try{const s=await getDoc(doc(db,'subs',u.uid));if(s.exists())sub=s.data()}catch(e){}
+      const a=accessState(p,sub);
+      if(a.state==='expired'){location.replace('/konto.html');return}
+      started=true;clearTimeout(guard);
+      window.__UID=u.uid;window.__FW={req:makeReq(u.uid)};
+      const draw=()=>{const b=accessState(p,sub);if(b.state==='expired'){location.replace('/konto.html');return}
+        bar.hidden=false;bar.innerHTML='<span>👤 '+(u.email||'')+'</span>'+(b.state==='trial'?'<span class="tr">Próba: '+fmt(b.until-Date.now())+'</span><a href="/konto.html">Wykup plan</a>':'<a href="/konto.html">Konto</a>')+'<button id="lo">Wyloguj</button>';
+        document.getElementById('lo').onclick=async()=>{await signOut(auth);location.href='/'}};
+      draw();setInterval(draw,30000);
+      await window.__start();
+    }catch(e){clearTimeout(guard);showErr('Nie udało się wczytać konta lub panelu.',String((e&&e.code)||'')+' '+String((e&&e.message)||e))}
+  });
+}catch(e){showErr('Brakuje pliku strony albo ma błąd (sprawdź, czy fw.js i fb.js są w repozytorium obok panel.html).',String((e&&e.message)||e))}
 </script>
 </body>
 </html>
