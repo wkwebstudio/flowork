@@ -12,6 +12,7 @@
  <div class="two"><label>Imię<input type="text" id="fn" autocomplete="given-name" required></label><label>Nazwisko<input type="text" id="ln" autocomplete="family-name" required></label></div>
  <label>Adres e-mail<input type="email" id="em" autocomplete="email" required></label>
  <label>Hasło (min. 8 znaków)<span class="pw"><input type="password" id="pw" autocomplete="new-password" minlength="8" required><button type="button" id="sp">Pokaż</button></span></label>
+ <label>Powtórz hasło<span class="pw"><input type="password" id="pw2" autocomplete="new-password" minlength="8" required></span></label>
  <label class="chk"><input type="checkbox" id="ac"><span>Akceptuję <a href="/regulamin.html" target="_blank">Regulamin</a> i zapoznałem(-am) się z <a href="/prywatnosc.html" target="_blank">Polityką prywatności</a>.</span></label>
  <div class="msg err" id="er"></div>
  <button class="btn full" id="go" type="submit">Utwórz konto</button>
@@ -33,7 +34,7 @@ import {auth,createUserWithEmailAndPassword,updateProfile,sendEmailVerification,
 const $=s=>document.querySelector(s);
 const params=new URLSearchParams(location.search);const plan=params.get('plan');
 if(plan){try{sessionStorage.setItem('flowork_plan',plan)}catch(e){}}
-$('#sp').onclick=()=>{const p=$('#pw');const h=p.type==='password';p.type=h?'text':'password';$('#sp').textContent=h?'Ukryj':'Pokaż'};
+$('#sp').onclick=()=>{const h=$('#pw').type==='password';$('#pw').type=$('#pw2').type=h?'text':'password';$('#sp').textContent=h?'Ukryj':'Pokaż'};
 const showErr=m=>{const e=$('#er');e.textContent=m;e.classList.toggle('on',!!m)};
 $('#rf').onsubmit=async ev=>{
   ev.preventDefault();showErr('');
@@ -41,6 +42,7 @@ $('#rf').onsubmit=async ev=>{
   if(!fn||!ln)return showErr('Podaj imię i nazwisko.');
   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em))return showErr('Podaj poprawny adres e-mail.');
   if(pw.length<8)return showErr('Hasło musi mieć co najmniej 8 znaków.');
+  if(pw!==$('#pw2').value)return showErr('Hasła nie są takie same.');
   if(!$('#ac').checked)return showErr('Zaakceptuj regulamin i politykę prywatności.');
   $('#go').disabled=true;$('#go').textContent='Tworzę konto…';
   try{
