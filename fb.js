@@ -25,6 +25,9 @@ auth.languageCode = "pl";
 const fns = getFunctions(app, "europe-west1");
 export const callFn = async (name, data) => (await httpsCallable(fns, name)(data || {})).data;
  
+export const sendVerif = () => callFn("sendVerification");
+export const sendReset = email => callFn("sendReset", { email });
+ 
 export {
   createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification,
   sendPasswordResetEmail, updateProfile, onAuthStateChanged, signOut, doc, getDoc, setDoc, serverTimestamp, collection, getDocs
@@ -41,6 +44,7 @@ const MSG = {
   "auth/network-request-failed": "Brak połączenia z internetem.",
   "auth/operation-not-allowed": "Logowanie e-mailem nie jest włączone w projekcie Firebase.",
   "auth/unauthorized-domain": "Ta domena nie jest dodana w Firebase (Authentication → Settings → Authorized domains).",
+  "functions/resource-exhausted": "Poczekaj minutę przed kolejną wiadomością.",
   "permission-denied": "Brak uprawnień. Potwierdź adres e-mail i spróbuj ponownie."
 };
 export const errMsg = e => MSG[e && e.code] || ("Coś poszło nie tak" + (e && e.code ? " (" + e.code + ")" : "") + ". Spróbuj ponownie.");
