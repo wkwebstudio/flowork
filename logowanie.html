@@ -27,9 +27,9 @@
 </div></main>
 <div class="foot">© <span id="yr"></span> Flowork · <a href="/regulamin.html">Regulamin</a> · <a href="/prywatnosc.html">Polityka prywatności</a></div>
 <script>document.getElementById('yr').textContent=new Date().getFullYear()</script>
-
+ 
 <script type="module">
-import {auth,signInWithEmailAndPassword,sendEmailVerification,sendPasswordResetEmail,signOut,ensureProfile,errMsg} from "/fb.js";
+import {auth,signInWithEmailAndPassword,sendVerif,sendReset,signOut,ensureProfile,errMsg} from "/fb.js";
 const $=s=>document.querySelector(s);
 const msg=(id,t,kind)=>{const e=$(id);e.textContent=t||'';e.classList.toggle('on',!!t)};
 $('#sp').onclick=()=>{const p=$('#pw');const h=p.type==='password';p.type=h?'text':'password';$('#sp').textContent=h?'Ukryj':'Pokaż'};
@@ -48,9 +48,9 @@ $('#lf').onsubmit=async ev=>{
 $('#fg').onclick=async()=>{
   msg('#er','');msg('#ok','');const em=$('#em').value.trim();
   if(!em)return msg('#er','Wpisz adres e-mail, a wyślemy link do zmiany hasła.');
-  try{await sendPasswordResetEmail(auth,em);msg('#ok','Jeśli konto istnieje, wysłaliśmy link do zmiany hasła.')}
+  try{await sendReset(em);msg('#ok','Jeśli konto istnieje, wysłaliśmy link do zmiany hasła.')}
   catch(e){msg('#er',errMsg(e))}
 };
-$('#rs').onclick=async()=>{try{await sendEmailVerification(auth.currentUser);msg('#ok2','Wysłano ponownie. Sprawdź skrzynkę i spam.')}catch(e){msg('#ok2',errMsg(e))}};
+$('#rs').onclick=async()=>{try{await sendVerif();msg('#ok2','Wysłano ponownie. Sprawdź skrzynkę i spam.')}catch(e){msg('#ok2',errMsg(e))}};
 $('#bk').onclick=async()=>{await signOut(auth);$('#nv').hidden=true;$('#lg').hidden=false};
 </script></body></html>
