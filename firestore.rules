@@ -35,6 +35,13 @@ service cloud.firestore {
     }
 
     // Stan panelu nauczyciela (ćwiczenia, foldery, wyniki). Tylko właściciel.
+    match /prefs/{uid} {
+      allow read: if signedIn() && request.auth.uid == uid;
+      allow create, update: if signedIn() && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['notify'])
+        && request.resource.data.notify is bool;
+    }
+
     match /panels/{uid} {
       allow read, write: if signedIn() && request.auth.uid == uid;
       match /chunks/{n} {
