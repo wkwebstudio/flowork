@@ -28,9 +28,9 @@
 </div></main>
 <div class="foot">© <span id="yr"></span> Flowork · <a href="/regulamin.html">Regulamin</a> · <a href="/prywatnosc.html">Polityka prywatności</a></div>
 <script>document.getElementById('yr').textContent=new Date().getFullYear()</script>
-
+ 
 <script type="module">
-import {auth,createUserWithEmailAndPassword,updateProfile,sendEmailVerification,errMsg} from "/fb.js";
+import {auth,createUserWithEmailAndPassword,updateProfile,sendVerif,errMsg} from "/fb.js";
 const $=s=>document.querySelector(s);
 const params=new URLSearchParams(location.search);const plan=params.get('plan');
 if(plan){try{sessionStorage.setItem('flowork_plan',plan)}catch(e){}}
@@ -48,12 +48,12 @@ $('#rf').onsubmit=async ev=>{
   try{
     const c=await createUserWithEmailAndPassword(auth,em,pw);
     await updateProfile(c.user,{displayName:(fn+' '+ln).slice(0,100)});
-    await sendEmailVerification(c.user);
+    try{await sendVerif()}catch(_){}
     $('#sent').textContent=em;$('#f1').hidden=true;$('#f2').hidden=false;
   }catch(e){showErr(errMsg(e));$('#go').disabled=false;$('#go').textContent='Utwórz konto'}
 };
 $('#re').onclick=async()=>{
-  try{if(auth.currentUser){await sendEmailVerification(auth.currentUser);const o=$('#ok');o.textContent='Wysłano ponownie.';o.classList.add('on')}}
+  try{if(auth.currentUser){await sendVerif();const o=$('#ok');o.textContent='Wysłano ponownie.';o.classList.add('on')}}
   catch(e){const o=$('#ok');o.textContent=errMsg(e);o.classList.remove('ok');o.classList.add('err','on')}
 };
 </script></body></html>
