@@ -19,6 +19,7 @@
 </div>
 <div style="display:grid;gap:10px;margin-top:16px">
  <a class="btn full" id="op" href="/panel.html" hidden>Otwórz panel</a>
+ <button class="btn g full" id="mg" hidden>Zarządzaj subskrypcją</button>
  <button class="btn g full" id="lo">Wyloguj się</button>
 </div>
 </div></main>
@@ -26,32 +27,58 @@
 <script>document.getElementById('yr').textContent=new Date().getFullYear()</script>
 
 <script type="module">
-import {auth,db,onAuthStateChanged,signOut,doc,getDoc,ensureProfile,accessState,errMsg} from "/fb.js";
+import {auth,db,onAuthStateChanged,signOut,doc,getDoc,ensureProfile,accessState,errMsg,callFn} from "/fb.js";
 const $=s=>document.querySelector(s);
 $('#lo').onclick=async()=>{await signOut(auth);location.href='/'};
 const fmt=ms=>{ms=Math.max(0,ms);const h=Math.floor(ms/3.6e6),m=Math.floor(ms%3.6e6/6e4),s=Math.floor(ms%6e4/1e3);return (h?h+' h ':'')+String(m).padStart(h?2:1,'0')+' min '+String(s).padStart(2,'0')+' s'};
 const d=ms=>new Date(ms).toLocaleDateString('pl-PL',{day:'numeric',month:'long',year:'numeric'});
-let timer;
+const PL={monthly:'miesięczny',quarterly:'kwartalny',yearly:'roczny'};
+const say=(t,k)=>{const m=$('#pm');m.textContent=t||'';m.className='msg'+(t?' on '+(k||'ok'):'')};
+let timer,profile,sub=null,user;
+const loadSub=async()=>{sub=null;try{const s=await getDoc(doc(db,'subs',user.uid));if(s.exists())sub=s.data()}catch(e){}};
+const draw=()=>{
+  const a=accessState(profile,sub),st=$('#st');
+  if(a.state==='paid'){
+    const info=sub&&sub.plan&&PL[sub.plan]?'Plan '+PL[sub.plan]+'. ':'';
+    const end=sub&&sub.cancelAtPeriodEnd?'Subskrypcja wygasa '+d(a.until)+' i nie odnowi się.':'Opłacone do '+d(a.until)+(sub&&sub.subscriptionId?', potem odnowi się automatycznie.':'.');
+    st.innerHTML='<div class="stat good"><small>Subskrypcja aktywna</small><b>Masz dostęp</b><span>'+info+end+'</span></div>';
+    $('#pl').hidden=!(sub&&sub.cancelAtPeriodEnd);$('#op').hidden=false;$('#mg').hidden=!(sub&&sub.customerId)}
+  else if(a.state==='trial'){
+    st.innerHTML='<div class="stat"><small>Okres próbny</small><b>'+fmt(a.until-Date.now())+'</b><span>do końca darmowej próby. Potem wygasa dostęp do panelu i linków uczniów.</span></div>';$('#pl').hidden=false;$('#op').hidden=false;$('#mg').hidden=!(sub&&sub.customerId)}
+  else{
+    st.innerHTML='<div class="stat bad"><small>Dostęp wygasł</small><b>Okres próbny się skończył</b><span>Panel i linki wysłane uczniom są wstrzymane. Wykup plan, aby je odblokować. Twoje dane zostają zapisane.</span></div>';$('#pl').hidden=false;$('#op').hidden=true;$('#mg').hidden=!(sub&&sub.customerId)}
+};
 onAuthStateChanged(auth,async u=>{
   if(!u){location.href='/logowanie.html';return}
   if(!u.emailVerified){await signOut(auth);location.href='/logowanie.html';return}
+  user=u;
   try{
-    const p=await ensureProfile(u);
-    let sub=null;try{const s=await getDoc(doc(db,'subs',u.uid));if(s.exists())sub=s.data()}catch(e){}
-    $('#hi').textContent='Cześć'+(p.name?', '+p.name.split(' ')[0]:'')+' 👋';$('#em').textContent=u.email;
-    const draw=()=>{
-      const a=accessState(p,sub);
-      const st=$('#st');
-      if(a.state==='paid'){st.innerHTML='<div class="stat good"><small>Subskrypcja aktywna</small><b>Masz dostęp</b><span>Opłacone do '+d(a.until)+'</span></div>';$('#pl').hidden=true;$('#op').hidden=false}
-      else if(a.state==='trial'){st.innerHTML='<div class="stat"><small>Okres próbny</small><b>'+fmt(a.until-Date.now())+'</b><span>do końca darmowej próby. Potem wygasa dostęp do panelu i linków uczniów.</span></div>';$('#pl').hidden=false;$('#op').hidden=false}
-      else{st.innerHTML='<div class="stat bad"><small>Dostęp wygasł</small><b>Okres próbny się skończył</b><span>Panel i linki wysłane uczniom są wstrzymane. Wykup plan, aby je odblokować. Twoje dane zostają zapisane.</span></div>';$('#pl').hidden=false;$('#op').hidden=true}
-    };
+    profile=await ensureProfile(u);await loadSub();
+    $('#hi').textContent='Cześć'+(profile.name?', '+profile.name.split(' ')[0]:'')+' 👋';$('#em').textContent=u.email;
     draw();clearInterval(timer);timer=setInterval(draw,1000);
     const want=(()=>{try{return sessionStorage.getItem('flowork_plan')}catch(e){return null}})();
     document.querySelectorAll('.plan').forEach(b=>{
       if(b.dataset.plan===want)b.classList.add('on');
-      b.onclick=()=>{const m=$('#pm');m.textContent='Płatności zostaną uruchomione w następnym etapie.';m.className='msg ok on'};
+      b.onclick=async()=>{
+        say('Przekierowuję do płatności…');document.querySelectorAll('.plan').forEach(x=>x.disabled=true);
+        try{const r=await callFn('createCheckout',{plan:b.dataset.plan});location.href=r.url}
+        catch(e){say((e&&e.message)||errMsg(e),'err');document.querySelectorAll('.plan').forEach(x=>x.disabled=false)}
+      };
     });
+    $('#mg').onclick=async()=>{
+      $('#mg').disabled=true;
+      try{const r=await callFn('createPortal');location.href=r.url}
+      catch(e){say((e&&e.message)||errMsg(e),'err');$('#mg').disabled=false}
+    };
+    // Po powrocie ze Stripe czekamy chwilę na potwierdzenie płatności (webhook).
+    if(new URLSearchParams(location.search).get('paid')==='1'){
+      say('Dziękujemy! Potwierdzamy płatność…');
+      let n=0;const iv=setInterval(async()=>{
+        n++;await loadSub();const a=accessState(profile,sub);
+        if(a.state==='paid'){clearInterval(iv);say('Płatność potwierdzona. Dostęp aktywny! 🎉');history.replaceState(null,'','/konto.html')}
+        else if(n>20){clearInterval(iv);say('Płatność jeszcze się księguje. Odśwież stronę za chwilę. Jeśli nic się nie zmieni, napisz do nas.','err')}
+      },2000);
+    }
   }catch(e){$('#st').innerHTML='<div class="msg err on">'+errMsg(e)+'</div>'}
 });
 </script></body></html>
