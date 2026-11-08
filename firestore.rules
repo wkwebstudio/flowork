@@ -10,7 +10,7 @@ service cloud.firestore {
           || (exists(s) && get(s).data.accessUntil > request.time);
     }
     function signedIn() { return request.auth != null; }
-    function isAdmin()  { return signedIn() && request.auth.token.admin == true; }
+    function isAdmin()  { return signedIn() && request.auth.token.email_verified == true && request.auth.token.email == 'wkwebstudio@gmail.com'; }
 
     // Profil nauczyciela. Zakłada go sam użytkownik po potwierdzeniu e-maila.
     // createdAt musi być czasem serwera, więc nie da się wydłużyć próby ręcznie.
