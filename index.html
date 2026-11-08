@@ -302,12 +302,14 @@ footer a:hover{color:var(--ink)}
 </div></section>
 
 <section id="kontakt"><div class="w ct">
-  <div><h2>Masz pytanie?</h2><p class="lead">Napisz, a odpowiemy najszybciej, jak się da.</p><p style="margin-top:18px"><b>E-mail:</b> <a href="mailto:kontakt@wkstudio.com.pl" style="color:var(--acc)">kontakt@wkstudio.com.pl</a></p></div>
-  <form id="cf" action="mailto:kontakt@wkstudio.com.pl" method="post" enctype="text/plain">
-    <input name="imie" placeholder="Imię" required autocomplete="name">
-    <input name="email" type="email" placeholder="Adres e-mail" required autocomplete="email">
-    <textarea name="wiadomosc" placeholder="Twoja wiadomość" required></textarea>
-    <button class="btn p" type="submit">Wyślij wiadomość</button>
+  <div><h2>Masz pytanie?</h2><p class="lead">Napisz, a odpowiemy najszybciej, jak się da.</p><p style="margin-top:18px"><b>E-mail:</b> <a href="mailto:wkwebstudio@gmail.com" style="color:var(--acc)">wkwebstudio@gmail.com</a></p></div>
+  <form id="cf" novalidate>
+    <input name="imie" id="cfn" placeholder="Imię" required autocomplete="name">
+    <input name="email" id="cfe" type="email" placeholder="Adres e-mail" required autocomplete="email">
+    <textarea name="wiadomosc" id="cfm" placeholder="Twoja wiadomość" required></textarea>
+    <input type="text" id="cfh" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0">
+    <button class="btn p" id="cfb" type="submit">Wyślij wiadomość</button>
+    <p class="fine" id="cfs" role="status"></p>
   </form>
 </div></section>
 
@@ -320,6 +322,25 @@ footer a:hover{color:var(--ink)}
 <script>
 const PRICES={monthly:'price_1UZFRyR2DU617T5kj2icIaB0',quarterly:'price_1UZFWVR2DU617T5k9q5mzOKs',yearly:'price_1UZFW9R2DU617T5kIuP74wiN'};
 document.getElementById('yr').textContent=new Date().getFullYear();
+// Formularz kontaktowy: Web3Forms wysyła wiadomość na Twój e-mail (klucz dostępu jest publiczny z założenia).
+const W3_KEY='WKLEJ_TU_KLUCZ_WEB3FORMS';
+document.getElementById('cf').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const st=document.getElementById('cfs'),btn=document.getElementById('cfb');
+  const n=document.getElementById('cfn').value.trim(),m=document.getElementById('cfe').value.trim(),t=document.getElementById('cfm').value.trim();
+  const say=(x,ok)=>{st.textContent=x;st.style.color=ok?'var(--ok)':'#d6335a'};
+  if(!n||!t)return say('Wpisz imię i wiadomość.');
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(m))return say('Podaj poprawny adres e-mail.');
+  if(document.getElementById('cfh').value)return;
+  if(W3_KEY.indexOf('WKLEJ')===0)return say('Formularz nie jest jeszcze skonfigurowany. Napisz na wkwebstudio@gmail.com.');
+  btn.disabled=true;btn.textContent='Wysyłam…';
+  try{
+    const r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({access_key:W3_KEY,subject:'Flowork: wiadomość od '+n,from_name:'Flowork – formularz',name:n,email:m,replyto:m,message:t})});
+    const j=await r.json();
+    if(j.success){say('Dziękujemy! Wiadomość wysłana, odpowiemy najszybciej, jak się da.',true);e.target.reset()}else say('Nie udało się wysłać. Napisz na wkwebstudio@gmail.com.');
+  }catch(x){say('Brak połączenia. Spróbuj ponownie albo napisz na wkwebstudio@gmail.com.')}
+  btn.disabled=false;btn.textContent='Wyślij wiadomość';
+});
 document.addEventListener('click',e=>{
   const b=e.target.closest('[data-act]');if(!b)return;
   const a=b.dataset.act;
