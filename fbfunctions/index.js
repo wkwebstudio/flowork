@@ -14,8 +14,8 @@ const STRIPE_WH = defineSecret("STRIPE_WEBHOOK_SECRET");
 const ADMIN_EMAIL = "wkwebstudio@gmail.com";
 const PRICES = {
   monthly: "price_1UZc31R3KgPkCvZg9866e63N",
-  quarterly: "price_1UZc5TR3KgPkCvZgJxU7yCGI",
-  yearly: "price_1UZc5jR3KgPkCvZgKofUYMk1",
+  quarterly: "price_1UZc5jR3KgPkCvZgKofUYMk1",
+  yearly: "price_1UZc5TR3KgPkCvZgJxU7yCGI",
 };
 const PLAN_BY_PRICE = Object.fromEntries(Object.entries(PRICES).map(([k, v]) => [v, k]));
  
@@ -52,11 +52,11 @@ exports.createCheckout = onCall({ region: REGION, secrets: [STRIPE_KEY] }, async
  
   const stripe = new Stripe(STRIPE_KEY.value(), { apiVersion: '2025-03-31.basil' });
   const origin = pickOrigin(req);
-  const session = await stripe.checkout.sessions.create({
+  const mk = useCustomer => stripe.checkout.sessions.create({
     mode: "subscription",
     line_items: [{ price, quantity: 1 }],
-    customer: cur.customerId || undefined,
-    customer_email: cur.customerId ? undefined : auth.token.email,
+    customer: useCustomer && cur.customerId ? cur.customerId : undefined,
+    customer_email: useCustomer && cur.customerId ? undefined : auth.token.email,
     client_reference_id: auth.uid,
     metadata: { uid: auth.uid },
     subscription_data: { metadata: { uid: auth.uid } },
@@ -67,6 +67,19 @@ exports.createCheckout = onCall({ region: REGION, secrets: [STRIPE_KEY] }, async
     consent_collection: { terms_of_service: "required" },
     custom_text: { terms_of_service_acceptance: { message: "Akceptuję [Regulamin](https://flowork.pl/regulamin.html) i [Politykę prywatności](https://flowork.pl/prywatnosc.html). Zgadzam się na natychmiastowe rozpoczęcie świadczenia usługi cyfrowej i przyjmuję do wiadomości utratę prawa do odstąpienia od umowy." } },
   });
+  let session;
+  try {
+    try {
+      session = await mk(true);
+    } catch (e) {
+      // Zapamiętany klient z innego trybu Stripe (np. testowego) – próbujemy bez niego.
+      if (cur.customerId && e && (e.code === "resource_missing" || /No such customer/i.test(e.message || ""))) session = await mk(false);
+      else throw e;
+    }
+  } catch (e) {
+    console.error("createCheckout", e && e.type, e && e.code, e && e.message);
+    throw new HttpsError("internal", "Płatność chwilowo niedostępna: " + String((e && e.message) || e).slice(0, 180));
+  }
   return { url: session.url };
 });
  
@@ -171,4 +184,3 @@ exports.adminGrant = onCall({ region: REGION }, async req => {
 });
 // ---------- E-maile (Resend) ----------
 Object.assign(exports, require("./mail"));
- 
