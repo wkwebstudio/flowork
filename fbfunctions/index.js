@@ -167,3 +167,6 @@ exports.adminGrant = onCall({ region: REGION }, async req => {
   }, { merge: true });
   return { ok: true };
 });
+// ---------- E-maile (Resend) ----------
+Object.assign(exports, require("./mail"));
+ 
