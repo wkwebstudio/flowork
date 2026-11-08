@@ -1425,7 +1425,7 @@ window.__start=init;
 const showErr=(m,c)=>{document.getElementById('fwmsg').textContent=m;document.getElementById('fwcode').textContent=c||'';document.getElementById('fwerr').classList.add('on')};
 try{
   const [fb,fw]=await Promise.all([import("/fb.js"),import("/fw.js")]);
-  const {auth,db,onAuthStateChanged,signOut,doc,getDoc,ensureProfile,accessState}=fb;const {makeReq}=fw;
+  const {auth,db,onAuthStateChanged,signOut,doc,getDoc,setDoc,ensureProfile,accessState}=fb;const {makeReq}=fw;
   const bar=document.getElementById('accbar');
   const fmt=ms=>{ms=Math.max(0,ms);const h=Math.floor(ms/3.6e6),m=Math.floor(ms%3.6e6/6e4);return (h?h+' h ':'')+m+' min'};
   let started=false;
@@ -1438,10 +1438,12 @@ try{
       try{const s=await getDoc(doc(db,'subs',u.uid));if(s.exists())sub=s.data()}catch(e){}
       const a=accessState(p,sub);
       if(a.state==='expired'){location.replace('/konto.html');return}
+      let notify=true;try{const pr=await getDoc(doc(db,'prefs',u.uid));if(pr.exists()&&pr.data().notify===false)notify=false}catch(e){}
       started=true;clearTimeout(guard);
       window.__UID=u.uid;window.__FW={req:makeReq(u.uid)};
       const draw=()=>{const b=accessState(p,sub);if(b.state==='expired'){location.replace('/konto.html');return}
-        bar.hidden=false;bar.innerHTML='<span>👤 '+(u.email||'')+'</span>'+(b.state==='trial'?'<span class="tr">Próba: '+fmt(b.until-Date.now())+'</span><a href="/konto.html">Wykup plan</a>':'<a href="/konto.html">Konto</a>')+'<button id="lo">Wyloguj</button>';
+        bar.hidden=false;bar.innerHTML='<span>👤 '+(u.email||'')+'</span><button id="nt" title="Powiadomienie e-mail, gdy uczeń skończy ćwiczenie">'+(notify?'🔔 Powiadomienia: wł.':'🔕 Powiadomienia: wył.')+'</button>'+(b.state==='trial'?'<span class="tr">Próba: '+fmt(b.until-Date.now())+'</span><a href="/konto.html">Wykup plan</a>':'<a href="/konto.html">Konto</a>')+'<button id="lo">Wyloguj</button>';
+        document.getElementById('nt').onclick=async()=>{const nv=!notify;try{await setDoc(doc(db,'prefs',u.uid),{notify:nv});notify=nv;draw()}catch(e){alert('Nie udało się zapisać ustawienia.')}};
         document.getElementById('lo').onclick=async()=>{await signOut(auth);location.href='/'}};
       draw();setInterval(draw,30000);
       await window.__start();
