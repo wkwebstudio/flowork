@@ -5,6 +5,7 @@ import {
   getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification,
   sendPasswordResetEmail, updateProfile, onAuthStateChanged, signOut
 } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-functions.js";
 import { getFirestore, doc, getDoc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
  
 const firebaseConfig = {
@@ -21,6 +22,8 @@ export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 auth.languageCode = "pl";
+const fns = getFunctions(app, "europe-west1");
+export const callFn = async (name, data) => (await httpsCallable(fns, name)(data || {})).data;
  
 export {
   createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification,
