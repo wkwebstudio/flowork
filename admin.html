@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Admin – Flowork</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/auth.css">
+<style>
+body{display:block}.wrap{width:min(1100px,100% - 32px);margin:0 auto 40px}
+.top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;width:min(1100px,100% - 32px)}
+.kp{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:8px 0 18px}
+.k{background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:16px}.k small{display:block;font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}.k b{font:700 30px 'Fraunces',Georgia,serif}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}.tools input{max-width:320px}
+.fl{display:flex;gap:6px;flex-wrap:wrap}.fl button{padding:8px 14px;border-radius:99px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font:700 13px 'Plus Jakarta Sans',sans-serif;cursor:pointer}.fl button.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.tw{background:var(--card);border:1.5px solid var(--line);border-radius:18px;overflow:auto}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:760px}th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}th{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);position:sticky;top:0;background:var(--card)}tr:last-child td{border-bottom:0}
+.chip{display:inline-block;padding:3px 10px;border-radius:99px;font-size:12px;font-weight:800}.c-paid{background:color-mix(in srgb,var(--ok) 16%,transparent);color:var(--ok)}.c-trial{background:var(--soft);color:var(--acc)}.c-exp{background:color-mix(in srgb,var(--bad) 13%,transparent);color:var(--bad)}.c-man{background:color-mix(in srgb,#f59e0b 18%,transparent);color:#b45309}
+.gb{padding:5px 10px;border-radius:99px;border:1.5px solid var(--line);background:none;color:var(--ink);font:700 12px 'Plus Jakarta Sans',sans-serif;cursor:pointer;margin-right:4px}.gb:hover{border-color:var(--acc)}.gb:disabled{opacity:.5}
+.empty{padding:30px;text-align:center;color:var(--mut)}
+</style></head><body>
+<div class="top"><a class="logo" href="/"><i>F</i>Flowork · Admin</a><div class="fl"><a class="btn g" style="padding:9px 16px" href="https://dashboard.stripe.com/test/payments" target="_blank" rel="noopener">Płatności w Stripe ↗</a><button class="btn g" style="padding:9px 16px" id="lo">Wyloguj</button></div></div>
+<div class="wrap">
+ <div class="msg" id="er"></div>
+ <div class="kp" id="kp"></div>
+ <div class="tools"><input type="text" id="q" placeholder="Szukaj po nazwisku lub e-mailu"><div class="fl" id="fl">
+  <button data-f="all" class="on">Wszyscy</button><button data-f="paid">Płacący</button><button data-f="trial">Próba</button><button data-f="exp">Wygasłe</button></div></div>
+ <div class="tw"><table><thead><tr><th>Klient</th><th>E-mail</th><th>Założono</th><th>Status</th><th>Plan</th><th>Dostęp do</th><th>Dni dostępu</th></tr></thead><tbody id="tb"><tr><td colspan="7" class="empty">Ładowanie…</td></tr></tbody></table></div>
+</div>
+<script type="module">
+import {auth,db,onAuthStateChanged,signOut,collection,getDocs,accessState,callFn,errMsg} from "/fb.js";
+const $=s=>document.querySelector(s),ADMIN='wkwebstudio@gmail.com';
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const dt=ms=>ms?new Date(ms).toLocaleString('pl-PL',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}):'—';
+const PL={monthly:'miesięczny',quarterly:'kwartalny',yearly:'roczny'},PER={monthly:35,quarterly:30,yearly:350/12};
+let rows=[],filter='all';
+$('#lo').onclick=async()=>{await signOut(auth);location.href='/'};
+const err=m=>{const e=$('#er');e.textContent=m||'';e.className='msg'+(m?' on err':'')};
+async function load(){
+  err('');
+  try{
+    const [us,ss]=await Promise.all([getDocs(collection(db,'users')),getDocs(collection(db,'subs'))]);
+    const subs={};ss.forEach(d=>subs[d.id]=d.data());
+    rows=[];us.forEach(d=>{const p=d.data(),sub=subs[d.id]||null,a=accessState(p,sub);
+      rows.push({uid:d.id,name:p.name||'—',email:p.email||'',created:p.createdAt&&p.createdAt.toMillis?p.createdAt.toMillis():0,sub,st:a.state,until:a.until,manual:!!(sub&&sub.manual&&!sub.subscriptionId)})});
+    rows.sort((a,b)=>b.created-a.created);draw();
+  }catch(e){err('Nie udało się wczytać danych: '+errMsg(e));$('#tb').innerHTML='<tr><td colspan="7" class="empty">Brak danych</td></tr>'}
+}
+function draw(){
+  const paid=rows.filter(r=>r.st==='paid'),mrr=paid.filter(r=>r.sub&&r.sub.subscriptionId&&!r.sub.cancelAtPeriodEnd).reduce((s,r)=>s+(PER[r.sub.plan]||0),0);
+  $('#kp').innerHTML=[['Konta',rows.length],['Płacący',paid.length],['W próbie',rows.filter(r=>r.st==='trial').length],['Wygasłe',rows.filter(r=>r.st==='exp').length],['Przychód mies.',mrr.toFixed(0)+' zł']].map(([a,b])=>'<div class="k"><small>'+a+'</small><b>'+b+'</b></div>').join('');
+  const q=$('#q').value.trim().toLowerCase();
+  const list=rows.filter(r=>(filter==='all'||r.st===filter)&&(!q||(r.name+' '+r.email).toLowerCase().includes(q)));
+  $('#tb').innerHTML=list.length?list.map(r=>{
+    const chip=r.st==='paid'?(r.manual?'<span class="chip c-man">Ręcznie</span>':'<span class="chip c-paid">Płaci</span>'):r.st==='trial'?'<span class="chip c-trial">Próba</span>':'<span class="chip c-exp">Wygasł</span>';
+    const note=r.sub&&r.sub.cancelAtPeriodEnd?' <small style="color:var(--bad)">(anulowana)</small>':'';
+    return '<tr><td>'+esc(r.name)+'</td><td>'+esc(r.email)+'</td><td>'+dt(r.created)+'</td><td>'+chip+note+'</td><td>'+esc((r.sub&&PL[r.sub.plan])||'—')+'</td><td>'+dt(r.until)+'</td><td><button class="gb" data-u="'+esc(r.uid)+'" data-d="1">+1 d</button><button class="gb" data-u="'+esc(r.uid)+'" data-d="7">+7 d</button><button class="gb" data-u="'+esc(r.uid)+'" data-d="30">+30 d</button><button class="gb" data-u="'+esc(r.uid)+'" data-d="-7">−7 d</button></td></tr>'}).join(''):'<tr><td colspan="7" class="empty">Brak wyników</td></tr>';
+}
+$('#q').oninput=draw;
+$('#fl').onclick=e=>{const b=e.target.closest('[data-f]');if(!b)return;filter=b.dataset.f;document.querySelectorAll('#fl button').forEach(x=>x.classList.toggle('on',x===b));draw()};
+$('#tb').onclick=async e=>{
+  const b=e.target.closest('[data-u]');if(!b)return;
+  const d=+b.dataset.d;if(!confirm((d>0?'Dodać ':'Odjąć ')+Math.abs(d)+' dni dostępu temu klientowi?'))return;
+  b.disabled=true;
+  try{await callFn('adminGrant',{uid:b.dataset.u,days:d});await load()}catch(x){err((x&&x.message)||errMsg(x));b.disabled=false}
+};
+onAuthStateChanged(auth,u=>{
+  if(!u){location.replace('/logowanie.html');return}
+  if(!u.emailVerified||u.email!==ADMIN){document.body.innerHTML='<main style="min-height:80vh;display:grid;place-items:center;font:600 16px sans-serif;padding:20px;text-align:center">Brak dostępu. <a href="/konto.html" style="margin-left:8px">Wróć do konta</a></main>';return}
+  load();
+});
+</script></body></html>
