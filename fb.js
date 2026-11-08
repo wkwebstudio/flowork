@@ -7,7 +7,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-functions.js";
 import { getFirestore, doc, getDoc, setDoc, serverTimestamp, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
- 
+
 const firebaseConfig = {
   apiKey: "AIzaSyDXgyG6rMx8JfbUYSug0IV7ZBG12sSlyUE",
   authDomain: "flowork-29fcc.firebaseapp.com",
@@ -16,7 +16,7 @@ const firebaseConfig = {
   messagingSenderId: "153850625261",
   appId: "1:153850625261:web:9d1beaa0d69a0ce34660e4"
 };
- 
+
 export const TRIAL_MS = 3 * 60 * 60 * 1000; // 3 godziny
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
@@ -24,15 +24,15 @@ export const db = getFirestore(app);
 auth.languageCode = "pl";
 const fns = getFunctions(app, "europe-west1");
 export const callFn = async (name, data) => (await httpsCallable(fns, name)(data || {})).data;
- 
+
 export const sendVerif = () => callFn("sendVerification");
 export const sendReset = email => callFn("sendReset", { email });
- 
+
 export {
   createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification,
   sendPasswordResetEmail, updateProfile, onAuthStateChanged, signOut, doc, getDoc, setDoc, serverTimestamp, collection, getDocs
 };
- 
+
 const MSG = {
   "auth/email-already-in-use": "Konto z tym adresem e-mail już istnieje. Zaloguj się.",
   "auth/invalid-email": "Nieprawidłowy adres e-mail.",
@@ -47,8 +47,8 @@ const MSG = {
   "functions/resource-exhausted": "Poczekaj minutę przed kolejną wiadomością.",
   "permission-denied": "Brak uprawnień. Potwierdź adres e-mail i spróbuj ponownie."
 };
-export const errMsg = e => MSG[e && e.code] || ("Coś poszło nie tak" + (e && e.code ? " (" + e.code + ")" : "") + ". Spróbuj ponownie.");
- 
+export const errMsg = e => MSG[e && e.code] || (e && /^functions\//.test(e.code || "") && e.message && e.message !== "internal" ? e.message : "") || ("Coś poszło nie tak" + (e && e.code ? " (" + e.code + ")" : "") + ". Spróbuj ponownie.");
+
 // Zakłada profil (i tym samym startuje okres próbny) dopiero po potwierdzeniu e-maila.
 export async function ensureProfile(user) {
   const ref = doc(db, "users", user.uid);
@@ -59,7 +59,7 @@ export async function ensureProfile(user) {
   }
   return snap.data();
 }
- 
+
 // Zwraca stan dostępu: trial / paid / expired
 export function accessState(profile, sub) {
   const now = Date.now();
@@ -70,4 +70,3 @@ export function accessState(profile, sub) {
   if (trialEnd > now) return { state: "trial", until: trialEnd };
   return { state: "expired", until: Math.max(trialEnd, paidUntil) };
 }
- 
