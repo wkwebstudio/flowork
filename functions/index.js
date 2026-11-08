@@ -50,7 +50,7 @@ exports.createCheckout = onCall({ region: REGION, secrets: [STRIPE_KEY] }, async
     throw new HttpsError("already-exists", "Masz już aktywną subskrypcję. Zarządzaj nią przyciskiem „Zarządzaj subskrypcją”.");
   }
  
-  const stripe = new Stripe(STRIPE_KEY.value());
+  const stripe = new Stripe(STRIPE_KEY.value(), { apiVersion: '2025-03-31.basil' });
   const origin = pickOrigin(req);
   const session = await stripe.checkout.sessions.create({
     mode: "subscription",
@@ -74,7 +74,7 @@ exports.createPortal = onCall({ region: REGION, secrets: [STRIPE_KEY] }, async r
   const snap = await db.doc("subs/" + auth.uid).get();
   const customer = snap.exists && snap.data().customerId;
   if (!customer) throw new HttpsError("failed-precondition", "Nie masz jeszcze subskrypcji.");
-  const stripe = new Stripe(STRIPE_KEY.value());
+  const stripe = new Stripe(STRIPE_KEY.value(), { apiVersion: '2025-03-31.basil' });
   const s = await stripe.billingPortal.sessions.create({ customer, return_url: pickOrigin(req) + "/konto.html" });
   return { url: s.url };
 });
@@ -120,7 +120,7 @@ async function syncSub(sub, hintUid) {
 exports._accessFor = accessFor; // do testów
  
 exports.stripeWebhook = onRequest({ region: REGION, secrets: [STRIPE_KEY, STRIPE_WH] }, async (req, res) => {
-  const stripe = new Stripe(STRIPE_KEY.value());
+  const stripe = new Stripe(STRIPE_KEY.value(), { apiVersion: '2025-03-31.basil' });
   let ev;
   try {
     ev = stripe.webhooks.constructEvent(req.rawBody, req.headers["stripe-signature"], STRIPE_WH.value());
