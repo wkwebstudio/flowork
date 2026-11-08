@@ -65,6 +65,8 @@ exports.createCheckout = onCall({ region: REGION, secrets: [STRIPE_KEY] }, async
     locale: "pl",
     allow_promotion_codes: true,
     consent_collection: { terms_of_service: "required" },
+    managed_payments: { enabled: false },
+    custom_text: { terms_of_service_acceptance: { message: "Akceptuję [Regulamin](https://flowork.pl/regulamin.html) i [Politykę prywatności](https://flowork.pl/prywatnosc.html). Zgadzam się na natychmiastowe rozpoczęcie świadczenia usługi cyfrowej i przyjmuję do wiadomości utratę prawa do odstąpienia od umowy." } },
   });
   let session;
   try {
