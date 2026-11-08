@@ -1,6 +1,16 @@
 {
-  "firestore": { "rules": "firestore.rules" },
+  "firestore": {
+    "rules": "firestore.rules"
+  },
   "functions": [
-    { "source": "fbfunctions", "codebase": "default", "ignore": ["node_modules", ".git", "*.log"] }
+    {
+      "source": "fbfunctions",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "*.log"
+      ]
+    }
   ]
 }
