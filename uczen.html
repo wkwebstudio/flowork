@@ -294,6 +294,141 @@ html[data-th="bk"] .btn.g{color:#fff}
 .smb .dt h3{margin:0 0 8px;font-size:15px}
 .smb .thg{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
 body.smopen .ground,body.smopen .fx,body.smopen #lng{visibility:hidden}
+/* v12: szeroki panel, foldery, odpowiedzi, dopasowywanie, prawda/fałsz */
+body.ispanel .wrap{max-width:1680px}
+.grid.pg{grid-template-columns:282px 330px minmax(0,1fr);align-items:start;gap:16px}
+.pg>.side{grid-area:a}.pg>.side2{grid-area:b}.pg>.main{grid-area:c;min-width:0}
+.grid.pg{grid-template-areas:"a b c"}
+@media(min-width:1281px){.pg>.side,.pg>.side2{position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto;scrollbar-width:thin}}
+@media(max-width:1280px){.grid.pg{grid-template-columns:300px minmax(0,1fr);grid-template-areas:"a c" "b c";grid-template-rows:auto 1fr}}
+@media(max-width:760px){.grid.pg{grid-template-columns:1fr;grid-template-areas:"a" "b" "c";grid-template-rows:none}}
+.pg .side{display:flex;flex-direction:column;gap:14px}
+.pg .side .card,.pg .side2 .card{margin-top:0}
+.nwc h2,.fdc h2,.lsc h2{display:flex;align-items:center;gap:8px;font-size:15px;margin:0 0 10px}
+.nwg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.nwb{display:flex;flex-direction:column;align-items:center;gap:4px;padding:9px 2px 7px;border-radius:14px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;font:700 10.5px/1.15 'Poppins',sans-serif;text-align:center;transition:transform .15s,border-color .15s,box-shadow .15s;min-width:0}
+.nwb .tpi{width:34px;height:34px;font-size:18px;border-radius:11px}
+.nwb:hover{transform:translateY(-2px);border-color:var(--tc);box-shadow:0 6px 16px color-mix(in srgb,var(--tc) 28%,transparent)}
+.nwb span:last-child{overflow-wrap:normal;word-break:keep-all;font-size:10px;letter-spacing:-.01em}
+.rvnav{display:flex;align-items:center;gap:10px;width:100%;padding:12px 14px;border-radius:18px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font:800 14px 'Poppins',sans-serif;cursor:pointer;text-align:left;transition:border-color .15s,transform .15s}
+.rvnav:hover{transform:translateY(-1px);border-color:var(--purple)}
+.rvnav.on{border-color:var(--purple);background:linear-gradient(120deg,color-mix(in srgb,var(--purple) 16%,var(--card)),var(--card))}
+.rvnav .tpi{width:36px;height:36px;font-size:19px;border-radius:12px;--tc:var(--purple)}
+.rvnav b{flex:1}
+.pill{display:inline-flex;align-items:center;padding:2px 9px;border-radius:99px;font-size:11px;font-weight:800;background:var(--soft);color:var(--mut);white-space:nowrap}
+.pill.nw{background:#ff4d6d;color:#fff;animation:pulse .9s ease-in-out infinite alternate}
+.fdc .item{padding:8px 10px;border-radius:12px;margin-bottom:3px;border:1.5px solid transparent}
+.fdc .item .fi,.fdc .item .fic{width:28px;height:28px;flex:none;display:grid;place-items:center;font-size:15px;border-radius:9px;background:color-mix(in srgb,var(--fc,var(--purple)) 16%,transparent)}
+.fdc .item.on{border-color:var(--fc,var(--purple));background:color-mix(in srgb,var(--fc,var(--purple)) 10%,var(--card));color:var(--ink)}
+.fdc .item .fnm{font-weight:700;font-size:13.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fdc .item small{font-size:11px;font-weight:800;padding:1px 8px;border-radius:99px;background:var(--soft);color:var(--mut)}
+.fdc .fkids{margin-left:13px;padding-left:8px;border-left:2px solid var(--line)}
+.fdc .tg2{width:14px;flex:none}
+.fdc .row{margin-top:10px}
+.lsc .tile{margin-bottom:6px;border:1.5px solid var(--line);background:var(--card)}
+.lsc .tile:hover{border-color:var(--purple)}
+.lsc .tile.on{border-color:var(--purple);box-shadow:0 0 0 3px color-mix(in srgb,var(--purple) 18%,transparent)}
+.lsc .tile b{display:block;font-size:13.5px}.lsc .tile small{font-size:11.5px;color:var(--mut)}
+/* odpowiedzi uczniów */
+.rvh{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.rvh h2{margin:0;font-size:20px}.rvh small{color:var(--mut);font-weight:600}
+.rvk{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:16px}
+@media(max-width:560px){.rvk{grid-template-columns:1fr 1fr}}
+.rvk div{padding:12px 14px;border-radius:16px;background:var(--soft);border:1.5px solid var(--line)}
+.rvk b{display:block;font-size:24px;font-weight:800;line-height:1.1}.rvk span{font-size:11.5px;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.04em}
+.rvtb{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.seg{display:inline-flex;padding:4px;border-radius:14px;background:var(--soft);border:1.5px solid var(--line);gap:2px;flex-wrap:wrap}
+.seg button{border:0;background:none;color:var(--mut);font:700 13px 'Poppins',sans-serif;padding:7px 12px;border-radius:10px;cursor:pointer}
+.seg button.on{background:var(--card);color:var(--ink);box-shadow:0 2px 8px #0002}
+.rvtb input{flex:1;min-width:180px}
+.rvd{font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--mut);margin:16px 2px 8px}
+.rvr{display:flex;align-items:center;gap:12px;width:100%;padding:10px 12px;margin-bottom:6px;border-radius:14px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;text-align:left;font:inherit;transition:border-color .15s,transform .15s}
+.rvr:hover{border-color:var(--purple);transform:translateX(2px)}
+.av{width:38px;height:38px;flex:none;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:13px;color:#fff;background:var(--ac,#7758e8)}
+.rvm{flex:1;min-width:0}.rvm b{font-size:14px}.rvm small{display:block;color:var(--mut);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nwt{display:inline-block;margin-left:6px;padding:1px 7px;border-radius:99px;background:#ff4d6d;color:#fff;font-size:10px;font-weight:800;font-style:normal;vertical-align:2px}
+.scp{flex:none;min-width:54px;text-align:center;padding:5px 10px;border-radius:99px;font-weight:800;font-size:13px}
+.scp.hi{background:color-mix(in srgb,#22c55e 18%,transparent);color:var(--ok)}.scp.mid{background:color-mix(in srgb,#f59e0b 20%,transparent);color:#b45309}.scp.lo{background:color-mix(in srgb,#ef4444 16%,transparent);color:var(--bad)}
+html[data-th="bk"] .scp.mid,html[data-th="oc"] .scp.mid,html[data-th="fi"] .scp.mid,:root:not(.plain) .scp.mid{color:#fbbf24}
+.rvt{flex:none;color:var(--mut);font-size:12px;font-weight:700;min-width:42px;text-align:right}
+.rveg{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.rve{display:flex;flex-direction:column;gap:8px;padding:14px;border-radius:16px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;text-align:left;font:inherit;transition:border-color .15s,transform .15s}
+.rve:hover{border-color:var(--tc);transform:translateY(-2px)}
+.rve .rveh{display:flex;align-items:center;gap:10px}.rve .rveh b{flex:1;font-size:14px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rve .ti{width:36px;height:36px;flex:none;display:grid;place-items:center;font-size:18px;border-radius:11px;background:color-mix(in srgb,var(--tc) 16%,transparent)}
+.rve small{color:var(--mut);font-size:12px}
+.rvbar{height:7px;border-radius:99px;background:var(--line);overflow:hidden}.rvbar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--purple),var(--pink))}
+.rvs{border:1.5px solid var(--line);border-radius:16px;background:var(--card);margin-bottom:8px;overflow:hidden}
+.rvs summary{display:flex;align-items:center;gap:12px;padding:10px 12px;cursor:pointer;list-style:none}.rvs summary::-webkit-details-marker{display:none}
+.rvs[open] summary{border-bottom:1.5px solid var(--line)}
+.rvs .rvl{padding:8px 10px}.rvs .rvr{margin-bottom:4px;padding:8px 10px}
+.rve0{text-align:center;padding:34px 16px;color:var(--mut)}.rve0 div{font-size:54px;margin-bottom:8px}.rve0 b{display:block;color:var(--ink);font-size:17px;margin-bottom:4px}
+/* edytory: dopasowywanie i prawda/fałsz */
+.mte,.tfe{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.mtn{width:26px;height:26px;flex:none;display:grid;place-items:center;border-radius:8px;background:var(--soft);font-size:12px}
+.mte .mtl{display:flex;align-items:center;gap:6px;flex:1;min-width:150px}.mte .mtl img{height:40px;border-radius:8px}
+.mte input[type=text],.tfe input[type=text]{flex:1;min-width:150px}
+.mta{font-weight:800;color:var(--purple)}
+.mte.dropOn{outline:3px dashed var(--purple);outline-offset:2px}
+.tfsw{display:inline-flex;border-radius:12px;overflow:hidden;border:2px solid var(--line);flex:none}
+.tfo{border:0;background:var(--card);color:var(--mut);font:700 12.5px 'Poppins',sans-serif;padding:8px 12px;cursor:pointer}
+.tfo.t.on{background:#16a34a;color:#fff}.tfo.f.on{background:#dc2626;color:#fff}
+.tfim{display:flex;align-items:center;gap:10px;margin:6px 0 10px}.tfim img{max-height:120px;border-radius:12px;border:1px solid var(--line)}
+/* uczeń: dopasowywanie */
+.mtb{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:16px;align-items:start}
+@media(max-width:760px){.mtb{grid-template-columns:1fr}.mtpool{order:-1}}
+.mtr{display:grid;grid-template-columns:minmax(0,1fr) 34px minmax(0,1fr);align-items:center;gap:8px;margin-bottom:10px}
+.mtlft{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:16px;background:var(--soft);border:2px solid var(--line);font-weight:800;font-size:clamp(15px,2.6vw,18px);min-height:58px}
+.mtlft img{max-height:70px;max-width:110px;border-radius:10px;cursor:zoom-in}
+.mtar{text-align:center;font-size:20px;color:var(--purple);font-weight:800}
+.mtslot{min-height:58px;border-radius:16px;border:2.5px dashed var(--line);display:flex;align-items:center;justify-content:center;padding:6px;cursor:pointer;transition:border-color .15s,background .15s}
+.mtslot.dropOn,.mtpool.dropOn{border-color:var(--purple);background:color-mix(in srgb,var(--purple) 10%,transparent)}
+.mtslot.full{border-style:solid;border-color:color-mix(in srgb,var(--purple) 45%,var(--line))}
+.mtslot.hot{border-color:var(--purple);animation:mthot .8s ease-in-out infinite alternate}@keyframes mthot{to{border-color:var(--pink);background:color-mix(in srgb,var(--purple) 9%,transparent)}}
+.mtph{color:var(--mut);font-size:13px;font-weight:600}
+.mtpool{position:sticky;top:12px;padding:14px;border-radius:18px;border:2.5px dashed var(--line);background:var(--card);display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start;min-height:90px}
+.mtpool .mtph{width:100%;text-align:center;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em}
+.mtc{border:none;border-radius:14px;padding:10px 14px;font:700 clamp(14px,2.4vw,16px) 'Poppins',sans-serif;color:#fff;background:linear-gradient(135deg,var(--purple),var(--pink));box-shadow:0 4px 0 #0003;cursor:grab;transition:transform .12s,box-shadow .12s;max-width:100%;overflow-wrap:anywhere}
+.mtc:hover{transform:translateY(-2px)}.mtc.sel{outline:3px solid var(--ink);outline-offset:2px;transform:scale(1.05)}.mtc.drag{opacity:.35}
+.mtslot .mtc{width:100%}
+.mtr.good .mtslot{border-color:#22c55e;background:var(--ok-bg)}.mtr.good .mtc{background:linear-gradient(135deg,#22c55e,#15803d)}
+.mtr.bad .mtslot{border-color:#ef4444;background:var(--bad-bg)}.mtr.bad .mtc{background:linear-gradient(135deg,#ef4444,#991b1b)}
+.mtcor{grid-column:3;font-size:12.5px;font-weight:700;color:var(--ok);margin-top:-4px}
+/* uczeń: prawda / fałsz */
+.tfl.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:16px;align-items:start}
+@media(max-width:860px){.tfl.two{grid-template-columns:1fr}}
+.tfl .card{margin-top:0}.tfl.two .tfr{position:sticky;top:12px}
+.tfimg{display:block;max-width:100%;max-height:380px;margin:8px auto 12px;border-radius:16px;border:2px solid var(--line);cursor:zoom-in}
+.tfimg.zoom{position:fixed;inset:0;margin:auto;max-width:96vw;max-height:94vh;z-index:95;box-shadow:0 0 0 100vmax #000c;cursor:zoom-out}
+.tftxt{font-size:16px;line-height:1.85;margin-top:8px}
+.tfs{padding:14px;border-radius:18px;border:2px solid var(--line);background:var(--soft);margin-bottom:10px;transition:border-color .2s,background .2s}
+.tfs.need{border-color:#ff7190;animation:shake .4s}
+.tfh{display:flex;gap:10px;align-items:flex-start;font-weight:700;font-size:clamp(15px,2.6vw,17px);line-height:1.5}
+.tfn{width:28px;height:28px;flex:none;display:grid;place-items:center;border-radius:9px;background:var(--card);font-size:13px;font-weight:800;color:var(--purple)}
+.tfbt{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.tfa{border:2.5px solid;border-radius:14px;padding:11px 10px;font:800 15px 'Poppins',sans-serif;cursor:pointer;background:var(--card);transition:transform .12s,background .15s,color .15s}
+.tfa:hover{transform:translateY(-2px)}.tfa:disabled{cursor:default;transform:none}
+.tfa.t{border-color:#22c55e;color:#16a34a}.tfa.f{border-color:#ef4444;color:#dc2626}
+.tfa.t.on{background:#22c55e;color:#fff;box-shadow:0 6px 16px #22c55e55}.tfa.f.on{background:#ef4444;color:#fff;box-shadow:0 6px 16px #ef444455}
+.tfa.dim{opacity:.45}
+.tfs.good{border-color:#22c55e;background:var(--ok-bg)}.tfs.bad{border-color:#ef4444;background:var(--bad-bg)}
+.tfcr{font-size:13px;font-weight:800;margin-top:8px}.tfs.good .tfcr{color:var(--ok)}.tfs.bad .tfcr{color:var(--bad)}
+/* fiszki: większe i podłużne */
+.fc{width:min(640px,92vw);height:min(340px,46vh)}
+.fct{font-size:clamp(28px,5.6vw,50px)}
+.fcf,.fcb{padding:22px 34px}
+/* wybór motywu po zakupie */
+.thib{width:min(620px,94vw);text-align:center}
+.thib h2{font-size:22px;margin:4px 0 6px}
+.thib .thg{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));text-align:left;margin:14px 0}
+.thib .tho{padding:9px 10px;font-size:12.5px}
+
+.nwc{padding:14px}
+.card,.rvnav{position:relative;z-index:2}
+.tfl,.mtw{margin-top:18px}
+.pg>.side,.pg>.side2,.pg>.main{position:relative;z-index:3}
+@media(min-width:1281px){.pg>.side,.pg>.side2{position:sticky}}
+.pg .card::before,.pg .card::after{display:none!important}
 .dt:has(#fbu){display:none!important}
 </style>
 <link rel="icon" type="image/png" href="/favicon.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"></head>
@@ -331,7 +466,7 @@ const EC=[["😀","Buźki","😀 😃 😄 😁 😆 😅 🤣 😂 🙂 🙃 �
 const hdr=(t,p)=>`<header class="hero">${[[9,44,0],[86,72,-1.2],[27,24,-2],[68,34,-0.6]].map(a=>`<span class="spd hw" style="left:${a[0]}%;--h:${a[1]}px;animation-delay:${a[2]}s"><i></i><b>🕷️</b></span><span class="spd pl" style="left:${a[0]}%;--h:${a[1]}px;animation-delay:${a[2]}s"><i></i><b><span class="flag"></span></b></span>`).join('')}<span class="hl hw">🧙</span><span class="hr hw">🎃</span><span class="hl pl">🦅</span><span class="hr pl"><span class="flag"></span></span><div class="hem"><span class="hw">🎃👻💀</span><span class="pl">🦅🎆🕊️</span></div><h1>${t}</h1><p>${p}</p></header>`;
 
 /* ---------- STUDENT ---------- */
-function student(ex){i18nInit(ex);if(ex.k==="q")return quiz(ex);if(ex.k==="v")return vocab(ex);if(ex.k==="c")return cwPlay(ex);if(ex.k==="s")return soPlay(ex);
+function student(ex){i18nInit(ex);if(ex.k==="q")return quiz(ex);if(ex.k==="v")return vocab(ex);if(ex.k==="c")return cwPlay(ex);if(ex.k==="s")return soPlay(ex);if(ex.k==="m")return mtPlay(ex);if(ex.k==="t")return tfPlay(ex);
   const bankWords=[];
   const parts=[];let last=0,n=0;
   ex.x.replace(GAP,(m,a,i)=>{parts.push(big(esc(ex.x.slice(last,i))).replace(/\n/g,"<br>"));
@@ -341,7 +476,7 @@ function student(ex){i18nInit(ex);if(ex.k==="q")return quiz(ex);if(ex.k==="v")re
   const words=ex.b?(ex.bw!=null?ex.bw.split(","):[...bankWords,...(ex.e||"").split(",")]).map(s=>s.trim()).filter(Boolean).sort(()=>Math.random()-.5):[];
   app.innerHTML=hdr(esc(ex.t||"Ćwiczenie"),"Uzupełnij luki i kliknij „Sprawdź”. Masz tylko jedną próbę!")+
   (ex.n?`<section class="card big"><div class="pol">📌 Polecenie</div><div class="polt">${esc(ex.n)}</div></section>`:"")+
-  (words.length?`<section class="card"><h2>🎨 Bank słów</h2><div class="bank" id="bank"></div><div class="row"><button class="btn" id="stk" type="button">✏️ Skreślanie słów: wyłączone</button></div><div class="hint">Kliknij słowo, a potem lukę, albo wpisz odpowiedź ręcznie. Włącz skreślanie, żeby ręcznie zaznaczać słowa, które już zrobiłeś (na komputerze działa też prawy przycisk myszy).</div></section>`:"")+
+  (words.length?`<section class="card"><h2>🎨 Bank słów</h2><div class="bank" id="bank"></div><div class="row"><button class="btn" id="stk" type="button">✏️ Skreślanie słów: wyłączone</button></div><div class="hint">Kliknij słowo, a potem lukę, albo wpisz odpowiedź ręcznie. Włącz skreślanie, żeby ręcznie skreślać albo przywracać słowa (na komputerze działa też prawy przycisk myszy).</div></section>`:"")+
   `<section class="card">
   <label style="margin-top:0">Twoje imię i nazwisko</label><input type="text" id="sname" placeholder="np. Anna Kowalska" style="max-width:320px;margin-bottom:14px">
   <div class="lay${(ex.im||[]).length?" has":""}">${(ex.im||[]).length?`<div class="pics">${(ex.im||[]).map(u=>`<img src="${esc(u)}" alt="">`).join("")}</div>`:""}<div class="story">${ex.dlg?dlgHTML(parts.join("").split("<br>")):parts.join("")}</div></div><div class="bar"><i id="bar"></i></div>
@@ -349,9 +484,9 @@ function student(ex){i18nInit(ex);if(ex.k==="q")return quiz(ex);if(ex.k==="v")re
   <div class="res" id="res"></div></section>${words.length?`<button class="btn p fab" id="fab" type="button">📚 Słowa</button><div class="sheet" id="sheet"><div class="sheeth"><b>📚 Bank słów</b><button class="btn" id="shx" type="button">✕ Zamknij</button></div><div class="bank" id="sbank"></div><div class="hint">Kliknij słowo, żeby wstawić je do luki. Skreślanie działa tak samo jak w banku.</div></div>`:''}`;
   const blanks=[...document.querySelectorAll(".blank")];let sel=null,lastIn=null;let saved=null;if(!ex.p&&!ex.mo){try{saved=JSON.parse(localStorage.getItem("luki_done_"+ex.i))}catch(e){}}
   const bank=$("#bank");let strike=false;const sb=$("#stk");if(sb)sb.onclick=()=>{strike=!strike;sb.textContent="✏️ Skreślanie słów: "+(strike?"włączone, klikaj słowa":"wyłączone");sb.style.background=strike?"var(--purple)":"";sb.style.color=strike?"#fff":""};
-  const upd=()=>{const u=new Set(blanks.map(b=>norm(b.value)));document.querySelectorAll(".word").forEach(w=>w.classList.toggle("used",u.has(norm(w.textContent))))};
+  const upd=()=>{const need={};blanks.forEach(b=>{const k=norm(b.value);if(k)need[k]=(need[k]||0)+1});document.querySelectorAll("#bank .word").forEach(w=>{const k=norm(w.textContent);let u=false;if(need[k]>0){need[k]--;u=true}if(!u)delete w.dataset.rs;w.classList.toggle("used",u&&w.dataset.rs!=="1")})};
   words.forEach(w=>{const b=document.createElement("button");b.className="word";b.type="button";b.textContent=w;
-    b.oncontextmenu=ev=>{ev.preventDefault();b.classList.toggle("x")};b.onclick=()=>{if(strike){b.classList.toggle("x");return}const t=document.activeElement.classList&&document.activeElement.classList.contains("blank")?document.activeElement:(lastIn&&!lastIn.value?lastIn:blanks.find(x=>!x.value));
+    const tog=()=>{if(b.classList.contains("x")||b.classList.contains("used")){b.classList.remove("x","used");if(blanks.some(z=>norm(z.value)===norm(w)))b.dataset.rs="1"}else{delete b.dataset.rs;b.classList.add("x")}};b.oncontextmenu=ev=>{ev.preventDefault();tog()};b.onclick=()=>{if(strike){tog();return}const t=document.activeElement.classList&&document.activeElement.classList.contains("blank")?document.activeElement:(lastIn&&!lastIn.value?lastIn:blanks.find(x=>!x.value));
       if(t){t.value=w;t.classList.remove("correct","wrong");t.focus();upd()}};bank.appendChild(b)});
   const sbk=$("#sbank");if(sbk&&bank){[...bank.children].forEach(wb=>{const c=document.createElement("button");c.type="button";c.className="word";c.textContent=wb.textContent;c.onclick=()=>{wb.click();syncS()};sbk.appendChild(c)});
     const syncS=()=>[...bank.children].forEach((wb,i)=>{if(sbk.children[i])sbk.children[i].className=wb.className});new MutationObserver(syncS).observe(bank,{subtree:true,attributes:true,attributeFilter:["class"]});
@@ -418,7 +553,7 @@ const small=u=>new Promise(r=>{if(!u.startsWith("data:")||u.length<9000)return r
 let fbErr="";
 const fbHost=h=>String(h||"").trim().replace(/^https?:\/\//,"").replace(/\/.*$/,"");
 async function fbReq(host,path,method,body){if(host==="flowork"){if(!window.__FW)throw new Error("Brak połączenia z bazą");return window.__FW.req(path,method,body)}const ac=new AbortController();const to=setTimeout(()=>ac.abort(),9000);try{const r=await fetch("https://"+host+path+".json",{method,headers:body?{"Content-Type":"application/json"}:undefined,body:body?JSON.stringify(body):undefined,signal:ac.signal});if(!r.ok)throw new Error("błąd "+r.status);return await r.json()}finally{clearTimeout(to)}}
-async function link(e,mode,vm){const base=fbHost(S.fb)==="flowork"?location.origin+"/uczen.html":location.href.split("#")[0];const lk=vm?"lid_"+vm:"lid";const mk=(im,inl)=>{const o=mk1(im,inl);if(S.w3)o.w3=S.w3;if(e.once===false)o.mo=1;return o};const mk1=(im,inl)=>{if(e.kind==="so")return soObj(e);if(e.kind==="cw")return cwObj(e);if(e.kind==="vocab")return vObj(e,vm);if(e.kind==="quiz")return qObj(e,inl);const o={i:e.id,t:e.title,n:e.inst,x:e.text,b:e.bank};if(e.dlg)o.dlg=1;if(e.bw!=null)o.bw=e.bw;else if(e.extra)o.e=e.extra;if(im.length)o.im=im;return o};
+async function link(e,mode,vm){const base=fbHost(S.fb)==="flowork"?location.origin+"/uczen.html":location.href.split("#")[0];const lk=vm?"lid_"+vm:"lid";const mk=(im,inl)=>{const o=mk1(im,inl);if(S.w3)o.w3=S.w3;if(e.once===false)o.mo=1;return o};const mk1=(im,inl)=>{if(e.kind==="mt")return mtObj(e);if(e.kind==="tf")return tfObj(e);if(e.kind==="so")return soObj(e);if(e.kind==="cw")return cwObj(e);if(e.kind==="vocab")return vObj(e,vm);if(e.kind==="quiz")return qObj(e,inl);const o={i:e.id,t:e.title,n:e.inst,x:e.text,b:e.bank};if(e.dlg)o.dlg=1;if(e.bw!=null)o.bw=e.bw;else if(e.extra)o.e=e.extra;if(im.length)o.im=im;return o};
   const inl=fbHost(S.fb)==="flowork"?"":base+"#u="+await encz(mk(await Promise.all((e.images||[]).map(small)),true));
   fbErr="";const h=fbHost(S.fb);if(!h)return inl;
   try{const id=(mode!=="new"&&e.lh===h&&e[lk])?e[lk]:uid()+uid();await fbReq(h,"/ex/"+id,"PUT",mk(e.images||[]));e[lk]=id;e.lh=h;save();return base+"#k="+h+"/"+id}catch(x){fbErr=String((x&&x.message)||x)}
@@ -431,41 +566,44 @@ const cntIn=id=>{const ids=new Set([id]);const walk=p=>kids(p).forEach(k=>{ids.a
 const isDesc=(t,fid)=>{let c=t,g=0;while(c&&g++<30){if(c===fid)return true;const f=S.folders.find(z=>z.id===c);c=f?f.parent:''}return false};
 const ensureOpen=id=>{S.fe=S.fe||{};fpath(id).slice(0,-1).forEach(f=>S.fe[f.id]=true)};
 const folderOpts=sel=>{const out=['<option value="">— brak —</option>'];const walk=(p,d)=>kids(p).forEach(f=>{out.push(`<option value="${f.id}" ${sel===f.id?'selected':''}>${'\u00a0\u00a0'.repeat(d)}${d?'↳ ':''}${esc(f.name)}</option>`);walk(f.id,d+1)});walk('',0);return out.join('')};
-const tree=(pid,d)=>kids(pid).map(f=>{const k=kids(f.id).length,op=S.fe&&S.fe[f.id];return `<div class="fn"><div class="item ft ${curF===f.id?'on':''}" data-f="${f.id}" data-dz="${f.id}" draggable="true" style="padding-left:${8+d*16}px"><span class="tg2" data-tg="${f.id}">${k?(op?'▾':'▸'):'·'}</span><span class="fi">${op&&k?'📂':'📁'}</span><span class="fnm">${esc(f.name)}</span><small>${cntIn(f.id)}</small></div>${op&&k?tree(f.id,d+1):''}</div>`}).join('');
-const TYP={g:['📝','Luki','Uzupełnianie tekstu','#7758e8'],q:['🎯','Quiz','Pytania z czasem i punktami','#ff6b9d'],v:['📚','Słówka','Fiszki, parowanie, test','#20b486'],c:['🧩','Krzyżówka','Hasła i obrazki','#f59e0b'],d:['💬','Dialogi','Rozmowa z lukami','#0ea5e9'],s:['🔤','Zdania','Układanie słów w zdanie','#e0457b']};
-const tyOf=x=>x.kind==='quiz'?'q':x.kind==='vocab'?'v':x.kind==='cw'?'c':x.kind==='so'?'s':x.isD?'d':'g';
+const tree=(pid,d)=>kids(pid).map(f=>{const k=kids(f.id).length,op=S.fe&&S.fe[f.id];return `<div class="fn"><div class="item ft ${curF===f.id?'on':''}" data-f="${f.id}" data-dz="${f.id}" draggable="true" style="--fc:${hcol(f.id)}"><span class="tg2" data-tg="${f.id}">${k?(op?'▾':'▸'):''}</span><span class="fi">${op&&k?'📂':'📁'}</span><span class="fnm">${esc(f.name)}</span><small>${cntIn(f.id)}</small></div>${op&&k?`<div class="fkids">${tree(f.id,d+1)}</div>`:''}</div>`}).join('');
+const TYP={g:['📝','Luki','Uzupełnianie tekstu','#7758e8'],q:['🎯','Quiz','Pytania z czasem i punktami','#ff6b9d'],v:['📚','Słówka','Fiszki, parowanie, test','#20b486'],c:['🧩','Krzyżówka','Hasła i obrazki','#f59e0b'],d:['💬','Dialogi','Rozmowa z lukami','#0ea5e9'],s:['🔤','Zdania','Układanie słów w zdanie','#e0457b'],m:['🔗','Dopasuj','Przeciąganie par','#8b5cf6'],t:['⚖️','Prawda / Fałsz','Zdania z tekstem lub zdjęciem','#14b8a6']};
+const tyOf=x=>x.kind==='mt'?'m':x.kind==='tf'?'t':x.kind==='quiz'?'q':x.kind==='vocab'?'v':x.kind==='cw'?'c':x.kind==='so'?'s':x.isD?'d':'g';
 function listHTML(){const q=srch.trim().toLowerCase();
-  const ico=x=>x.kind==='quiz'?'🎯':x.kind==='vocab'?'📚':x.kind==='cw'?'🧩':x.kind==='so'?'🔤':x.isD?'💬':'📝';
-  const meta=x=>x.kind==='quiz'?((x.qs||[]).length+' pytań'):x.kind==='vocab'?((x.words||[]).filter(w=>w[0]&&w[1]).length+' słówek'):x.kind==='cw'?((x.cw||[]).length+' haseł'):x.kind==='so'?((x.so||[]).length+' zdań'):(gaps(x.text).length+' luk');
+  const ico=x=>TYP[tyOf(x)][0];
+  const meta=x=>x.kind==='quiz'?((x.qs||[]).length+' pytań'):x.kind==='vocab'?((x.words||[]).filter(w=>w[0]&&w[1]).length+' słówek'):x.kind==='cw'?((x.cw||[]).length+' haseł'):x.kind==='so'?((x.so||[]).length+' zdań'):x.kind==='mt'?((x.pr||[]).length+' par'):x.kind==='tf'?((x.st||[]).length+' zdań'):(gaps(x.text).length+' luk');
   let subs='',items;
   if(q)items=S.ex.filter(x=>(x.title||'').toLowerCase().includes(q));
   else if(curF==='all')items=S.ex;
   else{subs=kids(curF).map(f=>`<div class="tile" data-f="${f.id}" data-dz="${f.id}"><span class="ti" style="--tc:#94a3b8">📁</span><div><b>${esc(f.name)}</b><small>${cntIn(f.id)} elementów</small></div></div>`).join('');items=S.ex.filter(x=>x.folder===curF)}
-  return subs+items.map(x=>`<div class="tile ${curE===x.id?'on':''}" data-e="${x.id}" draggable="true"><span class="ti" style="--tc:${TYP[tyOf(x)][3]}">${ico(x)}</span><div><b>${esc(x.title||'Bez tytułu')}</b><small>${meta(x)}${x.folder&&(q||curF==='all')?' · 📁 '+esc((S.folders.find(f=>f.id===x.folder)||{}).name||''):''}</small></div></div>`).join('')||(subs?'':'<div class="empty">Pusto. Dodaj ćwiczenie poniżej.</div>')}
+  return subs+items.map(x=>`<div class="tile ${curE===x.id?'on':''}" data-e="${x.id}" draggable="true"><span class="ti" style="--tc:${TYP[tyOf(x)][3]}">${ico(x)}</span><div><b>${esc(x.title||'Bez tytułu')}</b><small>${meta(x)}${x.folder&&(q||curF==='all')?' · 📁 '+esc((S.folders.find(f=>f.id===x.folder)||{}).name||''):''}</small></div></div>`).join('')||(subs?'':'<div class="empty">Pusto. Dodaj ćwiczenie przyciskiem „➕ Nowe ćwiczenie”.</div>')}
 function goBack(){window.__restore=true;teacher()}
 let setOpen=false;
 function teacher(){if(window.__mp){window.__mp.stop();window.__mp=null}const cwx=document.getElementById('cw');if(cwx)cwx.remove();
   const e=S.ex.find(x=>x.id===curE);
   const crumbs=()=>{const path=e?(e.folder?fpath(e.folder):[]):(curF==='all'?[]:fpath(curF));return `<div class="crumbs"><a data-f="all">🏠 Wszystkie</a>${path.map(f=>` › <a data-f="${f.id}">${esc(f.name)}</a>`).join('')}${e?` › <span>${esc(e.title||'Bez tytułu')}</span>`:''}</div>`};
   app.innerHTML=hdr("Panel nauczyciela","Twórz ćwiczenia z lukami, generuj linki i sprawdzaj wyniki")+`
-  <div class="grid"><div class="side"><div class="card"><h2>📁 Eksplorator</h2>
-    <input type="text" id="srch" class="srch" placeholder="🔍 Szukaj ćwiczenia…" value="${esc(srch)}">
+  <div class="grid pg"><div class="side">
+    <div class="card nwc"><h2>➕ Nowe ćwiczenie</h2><div class="nwg"><button class="nwb" id="addE" style="--tc:#7758e8" title="Uzupełnianie tekstu"><span class="tpi">📝</span><span>Luki</span></button><button class="nwb" id="addQ" style="--tc:#ff6b9d" title="Pytania z czasem i punktami"><span class="tpi">🎯</span><span>Quiz</span></button><button class="nwb" id="addV" style="--tc:#20b486" title="Fiszki, parowanie, test"><span class="tpi">📚</span><span>Słówka</span></button><button class="nwb" id="addC" style="--tc:#f59e0b" title="Hasła i obrazki"><span class="tpi">🧩</span><span>Krzyżówka</span></button><button class="nwb" id="addD" style="--tc:#0ea5e9" title="Rozmowa z lukami"><span class="tpi">💬</span><span>Dialogi</span></button><button class="nwb" id="addS" style="--tc:#e0457b" title="Układanie słów w zdanie"><span class="tpi">🔤</span><span>Zdania</span></button><button class="nwb" id="addM" style="--tc:#8b5cf6" title="Przeciąganie par"><span class="tpi">🔗</span><span>Dopasuj</span></button><button class="nwb" id="addT" style="--tc:#14b8a6" title="Zdania z tekstem lub zdjęciem"><span class="tpi">⚖️</span><span>Prawda / Fałsz</span></button></div></div>
+    <button class="rvnav ${!e?'on':''}" data-rv="1"><span class="tpi">📊</span><b>Odpowiedzi uczniów</b>${(n=>n?`<span class="pill nw">${n} nowe</span>`:`<span class="pill">${S.res.filter(r=>S.ex.some(x=>x.id===r.ex)).length}</span>`)(newResCount())}</button>
+    <div class="card fdc"><h2>📁 Foldery</h2>
     <div class="item ${curF==="all"?"on":""}" data-f="all" data-dz=""><span class="fi">🏠</span><span class="fnm">Wszystkie</span><small>${S.ex.length}</small></div>
     <div id="ftree">${tree('',0)}</div>
-    <div class="row"><button class="btn" id="addF">${curF==="all"?"+ Nowy folder":"+ Podfolder"}</button>${curF!=="all"?'<button class="btn" id="renF" title="Zmień nazwę">✏️</button><button class="btn d" id="delF" title="Usuń folder">🗑</button>':""}</div>
-    <h2 style="margin-top:18px">📂 ${curF==="all"?"Wszystkie":fpath(curF).map(f=>esc(f.name)).join(" › ")}</h2>
-    <div id="itl">${listHTML()}</div>
-    <h2 style="margin-top:18px">➕ Nowe ćwiczenie</h2><div class="tp"><button class="tpc" id="addE" style="--tc:#7758e8"><span class="tpi">📝</span><span class="tpt"><b>Luki</b><small>Uzupełnianie tekstu</small></span></button><button class="tpc" id="addQ" style="--tc:#ff6b9d"><span class="tpi">🎯</span><span class="tpt"><b>Quiz</b><small>Pytania z czasem i punktami</small></span></button><button class="tpc" id="addV" style="--tc:#20b486"><span class="tpi">📚</span><span class="tpt"><b>Słówka</b><small>Fiszki, parowanie, test</small></span></button><button class="tpc" id="addC" style="--tc:#f59e0b"><span class="tpi">🧩</span><span class="tpt"><b>Krzyżówka</b><small>Hasła i obrazki</small></span></button><button class="tpc" id="addD" style="--tc:#0ea5e9"><span class="tpi">💬</span><span class="tpt"><b>Dialogi</b><small>Rozmowa z lukami</small></span></button><button class="tpc" id="addS" style="--tc:#e0457b"><span class="tpi">🔤</span><span class="tpt"><b>Zdania</b><small>Układanie słów w zdanie</small></span></button></div>
+    <div class="row"><button class="btn" id="addF">${curF==="all"?"+ Nowy folder":"+ Podfolder"}</button>${curF!=="all"?'<button class="btn" id="renF" title="Zmień nazwę">✏️</button><button class="btn d" id="delF" title="Usuń folder">🗑</button>':""}</div></div>
     <button class="btn setb" id="setb" title="Ustawienia">⚙️ Ustawienia</button>
-</div></div>
+  </div>
+  <div class="side2"><div class="card lsc"><h2>📂 ${curF==="all"?"Wszystkie":fpath(curF).map(f=>esc(f.name)).join(" › ")}</h2>
+    <input type="text" id="srch" class="srch" placeholder="🔍 Szukaj ćwiczenia…" value="${esc(srch)}">
+    <div id="itl">${listHTML()}</div></div></div>
   <div class="smo" id="smo" ${setOpen?'':'hidden'}><div class="smb"><div class="smh"><b>⚙️ Ustawienia</b><button class="btn" id="smx">✕</button></div>
   <div class="dt"><h3>🎨 Motywy</h3><div class="thg" id="thgrid"></div></div>
     <div class="dt"><h3>⚙️ Baza online</h3><div class="hint">Daje krótkie linki i automatyczne wyniki uczniów. Wklej adres swojej bazy Firebase.</div><input type="text" id="fbu" placeholder="mojprojekt-default-rtdb.firebaseio.com" value="${esc(S.fb||"")}" style="margin-top:8px"><input type="text" id="fbc" placeholder="Kod panelu (hasło), min. 6 znaków" value="${esc(pcode)}" style="margin-top:8px"><div class="hint">Ten sam adres bazy i ten sam kod wpisz na drugim urządzeniu (telefon, komputer), a zobaczysz tam ten sam panel.${cloudErr?` <span style="color:var(--bad)">Synchronizacja: ${esc(cloudErr)}</span>`:""}</div><div class="row"><button class="btn p" id="fbs">Zapisz i połącz</button><button class="btn" id="fbp">↻ Pobierz z chmury</button></div><div class="msg" id="fbm" style="display:block;margin:6px 0 0"></div></div>
     <div class="dt"><h3>🔔 Powiadomienia e-mail</h3><div class="hint">Gdy uczeń skończy ćwiczenie, dostaniesz e-mail na adres swojego konta. Nic nie trzeba wpisywać.</div><div class="row" style="margin-top:8px"><button class="btn p" id="ntf">…</button></div><div class="msg" id="ntm" style="display:block;margin:6px 0 0"></div></div>
   </div></div>
-  <div class="main">${crumbs()}${e?editor(e):`<div class="card"><div class="empty">Wybierz ćwiczenie z listy albo dodaj nowe przyciskami po lewej. Foldery możesz zagnieżdżać i przeciągać do nich ćwiczenia.</div></div>`}</div></div>`;
+  <div class="main">${e?crumbs()+editor(e):resDash()}</div></div>`;
   const bindList=()=>{
     document.querySelectorAll("[data-f]").forEach(el=>el.onclick=ev=>{if(ev.target.closest("[data-tg]"))return;curF=el.dataset.f;if(curF!=="all")ensureOpen(curF);teacher()});
+    document.querySelectorAll("[data-rv]").forEach(el=>el.onclick=()=>{curE=null;tab="edit";note="";teacher();window.scrollTo(0,0)});
     document.querySelectorAll("[data-tg]").forEach(el=>el.onclick=ev=>{ev.stopPropagation();const id=el.dataset.tg;S.fe=S.fe||{};S.fe[id]=!S.fe[id];save();teacher()});
     document.querySelectorAll("[data-e]").forEach(el=>{el.onclick=()=>{curE=el.dataset.e;tab="edit";note="";teacher()};el.ondragstart=ev=>{ev.dataTransfer.setData("text/plain","e:"+el.dataset.e)}});
     document.querySelectorAll(".ft[draggable]").forEach(el=>el.ondragstart=ev=>{ev.dataTransfer.setData("text/plain","f:"+el.dataset.f)});
@@ -483,6 +621,8 @@ function teacher(){if(window.__mp){window.__mp.stop();window.__mp=null}const cwx
   $("#addC").onclick=()=>{const x={id:uid(),kind:"cw",folder:curF==="all"?"":curF,title:"Nowa krzyżówka",inst:"",cw:[{q:"",im:"",a:""},{q:"",im:"",a:""},{q:"",im:"",a:""}],hn:false,created:new Date().toISOString()};S.ex.unshift(x);curE=x.id;tab="edit";save();teacher()};
   $("#addD").onclick=()=>{const x={id:uid(),isD:true,dlg:true,folder:curF==="all"?"":curF,title:"Nowy dialog",inst:"Uzupełnij dialog.",text:"Anna: Hi Tom, how [[are]] you?\nTom: I [[am]] fine, thanks. And you?\nAnna: I [[am]] great!",bank:true,extra:"",created:new Date().toISOString()};S.ex.unshift(x);curE=x.id;tab="edit";save();teacher()};
   $("#addS").onclick=()=>{const x={id:uid(),kind:"so",folder:curF==="all"?"":curF,title:"Układanie zdań",inst:"Ułóż słowa w odpowiedniej kolejności.",so:[{s:"I went to school yesterday.",h:"Wczoraj poszedłem do szkoły."},{s:"She is reading a very interesting book.",h:""},{s:"We did not go to the party.",h:""}],created:new Date().toISOString()};S.ex.unshift(x);curE=x.id;tab="edit";save();teacher()};
+  $("#addM").onclick=()=>{const x={id:uid(),kind:"mt",folder:curF==="all"?"":curF,title:"Dopasuj pary",inst:"Przeciągnij każdą odpowiedź do pasującego elementu.",pr:[{l:"dog",r:"pies"},{l:"cat",r:"kot"},{l:"bird",r:"ptak"}],dx:"",created:new Date().toISOString()};S.ex.unshift(x);curE=x.id;tab="edit";save();teacher()};
+  $("#addT").onclick=()=>{const x={id:uid(),kind:"tf",folder:curF==="all"?"":curF,title:"Prawda czy fałsz?",inst:"Przeczytaj tekst i zdecyduj, czy zdania są prawdziwe.",tx:"Tom is twelve years old. He lives in London with his parents and his sister Emma.",st:[{s:"Tom lives in London.",v:true},{s:"Tom has a brother.",v:false},{s:"Tom is twelve.",v:true}],created:new Date().toISOString()};S.ex.unshift(x);curE=x.id;tab="edit";save();teacher()};
   $("#addQ").onclick=()=>{const x={id:uid(),kind:"quiz",folder:curF==="all"?"":curF,title:"Nowy quiz",inst:"Wybierz poprawną odpowiedź, zanim minie czas!",qs:[],dT:20,dP:100,dB:50,created:new Date().toISOString()};S.ex.unshift(x);curE=x.id;tab="edit";save();teacher()};
   const ntm=(t,c)=>{const m=$("#ntm");if(m){m.style.color=c||"var(--mut)";m.textContent=t}};
   {const b=$("#ntf");if(b){const dr=()=>{const on=window.__NT?window.__NT.get():true;b.textContent=on?"🔔 Włączone – kliknij, aby wyłączyć":"🔕 Wyłączone – kliknij, aby włączyć"};dr();b.onclick=async()=>{try{await window.__NT.set(!window.__NT.get());dr();ntm(window.__NT.get()?"Powiadomienia włączone.":"Powiadomienia wyłączone.","var(--green)")}catch(x){ntm("Nie udało się zapisać ustawienia.","var(--bad)")}}}}
@@ -510,7 +650,7 @@ function teacher(){if(window.__mp){window.__mp.stop();window.__mp=null}const cwx
    $("#thgrid").onclick=ev=>{const b=ev.target.closest('[data-th]');if(b&&window.__applyTheme){window.__applyTheme(b.dataset.th);fill()}};
    if(setOpen){fill();sc(1)}}
   document.querySelectorAll("details.dt").forEach(d=>{d.open=!!openD[d.dataset.k];d.ontoggle=()=>{openD[d.dataset.k]=d.open}});
-  if(e)bindEditor(e);
+  if(e)bindEditor(e);else bindDash();
   if(window.__restore){window.__restore=false;const id=window.__qid,y=window.__y||0;window.__qid=null;requestAnimationFrame(()=>{const el=id&&document.querySelector(`details[data-k="q_${id}"]`);if(el){el.open=true;openD["q_"+id]=true;el.scrollIntoView({block:"center"})}else window.scrollTo(0,y)})}
 }
 function editor(e){
@@ -519,7 +659,7 @@ function editor(e){
   const att={},cn={};[...rs].reverse().forEach(r=>{const k=r.n.trim().toLowerCase();att[r.id]=cn[k]=(cn[k]||0)+1});
   return `<div class="card"><div class="tabs"><div class="tab ${tab==="edit"?"on":""}" data-t="edit">✏️ Edycja</div><div class="tab ${tab==="res"?"on":""}" data-t="res">📊 Wyniki (${rs.length})</div></div>`+
   (tab==="edit"?(t=>`<div class="tyb" style="--tc:${t[3]}"><span class="tpi">${t[0]}</span><div><b>${t[1]}</b><small>${t[2]}</small></div></div>`)(TYP[tyOf(e)]):'')+
-  (tab==="edit"?(e.kind==="quiz"?qEdit(e):e.kind==="vocab"?vEdit(e):e.kind==="cw"?cwEdit(e):e.kind==="so"?soEdit(e):`
+  (tab==="edit"?(e.kind==="mt"?mtEdit(e):e.kind==="tf"?tfEdit(e):e.kind==="quiz"?qEdit(e):e.kind==="vocab"?vEdit(e):e.kind==="cw"?cwEdit(e):e.kind==="so"?soEdit(e):`
   <label style="margin-top:0">Tytuł</label><input type="text" id="t" value="${esc(e.title)}">
   <label>Polecenie dla ucznia</label><input type="text" id="n" value="${esc(e.inst)}">
   <label>Folder</label><select id="fo" style="padding:9px;border-radius:12px;border:2px solid var(--line);background:var(--field);color:var(--ink);font:500 14px Poppins">
@@ -556,7 +696,7 @@ function bindEditor(e){
     $("#ar").onclick=()=>{try{const o=dec($("#rc").value.trim());if(o.i!==e.id){note="Ten kod jest z innego ćwiczenia.";teacher();return}
       S.res.push({id:uid(),ex:o.i,n:o.n,c:o.c,t:o.t,d:o.d,a:o.a});note="Dodano!";save();teacher()}catch(x){note="Nieprawidłowy kod.";$("#rm").textContent=note;$("#rm").style.color="var(--bad)"}};
     return}
-  if(e.kind==="quiz")return qBind(e);if(e.kind==="vocab")return vBind(e);if(e.kind==="cw")return cwBind(e);if(e.kind==="so")return soBind(e);
+  if(e.kind==="quiz")return qBind(e);if(e.kind==="vocab")return vBind(e);if(e.kind==="cw")return cwBind(e);if(e.kind==="so")return soBind(e);if(e.kind==="mt")return mtBind(e);if(e.kind==="tf")return tfBind(e);
   const t=$("#t"),n=$("#n"),x=$("#x");
   t.oninput=()=>{e.title=t.value;save()};n.oninput=()=>{e.inst=n.value;save()};
   $("#fo").onchange=ev=>{e.folder=ev.target.value;save();teacher()};
@@ -638,6 +778,8 @@ const detRow=(e,r)=>{const A=r.a?Object.values(r.a):[];let h='<div class="hint">
       else if(ty==='m'){const pk=String(a[0]==null?'':a[0]).split(',').map(Number);ans=(q.pr||[]).map((p,l)=>esc(p[0])+' → '+(pk[l]>=0&&q.pr[pk[l]]?esc(q.pr[pk[l]][1]):'(brak)')).join('; ');cor=(q.pr||[]).map(p=>esc(p[0])+' → '+esc(p[1])).join('; ')}
       else{const ids=String(a[0]==null?'':a[0]).split(',').filter(x=>x!=='').map(Number);ans=esc(ids.length?ids.map(j=>(q.o[j]&&(q.o[j][0]||'[zdjęcie]'))||'?').join(', '):'(brak)');cor=esc(q.o.filter(isOk).map(o=>o[0]||'[zdjęcie]').join(', '))}
       return `<div class="gaprow"><b>${i+1}.</b><span style="color:${a[2]==1?'var(--ok)':a[2]==2?'#f5b301':'var(--bad)'}">${a[2]==1?'✔':a[2]==2?'◐':'✘'} ${ans}</span> <small>${a[2]==1?(ty==='o'?'zaakceptowane odpowiedzi: '+cor+' · ':''):'poprawnie: '+cor+' · '}${a[1]} pkt</small></div>`}).join('');
+    else if(e.kind==='mt'){const P=(e.pr||[]).filter(p=>(String(p.l||'').trim()||p.im)&&String(p.r||'').trim());h=A.map((x,i)=>{const p=P[x[2]]||{l:'?',r:'?'};return `<div class="gaprow"><b>${i+1}.</b><span style="color:${x[1]?'var(--ok)':'var(--bad)'}">${x[1]?'✔':'✘'} ${esc(p.l||'🖼')} → ${esc(x[0]||'(brak)')}</span>${x[1]?'':` <small>poprawnie: ${esc(p.r)}</small>`}</div>`}).join('')}
+    else if(e.kind==='tf'){const T=(e.st||[]).filter(x=>String(x.s||'').trim());h=A.map((x,i)=>{const t=T[x[2]]||{s:'?',v:true};const lb=v=>v?'Prawda':'Fałsz';return `<div class="gaprow"><b>${i+1}.</b><span style="color:${x[1]?'var(--ok)':'var(--bad)'}">${x[1]?'✔':'✘'} ${esc(t.s)} → ${x[0]==='P'?'Prawda':x[0]==='F'?'Fałsz':'(brak)'}</span>${x[1]?'':` <small>poprawnie: ${lb(t.v!==false)}</small>`}</div>`}).join('')}
     else if(e.kind==='so')h=A.map((x,i)=>{const c=(e.so||[])[x[2]]||{s:'?'};return `<div class="gaprow"><b>${i+1}.</b><span style="color:${x[1]?'var(--ok)':'var(--bad)'}">${x[1]?'✔':'✘'} ${esc(x[0]||'(brak)')}</span>${x[1]?'':` <small>poprawnie: ${esc(String(c.s).split('|')[0].trim())}</small>`}</div>`}).join('');
     else if(e.kind==='cw')h=A.map((x,i)=>{const c=(e.cw||[])[x[2]]||{q:'?',a:'?'};return `<div class="gaprow"><b>${i+1}.</b><span style="color:${x[1]?'var(--ok)':'var(--bad)'}">${x[1]?'✔':'✘'} ${esc(c.q||'(zdjęcie)')} → ${esc(x[0]||'(brak)')}</span>${x[1]?'':` <small>poprawnie: ${esc(c.a)}</small>`}</div>`}).join('');
     else if(e.kind==='vocab')h=A.map((x,i)=>{const w=(e.words||[])[x[3]]||['?','?'];const pe=x[2]===1;return `<div class="gaprow"><b>${i+1}.</b><span style="color:${x[1]?'var(--ok)':'var(--bad)'}">${x[1]?'✔':'✘'} ${esc(pe?w[1]:w[0])} → ${esc(x[0]||'(brak)')}</span>${x[1]?'':` <small>poprawnie: ${esc(pe?w[0]:w[1])}</small>`}</div>`}).join('');
@@ -1248,6 +1390,209 @@ function soPlay(ex){
   if(saved&&saved.so)end(saved.name,saved.score,saved.log||[],saved.code,'To ćwiczenie zostało już rozwiązane. Oto twój wynik.');
   else if(ex.p){name='Podgląd';ask(0)}else intro()}
 
+/* ---------- v12: ODPOWIEDZI UCZNIÓW (pulpit) ---------- */
+let rvTab='new',rvQ='',rvSeen=null;
+const FCOL=['#7758e8','#ff6b9d','#20b486','#f59e0b','#0ea5e9','#e0457b','#8b5cf6','#14b8a6'];
+const hcol=s=>{let h=0;for(const c of String(s||''))h=(h*31+c.charCodeAt(0))>>>0;return FCOL[h%FCOL.length]};
+const pctOf=r=>r.t?Math.max(0,Math.min(100,Math.round(r.c/r.t*100))):0;
+const scCls=p=>p>=80?'hi':p>=50?'mid':'lo';
+const iniOf=n=>String(n||'?').trim().split(/\s+/).map(w=>w[0]||'').join('').slice(0,2).toUpperCase()||'?';
+const seenKey=()=>'fw_seen_'+(window.__UID||'');
+const getSeen=()=>{try{return localStorage.getItem(seenKey())||''}catch(e){return ''}};
+const newResCount=()=>{const s=rvSeen!==null?rvSeen:getSeen();return S.res.filter(r=>S.ex.some(x=>x.id===r.ex)&&String(r.d)>s).length};
+const inScope=x=>curF==='all'||(!!x.folder&&isDesc(x.folder,curF));
+const dayLbl=d=>{const t=new Date(d),n=new Date();const a=new Date(t.getFullYear(),t.getMonth(),t.getDate()),b=new Date(n.getFullYear(),n.getMonth(),n.getDate());const k=Math.round((b-a)/864e5);
+  return k===0?'Dziś':k===1?'Wczoraj':t.toLocaleDateString('pl-PL',{weekday:'long',day:'numeric',month:'long'})};
+const hm=d=>new Date(d).toLocaleTimeString('pl-PL',{hour:'2-digit',minute:'2-digit'});
+function resDash(){
+  if(rvSeen===null){rvSeen=getSeen();try{localStorage.setItem(seenKey(),new Date().toISOString())}catch(e){}}
+  const map={};S.ex.filter(inScope).forEach(x=>map[x.id]=x);
+  let rs=S.res.filter(r=>map[r.ex]);
+  const q=norm(rvQ);if(q)rs=rs.filter(r=>norm(r.n).includes(q)||norm(map[r.ex].title||'').includes(q));
+  rs.sort((a,b)=>String(b.d).localeCompare(String(a.d)));
+  const td=new Date().toDateString(),nT=rs.filter(r=>new Date(r.d).toDateString()===td).length;
+  const avg=rs.length?Math.round(rs.reduce((s,r)=>s+pctOf(r),0)/rs.length):0,st=new Set(rs.map(r=>norm(r.n))).size;
+  const scope=curF==='all'?'Wszystkie ćwiczenia':'📁 '+fpath(curF).map(f=>esc(f.name)).join(' › ');
+  const row=r=>{const x=map[r.ex],p=pctOf(r),t=TYP[tyOf(x)];return `<button class="rvr" data-oe="${x.id}"><span class="av" style="--ac:${hcol(norm(r.n))}">${esc(iniOf(r.n))}</span><span class="rvm"><b>${esc(r.n)}</b>${String(r.d)>rvSeen?'<i class="nwt">Nowe</i>':''}<small>${t[0]} ${esc(x.title||'Bez tytułu')}</small></span><span class="scp ${scCls(p)}">${p}%</span><span class="rvt">${hm(r.d)}</span></button>`};
+  let body='';
+  if(!rs.length)body=`<div class="rve0"><div>📭</div><b>${q?'Nic nie znaleziono':'Jeszcze nie ma odpowiedzi'}</b>${q?'Spróbuj wpisać inne imię albo tytuł.':'Wybierz ćwiczenie, kliknij „🔗 Generuj link” i wyślij go uczniom. Ich odpowiedzi pojawią się tutaj automatycznie.'}</div>`;
+  else if(rvTab==='ex'){const g={};rs.forEach(r=>(g[r.ex]=g[r.ex]||[]).push(r));
+    body='<div class="rveg">'+Object.keys(g).sort((a,b)=>String(g[b][0].d).localeCompare(String(g[a][0].d))).map(id=>{const x=map[id],L=g[id],t=TYP[tyOf(x)],a=Math.round(L.reduce((s,r)=>s+pctOf(r),0)/L.length),nw=L.filter(r=>String(r.d)>rvSeen).length;
+      return `<button class="rve" data-oe="${id}" style="--tc:${t[3]}"><span class="rveh"><span class="ti">${t[0]}</span><b>${esc(x.title||'Bez tytułu')}</b><span class="scp ${scCls(a)}">${a}%</span></span><span class="rvbar"><i style="width:${a}%"></i></span><small>${L.length} ${L.length===1?'odpowiedź':L.length<5?'odpowiedzi':'odpowiedzi'} · ostatnia: ${dayLbl(L[0].d).toLowerCase()} ${hm(L[0].d)}${nw?` · <b style="color:#ff4d6d">${nw} nowe</b>`:''}</small></button>`}).join('')+'</div>'}
+  else if(rvTab==='st'){const g={};rs.forEach(r=>{const k=norm(r.n);(g[k]=g[k]||[]).push(r)});
+    body=Object.keys(g).sort((a,b)=>String(g[b][0].d).localeCompare(String(g[a][0].d))).map(k=>{const L=g[k],a=Math.round(L.reduce((s,r)=>s+pctOf(r),0)/L.length),n=L[0].n;
+      return `<details class="rvs"><summary><span class="av" style="--ac:${hcol(k)}">${esc(iniOf(n))}</span><span class="rvm"><b>${esc(n)}</b>${L.some(r=>String(r.d)>rvSeen)?'<i class="nwt">Nowe</i>':''}<small>${L.length} ${L.length===1?'ćwiczenie':'ćwiczeń'} · ostatnio: ${dayLbl(L[0].d).toLowerCase()} ${hm(L[0].d)}</small></span><span class="scp ${scCls(a)}">${a}%</span></summary><div class="rvl">${L.map(row).join('')}</div></details>`}).join('')}
+  else{let last='';rs.forEach(r=>{const l=dayLbl(r.d);if(l!==last){body+=`<div class="rvd">${esc(l)}</div>`;last=l}body+=row(r)})}
+  return `<div class="card rvc"><div class="rvh"><div><h2>📊 Odpowiedzi uczniów</h2><small>${scope}</small></div><button class="btn" id="rvref">↻ Odśwież</button></div>
+  <div class="rvk"><div><b>${rs.length}</b><span>Odpowiedzi</span></div><div><b>${nT}</b><span>Dzisiaj</span></div><div><b>${rs.length?avg+'%':'–'}</b><span>Średni wynik</span></div><div><b>${st}</b><span>Uczniów</span></div></div>
+  <div class="rvtb"><div class="seg">${[['new','🕒 Najnowsze'],['ex','📚 Wg ćwiczeń'],['st','👤 Wg uczniów']].map(t=>`<button data-rvt="${t[0]}" class="${rvTab===t[0]?'on':''}">${t[1]}</button>`).join('')}</div><input type="text" id="rvq" placeholder="🔍 Szukaj ucznia lub ćwiczenia…" value="${esc(rvQ)}"></div>
+  <div id="rvb">${body}</div></div>`}
+function bindDash(){const m=document.querySelector('.main');if(!m)return;
+  m.onclick=async ev=>{const o=ev.target.closest('[data-oe]');if(o&&!ev.target.closest('summary')){curE=o.dataset.oe;tab='res';note='';teacher();window.scrollTo(0,0);return}
+    const t=ev.target.closest('[data-rvt]');if(t){rvTab=t.dataset.rvt;drawDash();return}
+    if(ev.target.closest('#rvref')){const b=$('#rvref');b.disabled=true;b.textContent='Sprawdzam…';const before=S.res.length;try{await pollRes()}catch(e){}if(S.res.length===before){toast('✔ Brak nowych odpowiedzi');drawDash()}}};
+  const q=$('#rvq');if(q)q.oninput=()=>{rvQ=q.value;const p=q.selectionStart;drawDash();const n=$('#rvq');if(n){n.focus();try{n.setSelectionRange(p,p)}catch(e){}}}}
+function drawDash(){const m=document.querySelector('.main');if(!m||curE)return;m.innerHTML=resDash();bindDash()}
+
+/* ---------- v12: wspólne dla nowych ćwiczeń ---------- */
+const exHead=e=>{const st='padding:9px;border-radius:12px;border:2px solid var(--line);background:var(--field);color:var(--ink);font:500 14px Poppins';return `<label style="margin-top:0">Tytuł</label><input type="text" id="t" value="${esc(e.title)}">
+  <label>Polecenie dla ucznia</label><input type="text" id="n" value="${esc(e.inst||'')}">
+  <label>Folder</label><select id="fo" style="${st}">${folderOpts(e.folder)}</select>`};
+const exFoot=e=>`<div class="row">${genBtns(e)}<button class="btn" id="pv">👁 Podgląd</button><button class="btn" id="dup">📄 Kopiuj ćwiczenie</button><button class="btn d" id="del">Usuń ćwiczenie</button></div><div id="lk"></div>`;
+function exBindHead(e,valid,play,obj){const t=$('#t'),n=$('#n');t.oninput=()=>{e.title=t.value;save()};n.oninput=()=>{e.inst=n.value;save()};$('#fo').onchange=ev=>{e.folder=ev.target.value;save();teacher()};
+  bindLinkBtns(e,valid);
+  $('#pv').onclick=()=>{const er=valid();if(er){toast('⚠️ '+er);return}play(Object.assign(obj(e),{p:1}));app.insertAdjacentHTML('afterbegin','<div class="row" style="margin:0 0 12px"><button class="btn p" id="bkp">← Wróć do edycji</button></div>');$('#bkp').onclick=goBack};
+  $('#del').onclick=async()=>{if(await modal({title:'Usunąć to ćwiczenie?',text:'Razem z wynikami.',ok:'Usuń'})){S.ex=S.ex.filter(z=>z.id!==e.id);S.res=S.res.filter(r=>r.ex!==e.id);curE=null;save();teacher()}}}
+const shuf=a=>{const r=a.slice();for(let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]]}return r};
+function exIntro(ex,box,chip,hint,start){
+  box.innerHTML=`${ex.n?`<section class="card big"><div class="pol">📌 Polecenie</div><div class="polt">${esc(ex.n)}</div></section>`:''}<section class="card"><div class="row" style="margin:0"><span class="chip2">${chip}</span></div><label>Twoje imię i nazwisko</label><input type="text" id="qn" placeholder="np. Anna Kowalska" style="max-width:340px"><div class="row"><button class="btn p" id="go" style="font-size:18px;padding:14px 30px">▶ Start</button></div><div class="hint">${hint}</div></section>`;
+  $('#go').onclick=async()=>{const v=$('#qn').value.trim();if(!v){$('#qn').focus();$('#qn').style.borderColor='#ff7190';return}
+    if(ex.fb&&!ex.p&&!ex.mo){const g=$('#go');g.disabled=true;g.textContent='Sprawdzam…';try{const d=await fbReq(ex.fb,'/res/'+ex.i,'GET');const mine=Object.values(d||{}).find(r=>r&&r.n&&norm(r.n)===norm(v));
+      if(mine){start(v,mine);return}}catch(e){}}
+    beep('ok');start(v,null)}}
+function exFinish(ex,kind,name,score,N,log,show){const code=enc({i:ex.i,n:name,c:score,t:N,d:new Date().toISOString(),a:log});let msg='';
+  if(!ex.p){notifyT(ex,name,score,N);try{if(!ex.mo)localStorage.setItem('luki_done_'+ex.i,JSON.stringify({[kind]:1,name:name,score:score,log:log,code:code}))}catch(e){}
+    if(ex.fb){msg='Wysyłam wynik do nauczyciela…';const mark=(t,bad)=>{const s=$('#sent');if(s){s.textContent=t;if(bad)s.style.color='var(--bad)'}if(bad)cwOpen()};
+      fbReq(ex.fb,'/res/'+ex.i,'POST',{n:name,c:score,t:N,d:new Date().toISOString(),a:log}).then(()=>mark('✔ Wynik został wysłany do nauczyciela.'),()=>mark('Nie udało się wysłać wyniku automatycznie. Kliknij 🔑 w prawym dolnym rogu, skopiuj kod i wyślij go nauczycielowi.',1))}
+    else msg='Wyślij nauczycielowi kod wyniku: kliknij 🔑 w prawym dolnym rogu.'}
+  show(name,score,log,code,msg)}
+function exEnd(ex,box,nm,sc,N,rows,code,msg,emo,again){const pc=N?Math.round(sc/N*100):0;
+  box.innerHTML=`<section class="card" style="text-align:center"><div style="font-size:70px;animation:pop .6s">${pc>=90?'🏆':pc>=60?emo:'💪'}</div><div class="sbig" id="fs">0</div><div style="font-weight:800;font-size:18px">${esc(nm)}, wynik: ${sc} z ${N} (${pc}%)</div><div class="msg" id="sent" style="display:block;margin-top:10px">${msg||''}</div></section>
+  <section class="card"><h2>Twoje odpowiedzi</h2>${rows}</section>${(ex.p||ex.mo)?'<div class="row"><button class="btn p" id="again">↺ Zagraj jeszcze raz</button></div>':''}`;
+  const e2=$('#fs'),s0=performance.now();const an=n=>{const p=Math.min(1,(n-s0)/800);e2.textContent=Math.round(sc*p);if(p<1)requestAnimationFrame(an)};requestAnimationFrame(an);
+  if(code)cwShow(code,!ex.fb&&!ex.p);beep('win');confetti(TE(),pc>=50?36:12);const ag=$('#again');if(ag)ag.onclick=again;window.scrollTo(0,0)}
+const imgFile=async(f,big)=>{if(!f||!f.type||!f.type.startsWith('image/'))throw new Error('To nie jest zdjęcie');if(big){const s=await shrink(f,1100,0.72);return s.url()}return imgUp(f)};
+
+/* ---------- v12: DOPASOWYWANIE (przeciąganie par) ---------- */
+const mtPairs=e=>(e.pr||[]).filter(p=>(String(p.l||'').trim()||p.im)&&String(p.r||'').trim());
+const mtObj=e=>({i:e.id,t:e.title,n:e.inst,k:'m',pr:mtPairs(e).map(p=>[String(p.l||'').trim(),String(p.r).trim(),p.im||'']),dx:String(e.dx||'').split(',').map(s=>s.trim()).filter(Boolean)});
+function mtEdit(e){e.pr=e.pr||[];
+  return exHead(e)+`<div class="dt" style="margin-top:14px"><b>🔗 Pary do dopasowania</b><div class="hint" style="margin:4px 0 10px">Lewa strona zostaje na miejscu, a uczeń przeciąga do niej pasującą odpowiedź (albo dotyka odpowiedzi, a potem miejsca).</div>
+   ${e.pr.map((p,j)=>`<div class="cwe mte" data-j="${j}"><b class="mtn">${j+1}</b><div class="mtl">${p.im?`<img src="${esc(p.im)}" alt="">`:''}<input type="text" data-fld="ml" data-j="${j}" value="${esc(p.l||'')}" placeholder="${p.im?'Podpis (opcjonalnie)':'Lewa strona, np. dog'}"></div><button class="btn" data-v="mi" data-j="${j}" title="${p.im?'Usuń zdjęcie':'Dodaj zdjęcie'}">${p.im?'✕ 🖼':'🖼'}</button><span class="mta">↔</span><input type="text" data-fld="mr" data-j="${j}" value="${esc(p.r||'')}" placeholder="Pasująca odpowiedź, np. pies"><button class="btn d" data-v="rm" data-j="${j}" title="Usuń parę">✕</button></div>`).join('')}
+   <div class="row"><button class="btn p" data-v="am">+ Dodaj parę</button></div>
+   <label>Dodatkowe błędne odpowiedzi (opcjonalnie, po przecinku)</label><input type="text" id="mdx" value="${esc(e.dx||'')}" placeholder="np. kot, ryba">
+   <label>Wklej listę (jedna para w linii: lewa - prawa)</label><textarea id="mtbulk" style="min-height:90px" placeholder="dog - pies&#10;cat - kot"></textarea><div class="row"><button class="btn" data-v="bulk">➕ Dodaj z listy</button></div>
+   <div class="hint">Zdjęcie do lewej strony: kliknij 🖼 albo przeciągnij plik ze zdjęciem na wiersz pary. Błędne odpowiedzi utrudniają zgadywanie.</div></div>`+exFoot(e)}
+function mtBind(e){const main=document.querySelector('.main');
+  const valid=()=>mtPairs(e).length>=2?'':'Dodaj co najmniej dwie pełne pary.';
+  exBindHead(e,valid,mtPlay,mtObj);$('#mdx').oninput=ev=>{e.dx=ev.target.value;save()};
+  main.oninput=ev=>{const el=ev.target,f=el.dataset.fld,j=+el.dataset.j;if(f==='ml'&&e.pr[j])e.pr[j].l=el.value;else if(f==='mr'&&e.pr[j])e.pr[j].r=el.value;else return;save()};
+  const setIm=async(j,f)=>{try{toast('⏳ Wgrywam zdjęcie…');e.pr[j].im=await imgFile(f);save();teacher()}catch(x){toast('⚠️ '+((x&&x.message)||x))}};
+  main.onclick=async ev=>{const b=ev.target.closest('[data-v]');if(!b)return;const a=b.dataset.v,j=+b.dataset.j;
+    if(a==='am')e.pr.push({l:'',r:''});
+    else if(a==='rm')e.pr.splice(j,1);
+    else if(a==='mi'){if(e.pr[j].im)delete e.pr[j].im;else{const f=await pickImg();if(f)setIm(j,f);return}}
+    else if(a==='bulk'){const add=$('#mtbulk').value.split('\n').map(pairSplit).filter(Boolean).map(p=>({l:p[0],r:p[1]}));if(!add.length){toast('⚠️ Wklej pary, np. dog - pies (jedna w linii).');return}e.pr=e.pr.filter(p=>(p.l||'').trim()||p.im||(p.r||'').trim()).concat(add)}
+    else return;
+    save();teacher()};
+  main.ondragover=ev=>{const r=ev.target.closest('.mte');if(r&&[...(ev.dataTransfer.items||[])].some(i=>i.kind==='file')){ev.preventDefault();main.querySelectorAll('.mte.dropOn').forEach(x=>x!==r&&x.classList.remove('dropOn'));r.classList.add('dropOn')}};
+  main.ondragleave=ev=>{const r=ev.target.closest('.mte');if(r&&!r.contains(ev.relatedTarget))r.classList.remove('dropOn')};
+  main.ondrop=ev=>{const r=ev.target.closest('.mte');if(!r)return;const f=[...(ev.dataTransfer.files||[])][0];if(!f)return;ev.preventDefault();r.classList.remove('dropOn');setIm(+r.dataset.j,f)}}
+function mtPlay(ex){
+  const PR=Object.values(ex.pr||[]).map(p=>Object.values(p)).filter(p=>p&&String(p[1]||'').trim());const N=PR.length;const DX=Object.values(ex.dx||[]);
+  let saved=null;if(!ex.p&&!ex.mo){try{saved=JSON.parse(localStorage.getItem('luki_done_'+ex.i))}catch(e){}}
+  app.innerHTML=hdr(esc(ex.t||'Dopasowywanie'),'🔗 Dopasuj pary'+(ex.n?' · '+esc(ex.n):''))+'<div id="mta"></div>';
+  const box=$('#mta');
+  const left=p=>`${p[2]?`<img src="${esc(p[2])}" alt="" data-zoom="1">`:''}${p[0]?`<span>${big(esc(p[0]))}</span>`:''}`;
+  const rowsOf=lg=>lg.map((x,i)=>{const p=PR[x[2]]||['?','?',''];return `<div class="rv" style="animation-delay:${Math.min(i,12)*0.05}s"><span>${x[1]?'✔':'✘'}</span><span style="flex:1">${esc(p[0]||'🖼')} → ${esc(x[0]||'(brak)')}${x[1]?'':` <small>(poprawnie: ${esc(p[1])})</small>`}</span></div>`}).join('');
+  const show=(nm,sc,lg,code,msg)=>exEnd(ex,box,nm,sc,N,rowsOf(lg),code,msg,'🔗',()=>board(nm));
+  function board(name){
+    const chips=shuf([...PR.map(p=>String(p[1])),...DX.map(String)]);
+    const slot=Array(N).fill(null);let sel=null,locked=false;
+    const chip=(ci,inSlot)=>`<button type="button" class="mtc ${sel===ci?'sel':''}" draggable="${!locked}" data-c="${ci}">${esc(chips[ci])}</button>`;
+    const draw=()=>{const used=new Set(slot.filter(x=>x!==null)),fl=used.size;
+      box.innerHTML=`<section class="card mtw"><div class="qh"><span class="chip2">🔗 Dopasowano ${fl}/${N}</span>${ex.p?'<span class="chip2">👁 Podgląd</span>':''}</div><div class="qbar"><i style="width:${N?fl/N*100:0}%"></i></div>
+      <div class="mtb"><div class="mtrows">${PR.map((p,i)=>`<div class="mtr ${locked?(slot[i]!==null&&norm(chips[slot[i]])===norm(p[1])?'good':'bad'):''}"><div class="mtlft">${left(p)}</div><div class="mtar">➜</div><div class="mtslot ${slot[i]!==null?'full':''} ${sel!==null&&!locked?'hot':''}" data-s="${i}">${slot[i]!==null?chip(slot[i],1):'<span class="mtph">Upuść tutaj</span>'}</div>${locked&&!(slot[i]!==null&&norm(chips[slot[i]])===norm(p[1]))?`<div class="mtcor">✔ ${esc(p[1])}</div>`:''}</div>`).join('')}</div>
+      <div class="mtpool" id="mtpool"><div class="mtph">Odpowiedzi</div>${chips.map((c,ci)=>used.has(ci)?'':chip(ci)).join('')}</div></div>
+      <div class="row" style="justify-content:center">${locked?'':'<button class="btn" id="mtrst">↺ Wyczyść</button><button class="btn p" id="mtck">✅ Sprawdź</button>'}</div><div id="mtfb"></div></section>`;
+      if(!locked){$('#mtrst').onclick=()=>{slot.fill(null);sel=null;draw()};$('#mtck').onclick=check}};
+    const place=(ci,s)=>{const k=slot.indexOf(ci);if(k>=0)slot[k]=null;slot[s]=ci;sel=null;beep('tap');draw()};
+    const back=ci=>{const k=slot.indexOf(ci);if(k>=0)slot[k]=null;sel=null;draw()};
+    box.onclick=ev=>{const z=ev.target.closest('[data-zoom]');if(z){z.classList.toggle('zoom');return}if(locked)return;
+      const c=ev.target.closest('.mtc'),s=ev.target.closest('.mtslot');
+      if(c&&!s){const ci=+c.dataset.c;sel=sel===ci?null:ci;draw();return}
+      if(s){const si=+s.dataset.s;if(sel!==null)place(sel,si);else if(slot[si]!==null)back(slot[si]);return}};
+    box.ondragstart=ev=>{const c=ev.target.closest&&ev.target.closest('.mtc');if(!c||locked){ev.preventDefault();return}ev.dataTransfer.setData('text/plain','c:'+c.dataset.c);ev.dataTransfer.effectAllowed='move';setTimeout(()=>c.classList.add('drag'),0)};
+    box.ondragend=()=>box.querySelectorAll('.drag,.dropOn').forEach(x=>x.classList.remove('drag','dropOn'));
+    box.ondragover=ev=>{if(locked)return;const z=ev.target.closest('.mtslot,#mtpool');if(!z)return;ev.preventDefault();box.querySelectorAll('.dropOn').forEach(x=>x!==z&&x.classList.remove('dropOn'));z.classList.add('dropOn')};
+    box.ondrop=ev=>{if(locked)return;const z=ev.target.closest('.mtslot,#mtpool');if(!z)return;ev.preventDefault();const d=(ev.dataTransfer.getData('text/plain')||'').split(':');if(d[0]!=='c')return;const ci=+d[1];
+      if(z.id==='mtpool')back(ci);else place(ci,+z.dataset.s)};
+    function check(){if(slot.some(x=>x===null)){toast('⚠️ Dopasuj wszystkie pary, zanim sprawdzisz.');box.querySelectorAll('.mtslot:not(.full)').forEach(x=>{x.classList.remove('shk');void x.offsetWidth;x.classList.add('shk')});return}
+      if(!ex.p&&!ex.mo&&!confirm('Możesz sprawdzić odpowiedzi tylko jeden raz. Czy na pewno chcesz sprawdzić?'))return;
+      locked=true;sel=null;let sc=0;const log=PR.map((p,i)=>{const g=chips[slot[i]],ok=norm(g)===norm(p[1]);if(ok)sc++;return [g,ok?1:0,i]});draw();
+      $('#mtfb').innerHTML=`<div class="fbk ${sc===N?'ok':sc?'info':'no'}">${sc===N?'🏆 Wszystko dobrze!':'Dobrze: '+sc+' z '+N+'. Poprawne odpowiedzi są pod błędnymi parami.'}</div><div class="row" style="justify-content:center"><button class="btn p" id="mtnx">Zobacz wynik 🏆</button></div>`;
+      beep(sc===N?'ok':'bad');if(sc===N)confetti(TE(),14);$('#mtnx').onclick=()=>exFinish(ex,'mt',name,sc,N,log,show)}
+    draw()}
+  if(!N){box.innerHTML='<section class="card">To ćwiczenie nie ma jeszcze par.</section>';return}
+  if(saved&&saved.mt)show(saved.name,saved.score,saved.log||[],saved.code,'To ćwiczenie zostało już rozwiązane. Oto twój wynik.');
+  else if(ex.p)board('Podgląd');
+  else exIntro(ex,box,'🔗 '+N+' par','Masz tylko jedną próbę. Przeciągnij każdą odpowiedź do pasującego elementu.',(nm,mine)=>{if(mine)show(mine.n,+mine.c||0,mine.a?Object.values(mine.a):[],'','Ta osoba już rozwiązała to ćwiczenie. To wynik z pierwszej próby.');else board(nm)})}
+
+/* ---------- v12: PRAWDA / FAŁSZ ---------- */
+const tfSt=e=>(e.st||[]).filter(x=>String(x.s||'').trim());
+const tfObj=e=>({i:e.id,t:e.title,n:e.inst,k:'t',tx:e.tx||'',im:e.im||'',st:tfSt(e).map(x=>[String(x.s).trim(),x.v===false?0:1])});
+function tfEdit(e){e.st=e.st||[];
+  return exHead(e)+`<div class="dt" style="margin-top:14px"><b>📖 Tekst albo zdjęcie (opcjonalnie)</b><div class="hint" style="margin:4px 0 0">Pokaże się uczniowi nad zdaniami, np. tekst do przeczytania albo obrazek do opisania.</div>
+   <label>Tekst</label><textarea id="tftx" style="min-height:120px" placeholder="Wklej tekst do przeczytania…">${esc(e.tx||'')}</textarea>
+   <label>Zdjęcie</label>${e.im?`<div class="tfim"><img src="${esc(e.im)}" alt=""><button class="btn d" data-v="ri">✕ Usuń zdjęcie</button></div>`:''}
+   <div class="dz" id="tfdz">Przeciągnij tu zdjęcie albo wklej je skrótem Ctrl+V<br><button class="btn" data-v="pi" style="margin-top:8px">🖼 Wybierz plik</button><br><span class="msg" id="tfm"></span></div></div>
+  <div class="dt" style="margin-top:14px"><b>⚖️ Zdania: prawda czy fałsz?</b>
+   ${e.st.map((x,j)=>`<div class="cwe tfe"><b class="mtn">${j+1}</b><input type="text" data-fld="ts" data-j="${j}" value="${esc(x.s||'')}" placeholder="Zdanie, np. Tom lives in London."><div class="tfsw"><button class="tfo t ${x.v!==false?'on':''}" data-v="tv" data-j="${j}" data-x="1">✔ Prawda</button><button class="tfo f ${x.v===false?'on':''}" data-v="tv" data-j="${j}" data-x="0">✘ Fałsz</button></div><button class="btn d" data-v="rt" data-j="${j}" title="Usuń zdanie">✕</button></div>`).join('')}
+   <div class="row"><button class="btn p" data-v="at">+ Dodaj zdanie</button></div>
+   <label>Wklej listę (jedno zdanie w linii; zdanie fałszywe zacznij od F:)</label><textarea id="tfbulk" style="min-height:90px" placeholder="Tom lives in London.&#10;F: Tom has two sisters."></textarea><div class="row"><button class="btn" data-v="bulk">➕ Dodaj z listy</button></div></div>`+exFoot(e)}
+function tfBind(e){const main=document.querySelector('.main');
+  const valid=()=>tfSt(e).length?'':'Dodaj co najmniej jedno zdanie.';
+  exBindHead(e,valid,tfPlay,tfObj);$('#tftx').oninput=ev=>{e.tx=ev.target.value;save()};
+  const setIm=async f=>{const m=$('#tfm');try{if(m)m.textContent='Wgrywam zdjęcie…';e.im=await imgFile(f,1);save();teacher()}catch(x){if(m){m.textContent=(x&&x.message)||String(x);m.style.color='var(--bad)'}}};
+  main.oninput=ev=>{const el=ev.target;if(el.dataset.fld==='ts'&&e.st[+el.dataset.j]){e.st[+el.dataset.j].s=el.value;save()}};
+  main.onclick=async ev=>{const b=ev.target.closest('[data-v]');if(!b)return;const a=b.dataset.v,j=+b.dataset.j;
+    if(a==='at')e.st.push({s:'',v:true});
+    else if(a==='rt')e.st.splice(j,1);
+    else if(a==='tv'){e.st[j].v=b.dataset.x==='1';b.parentNode.querySelectorAll('.tfo').forEach(x=>x.classList.toggle('on',x===b));save();return}
+    else if(a==='ri')delete e.im;
+    else if(a==='pi'){const f=await pickImg();if(f)setIm(f);return}
+    else if(a==='bulk'){const add=$('#tfbulk').value.split('\n').map(l=>l.trim()).filter(Boolean).map(l=>{const m=l.match(/^(F|Fałsz|FALSE|N|NIE)\s*[:\-–)]\s*(.+)$/i),p=l.match(/^(P|T|Prawda|TRUE|TAK)\s*[:\-–)]\s*(.+)$/i);return m?{s:m[2].trim(),v:false}:p?{s:p[2].trim(),v:true}:{s:l,v:true}});if(!add.length){toast('⚠️ Wklej zdania, jedno w linii.');return}e.st=e.st.filter(x=>(x.s||'').trim()).concat(add)}
+    else return;
+    save();teacher()};
+  const dz=$('#tfdz');dz.ondragover=ev=>{ev.preventDefault();dz.classList.add('on')};dz.ondragleave=()=>dz.classList.remove('on');
+  dz.ondrop=ev=>{ev.preventDefault();dz.classList.remove('on');const f=[...(ev.dataTransfer.files||[])][0];if(f)setIm(f);else{const m=$('#tfm');m.textContent='Nie udało się przeciągnąć tego zdjęcia. Kliknij je prawym przyciskiem, wybierz „Kopiuj obraz” i wciśnij tutaj Ctrl+V.';m.style.color='var(--bad)'}};
+  window.onpaste=ev=>{if(!document.getElementById('tfdz'))return;const it=[...((ev.clipboardData&&ev.clipboardData.items)||[])].find(i=>i.type.startsWith('image/'));if(it){ev.preventDefault();setIm(it.getAsFile())}}}
+function tfPlay(ex){
+  const ST=Object.values(ex.st||[]).map(x=>Object.values(x)).filter(x=>x&&String(x[0]||'').trim());const N=ST.length;
+  let saved=null;if(!ex.p&&!ex.mo){try{saved=JSON.parse(localStorage.getItem('luki_done_'+ex.i))}catch(e){}}
+  app.innerHTML=hdr(esc(ex.t||'Prawda czy fałsz?'),'⚖️ Prawda czy fałsz'+(ex.n?' · '+esc(ex.n):''))+'<div id="tfa"></div>';
+  const box=$('#tfa');const L=v=>v===1?'Prawda':v===0?'Fałsz':'(brak)';
+  const rowsOf=lg=>lg.map((x,i)=>{const s=ST[x[2]]||['?',1];return `<div class="rv" style="animation-delay:${Math.min(i,12)*0.05}s"><span>${x[1]?'✔':'✘'}</span><span style="flex:1">${esc(s[0])} <small>→ ${L(x[0]==='P'?1:x[0]==='F'?0:-1)}${x[1]?'':' (poprawnie: '+L(+s[1])+')'}</small></span></div>`}).join('');
+  const show=(nm,sc,lg,code,msg)=>exEnd(ex,box,nm,sc,N,rowsOf(lg),code,msg,'⚖️',()=>board(nm));
+  function board(name){const ans=Array(N).fill(null);let locked=false;const two=!!(ex.tx||ex.im);
+    box.innerHTML=`<div class="tfl ${two?'two':''}">${two?`<section class="card tfr"><div class="pol">${ex.tx?'📖 Przeczytaj uważnie':'🖼 Przyjrzyj się obrazkowi'}</div>${ex.im?`<img class="tfimg" src="${esc(ex.im)}" alt="" data-zoom="1">`:''}${ex.tx?`<div class="tftxt">${big(esc(ex.tx)).replace(/\n/g,'<br>')}</div>`:''}</section>`:''}
+    <section class="card tfq"><div class="qh"><span class="chip2" id="tfc">Odpowiedziano 0/${N}</span>${ex.p?'<span class="chip2">👁 Podgląd</span>':''}</div><div class="qbar"><i id="tfb" style="width:0%"></i></div>
+    ${ST.map((x,i)=>`<div class="tfs" data-i="${i}"><div class="tfh"><span class="tfn">${i+1}</span><span>${big(esc(x[0]))}</span></div><div class="tfbt"><button type="button" class="tfa t" data-i="${i}" data-x="1">✔ Prawda</button><button type="button" class="tfa f" data-i="${i}" data-x="0">✘ Fałsz</button></div><div class="tfcr"></div></div>`).join('')}
+    <div class="row" style="justify-content:center"><button class="btn p" id="tfck" style="font-size:16px;padding:12px 26px">✅ Sprawdź</button></div><div id="tffb"></div></section></div>`;
+    const cnt=()=>{const n=ans.filter(x=>x!==null).length;$('#tfc').textContent='Odpowiedziano '+n+'/'+N;$('#tfb').style.width=(N?n/N*100:0)+'%'};
+    box.onclick=ev=>{const z=ev.target.closest('[data-zoom]');if(z){z.classList.toggle('zoom');return}if(locked)return;const b=ev.target.closest('.tfa');if(!b)return;const i=+b.dataset.i;ans[i]=+b.dataset.x;
+      const r=b.closest('.tfs');r.classList.remove('need');r.querySelectorAll('.tfa').forEach(x=>x.classList.toggle('on',x===b));beep('tap');cnt()};
+    $('#tfck').onclick=()=>{const miss=ans.map((a,i)=>a===null?i:-1).filter(i=>i>=0);
+      if(miss.length){miss.forEach(i=>{const r=box.querySelector(`.tfs[data-i="${i}"]`);r.classList.remove('need');void r.offsetWidth;r.classList.add('need')});box.querySelector(`.tfs[data-i="${miss[0]}"]`).scrollIntoView({block:'center',behavior:'smooth'});toast('⚠️ Odpowiedz na wszystkie zdania.');return}
+      if(!ex.p&&!ex.mo&&!confirm('Możesz sprawdzić odpowiedzi tylko jeden raz. Czy na pewno chcesz sprawdzić?'))return;
+      locked=true;let sc=0;const log=ST.map((x,i)=>{const ok=ans[i]===+x[1];if(ok)sc++;const r=box.querySelector(`.tfs[data-i="${i}"]`);r.classList.add(ok?'good':'bad');
+        r.querySelectorAll('.tfa').forEach(b=>{b.disabled=true;if(!b.classList.contains('on'))b.classList.add('dim')});r.querySelector('.tfcr').textContent=ok?'✔ Dobrze!':'✘ Poprawnie: '+L(+x[1]);return [ans[i]===1?'P':'F',ok?1:0,i]});
+      $('#tfck').style.display='none';
+      $('#tffb').innerHTML=`<div class="fbk ${sc===N?'ok':sc?'info':'no'}">${sc===N?'🏆 Wszystko dobrze!':'Dobrze: '+sc+' z '+N+'.'}</div><div class="row" style="justify-content:center"><button class="btn p" id="tfnx">Zobacz wynik 🏆</button></div>`;
+      beep(sc===N?'ok':'bad');if(sc===N)confetti(TE(),14);$('#tfnx').onclick=()=>exFinish(ex,'tf',name,sc,N,log,show)}}
+  if(!N){box.innerHTML='<section class="card">To ćwiczenie nie ma jeszcze zdań.</section>';return}
+  if(saved&&saved.tf)show(saved.name,saved.score,saved.log||[],saved.code,'To ćwiczenie zostało już rozwiązane. Oto twój wynik.');
+  else if(ex.p)board('Podgląd');
+  else exIntro(ex,box,'⚖️ '+N+' zdań','Masz tylko jedną próbę. Przy każdym zdaniu wybierz „Prawda” albo „Fałsz”.',(nm,mine)=>{if(mine)show(mine.n,+mine.c||0,mine.a?Object.values(mine.a):[],'','Ta osoba już rozwiązała to ćwiczenie. To wynik z pierwszej próby.');else board(nm)})}
+
+/* ---------- v12: wybór motywu po zakupie ---------- */
+window.__themeIntro=uid=>{const k='fw_thi_'+(uid||'');try{if(S.thIntro||localStorage.getItem(k))return}catch(e){}if(!window.__thGrid||document.getElementById('thi'))return;
+  const m=document.createElement('div');m.className='mo';m.id='thi';
+  const fill=()=>{m.innerHTML=`<div class="mob thib"><div style="font-size:44px">🎨</div><h2>Wybierz motyw panelu</h2><div class="hint" style="margin:0">Dziękujemy za zakup! Wybierz wygląd, który najbardziej Ci odpowiada.<br>Motyw możesz zawsze zmienić w <b>⚙️ Ustawieniach</b>.</div><div class="thg">${window.__thGrid()}</div><div class="row" style="justify-content:center"><button class="btn p" id="thok" style="padding:12px 28px">Gotowe ✓</button></div></div>`};
+  fill();document.body.appendChild(m);
+  const done=()=>{try{localStorage.setItem(k,'1')}catch(e){}S.thIntro=1;save();m.remove()};
+  m.onclick=ev=>{const b=ev.target.closest('.tho[data-th]');if(b&&window.__applyTheme){window.__applyTheme(b.dataset.th);fill();return}if(ev.target.closest('#thok')||ev.target===m)done()}};
+
 /* ---------- START ---------- */
 async function init(){
   const m=location.hash.match(/^#u=(.+)$/);
@@ -1287,7 +1632,7 @@ const I18_EX=[['Sprawdź ➜','Check ➜'],['Dalej ➜','Next ➜'],['Start ➜'
 const I18_SB=[
 ['Uzupełnij luki i kliknij „Sprawdź”. Masz tylko jedną próbę!','Fill in the gaps and click “Check”. You have only one attempt!'],
 ['Możesz sprawdzić odpowiedzi tylko jeden raz. Czy na pewno chcesz sprawdzić?','You can check your answers only once. Are you sure you want to check?'],
-['Kliknij słowo, a potem lukę, albo wpisz odpowiedź ręcznie. Włącz skreślanie, żeby ręcznie zaznaczać słowa, które już zrobiłeś (na komputerze działa też prawy przycisk myszy).','Click a word, then a gap, or type the answer yourself. Turn on strike-through to cross out words you have already used (on a computer the right mouse button works too).'],
+['Kliknij słowo, a potem lukę, albo wpisz odpowiedź ręcznie. Włącz skreślanie, żeby ręcznie skreślać albo przywracać słowa (na komputerze działa też prawy przycisk myszy).','Click a word, then a gap, or type the answer yourself. Turn on strike-through to cross out or bring back words yourself (on a computer the right mouse button works too).'],
 ['Kliknij słowo, żeby wstawić je do luki. Skreślanie działa tak samo jak w banku.','Click a word to put it into a gap. Strike-through works just like in the word bank.'],
 ['✏️ Skreślanie słów: ','✏️ Strike-through: '],['włączone, klikaj słowa','on, click words'],
 ['Zielone luki są poprawne, czerwone błędne. To była jedyna próba.','Green gaps are correct, red ones are wrong. That was your only attempt.'],
@@ -1344,7 +1689,7 @@ const I18_PN=[['Panel nauczyciela','Teacher panel'],['Twórz ćwiczenia z lukami
 ['Pytanie ','Question '],['Treść pytania','Question text'],['💬 Dialog do pytania (opcjonalnie)','💬 Dialogue for the question (optional)'],['🖼 Zdjęcie do pytania','🖼 Image for the question'],['Rodzaj pytania','Question type'],['🔘 Wybór odpowiedzi','🔘 Multiple choice'],['⌨️ Wpisz odpowiedź (oceniane)','⌨️ Type the answer (graded)'],['✍️ Odpowiedź własna (bez punktów)','✍️ Free answer (no points)'],['🔗 Dopasowywanie','🔗 Matching'],['Odpowiedzi. Zaznacz ✓ przy poprawnych','Answers. Tick ✓ the correct ones'],['+ Dodaj odpowiedź','+ Add answer'],['+ Dodaj parę','+ Add pair'],['+ Dodaj pytanie','+ Add question'],['+ Dodaj słówko','+ Add word'],['+ Dodaj hasło','+ Add word'],['Bonus za szybkość','Speed bonus'],['Odpowiedź ','Answer '],['poprawna','correct'],['Pasuje do','Matches'],['Lewa ','Left '],
 ['📚 Słówka (angielski ↔ polski)','📚 Words (English ↔ Polish)'],['➕ Dodaj z listy','➕ Add from list'],['📇 Fiszki','📇 Flashcards'],['🧠 Ucz się','🧠 Learn'],['🇵🇱→🇬🇧 polski → angielski','🇵🇱→🇬🇧 Polish → English'],['🇬🇧→🇵🇱 angielski → polski','🇬🇧→🇵🇱 English → Polish'],['🔀 mieszane','🔀 mixed'],['wymieszaj fiszki','shuffle flashcards'],
 ['🧩 Hasła: pytanie lub zdjęcie → odpowiedź','🧩 Words: question or image → answer'],['🖼 Tło krzyżówki (opcjonalnie)','🖼 Crossword background (optional)'],['🖼 Zdjęcie','🖼 Image'],['🧩 Układ (widok nauczyciela z literami)','🧩 Layout (teacher view with letters)'],['pozwól na podpowiedzi (litera)','allow hints (letter)'],['Wymiary: ','Size: '],['🔀 Mieszaj','🔀 Shuffle'],
-['Wybierz ćwiczenie','Choose an exercise'],['Pusto. Dodaj ćwiczenie poniżej.','Empty. Add an exercise below.'],[' luk',' gaps'],[' pytań',' questions'],[' słówek',' words'],[' haseł',' words'],['Wklej listę','Paste a list'],['Wklej tutaj tekst...','Paste the text here...'],['Wklej tutaj kod wyniku przesłany przez ucznia','Paste the result code sent by the student here'],['Motyw Halloween: włącz lub wyłącz','Halloween theme: on/off']];
+['Wybierz ćwiczenie','Choose an exercise'],['Pusto. Dodaj ćwiczenie przyciskiem „➕ Nowe ćwiczenie”.','Empty. Add an exercise below.'],[' luk',' gaps'],[' pytań',' questions'],[' słówek',' words'],[' haseł',' words'],['Wklej listę','Paste a list'],['Wklej tutaj tekst...','Paste the text here...'],['Wklej tutaj kod wyniku przesłany przez ucznia','Paste the result code sent by the student here'],['Motyw Halloween: włącz lub wyłącz','Halloween theme: on/off']];
 const I18_PN2=[['💬 Dialogi','💬 Dialogues'],['🔤 Zdania','🔤 Sentences'],['Nowy dialog','New dialogue'],['Uzupełnij dialog.','Complete the dialogue.'],['Układanie zdań','Sentence order'],['Ułóż słowa w odpowiedniej kolejności.','Put the words in the correct order.'],
 ['Dialog: każda linia w formacie Imię: tekst. Zaznacz słowo i kliknij „Zrób lukę”','Dialogue: each line in the format Name: text. Select a word and click “Make a gap from selection”'],
 ['🔤 Zdania do ułożenia','🔤 Sentences to arrange'],['Poprawne zdanie, np. I went to school yesterday.','Correct sentence, e.g. I went to school yesterday.'],['Podpowiedź dla ucznia (opcjonalnie), np. tłumaczenie po polsku','Hint for the student (optional), e.g. the Polish translation'],['+ Dodaj zdanie','+ Add sentence'],['Wklej listę (jedno zdanie w linii)','Paste a list (one sentence per line)'],['Usuń ćwiczenie','Delete exercise'],['Usunąć to ćwiczenie?','Delete this exercise?'],
@@ -1370,6 +1715,14 @@ const I18_PN2=[['💬 Dialogi','💬 Dialogues'],['🔤 Zdania','🔤 Sentences'
 const I18_PX=[[/^Zdanie (\d+)\/(\d+)$/,'Sentence $1/$2'],[/^(.*), zdania: (\d+) z (\d+) \((\d+)%\)$/,'$1, sentences: $2 of $3 ($4%)'],[/^🔤 (\d+) zdań$/,'🔤 $1 sentences'],[/^(\d+) zdań$/,'$1 sentences'],[/^✘ Niestety źle\. Poprawnie: (.*)$/,'✘ Unfortunately wrong. Correct: $1'],[/^(\d+) luk$/,'$1 gaps'],[/^(\d+) pytań$/,'$1 questions'],[/^(\d+) słówek$/,'$1 words'],[/^(\d+) haseł$/,'$1 words'],[/^📊 Wyniki \((\d+)\)$/,'📊 Results ($1)'],[/^Pytanie (\d+): (.*)$/,'Question $1: $2'],[/^✅ Poprawne odpowiedzi \((\d+) luk\)$/,'✅ Correct answers ($1 gaps)'],[/^Luka (\d+)$/,'Gap $1'],[/^Odpowiedź (\d+)$/,'Answer $1'],[/^Lewa (\d+)$/,'Left $1'],[/^Prawa (\d+)$/,'Right $1'],[/^Wymiary: (\d+×\d+), umieszczone hasła: (\d+\/\d+)$/,'Size: $1, placed words: $2'],[/^Nie udało się wpisać w układ: (.*)$/,'Could not fit into the layout: $1']];
 const I18_RX=[[/(\d+) z (\d+)/g,'$1 of $2']];
 const I18_MO=[['Masz tylko jedną próbę!','Możesz próbować wiele razy.'],['Masz tylko jedną próbę. ','Możesz próbować wiele razy. '],['Masz tylko jedną próbę.','Możesz próbować wiele razy.'],[' (tylko raz)',''],['To była jedyna próba.','Możesz spróbować ponownie.'],['Masz jedną próbę, ale możesz poprawiać litery do zakończenia.','Możesz próbować wiele razy.']];
+I18_SB.push(['Masz tylko jedną próbę. Przeciągnij każdą odpowiedź do pasującego elementu.','You have only one attempt. Drag each answer to the matching item.'],['Możesz próbować wiele razy. Przeciągnij każdą odpowiedź do pasującego elementu.','You can try as many times as you like. Drag each answer to the matching item.'],
+['Masz tylko jedną próbę. Przy każdym zdaniu wybierz „Prawda” albo „Fałsz”.','You have only one attempt. For each sentence choose “True” or “False”.'],['Możesz próbować wiele razy. Przy każdym zdaniu wybierz „Prawda” albo „Fałsz”.','You can try as many times as you like. For each sentence choose “True” or “False”.'],
+['⚠️ Dopasuj wszystkie pary, zanim sprawdzisz.','⚠️ Match all the pairs before you check.'],['⚠️ Odpowiedz na wszystkie zdania.','⚠️ Answer all the sentences.'],['To ćwiczenie nie ma jeszcze par.','This exercise has no pairs yet.'],
+['To ćwiczenie zostało już rozwiązane. Oto twój wynik.','This exercise has already been completed. Here is your result.'],['Ta osoba już rozwiązała to ćwiczenie. To wynik z pierwszej próby.','This person has already completed this exercise. This is the result of the first attempt.'],
+['📖 Przeczytaj uważnie','📖 Read carefully'],['🖼 Przyjrzyj się obrazkowi','🖼 Look at the picture'],['Upuść tutaj','Drop here'],['Odpowiedzi','Answers'],['🏆 Wszystko dobrze!','🏆 All correct!'],['Zobacz wynik 🏆','See your score 🏆'],
+['✔ Prawda','✔ True'],['✘ Fałsz','✘ False'],['✔ Dobrze!','✔ Correct!'],['Dopasuj pary','Match the pairs'],['Prawda czy fałsz?','True or false?']);
+I18_PX.push([/^🔗 Dopasowano (\d+)\/(\d+)$/,'🔗 Matched $1/$2'],[/^Odpowiedziano (\d+)\/(\d+)$/,'Answered $1/$2'],[/^(.*), wynik: (\d+) z (\d+) \((\d+)%\)$/,'$1, score: $2 of $3 ($4%)'],[/^🔗 (\d+) par$/,'🔗 $1 pairs'],[/^⚖️ (\d+) zdań$/,'⚖️ $1 sentences'],
+[/^✘ Poprawnie: Prawda$/,'✘ Correct: True'],[/^✘ Poprawnie: Fałsz$/,'✘ Correct: False'],[/^Dobrze: (\d+) z (\d+)\.(.*)$/,'Correct: $1 of $2.'],[/^🔗 Dopasuj pary(.*)$/,'🔗 Match the pairs$1'],[/^⚖️ Prawda czy fałsz(.*)$/,'⚖️ True or false$1']);
 let __i18=null;
 function i18nInit(ex,panel){
   if(__i18){if(ex&&ex.p&&__i18.setPrev)__i18.setPrev(true);return}
