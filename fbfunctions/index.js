@@ -14,8 +14,8 @@ const STRIPE_WH = defineSecret("STRIPE_WEBHOOK_SECRET");
 const ADMIN_EMAIL = "wkwebstudio@gmail.com";
 const PRICES = {
   monthly: "price_1UZc31R3KgPkCvZg9866e63N",
-  quarterly: "price_1UZc5jR3KgPkCvZgKofUYMk1",
-  yearly: "price_1UZc5TR3KgPkCvZgJxU7yCGI",
+  quarterly: "price_1UZc5TR3KgPkCvZgJxU7yCGI",
+  yearly: "price_1UZc5jR3KgPkCvZgKofUYMk1",
 };
 const PLAN_BY_PRICE = Object.fromEntries(Object.entries(PRICES).map(([k, v]) => [v, k]));
  
