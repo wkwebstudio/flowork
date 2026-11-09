@@ -40,3 +40,4 @@ input:focus{outline:none;border-color:var(--acc);box-shadow:0 0 0 4px color-mix(
 .plan .tag{display:inline-block;font-size:11px;font-weight:800;color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,transparent);padding:2px 8px;border-radius:99px;margin-left:6px}
 .foot{text-align:center;color:var(--mut);font-size:13px;padding:18px}
 [hidden]{display:none!important}
+.logo .lgi{width:36px;height:36px;object-fit:contain;flex:none}@media(prefers-color-scheme:dark){.logo .lgi{background:#fff;border-radius:10px;padding:3px}}
