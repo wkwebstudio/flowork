@@ -296,7 +296,7 @@ html[data-th="bk"] .btn.g{color:#fff}
 body.smopen .ground,body.smopen .fx,body.smopen #lng{visibility:hidden}
 .dt:has(#fbu){display:none!important}
 </style>
-</head>
+<link rel="icon" type="image/png" href="/favicon.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"></head>
 <body>
 <div class="fx" id="fx"></div><div class="wrap" id="app"></div><div class="ground" id="gr"></div><button class="btn tg" id="tg" title="Zmień motyw">🎃</button>
 <script>
@@ -461,7 +461,7 @@ function teacher(){if(window.__mp){window.__mp.stop();window.__mp=null}const cwx
   <div class="smo" id="smo" ${setOpen?'':'hidden'}><div class="smb"><div class="smh"><b>⚙️ Ustawienia</b><button class="btn" id="smx">✕</button></div>
   <div class="dt"><h3>🎨 Motywy</h3><div class="thg" id="thgrid"></div></div>
     <div class="dt"><h3>⚙️ Baza online</h3><div class="hint">Daje krótkie linki i automatyczne wyniki uczniów. Wklej adres swojej bazy Firebase.</div><input type="text" id="fbu" placeholder="mojprojekt-default-rtdb.firebaseio.com" value="${esc(S.fb||"")}" style="margin-top:8px"><input type="text" id="fbc" placeholder="Kod panelu (hasło), min. 6 znaków" value="${esc(pcode)}" style="margin-top:8px"><div class="hint">Ten sam adres bazy i ten sam kod wpisz na drugim urządzeniu (telefon, komputer), a zobaczysz tam ten sam panel.${cloudErr?` <span style="color:var(--bad)">Synchronizacja: ${esc(cloudErr)}</span>`:""}</div><div class="row"><button class="btn p" id="fbs">Zapisz i połącz</button><button class="btn" id="fbp">↻ Pobierz z chmury</button></div><div class="msg" id="fbm" style="display:block;margin:6px 0 0"></div></div>
-    <div class="dt"><h3>🔔 Powiadomienia e-mail</h3><div class="hint">Gdy uczeń skończy ćwiczenie, dostaniesz e-mail (darmowy serwis Web3Forms).</div><input type="text" id="ntw" placeholder="Klucz Web3Forms" value="${esc(S.w3||"")}" style="margin-top:8px"><div class="hint">Wejdź na https://web3forms.com, wpisz swój e-mail w „Create your Access Key”, klucz przyjdzie na maila. Wklej go powyżej.</div><div class="row"><button class="btn p" id="nts">Zapisz</button><button class="btn" id="ntx">📨 Wyślij próbny e-mail</button><button class="btn" id="ntb">🔔 W przeglądarce</button></div><div class="msg" id="ntm" style="display:block;margin:6px 0 0"></div><div class="hint">Po zapisaniu użyj „Zaktualizuj link” przy ćwiczeniach, bo klucz trafia do linku. „W przeglądarce” pokazuje też dymek, gdy masz otwarty panel.</div></div>
+    <div class="dt"><h3>🔔 Powiadomienia e-mail</h3><div class="hint">Gdy uczeń skończy ćwiczenie, dostaniesz e-mail na adres swojego konta. Nic nie trzeba wpisywać.</div><div class="row" style="margin-top:8px"><button class="btn p" id="ntf">…</button></div><div class="msg" id="ntm" style="display:block;margin:6px 0 0"></div></div>
   </div></div>
   <div class="main">${crumbs()}${e?editor(e):`<div class="card"><div class="empty">Wybierz ćwiczenie z listy albo dodaj nowe przyciskami po lewej. Foldery możesz zagnieżdżać i przeciągać do nich ćwiczenia.</div></div>`}</div></div>`;
   const bindList=()=>{
@@ -485,11 +485,7 @@ function teacher(){if(window.__mp){window.__mp.stop();window.__mp=null}const cwx
   $("#addS").onclick=()=>{const x={id:uid(),kind:"so",folder:curF==="all"?"":curF,title:"Układanie zdań",inst:"Ułóż słowa w odpowiedniej kolejności.",so:[{s:"I went to school yesterday.",h:"Wczoraj poszedłem do szkoły."},{s:"She is reading a very interesting book.",h:""},{s:"We did not go to the party.",h:""}],created:new Date().toISOString()};S.ex.unshift(x);curE=x.id;tab="edit";save();teacher()};
   $("#addQ").onclick=()=>{const x={id:uid(),kind:"quiz",folder:curF==="all"?"":curF,title:"Nowy quiz",inst:"Wybierz poprawną odpowiedź, zanim minie czas!",qs:[],dT:20,dP:100,dB:50,created:new Date().toISOString()};S.ex.unshift(x);curE=x.id;tab="edit";save();teacher()};
   const ntm=(t,c)=>{const m=$("#ntm");if(m){m.style.color=c||"var(--mut)";m.textContent=t}};
-  $("#nts").onclick=()=>{const k=$("#ntw").value.trim();if(k&&!/^[\w-]{20,}$/.test(k)){ntm("Klucz wygląda na niepełny. Skopiuj go w całości z maila.","var(--bad)");return}
-    S.w3=k;delete S.nt;delete S.ne;save();ntm(k?"Zapisano. Użyj „Zaktualizuj link” przy ćwiczeniach, żeby e-maile zaczęły działać.":"Powiadomienia e-mail wyłączone.","var(--green)")};
-  $("#ntx").onclick=async()=>{const k=$("#ntw").value.trim();if(!k){ntm("Najpierw wklej klucz Web3Forms.","var(--bad)");return}ntm("Wysyłam…");
-    try{const r=await w3Send(k,"Próbne powiadomienie z panelu","To jest próbna wiadomość z panelu nauczyciela.");const j=await r.json().catch(()=>({}));ntm(j.success?"Wysłano. Sprawdź skrzynkę (także spam).":"Błąd: "+(j.message||r.status),j.success?"var(--green)":"var(--bad)")}catch(x){ntm("Błąd ("+((x&&x.message)||x)+")","var(--bad)")}};
-  $("#ntb").onclick=async()=>{if(!window.Notification){ntm("Ta przeglądarka nie obsługuje powiadomień.","var(--bad)");return}const pm=await Notification.requestPermission();ntm(pm==="granted"?"Włączono. Gdy panel jest otwarty, pokaże powiadomienie o nowym wyniku.":"Zablokowano w ustawieniach przeglądarki.",pm==="granted"?"var(--green)":"var(--bad)")};
+  {const b=$("#ntf");if(b){const dr=()=>{const on=window.__NT?window.__NT.get():true;b.textContent=on?"🔔 Włączone – kliknij, aby wyłączyć":"🔕 Wyłączone – kliknij, aby włączyć"};dr();b.onclick=async()=>{try{await window.__NT.set(!window.__NT.get());dr();ntm(window.__NT.get()?"Powiadomienia włączone.":"Powiadomienia wyłączone.","var(--green)")}catch(x){ntm("Nie udało się zapisać ustawienia.","var(--bad)")}}}}
   const fbm=(t,c)=>{const m=$("#fbm");if(m){m.style.color=c||"var(--mut)";m.textContent=t}};
   $("#fbs").onclick=async()=>{const h=fbHost($("#fbu").value);const code=$("#fbc").value.trim();
     if(!h){S.fb="";save();fbm("Wyłączono. Linki będą długie.");return}
