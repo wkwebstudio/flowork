@@ -152,12 +152,13 @@ footer a:hover{color:var(--ink)}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(30px);background:var(--ink);color:var(--bg);padding:12px 20px;border-radius:99px;font-weight:600;font-size:14px;opacity:0;pointer-events:none;transition:.3s;z-index:99;max-width:90vw;text-align:center}
 .toast.on{opacity:1;transform:translateX(-50%)}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+.logo .lgi{width:36px;height:36px;object-fit:contain;flex:none}@media(prefers-color-scheme:dark){.logo .lgi{background:#fff;border-radius:10px;padding:3px}}
 </style>
-</head>
+<link rel="icon" type="image/png" href="/favicon.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"></head>
 <body>
 
 <nav><div class="w">
-  <a href="#" class="logo"><i>F</i>Flowork</a>
+  <a href="#" class="logo"><img class="lgi" src="/logo.png" alt="">Flowork</a>
   <div class="lk"><a href="#funkcje">Funkcje</a><a href="#cennik">Cennik</a><a href="#wideo">Wideo</a><a href="#faq">FAQ</a><a href="#kontakt">Kontakt</a></div>
   <div class="ac"><a class="btn g sm" href="/logowanie.html" data-act="login">Zaloguj się</a><a class="btn p sm" href="#cennik" data-act="trial">Wypróbuj 3 h</a></div>
 </div></nav>
