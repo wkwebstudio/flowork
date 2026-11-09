@@ -18,7 +18,10 @@ table{width:100%;border-collapse:collapse;font-size:14px;min-width:760px}th,td{p
 .gb{padding:5px 10px;border-radius:99px;border:1.5px solid var(--line);background:none;color:var(--ink);font:700 12px 'Plus Jakarta Sans',sans-serif;cursor:pointer;margin-right:4px}.gb:hover{border-color:var(--acc)}.gb:disabled{opacity:.5}
 .empty{padding:30px;text-align:center;color:var(--mut)}
 </style><link rel="icon" type="image/png" href="/favicon.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"></head><body>
-<div class="top"><a class="logo" href="/"><img class="lgi" src="/logo.png" alt="">Flowork · Admin</a><div class="fl"><a class="btn g" style="padding:9px 16px" href="https://dashboard.stripe.com/payments" target="_blank" rel="noopener">Płatności w Stripe ↗</a><button class="btn g" style="padding:9px 16px" id="lo">Wyloguj</button></div></div>
+<main id="lgv" hidden style="min-height:90vh;display:grid;place-items:center;padding:16px"><div class="box"><h1>Panel admina</h1><p class="sub">Zaloguj się kontem administratora.</p>
+<form id="lgf"><label>E-mail<input type="email" id="le" required autocomplete="username"></label><label>Hasło<input type="password" id="lp" required autocomplete="current-password"></label><div class="msg err" id="lerr"></div><button class="btn full" id="lgo">Zaloguj</button></form>
+<p class="alt"><a href="/">← Strona główna</a></p></div></main>
+<div id="adm" hidden><div class="top"><a class="logo" href="/"><img class="lgi" src="/logo.png" alt="">Flowork · Admin</a><div class="fl"><a class="btn g" style="padding:9px 16px" href="https://dashboard.stripe.com/payments" target="_blank" rel="noopener">Płatności w Stripe ↗</a><button class="btn g" style="padding:9px 16px" id="lo">Wyloguj</button></div></div>
 <div class="wrap">
  <div class="msg" id="er"></div>
  <div class="kp" id="kp"></div>
@@ -26,8 +29,9 @@ table{width:100%;border-collapse:collapse;font-size:14px;min-width:760px}th,td{p
   <button data-f="all" class="on">Wszyscy</button><button data-f="paid">Płacący</button><button data-f="trial">Próba</button><button data-f="exp">Wygasłe</button></div></div>
  <div class="tw"><table><thead><tr><th>Klient</th><th>E-mail</th><th>Założono</th><th>Status</th><th>Plan</th><th>Dostęp do</th><th>Dni dostępu</th></tr></thead><tbody id="tb"><tr><td colspan="7" class="empty">Ładowanie…</td></tr></tbody></table></div>
 </div>
+</div>
 <script type="module">
-import {auth,db,onAuthStateChanged,signOut,collection,getDocs,accessState,callFn,errMsg} from "/fb.js";
+import {auth,db,onAuthStateChanged,signOut,signInWithEmailAndPassword,collection,getDocs,accessState,callFn,errMsg} from "/fb.js";
 const $=s=>document.querySelector(s),ADMIN='wkwebstudio@gmail.com';
 const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const dt=ms=>ms?new Date(ms).toLocaleString('pl-PL',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}):'—';
@@ -63,8 +67,11 @@ $('#tb').onclick=async e=>{
   b.disabled=true;
   try{await callFn('adminGrant',{uid:b.dataset.u,days:d});await load()}catch(x){err((x&&x.message)||errMsg(x));b.disabled=false}
 };
+document.getElementById('lgf').onsubmit=async e=>{e.preventDefault();const m=document.getElementById('lerr'),b=document.getElementById('lgo');m.classList.remove('on');b.disabled=true;
+  try{await signInWithEmailAndPassword(auth,document.getElementById('le').value.trim(),document.getElementById('lp').value)}catch(x){m.textContent=errMsg(x);m.classList.add('on')}b.disabled=false};
 onAuthStateChanged(auth,u=>{
-  if(!u){location.replace('/logowanie.html');return}
+  if(!u){document.getElementById('lgv').hidden=false;document.getElementById('adm').hidden=true;return}
+  document.getElementById('lgv').hidden=true;document.getElementById('adm').hidden=false;
   if(!u.emailVerified||u.email!==ADMIN){document.body.innerHTML='<main style="min-height:80vh;display:grid;place-items:center;font:600 16px sans-serif;padding:20px;text-align:center">Brak dostępu. <a href="/konto.html" style="margin-left:8px">Wróć do konta</a></main>';return}
   load();
 });
