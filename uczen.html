@@ -6,6 +6,7 @@
 <title>Ćwiczenie – Flowork</title><meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style id="icf">@font-face{font-family:'Poppins';src:url('/fwicons.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap;unicode-range:U+2194,U+21A9,U+2328,U+23F0-23F1,U+23F3,U+23F9,U+25B6,U+2615,U+2696,U+2699,U+26A0-26A1,U+26AA,U+26BD,U+2702,U+2705,U+2708,U+270D,U+270F,U+2714,U+2728,U+2744,U+2753,U+2764,U+2795,U+2B06-2B07,U+2B1B-2B1C,U+2B50,U+1F195,U+1F305,U+1F30A,U+1F30D,U+1F310,U+1F315,U+1F31E-1F31F,U+1F327,U+1F333,U+1F338-1F339,U+1F33F,U+1F34E,U+1F354-1F355,U+1F366,U+1F36C,U+1F383,U+1F386-1F387,U+1F389-1F38A,U+1F393,U+1F396,U+1F3A8,U+1F3AC,U+1F3AF,U+1F3B5,U+1F3BE,U+1F3C0-1F3C1,U+1F3C6,U+1F3DB,U+1F3E0,U+1F431,U+1F436,U+1F441,U+1F446,U+1F44D,U+1F44F,U+1F464,U+1F47B,U+1F480,U+1F49C,U+1F4A1,U+1F4AA,U+1F4AC,U+1F4B0,U+1F4BB,U+1F4BE,U+1F4C1-1F4C2,U+1F4C4,U+1F4C7,U+1F4CA-1F4CC,U+1F4CE,U+1F4D0,U+1F4D6,U+1F4DA,U+1F4DD,U+1F4E5,U+1F4E8,U+1F4ED,U+1F4F1,U+1F500-1F501,U+1F504,U+1F507,U+1F50A,U+1F50D,U+1F511-1F512,U+1F514-1F515,U+1F517-1F518,U+1F524-1F525,U+1F52E,U+1F54A,U+1F552,U+1F56F,U+1F575,U+1F577-1F578,U+1F58C,U+1F5BC,U+1F5C2,U+1F5D1,U+1F600-1F602,U+1F622,U+1F631,U+1F697,U+1F6D2,U+1F90D,U+1F941,U+1F947-1F949,U+1F95B,U+1F969,U+1F981,U+1F985,U+1F987,U+1F989,U+1F9B4,U+1F9C0,U+1F9D9,U+1F9DB,U+1F9DF-1F9E0,U+1F9E9,U+1F9F9,U+1FAA6}</style>
 <style>
 :root{--purple:#7758e8;--pink:#ff6b9d;--green:#20b486;--bg:#f6f4ff;--card:#fff;--ink:#302d4a;--mut:#8b86a4;--line:#ebe7fb;--soft:#f4f0ff;--ok-bg:#e5fff5;--ok:#087c5a;--bad-bg:#fff0f4;--bad:#ce4264;--field:#faf9ff;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -429,6 +430,121 @@ html[data-th="bk"] .scp.mid,html[data-th="oc"] .scp.mid,html[data-th="fi"] .scp.
 .pg>.side,.pg>.side2,.pg>.main{position:relative;z-index:3}
 @media(min-width:1281px){.pg>.side,.pg>.side2{position:sticky}}
 .pg .card::before,.pg .card::after{display:none!important}
+/* v13: pulpit z ikonami, test, ustawienia, ikony */
+html.plain .hem{display:none}
+html.nodeco .spd,html.nodeco .hl,html.nodeco .hr,html.nodeco .fx,html.nodeco .ground,html.nodeco .hem,html.nodeco .card::before,html.nodeco .card::after{display:none!important}
+html.bigtxt #app{zoom:1.14}
+/* kolorowe emoji tylko w ozdobach motywu */
+@font-face{font-family:'FwColor';src:local('Apple Color Emoji'),local('Segoe UI Emoji'),local('Noto Color Emoji'),local('Twemoji Mozilla');unicode-range:U+1F000-1FAFF,U+2600-27BF,U+2B00-2BFF,U+2300-23FF,U+FE0F,U+200D}
+.fx,.ground,.spd,.hl,.hr,.hem,.cf,.thc,.tg,.em,#et,#eg{font-family:'FwColor','Poppins',system-ui,sans-serif}
+/* fiszki pionowe */
+.fc{width:min(350px,84vw);height:min(500px,62vh)}
+.fct{font-size:clamp(28px,7vw,44px)}
+.fcf,.fcb{padding:26px 22px}
+/* układ: menu + obszar roboczy */
+.grid.pg{grid-template-columns:292px minmax(0,1fr);grid-template-areas:"a c";grid-template-rows:auto}
+@media(max-width:1280px){.grid.pg{grid-template-columns:270px minmax(0,1fr);grid-template-areas:"a c"}}
+@media(max-width:860px){.grid.pg{grid-template-columns:1fr;grid-template-areas:"a" "c"}}
+@media(min-width:861px){.pg>.side{position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto;scrollbar-width:thin}}
+.nwg{grid-template-columns:repeat(3,minmax(0,1fr))}
+.nwb span:last-child{font-size:10.5px}
+.snav{display:flex;flex-direction:column;gap:8px}
+.rvnav{padding:10px 12px;font-size:13.5px;border-radius:16px}
+.rvnav .tpi{width:32px;height:32px;font-size:17px;border-radius:10px}
+.rcl h2{font-size:13px;margin:0 0 8px;color:var(--mut);text-transform:uppercase;letter-spacing:.05em}
+.rci{display:flex;align-items:center;gap:8px;width:100%;padding:7px 8px;border:0;border-radius:10px;background:none;color:var(--ink);font:600 12.5px 'Poppins',sans-serif;cursor:pointer;text-align:left}
+.rci:hover{background:var(--soft)}.rci span:first-child{width:24px;height:24px;flex:none;display:grid;place-items:center;border-radius:8px;background:color-mix(in srgb,var(--tc) 16%,transparent);color:var(--tc);font-size:13px}
+.rci b{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600}
+.hm{display:grid;grid-template-columns:minmax(0,1fr) 390px;gap:16px;align-items:start}
+@media(max-width:1380px){.hm{grid-template-columns:1fr}}
+.hm .card{margin-top:0}
+/* pulpit */
+.exh{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.excr{display:flex;align-items:center;gap:4px;flex-wrap:wrap;font-weight:800;font-size:17px}
+.excr a{padding:5px 10px;border-radius:10px;cursor:pointer;color:var(--mut);border:1.5px solid transparent}
+.excr a:hover,.excr a.dropOn2{background:var(--soft);color:var(--ink);border-color:var(--line)}
+.excr a.cur{color:var(--ink)}.excr i{color:var(--mut);font-style:normal;font-weight:500}
+.exa{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:8px 0 14px}
+.exa .srch{flex:1;min-width:170px;margin:0}
+.exa select{padding:9px 10px;border-radius:12px;border:2px solid var(--line);background:var(--field);color:var(--ink);font:600 13px 'Poppins',sans-serif}
+.exg{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:8px;min-height:140px;align-content:start}
+.dk{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 8px 10px;border-radius:16px;border:1.5px solid transparent;cursor:pointer;text-align:center;transition:background .15s,border-color .15s,transform .15s;min-width:0;user-select:none}
+.dk:hover{background:var(--soft);border-color:var(--line);transform:translateY(-2px)}
+.dk.on{border-color:var(--purple);background:color-mix(in srgb,var(--purple) 10%,transparent)}
+.dk.dropOn2{border-color:var(--purple);border-style:dashed;background:color-mix(in srgb,var(--purple) 14%,transparent)}
+.dk b{font-size:12.5px;font-weight:700;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere;max-width:100%}
+.dk small{font-size:10.5px;color:var(--mut);line-height:1.2}
+.dk svg{width:66px;height:54px;filter:drop-shadow(0 4px 6px #0002)}
+.dki{width:58px;height:58px;display:grid;place-items:center;font-size:28px;border-radius:16px;color:var(--tc);background:color-mix(in srgb,var(--tc) 15%,var(--card));box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--tc) 38%,transparent),0 4px 8px #0001}
+.dk.up .dki{--tc:var(--mut);font-size:24px}
+.exe{grid-column:1/-1;text-align:center;color:var(--mut);padding:30px 10px;font-size:14px}
+.exe div{font-size:44px;margin-bottom:6px;opacity:.7}
+.rvmh{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}.rvmh h2{margin:0;font-size:16px}
+/* ustawienia */
+.smb{width:min(760px,96vw)}
+.sgt{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin:20px 2px 8px}
+.srow{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:11px 0;border-top:1px solid var(--line)}
+.srow:first-of-type{border-top:0}
+.srow>div:first-child{min-width:0}.srow b{display:block;font-size:14px}.srow small{display:block;color:var(--mut);font-size:12px;line-height:1.4;margin-top:2px}
+.tgl{position:relative;width:46px;height:26px;flex:none;border-radius:99px;border:0;background:var(--line);cursor:pointer;transition:background .2s;padding:0}
+.tgl::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 3px #0005;transition:transform .2s}
+.tgl.on{background:var(--purple)}.tgl.on::after{transform:translateX(20px)}
+.srow .seg{flex:none}.srow .seg button{padding:6px 10px;font-size:12px}
+/* test: edytor */
+.tk{border:1.5px solid var(--line);border-left:5px solid var(--tc);border-radius:16px;padding:14px;margin-top:12px;background:var(--card)}
+.tkh{display:flex;align-items:center;gap:10px;margin-bottom:4px}.tkh b{flex:1;font-size:15px}
+.tkh .tpi{width:34px;height:34px;font-size:17px}
+.tkb{display:flex;gap:4px}.tkb button{padding:6px 10px;font-size:12px}
+.tk textarea{min-height:96px}
+.tkx{margin-top:10px;border:1.5px dashed var(--line);border-radius:12px;padding:8px 12px}.tkx summary{cursor:pointer;font-weight:700;font-size:13px}
+.tkq{border:1.5px solid var(--line);border-radius:12px;padding:10px;margin-top:8px;background:var(--soft)}
+.tkq .tkqh{display:flex;gap:8px;align-items:center}.tkq .tkqh input{flex:1}
+.tko{display:flex;align-items:center;gap:8px;margin-top:6px}.tko input[type=radio]{width:18px;height:18px;accent-color:#16a34a;flex:none}.tko input[type=text]{flex:1}
+.tkadd{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:10px}
+.tkadd button{display:flex;align-items:center;gap:8px;padding:10px;border-radius:14px;border:1.5px dashed var(--tc);background:color-mix(in srgb,var(--tc) 8%,transparent);color:var(--ink);font:700 13px 'Poppins',sans-serif;cursor:pointer}
+.tkadd button:hover{background:color-mix(in srgb,var(--tc) 18%,transparent)}
+/* test: uczeń */
+.tkc{scroll-margin-top:14px}
+.tkt{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+.tkno{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--tc,var(--purple))}
+.tkno i{width:30px;height:30px;display:grid;place-items:center;border-radius:10px;background:color-mix(in srgb,var(--tc,var(--purple)) 16%,transparent);font-style:normal;font-size:15px}
+.tkpas{border-left:4px solid var(--tc,var(--purple));background:var(--soft);border-radius:0 14px 14px 0;padding:12px 16px;margin:10px 0 14px;font-size:15.5px;line-height:1.8}
+.tkpas img{display:block;max-width:100%;max-height:340px;border-radius:12px;margin:0 auto 10px;cursor:zoom-in}
+.tkpas img.zoom{position:fixed;inset:0;margin:auto;max-width:96vw;max-height:94vh;z-index:95;box-shadow:0 0 0 100vmax #000c;cursor:zoom-out}
+.tgt{font-size:16.5px;line-height:2.3}
+.tbank{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.tbank button{border:1.5px solid var(--line);border-radius:10px;padding:5px 11px;background:var(--card);color:var(--ink);font:600 14px 'Poppins',sans-serif;cursor:pointer}
+.tbank button.used{opacity:.35;text-decoration:line-through}
+.tfix{color:var(--ok);font-weight:800;font-size:13px;margin:0 4px}
+.tdl{display:flex;flex-direction:column;gap:8px}
+.tdb{max-width:88%;padding:10px 14px;border-radius:6px 18px 18px 18px;background:var(--soft);border:1.5px solid var(--line);line-height:2.1}
+.tdb.r{align-self:flex-end;border-radius:18px 6px 18px 18px;background:color-mix(in srgb,var(--purple) 10%,var(--card))}
+.tdb u{display:block;text-decoration:none;font-size:11.5px;font-weight:800;color:var(--purple);line-height:1.2;text-transform:uppercase;letter-spacing:.04em}
+.tqq{margin-bottom:14px}.tqq>b{display:block;font-size:15.5px;margin-bottom:8px}
+.tqo{display:flex;align-items:center;gap:10px;width:100%;padding:10px 12px;margin-bottom:6px;border-radius:14px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:600 15px 'Poppins',sans-serif;cursor:pointer;text-align:left;transition:border-color .15s,background .15s}
+.tqo i{width:28px;height:28px;flex:none;display:grid;place-items:center;border-radius:9px;background:var(--soft);font-style:normal;font-weight:800;font-size:13px}
+.tqo:hover{border-color:var(--purple)}.tqo.on{border-color:var(--purple);background:color-mix(in srgb,var(--purple) 12%,var(--card))}.tqo.on i{background:var(--purple);color:#fff}
+.tqo.good{border-color:#22c55e;background:var(--ok-bg)}.tqo.good i{background:#22c55e;color:#fff}.tqo.bad{border-color:#ef4444;background:var(--bad-bg)}.tqo.bad i{background:#ef4444;color:#fff}
+.tvr{display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap}.tvr b{min-width:140px;flex:1;font-size:15.5px}.tvr input{flex:1;min-width:150px;max-width:300px;margin:0}
+.tvr input.ok,.tgt .blank.ok,.tdl .blank.ok{border-color:#22c55e;background:var(--ok-bg);color:var(--ok)}.tvr input.bad,.tgt .blank.bad,.tdl .blank.bad{border-color:#ef4444;background:var(--bad-bg);color:var(--bad)}
+.tso{padding:12px;border-radius:16px;border:2px solid var(--line);background:var(--soft);margin-bottom:10px}
+.tsol{min-height:46px;border-bottom:2.5px dashed var(--line);display:flex;flex-wrap:wrap;gap:6px;padding:4px 0 8px;margin-bottom:8px}
+.tsop{display:flex;flex-wrap:wrap;gap:6px}
+.tsw{border:0;border-radius:11px;padding:7px 12px;font:700 14.5px 'Poppins',sans-serif;color:#fff;background:linear-gradient(135deg,var(--purple),var(--pink));cursor:pointer;box-shadow:0 3px 0 #0003}
+.tso.good{border-color:#22c55e;background:var(--ok-bg)}.tso.bad{border-color:#ef4444;background:var(--bad-bg)}
+.tcw{display:grid;grid-template-columns:auto minmax(200px,1fr);gap:16px;align-items:start}
+@media(max-width:820px){.tcw{grid-template-columns:1fr}}
+.tcw .cwscroll{--cs:40px;margin:0;justify-content:flex-start}
+@media(max-width:560px){.tcw .cwscroll{--cs:30px}}
+.tcl{font-size:14px}.tcl b{display:block;margin:8px 0 4px;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--mut)}.tcl div{padding:3px 0}.tcl div.good{color:var(--ok)}.tcl div.bad{color:var(--bad)}
+.tsc{font-weight:800;padding:4px 12px;border-radius:99px;font-size:13px}
+.tend{position:sticky;bottom:10px;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 16px;border-radius:18px;background:var(--card);border:2px solid var(--purple);box-shadow:0 10px 30px #0004;margin-top:16px}
+.tend b{font-size:14px}.tend .qbar{flex:1;min-width:120px;margin:0}
+.imo select{width:100%;padding:10px;border-radius:12px;border:2px solid var(--line);background:var(--field);color:var(--ink);font:500 14px 'Poppins',sans-serif;margin:10px 0}
+html:not(.plain) .card::before,html:not(.plain) .card::after{font-family:'FwColor','Poppins',sans-serif}
+.main label.onc{display:flex;text-transform:none;letter-spacing:0;font-size:12.5px}.main label.onc b{display:block;font-size:14px;color:var(--ink)}
+.main label.tko,.tko{display:flex;margin:6px 0 0;text-transform:none;letter-spacing:0}
+.tpi,.rci span:first-child{color:var(--tc)}
 .dt:has(#fbu){display:none!important}
 </style>
 <link rel="icon" type="image/png" href="/favicon.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"></head>
@@ -466,7 +582,7 @@ const EC=[["😀","Buźki","😀 😃 😄 😁 😆 😅 🤣 😂 🙂 🙃 �
 const hdr=(t,p)=>`<header class="hero">${[[9,44,0],[86,72,-1.2],[27,24,-2],[68,34,-0.6]].map(a=>`<span class="spd hw" style="left:${a[0]}%;--h:${a[1]}px;animation-delay:${a[2]}s"><i></i><b>🕷️</b></span><span class="spd pl" style="left:${a[0]}%;--h:${a[1]}px;animation-delay:${a[2]}s"><i></i><b><span class="flag"></span></b></span>`).join('')}<span class="hl hw">🧙</span><span class="hr hw">🎃</span><span class="hl pl">🦅</span><span class="hr pl"><span class="flag"></span></span><div class="hem"><span class="hw">🎃👻💀</span><span class="pl">🦅🎆🕊️</span></div><h1>${t}</h1><p>${p}</p></header>`;
 
 /* ---------- STUDENT ---------- */
-function student(ex){i18nInit(ex);if(ex.k==="q")return quiz(ex);if(ex.k==="v")return vocab(ex);if(ex.k==="c")return cwPlay(ex);if(ex.k==="s")return soPlay(ex);if(ex.k==="m")return mtPlay(ex);if(ex.k==="t")return tfPlay(ex);
+function student(ex){stuPrefs(ex);i18nInit(ex);if(ex.k==="x")return testPlay(ex);if(ex.k==="q")return quiz(ex);if(ex.k==="v")return vocab(ex);if(ex.k==="c")return cwPlay(ex);if(ex.k==="s")return soPlay(ex);if(ex.k==="m")return mtPlay(ex);if(ex.k==="t")return tfPlay(ex);
   const bankWords=[];
   const parts=[];let last=0,n=0;
   ex.x.replace(GAP,(m,a,i)=>{parts.push(big(esc(ex.x.slice(last,i))).replace(/\n/g,"<br>"));
@@ -553,7 +669,7 @@ const small=u=>new Promise(r=>{if(!u.startsWith("data:")||u.length<9000)return r
 let fbErr="";
 const fbHost=h=>String(h||"").trim().replace(/^https?:\/\//,"").replace(/\/.*$/,"");
 async function fbReq(host,path,method,body){if(host==="flowork"){if(!window.__FW)throw new Error("Brak połączenia z bazą");return window.__FW.req(path,method,body)}const ac=new AbortController();const to=setTimeout(()=>ac.abort(),9000);try{const r=await fetch("https://"+host+path+".json",{method,headers:body?{"Content-Type":"application/json"}:undefined,body:body?JSON.stringify(body):undefined,signal:ac.signal});if(!r.ok)throw new Error("błąd "+r.status);return await r.json()}finally{clearTimeout(to)}}
-async function link(e,mode,vm){const base=fbHost(S.fb)==="flowork"?location.origin+"/uczen.html":location.href.split("#")[0];const lk=vm?"lid_"+vm:"lid";const mk=(im,inl)=>{const o=mk1(im,inl);if(S.w3)o.w3=S.w3;if(e.once===false)o.mo=1;return o};const mk1=(im,inl)=>{if(e.kind==="mt")return mtObj(e);if(e.kind==="tf")return tfObj(e);if(e.kind==="so")return soObj(e);if(e.kind==="cw")return cwObj(e);if(e.kind==="vocab")return vObj(e,vm);if(e.kind==="quiz")return qObj(e,inl);const o={i:e.id,t:e.title,n:e.inst,x:e.text,b:e.bank};if(e.dlg)o.dlg=1;if(e.bw!=null)o.bw=e.bw;else if(e.extra)o.e=e.extra;if(im.length)o.im=im;return o};
+async function link(e,mode,vm){const base=fbHost(S.fb)==="flowork"?location.origin+"/uczen.html":location.href.split("#")[0];const lk=vm?"lid_"+vm:"lid";const mk=(im,inl)=>{const o=mk1(im,inl);if(S.w3)o.w3=S.w3;if(e.once===false)o.mo=1;return stuFlags(o)};const mk1=(im,inl)=>{if(e.kind==="test")return testObj(e);if(e.kind==="mt")return mtObj(e);if(e.kind==="tf")return tfObj(e);if(e.kind==="so")return soObj(e);if(e.kind==="cw")return cwObj(e);if(e.kind==="vocab")return vObj(e,vm);if(e.kind==="quiz")return qObj(e,inl);const o={i:e.id,t:e.title,n:e.inst,x:e.text,b:e.bank};if(e.dlg)o.dlg=1;if(e.bw!=null)o.bw=e.bw;else if(e.extra)o.e=e.extra;if(im.length)o.im=im;return o};
   const inl=fbHost(S.fb)==="flowork"?"":base+"#u="+await encz(mk(await Promise.all((e.images||[]).map(small)),true));
   fbErr="";const h=fbHost(S.fb);if(!h)return inl;
   try{const id=(mode!=="new"&&e.lh===h&&e[lk])?e[lk]:uid()+uid();await fbReq(h,"/ex/"+id,"PUT",mk(e.images||[]));e[lk]=id;e.lh=h;save();return base+"#k="+h+"/"+id}catch(x){fbErr=String((x&&x.message)||x)}
@@ -567,43 +683,45 @@ const isDesc=(t,fid)=>{let c=t,g=0;while(c&&g++<30){if(c===fid)return true;const
 const ensureOpen=id=>{S.fe=S.fe||{};fpath(id).slice(0,-1).forEach(f=>S.fe[f.id]=true)};
 const folderOpts=sel=>{const out=['<option value="">— brak —</option>'];const walk=(p,d)=>kids(p).forEach(f=>{out.push(`<option value="${f.id}" ${sel===f.id?'selected':''}>${'\u00a0\u00a0'.repeat(d)}${d?'↳ ':''}${esc(f.name)}</option>`);walk(f.id,d+1)});walk('',0);return out.join('')};
 const tree=(pid,d)=>kids(pid).map(f=>{const k=kids(f.id).length,op=S.fe&&S.fe[f.id];return `<div class="fn"><div class="item ft ${curF===f.id?'on':''}" data-f="${f.id}" data-dz="${f.id}" draggable="true" style="--fc:${hcol(f.id)}"><span class="tg2" data-tg="${f.id}">${k?(op?'▾':'▸'):''}</span><span class="fi">${op&&k?'📂':'📁'}</span><span class="fnm">${esc(f.name)}</span><small>${cntIn(f.id)}</small></div>${op&&k?`<div class="fkids">${tree(f.id,d+1)}</div>`:''}</div>`}).join('');
-const TYP={g:['📝','Luki','Uzupełnianie tekstu','#7758e8'],q:['🎯','Quiz','Pytania z czasem i punktami','#ff6b9d'],v:['📚','Słówka','Fiszki, parowanie, test','#20b486'],c:['🧩','Krzyżówka','Hasła i obrazki','#f59e0b'],d:['💬','Dialogi','Rozmowa z lukami','#0ea5e9'],s:['🔤','Zdania','Układanie słów w zdanie','#e0457b'],m:['🔗','Dopasuj','Przeciąganie par','#8b5cf6'],t:['⚖️','Prawda / Fałsz','Zdania z tekstem lub zdjęciem','#14b8a6']};
-const tyOf=x=>x.kind==='mt'?'m':x.kind==='tf'?'t':x.kind==='quiz'?'q':x.kind==='vocab'?'v':x.kind==='cw'?'c':x.kind==='so'?'s':x.isD?'d':'g';
+const TYP={g:['📝','Luki','Uzupełnianie tekstu','#7758e8'],q:['🎯','Quiz','Pytania z czasem i punktami','#ff6b9d'],v:['📚','Słówka','Fiszki, parowanie, test','#20b486'],c:['🧩','Krzyżówka','Hasła i obrazki','#f59e0b'],d:['💬','Dialogi','Rozmowa z lukami','#0ea5e9'],s:['🔤','Zdania','Układanie słów w zdanie','#e0457b'],m:['🔗','Dopasuj','Przeciąganie par','#8b5cf6'],t:['⚖️','Prawda / Fałsz','Zdania z tekstem lub zdjęciem','#14b8a6'],x:['📋','Test','Wiele zadań na jednej stronie','#2563eb']};
+const tyOf=x=>x.kind==='test'?'x':x.kind==='mt'?'m':x.kind==='tf'?'t':x.kind==='quiz'?'q':x.kind==='vocab'?'v':x.kind==='cw'?'c':x.kind==='so'?'s':x.isD?'d':'g';
 function listHTML(){const q=srch.trim().toLowerCase();
-  const ico=x=>TYP[tyOf(x)][0];
-  const meta=x=>x.kind==='quiz'?((x.qs||[]).length+' pytań'):x.kind==='vocab'?((x.words||[]).filter(w=>w[0]&&w[1]).length+' słówek'):x.kind==='cw'?((x.cw||[]).length+' haseł'):x.kind==='so'?((x.so||[]).length+' zdań'):x.kind==='mt'?((x.pr||[]).length+' par'):x.kind==='tf'?((x.st||[]).length+' zdań'):(gaps(x.text).length+' luk');
-  let subs='',items;
-  if(q)items=S.ex.filter(x=>(x.title||'').toLowerCase().includes(q));
-  else if(curF==='all')items=S.ex;
-  else{subs=kids(curF).map(f=>`<div class="tile" data-f="${f.id}" data-dz="${f.id}"><span class="ti" style="--tc:#94a3b8">📁</span><div><b>${esc(f.name)}</b><small>${cntIn(f.id)} elementów</small></div></div>`).join('');items=S.ex.filter(x=>x.folder===curF)}
-  return subs+items.map(x=>`<div class="tile ${curE===x.id?'on':''}" data-e="${x.id}" draggable="true"><span class="ti" style="--tc:${TYP[tyOf(x)][3]}">${ico(x)}</span><div><b>${esc(x.title||'Bez tytułu')}</b><small>${meta(x)}${x.folder&&(q||curF==='all')?' · 📁 '+esc((S.folders.find(f=>f.id===x.folder)||{}).name||''):''}</small></div></div>`).join('')||(subs?'':'<div class="empty">Pusto. Dodaj ćwiczenie przyciskiem „➕ Nowe ćwiczenie”.</div>')}
+  const meta=x=>x.kind==='test'?plN((x.tasks||[]).length,'zadanie','zadania','zadań'):x.kind==='quiz'?plN((x.qs||[]).length,'pytanie','pytania','pytań'):x.kind==='vocab'?plN((x.words||[]).filter(w=>w[0]&&w[1]).length,'słówko','słówka','słówek'):x.kind==='cw'?plN((x.cw||[]).length,'hasło','hasła','haseł'):x.kind==='so'?plN((x.so||[]).length,'zdanie','zdania','zdań'):x.kind==='mt'?plN((x.pr||[]).length,'para','pary','par'):x.kind==='tf'?plN((x.st||[]).length,'zdanie','zdania','zdań'):plN(gaps(x.text).length,'luka','luki','luk');
+  const srt=a=>{const m=S.srt||'new';return m==='az'?a.slice().sort((x,y)=>(x.title||'').localeCompare(y.title||'','pl')):m==='ty'?a.slice().sort((x,y)=>tyOf(x).localeCompare(tyOf(y))||(x.title||'').localeCompare(y.title||'','pl')):a};
+  const exT=x=>{const t=TYP[tyOf(x)];return `<div class="dk ex ${curE===x.id?'on':''}" data-e="${x.id}" draggable="true" title="${esc(x.title||'')}" style="--tc:${t[3]}"><span class="dki">${t[0]}</span><b>${esc(x.title||'Bez tytułu')}</b><small>${meta(x)}</small></div>`};
+  const foT=f=>`<div class="dk fo ft" data-f="${f.id}" data-dz="${f.id}" draggable="true" title="${esc(f.name)}" style="--fc:${hcol(f.id)}">${FSVG}<b>${esc(f.name)}</b><small>${plN(cntIn(f.id),'ćwiczenie','ćwiczenia','ćwiczeń')}</small></div>`;
+  const empty=t=>`<div class="exe"><div>📂</div>${t}</div>`;
+  if(q){const h=S.folders.filter(f=>(f.name||'').toLowerCase().includes(q)).map(foT).join('')+S.ex.filter(x=>(x.title||'').toLowerCase().includes(q)).map(exT).join('');return h||empty('Nic nie znaleziono.')}
+  const cur=curF==='all'?'':curF,cf=cur&&S.folders.find(f=>f.id===cur);
+  const up=cur?`<div class="dk up" data-f="${(cf&&cf.parent)||'all'}" data-dz="${(cf&&cf.parent)||''}" title="Poziom wyżej"><span class="dki">↩</span><b>W górę</b></div>`:'';
+  const it=srt(S.ex.filter(x=>cur?x.folder===cur:(!x.folder||!S.folders.some(f=>f.id===x.folder))));
+  const h=kids(cur).map(foT).join('')+it.map(exT).join('');
+  return up+(h||empty(cur?'Ten folder jest pusty. Dodaj ćwiczenie z menu „Nowe ćwiczenie” albo przeciągnij tu gotowe.':'Pulpit jest pusty. Zacznij od menu „Nowe ćwiczenie” po lewej.'))}
 function goBack(){window.__restore=true;teacher()}
 let setOpen=false;
 function teacher(){if(window.__mp){window.__mp.stop();window.__mp=null}const cwx=document.getElementById('cw');if(cwx)cwx.remove();
-  const e=S.ex.find(x=>x.id===curE);
-  const crumbs=()=>{const path=e?(e.folder?fpath(e.folder):[]):(curF==='all'?[]:fpath(curF));return `<div class="crumbs"><a data-f="all">🏠 Wszystkie</a>${path.map(f=>` › <a data-f="${f.id}">${esc(f.name)}</a>`).join('')}${e?` › <span>${esc(e.title||'Bez tytułu')}</span>`:''}</div>`};
+  const e=S.ex.find(x=>x.id===curE);if(e)recPush(e.id);applyLook();
+  const crumbs=()=>{const path=e?(e.folder?fpath(e.folder):[]):(curF==='all'?[]:fpath(curF));return `<div class="crumbs"><a data-f="all">🗂 Pulpit</a>${path.map(f=>` › <a data-f="${f.id}">${esc(f.name)}</a>`).join('')}${e?` › <span>${esc(e.title||'Bez tytułu')}</span>`:''}</div>`};
   app.innerHTML=hdr("Panel nauczyciela","Twórz ćwiczenia z lukami, generuj linki i sprawdzaj wyniki")+`
   <div class="grid pg"><div class="side">
-    <div class="card nwc"><h2>➕ Nowe ćwiczenie</h2><div class="nwg"><button class="nwb" id="addE" style="--tc:#7758e8" title="Uzupełnianie tekstu"><span class="tpi">📝</span><span>Luki</span></button><button class="nwb" id="addQ" style="--tc:#ff6b9d" title="Pytania z czasem i punktami"><span class="tpi">🎯</span><span>Quiz</span></button><button class="nwb" id="addV" style="--tc:#20b486" title="Fiszki, parowanie, test"><span class="tpi">📚</span><span>Słówka</span></button><button class="nwb" id="addC" style="--tc:#f59e0b" title="Hasła i obrazki"><span class="tpi">🧩</span><span>Krzyżówka</span></button><button class="nwb" id="addD" style="--tc:#0ea5e9" title="Rozmowa z lukami"><span class="tpi">💬</span><span>Dialogi</span></button><button class="nwb" id="addS" style="--tc:#e0457b" title="Układanie słów w zdanie"><span class="tpi">🔤</span><span>Zdania</span></button><button class="nwb" id="addM" style="--tc:#8b5cf6" title="Przeciąganie par"><span class="tpi">🔗</span><span>Dopasuj</span></button><button class="nwb" id="addT" style="--tc:#14b8a6" title="Zdania z tekstem lub zdjęciem"><span class="tpi">⚖️</span><span>Prawda / Fałsz</span></button></div></div>
-    <button class="rvnav ${!e?'on':''}" data-rv="1"><span class="tpi">📊</span><b>Odpowiedzi uczniów</b>${(n=>n?`<span class="pill nw">${n} nowe</span>`:`<span class="pill">${S.res.filter(r=>S.ex.some(x=>x.id===r.ex)).length}</span>`)(newResCount())}</button>
-    <div class="card fdc"><h2>📁 Foldery</h2>
-    <div class="item ${curF==="all"?"on":""}" data-f="all" data-dz=""><span class="fi">🏠</span><span class="fnm">Wszystkie</span><small>${S.ex.length}</small></div>
-    <div id="ftree">${tree('',0)}</div>
-    <div class="row"><button class="btn" id="addF">${curF==="all"?"+ Nowy folder":"+ Podfolder"}</button>${curF!=="all"?'<button class="btn" id="renF" title="Zmień nazwę">✏️</button><button class="btn d" id="delF" title="Usuń folder">🗑</button>':""}</div></div>
+    <div class="card nwc"><h2>➕ Nowe ćwiczenie</h2><div class="nwg"><button class="nwb" id="addE" style="--tc:#7758e8" title="Uzupełnianie tekstu"><span class="tpi">📝</span><span>Luki</span></button><button class="nwb" id="addQ" style="--tc:#ff6b9d" title="Pytania z czasem i punktami"><span class="tpi">🎯</span><span>Quiz</span></button><button class="nwb" id="addV" style="--tc:#20b486" title="Fiszki, parowanie, test"><span class="tpi">📚</span><span>Słówka</span></button><button class="nwb" id="addC" style="--tc:#f59e0b" title="Hasła i obrazki"><span class="tpi">🧩</span><span>Krzyżówka</span></button><button class="nwb" id="addD" style="--tc:#0ea5e9" title="Rozmowa z lukami"><span class="tpi">💬</span><span>Dialogi</span></button><button class="nwb" id="addS" style="--tc:#e0457b" title="Układanie słów w zdanie"><span class="tpi">🔤</span><span>Zdania</span></button><button class="nwb" id="addM" style="--tc:#8b5cf6" title="Przeciąganie par"><span class="tpi">🔗</span><span>Dopasuj</span></button><button class="nwb" id="addT" style="--tc:#14b8a6" title="Zdania z tekstem lub zdjęciem"><span class="tpi">⚖️</span><span>Prawda / Fałsz</span></button><button class="nwb" id="addX" style="--tc:#2563eb" title="Wiele zadań na jednej stronie"><span class="tpi">📋</span><span>Test</span></button></div></div>
+    <div class="snav"><button class="rvnav ${!e&&pv==='home'?'on':''}" data-go="home"><span class="tpi">🗂</span><b>Pulpit</b><span class="pill">${S.ex.length}</span></button>
+    <button class="rvnav ${!e&&pv==='res'?'on':''}" data-rv="1"><span class="tpi">📊</span><b>Odpowiedzi uczniów</b>${(n=>n?`<span class="pill nw">${n} nowe</span>`:`<span class="pill">${S.res.filter(r=>S.ex.some(x=>x.id===r.ex)).length}</span>`)(newResCount())}</button></div>
+    ${recentHTML()}
     <button class="btn setb" id="setb" title="Ustawienia">⚙️ Ustawienia</button>
   </div>
-  <div class="side2"><div class="card lsc"><h2>📂 ${curF==="all"?"Wszystkie":fpath(curF).map(f=>esc(f.name)).join(" › ")}</h2>
-    <input type="text" id="srch" class="srch" placeholder="🔍 Szukaj ćwiczenia…" value="${esc(srch)}">
-    <div id="itl">${listHTML()}</div></div></div>
   <div class="smo" id="smo" ${setOpen?'':'hidden'}><div class="smb"><div class="smh"><b>⚙️ Ustawienia</b><button class="btn" id="smx">✕</button></div>
   <div class="dt"><h3>🎨 Motywy</h3><div class="thg" id="thgrid"></div></div>
+  ${setHTML()}
     <div class="dt"><h3>⚙️ Baza online</h3><div class="hint">Daje krótkie linki i automatyczne wyniki uczniów. Wklej adres swojej bazy Firebase.</div><input type="text" id="fbu" placeholder="mojprojekt-default-rtdb.firebaseio.com" value="${esc(S.fb||"")}" style="margin-top:8px"><input type="text" id="fbc" placeholder="Kod panelu (hasło), min. 6 znaków" value="${esc(pcode)}" style="margin-top:8px"><div class="hint">Ten sam adres bazy i ten sam kod wpisz na drugim urządzeniu (telefon, komputer), a zobaczysz tam ten sam panel.${cloudErr?` <span style="color:var(--bad)">Synchronizacja: ${esc(cloudErr)}</span>`:""}</div><div class="row"><button class="btn p" id="fbs">Zapisz i połącz</button><button class="btn" id="fbp">↻ Pobierz z chmury</button></div><div class="msg" id="fbm" style="display:block;margin:6px 0 0"></div></div>
     <div class="dt"><h3>🔔 Powiadomienia e-mail</h3><div class="hint">Gdy uczeń skończy ćwiczenie, dostaniesz e-mail na adres swojego konta. Nic nie trzeba wpisywać.</div><div class="row" style="margin-top:8px"><button class="btn p" id="ntf">…</button></div><div class="msg" id="ntm" style="display:block;margin:6px 0 0"></div></div>
+  ${setHTML2()}
   </div></div>
-  <div class="main">${e?crumbs()+editor(e):resDash()}</div></div>`;
+  <div class="main">${e?crumbs()+editor(e):pv==='res'?resDash():`<div class="hm">${exHTML()}${resMini()}</div>`}</div></div>`;
   const bindList=()=>{
-    document.querySelectorAll("[data-f]").forEach(el=>el.onclick=ev=>{if(ev.target.closest("[data-tg]"))return;curF=el.dataset.f;if(curF!=="all")ensureOpen(curF);teacher()});
-    document.querySelectorAll("[data-rv]").forEach(el=>el.onclick=()=>{curE=null;tab="edit";note="";teacher();window.scrollTo(0,0)});
+    document.querySelectorAll("[data-f]").forEach(el=>el.onclick=ev=>{if(ev.target.closest("[data-tg]"))return;curF=el.dataset.f;if(curF!=="all"&&!S.folders.some(f=>f.id===curF))curF="all";curE=null;pv="home";srch="";tab="edit";note="";teacher()});
+    document.querySelectorAll("[data-go]").forEach(el=>el.onclick=()=>{curE=null;pv="home";tab="edit";note="";teacher();window.scrollTo(0,0)});
+    document.querySelectorAll("[data-rv]").forEach(el=>el.onclick=()=>{curE=null;pv="res";tab="edit";note="";teacher();window.scrollTo(0,0)});
     document.querySelectorAll("[data-tg]").forEach(el=>el.onclick=ev=>{ev.stopPropagation();const id=el.dataset.tg;S.fe=S.fe||{};S.fe[id]=!S.fe[id];save();teacher()});
     document.querySelectorAll("[data-e]").forEach(el=>{el.onclick=()=>{curE=el.dataset.e;tab="edit";note="";teacher()};el.ondragstart=ev=>{ev.dataTransfer.setData("text/plain","e:"+el.dataset.e)}});
     document.querySelectorAll(".ft[draggable]").forEach(el=>el.ondragstart=ev=>{ev.dataTransfer.setData("text/plain","f:"+el.dataset.f)});
@@ -612,18 +730,19 @@ function teacher(){if(window.__mp){window.__mp.stop();window.__mp=null}const cwx
         if(d[0]==="e"){const x=S.ex.find(z=>z.id===d[1]);if(x){x.folder=t;if(t)ensureOpen(t);save();teacher()}}
         else if(d[0]==="f"&&d[1]!==t){const f=S.folders.find(z=>z.id===d[1]);if(f&&!isDesc(t,f.id)){f.parent=t;if(t){S.fe=S.fe||{};S.fe[t]=true}save();teacher()}}}})};
   bindList();
-  $("#srch").oninput=ev=>{srch=ev.target.value;$("#itl").innerHTML=listHTML();bindList()};
-  $("#addF").onclick=async()=>{const n=await modal({title:"📁 "+(curF==="all"?"Nowy folder":"Nowy podfolder"),text:curF==="all"?"Podaj nazwę, np. klasa albo imię ucznia.":"Powstanie w folderze „"+esc(fpath(curF).map(f=>f.name).join(" › "))+"”.",input:1,ph:"Nazwa folderu",ok:"Utwórz"});if(n){const f={id:uid(),name:n,parent:curF==="all"?"":curF};S.folders.push(f);S.fe=S.fe||{};if(f.parent)S.fe[f.parent]=true;curF=f.id;save();teacher()}};
+  {const q0=$("#srch");if(q0)q0.oninput=ev=>{srch=ev.target.value;$("#itl").innerHTML=listHTML();bindList()};const so=$("#exsort");if(so)so.onchange=()=>{S.srt=so.value;save();$("#itl").innerHTML=listHTML();bindList()}}
+  const af0=$("#addF");if(af0)af0.onclick=async()=>{const n=await modal({title:"📁 "+(curF==="all"?"Nowy folder":"Nowy podfolder"),text:curF==="all"?"Podaj nazwę, np. klasa albo imię ucznia.":"Powstanie w folderze „"+esc(fpath(curF).map(f=>f.name).join(" › "))+"”.",input:1,ph:"Nazwa folderu",ok:"Utwórz"});if(n){const f={id:uid(),name:n,parent:curF==="all"?"":curF};S.folders.push(f);S.fe=S.fe||{};if(f.parent)S.fe[f.parent]=true;save();teacher()}};
   const rf=$("#renF");if(rf)rf.onclick=async()=>{const f=S.folders.find(z=>z.id===curF);const n=await modal({title:"✏️ Zmień nazwę folderu",input:1,val:f.name,ok:"Zapisz"});if(n){f.name=n;save();teacher()}};
   const df=$("#delF");if(df)df.onclick=async()=>{const f=S.folders.find(z=>z.id===curF);if(await modal({title:"🗑 Usunąć folder „"+esc(f.name)+"”?",text:"Podfoldery i ćwiczenia przejdą poziom wyżej.",ok:"Usuń"})){S.folders.forEach(z=>{if(z.parent===f.id)z.parent=f.parent||""});S.ex.forEach(x=>{if(x.folder===f.id)x.folder=f.parent||""});S.folders=S.folders.filter(z=>z.id!==f.id);curF=f.parent||"all";save();teacher()}};
-  $("#addE").onclick=()=>{const x={id:uid(),folder:curF==="all"?"":curF,title:"Nowe ćwiczenie",inst:"Uzupełnij luki poprawną formą czasownika.",text:"",bank:true,extra:"",created:new Date().toISOString()};S.ex.unshift(x);curE=x.id;tab="edit";save();teacher()};
-  $("#addV").onclick=()=>{const x={id:uid(),kind:"vocab",folder:curF==="all"?"":curF,title:"Nowe słówka",inst:"",words:[["",""],["",""],["",""]],vo:{},created:new Date().toISOString()};S.ex.unshift(x);curE=x.id;tab="edit";save();teacher()};
-  $("#addC").onclick=()=>{const x={id:uid(),kind:"cw",folder:curF==="all"?"":curF,title:"Nowa krzyżówka",inst:"",cw:[{q:"",im:"",a:""},{q:"",im:"",a:""},{q:"",im:"",a:""}],hn:false,created:new Date().toISOString()};S.ex.unshift(x);curE=x.id;tab="edit";save();teacher()};
-  $("#addD").onclick=()=>{const x={id:uid(),isD:true,dlg:true,folder:curF==="all"?"":curF,title:"Nowy dialog",inst:"Uzupełnij dialog.",text:"Anna: Hi Tom, how [[are]] you?\nTom: I [[am]] fine, thanks. And you?\nAnna: I [[am]] great!",bank:true,extra:"",created:new Date().toISOString()};S.ex.unshift(x);curE=x.id;tab="edit";save();teacher()};
-  $("#addS").onclick=()=>{const x={id:uid(),kind:"so",folder:curF==="all"?"":curF,title:"Układanie zdań",inst:"Ułóż słowa w odpowiedniej kolejności.",so:[{s:"I went to school yesterday.",h:"Wczoraj poszedłem do szkoły."},{s:"She is reading a very interesting book.",h:""},{s:"We did not go to the party.",h:""}],created:new Date().toISOString()};S.ex.unshift(x);curE=x.id;tab="edit";save();teacher()};
-  $("#addM").onclick=()=>{const x={id:uid(),kind:"mt",folder:curF==="all"?"":curF,title:"Dopasuj pary",inst:"Przeciągnij każdą odpowiedź do pasującego elementu.",pr:[{l:"dog",r:"pies"},{l:"cat",r:"kot"},{l:"bird",r:"ptak"}],dx:"",created:new Date().toISOString()};S.ex.unshift(x);curE=x.id;tab="edit";save();teacher()};
-  $("#addT").onclick=()=>{const x={id:uid(),kind:"tf",folder:curF==="all"?"":curF,title:"Prawda czy fałsz?",inst:"Przeczytaj tekst i zdecyduj, czy zdania są prawdziwe.",tx:"Tom is twelve years old. He lives in London with his parents and his sister Emma.",st:[{s:"Tom lives in London.",v:true},{s:"Tom has a brother.",v:false},{s:"Tom is twelve.",v:true}],created:new Date().toISOString()};S.ex.unshift(x);curE=x.id;tab="edit";save();teacher()};
-  $("#addQ").onclick=()=>{const x={id:uid(),kind:"quiz",folder:curF==="all"?"":curF,title:"Nowy quiz",inst:"Wybierz poprawną odpowiedź, zanim minie czas!",qs:[],dT:20,dP:100,dB:50,created:new Date().toISOString()};S.ex.unshift(x);curE=x.id;tab="edit";save();teacher()};
+  $("#addE").onclick=()=>{const x={id:uid(),folder:curF==="all"?"":curF,title:"Nowe ćwiczenie",inst:"Uzupełnij luki poprawną formą czasownika.",text:"",bank:true,extra:"",created:new Date().toISOString()};if(S.dmo)x.once=false;pv="home";S.ex.unshift(x);curE=x.id;tab="edit";save();teacher()};
+  $("#addV").onclick=()=>{const x={id:uid(),kind:"vocab",folder:curF==="all"?"":curF,title:"Nowe słówka",inst:"",words:[["",""],["",""],["",""]],vo:{},created:new Date().toISOString()};if(S.dmo)x.once=false;pv="home";S.ex.unshift(x);curE=x.id;tab="edit";save();teacher()};
+  $("#addC").onclick=()=>{const x={id:uid(),kind:"cw",folder:curF==="all"?"":curF,title:"Nowa krzyżówka",inst:"",cw:[{q:"",im:"",a:""},{q:"",im:"",a:""},{q:"",im:"",a:""}],hn:false,created:new Date().toISOString()};if(S.dmo)x.once=false;pv="home";S.ex.unshift(x);curE=x.id;tab="edit";save();teacher()};
+  $("#addD").onclick=()=>{const x={id:uid(),isD:true,dlg:true,folder:curF==="all"?"":curF,title:"Nowy dialog",inst:"Uzupełnij dialog.",text:"Anna: Hi Tom, how [[are]] you?\nTom: I [[am]] fine, thanks. And you?\nAnna: I [[am]] great!",bank:true,extra:"",created:new Date().toISOString()};if(S.dmo)x.once=false;pv="home";S.ex.unshift(x);curE=x.id;tab="edit";save();teacher()};
+  $("#addS").onclick=()=>{const x={id:uid(),kind:"so",folder:curF==="all"?"":curF,title:"Układanie zdań",inst:"Ułóż słowa w odpowiedniej kolejności.",so:[{s:"I went to school yesterday.",h:"Wczoraj poszedłem do szkoły."},{s:"She is reading a very interesting book.",h:""},{s:"We did not go to the party.",h:""}],created:new Date().toISOString()};if(S.dmo)x.once=false;pv="home";S.ex.unshift(x);curE=x.id;tab="edit";save();teacher()};
+  $("#addM").onclick=()=>{const x={id:uid(),kind:"mt",folder:curF==="all"?"":curF,title:"Dopasuj pary",inst:"Przeciągnij każdą odpowiedź do pasującego elementu.",pr:[{l:"dog",r:"pies"},{l:"cat",r:"kot"},{l:"bird",r:"ptak"}],dx:"",created:new Date().toISOString()};if(S.dmo)x.once=false;pv="home";S.ex.unshift(x);curE=x.id;tab="edit";save();teacher()};
+  $("#addT").onclick=()=>{const x={id:uid(),kind:"tf",folder:curF==="all"?"":curF,title:"Prawda czy fałsz?",inst:"Przeczytaj tekst i zdecyduj, czy zdania są prawdziwe.",tx:"Tom is twelve years old. He lives in London with his parents and his sister Emma.",st:[{s:"Tom lives in London.",v:true},{s:"Tom has a brother.",v:false},{s:"Tom is twelve.",v:true}],created:new Date().toISOString()};if(S.dmo)x.once=false;pv="home";S.ex.unshift(x);curE=x.id;tab="edit";save();teacher()};
+  $("#addX").onclick=()=>{const x={id:uid(),kind:"test",folder:curF==="all"?"":curF,title:"Nowy test",inst:"Rozwiąż wszystkie zadania.",tasks:[Object.assign({id:uid(),ty:"abc",n:TT.abc[3],tx:"Tom is twelve years old. He lives in London with his parents and his sister Emma."},{q:[{q:"Where does Tom live?",o:["In Paris","In London","In Rome",""],c:1},{q:"How old is Tom?",o:["Ten","Eleven","Twelve",""],c:2}]}),Object.assign({id:uid(),ty:"gap",n:TT.gap[3]},TKNEW.gap())],created:new Date().toISOString()};if(S.dmo)x.once=false;pv="home";S.ex.unshift(x);curE=x.id;tab="edit";save();teacher()};
+  $("#addQ").onclick=()=>{const x={id:uid(),kind:"quiz",folder:curF==="all"?"":curF,title:"Nowy quiz",inst:"Wybierz poprawną odpowiedź, zanim minie czas!",qs:[],dT:20,dP:100,dB:50,created:new Date().toISOString()};if(S.dmo)x.once=false;pv="home";S.ex.unshift(x);curE=x.id;tab="edit";save();teacher()};
   const ntm=(t,c)=>{const m=$("#ntm");if(m){m.style.color=c||"var(--mut)";m.textContent=t}};
   {const b=$("#ntf");if(b){const dr=()=>{const on=window.__NT?window.__NT.get():true;b.textContent=on?"🔔 Włączone – kliknij, aby wyłączyć":"🔕 Wyłączone – kliknij, aby włączyć"};dr();b.onclick=async()=>{try{await window.__NT.set(!window.__NT.get());dr();ntm(window.__NT.get()?"Powiadomienia włączone.":"Powiadomienia wyłączone.","var(--green)")}catch(x){ntm("Nie udało się zapisać ustawienia.","var(--bad)")}}}}
   const fbm=(t,c)=>{const m=$("#fbm");if(m){m.style.color=c||"var(--mut)";m.textContent=t}};
@@ -649,6 +768,7 @@ function teacher(){if(window.__mp){window.__mp.stop();window.__mp=null}const cwx
    $("#setb").onclick=op;$("#smx").onclick=cl;smo.onclick=ev=>{if(ev.target===smo)cl()};
    $("#thgrid").onclick=ev=>{const b=ev.target.closest('[data-th]');if(b&&window.__applyTheme){window.__applyTheme(b.dataset.th);fill()}};
    if(setOpen){fill();sc(1)}}
+  bindSet();
   document.querySelectorAll("details.dt").forEach(d=>{d.open=!!openD[d.dataset.k];d.ontoggle=()=>{openD[d.dataset.k]=d.open}});
   if(e)bindEditor(e);else bindDash();
   if(window.__restore){window.__restore=false;const id=window.__qid,y=window.__y||0;window.__qid=null;requestAnimationFrame(()=>{const el=id&&document.querySelector(`details[data-k="q_${id}"]`);if(el){el.open=true;openD["q_"+id]=true;el.scrollIntoView({block:"center"})}else window.scrollTo(0,y)})}
@@ -659,7 +779,7 @@ function editor(e){
   const att={},cn={};[...rs].reverse().forEach(r=>{const k=r.n.trim().toLowerCase();att[r.id]=cn[k]=(cn[k]||0)+1});
   return `<div class="card"><div class="tabs"><div class="tab ${tab==="edit"?"on":""}" data-t="edit">✏️ Edycja</div><div class="tab ${tab==="res"?"on":""}" data-t="res">📊 Wyniki (${rs.length})</div></div>`+
   (tab==="edit"?(t=>`<div class="tyb" style="--tc:${t[3]}"><span class="tpi">${t[0]}</span><div><b>${t[1]}</b><small>${t[2]}</small></div></div>`)(TYP[tyOf(e)]):'')+
-  (tab==="edit"?(e.kind==="mt"?mtEdit(e):e.kind==="tf"?tfEdit(e):e.kind==="quiz"?qEdit(e):e.kind==="vocab"?vEdit(e):e.kind==="cw"?cwEdit(e):e.kind==="so"?soEdit(e):`
+  (tab==="edit"?(e.kind==="test"?testEdit(e):e.kind==="mt"?mtEdit(e):e.kind==="tf"?tfEdit(e):e.kind==="quiz"?qEdit(e):e.kind==="vocab"?vEdit(e):e.kind==="cw"?cwEdit(e):e.kind==="so"?soEdit(e):`
   <label style="margin-top:0">Tytuł</label><input type="text" id="t" value="${esc(e.title)}">
   <label>Polecenie dla ucznia</label><input type="text" id="n" value="${esc(e.inst)}">
   <label>Folder</label><select id="fo" style="padding:9px;border-radius:12px;border:2px solid var(--line);background:var(--field);color:var(--ink);font:500 14px Poppins">
@@ -696,7 +816,7 @@ function bindEditor(e){
     $("#ar").onclick=()=>{try{const o=dec($("#rc").value.trim());if(o.i!==e.id){note="Ten kod jest z innego ćwiczenia.";teacher();return}
       S.res.push({id:uid(),ex:o.i,n:o.n,c:o.c,t:o.t,d:o.d,a:o.a});note="Dodano!";save();teacher()}catch(x){note="Nieprawidłowy kod.";$("#rm").textContent=note;$("#rm").style.color="var(--bad)"}};
     return}
-  if(e.kind==="quiz")return qBind(e);if(e.kind==="vocab")return vBind(e);if(e.kind==="cw")return cwBind(e);if(e.kind==="so")return soBind(e);if(e.kind==="mt")return mtBind(e);if(e.kind==="tf")return tfBind(e);
+  if(e.kind==="quiz")return qBind(e);if(e.kind==="vocab")return vBind(e);if(e.kind==="cw")return cwBind(e);if(e.kind==="so")return soBind(e);if(e.kind==="test")return testBind(e);if(e.kind==="mt")return mtBind(e);if(e.kind==="tf")return tfBind(e);
   const t=$("#t"),n=$("#n"),x=$("#x");
   t.oninput=()=>{e.title=t.value;save()};n.oninput=()=>{e.inst=n.value;save()};
   $("#fo").onchange=ev=>{e.folder=ev.target.value;save();teacher()};
@@ -778,6 +898,7 @@ const detRow=(e,r)=>{const A=r.a?Object.values(r.a):[];let h='<div class="hint">
       else if(ty==='m'){const pk=String(a[0]==null?'':a[0]).split(',').map(Number);ans=(q.pr||[]).map((p,l)=>esc(p[0])+' → '+(pk[l]>=0&&q.pr[pk[l]]?esc(q.pr[pk[l]][1]):'(brak)')).join('; ');cor=(q.pr||[]).map(p=>esc(p[0])+' → '+esc(p[1])).join('; ')}
       else{const ids=String(a[0]==null?'':a[0]).split(',').filter(x=>x!=='').map(Number);ans=esc(ids.length?ids.map(j=>(q.o[j]&&(q.o[j][0]||'[zdjęcie]'))||'?').join(', '):'(brak)');cor=esc(q.o.filter(isOk).map(o=>o[0]||'[zdjęcie]').join(', '))}
       return `<div class="gaprow"><b>${i+1}.</b><span style="color:${a[2]==1?'var(--ok)':a[2]==2?'#f5b301':'var(--bad)'}">${a[2]==1?'✔':a[2]==2?'◐':'✘'} ${ans}</span> <small>${a[2]==1?(ty==='o'?'zaakceptowane odpowiedzi: '+cor+' · ':''):'poprawnie: '+cor+' · '}${a[1]} pkt</small></div>`}).join('');
+    else if(e.kind==='test')h=A.map(x=>`<div class="gaprow"><b>${(+x[3])+1}.</b><span>${esc(x[0])}: <b>${x[1]} / ${x[2]}</b></span>${x[4]?` <small>${esc(x[4])}</small>`:''}</div>`).join('');
     else if(e.kind==='mt'){const P=(e.pr||[]).filter(p=>(String(p.l||'').trim()||p.im)&&String(p.r||'').trim());h=A.map((x,i)=>{const p=P[x[2]]||{l:'?',r:'?'};return `<div class="gaprow"><b>${i+1}.</b><span style="color:${x[1]?'var(--ok)':'var(--bad)'}">${x[1]?'✔':'✘'} ${esc(p.l||'🖼')} → ${esc(x[0]||'(brak)')}</span>${x[1]?'':` <small>poprawnie: ${esc(p.r)}</small>`}</div>`}).join('')}
     else if(e.kind==='tf'){const T=(e.st||[]).filter(x=>String(x.s||'').trim());h=A.map((x,i)=>{const t=T[x[2]]||{s:'?',v:true};const lb=v=>v?'Prawda':'Fałsz';return `<div class="gaprow"><b>${i+1}.</b><span style="color:${x[1]?'var(--ok)':'var(--bad)'}">${x[1]?'✔':'✘'} ${esc(t.s)} → ${x[0]==='P'?'Prawda':x[0]==='F'?'Fałsz':'(brak)'}</span>${x[1]?'':` <small>poprawnie: ${lb(t.v!==false)}</small>`}</div>`}).join('')}
     else if(e.kind==='so')h=A.map((x,i)=>{const c=(e.so||[])[x[2]]||{s:'?'};return `<div class="gaprow"><b>${i+1}.</b><span style="color:${x[1]?'var(--ok)':'var(--bad)'}">${x[1]?'✔':'✘'} ${esc(x[0]||'(brak)')}</span>${x[1]?'':` <small>poprawnie: ${esc(String(c.s).split('|')[0].trim())}</small>`}</div>`}).join('');
@@ -978,7 +1099,7 @@ function quiz(ex){i18nInit(ex);
 
 /* ---------- VOCAB ---------- */
 const isPL=()=>document.documentElement.classList.contains('pl');
-const TE=()=>isPL()?['🦅','🎆','🎇','❤️','🤍','🕊️']:['🎃','✨','🦇','⭐','👻','🕷️'];
+const TE=()=>isPL()?['🦅','🎆','🎇','❤️','🤍','🕊️']:document.documentElement.classList.contains('plain')?['🎉','⭐','✨','🎊','💜','🌟']:['🎃','✨','🦇','⭐','👻','🕷️'];
 const TO=()=>isPL()?['🦅','🎆','🕊️','❤️','🤍','🎖️']:['🎃','👻','🦇','🕷️','💀','🧙'];
 const vsh=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
 let __ac=null;
@@ -986,7 +1107,7 @@ function beep(k){if(window.__vmute)return;try{__ac=__ac||new (window.AudioContex
   const T=(f,s,d,ty,v,f2)=>{const o=c.createOscillator(),g=c.createGain(),n=c.currentTime+s;o.type=ty||'sine';o.frequency.setValueAtTime(f,n);if(f2)o.frequency.exponentialRampToValueAtTime(f2,n+d);g.gain.setValueAtTime(0.0001,n);g.gain.linearRampToValueAtTime(v||0.12,n+0.02);g.gain.exponentialRampToValueAtTime(0.0001,n+d);o.connect(g);g.connect(c.destination);o.start(n);o.stop(n+d+0.05)};
   if(k==='ok')[523,659,784].forEach((f,i)=>T(f,i*0.07,0.22,'triangle',0.12));else if(k==='bad')T(200,0,0.3,'sawtooth',0.09,90);
   else if(k==='win')[523,659,784,1047,1319].forEach((f,i)=>T(f,i*0.1,0.3,'triangle',0.12));else T(700,0,0.06,'triangle',0.07)}catch(e){}}
-const confetti=(em,n)=>{for(let i=0;i<n;i++){const s=document.createElement('span');s.className='cf';s.textContent=em[i%em.length];s.style.cssText=`left:${Math.random()*100}vw;--d:${2+Math.random()*2}s;--x:${(Math.random()-0.5)*240}px;font-size:${20+Math.random()*26}px;animation-delay:${Math.random()*0.5}s`;document.body.appendChild(s);setTimeout(()=>s.remove(),5000)}};
+const confetti=(em,n)=>{if(window.__nocf)return;for(let i=0;i<n;i++){const s=document.createElement('span');s.className='cf';s.textContent=em[i%em.length];s.style.cssText=`left:${Math.random()*100}vw;--d:${2+Math.random()*2}s;--x:${(Math.random()-0.5)*240}px;font-size:${20+Math.random()*26}px;animation-delay:${Math.random()*0.5}s`;document.body.appendChild(s);setTimeout(()=>s.remove(),5000)}};
 const DLGC=['#ff8a1f','#8b5cf6','#10b981','#ec4899','#0ea5e9'];
 function dlgHTML(lines){const sp={};let n=0,out='';
   lines.forEach((ln,i)=>{ln=String(ln);if(!ln.trim())return;const m=ln.match(/^\s*([^:<>]{1,24}):\s*([\s\S]*)$/);
@@ -1406,33 +1527,37 @@ const dayLbl=d=>{const t=new Date(d),n=new Date();const a=new Date(t.getFullYear
 const hm=d=>new Date(d).toLocaleTimeString('pl-PL',{hour:'2-digit',minute:'2-digit'});
 function resDash(){
   if(rvSeen===null){rvSeen=getSeen();try{localStorage.setItem(seenKey(),new Date().toISOString())}catch(e){}}
-  const map={};S.ex.filter(inScope).forEach(x=>map[x.id]=x);
+  const map={};S.ex.forEach(x=>map[x.id]=x);
   let rs=S.res.filter(r=>map[r.ex]);
   const q=norm(rvQ);if(q)rs=rs.filter(r=>norm(r.n).includes(q)||norm(map[r.ex].title||'').includes(q));
   rs.sort((a,b)=>String(b.d).localeCompare(String(a.d)));
   const td=new Date().toDateString(),nT=rs.filter(r=>new Date(r.d).toDateString()===td).length;
   const avg=rs.length?Math.round(rs.reduce((s,r)=>s+pctOf(r),0)/rs.length):0,st=new Set(rs.map(r=>norm(r.n))).size;
-  const scope=curF==='all'?'Wszystkie ćwiczenia':'📁 '+fpath(curF).map(f=>esc(f.name)).join(' › ');
+  const scope='Wszystkie ćwiczenia, ze wszystkich folderów';
   const row=r=>{const x=map[r.ex],p=pctOf(r),t=TYP[tyOf(x)];return `<button class="rvr" data-oe="${x.id}"><span class="av" style="--ac:${hcol(norm(r.n))}">${esc(iniOf(r.n))}</span><span class="rvm"><b>${esc(r.n)}</b>${String(r.d)>rvSeen?'<i class="nwt">Nowe</i>':''}<small>${t[0]} ${esc(x.title||'Bez tytułu')}</small></span><span class="scp ${scCls(p)}">${p}%</span><span class="rvt">${hm(r.d)}</span></button>`};
   let body='';
   if(!rs.length)body=`<div class="rve0"><div>📭</div><b>${q?'Nic nie znaleziono':'Jeszcze nie ma odpowiedzi'}</b>${q?'Spróbuj wpisać inne imię albo tytuł.':'Wybierz ćwiczenie, kliknij „🔗 Generuj link” i wyślij go uczniom. Ich odpowiedzi pojawią się tutaj automatycznie.'}</div>`;
   else if(rvTab==='ex'){const g={};rs.forEach(r=>(g[r.ex]=g[r.ex]||[]).push(r));
     body='<div class="rveg">'+Object.keys(g).sort((a,b)=>String(g[b][0].d).localeCompare(String(g[a][0].d))).map(id=>{const x=map[id],L=g[id],t=TYP[tyOf(x)],a=Math.round(L.reduce((s,r)=>s+pctOf(r),0)/L.length),nw=L.filter(r=>String(r.d)>rvSeen).length;
       return `<button class="rve" data-oe="${id}" style="--tc:${t[3]}"><span class="rveh"><span class="ti">${t[0]}</span><b>${esc(x.title||'Bez tytułu')}</b><span class="scp ${scCls(a)}">${a}%</span></span><span class="rvbar"><i style="width:${a}%"></i></span><small>${L.length} ${L.length===1?'odpowiedź':L.length<5?'odpowiedzi':'odpowiedzi'} · ostatnia: ${dayLbl(L[0].d).toLowerCase()} ${hm(L[0].d)}${nw?` · <b style="color:#ff4d6d">${nw} nowe</b>`:''}</small></button>`}).join('')+'</div>'}
+  else if(rvTab==='fo'){const g={};rs.forEach(r=>{const k=map[r.ex].folder&&S.folders.some(f=>f.id===map[r.ex].folder)?map[r.ex].folder:'';(g[k]=g[k]||[]).push(r)});
+    body=Object.keys(g).sort((a,b)=>String(g[b][0].d).localeCompare(String(g[a][0].d))).map(k=>{const L=g[k],a=Math.round(L.reduce((s,r)=>s+pctOf(r),0)/L.length),nm=k?fpath(k).map(f=>f.name).join(' › '):'Bez folderu',ne=new Set(L.map(r=>r.ex)).size;
+      return `<details class="rvs" open><summary><span class="av" style="--ac:${k?hcol(k):'#94a3b8'}">📁</span><span class="rvm"><b>${esc(nm)}</b>${L.some(r=>String(r.d)>rvSeen)?'<i class="nwt">Nowe</i>':''}<small>${L.length} odpowiedzi · ${ne} ćwiczeń</small></span><span class="scp ${scCls(a)}">${a}%</span></summary><div class="rvl">${L.map(row).join('')}</div></details>`}).join('')}
   else if(rvTab==='st'){const g={};rs.forEach(r=>{const k=norm(r.n);(g[k]=g[k]||[]).push(r)});
     body=Object.keys(g).sort((a,b)=>String(g[b][0].d).localeCompare(String(g[a][0].d))).map(k=>{const L=g[k],a=Math.round(L.reduce((s,r)=>s+pctOf(r),0)/L.length),n=L[0].n;
       return `<details class="rvs"><summary><span class="av" style="--ac:${hcol(k)}">${esc(iniOf(n))}</span><span class="rvm"><b>${esc(n)}</b>${L.some(r=>String(r.d)>rvSeen)?'<i class="nwt">Nowe</i>':''}<small>${L.length} ${L.length===1?'ćwiczenie':'ćwiczeń'} · ostatnio: ${dayLbl(L[0].d).toLowerCase()} ${hm(L[0].d)}</small></span><span class="scp ${scCls(a)}">${a}%</span></summary><div class="rvl">${L.map(row).join('')}</div></details>`}).join('')}
   else{let last='';rs.forEach(r=>{const l=dayLbl(r.d);if(l!==last){body+=`<div class="rvd">${esc(l)}</div>`;last=l}body+=row(r)})}
-  return `<div class="card rvc"><div class="rvh"><div><h2>📊 Odpowiedzi uczniów</h2><small>${scope}</small></div><button class="btn" id="rvref">↻ Odśwież</button></div>
+  return `<div class="card rvc"><div class="rvh"><div><h2>📊 Odpowiedzi uczniów</h2><small>${scope}</small></div><div class="row" style="margin:0"><button class="btn" id="rvcsv" title="Pobierz tabelę wyników">⬇ CSV</button><button class="btn" id="rvref">↻ Odśwież</button></div></div>
   <div class="rvk"><div><b>${rs.length}</b><span>Odpowiedzi</span></div><div><b>${nT}</b><span>Dzisiaj</span></div><div><b>${rs.length?avg+'%':'–'}</b><span>Średni wynik</span></div><div><b>${st}</b><span>Uczniów</span></div></div>
-  <div class="rvtb"><div class="seg">${[['new','🕒 Najnowsze'],['ex','📚 Wg ćwiczeń'],['st','👤 Wg uczniów']].map(t=>`<button data-rvt="${t[0]}" class="${rvTab===t[0]?'on':''}">${t[1]}</button>`).join('')}</div><input type="text" id="rvq" placeholder="🔍 Szukaj ucznia lub ćwiczenia…" value="${esc(rvQ)}"></div>
+  <div class="rvtb"><div class="seg">${[['new','🕒 Najnowsze'],['ex','📚 Wg ćwiczeń'],['fo','📁 Wg folderów'],['st','👤 Wg uczniów']].map(t=>`<button data-rvt="${t[0]}" class="${rvTab===t[0]?'on':''}">${t[1]}</button>`).join('')}</div><input type="text" id="rvq" placeholder="🔍 Szukaj ucznia lub ćwiczenia…" value="${esc(rvQ)}"></div>
   <div id="rvb">${body}</div></div>`}
 function bindDash(){const m=document.querySelector('.main');if(!m)return;
   m.onclick=async ev=>{const o=ev.target.closest('[data-oe]');if(o&&!ev.target.closest('summary')){curE=o.dataset.oe;tab='res';note='';teacher();window.scrollTo(0,0);return}
     const t=ev.target.closest('[data-rvt]');if(t){rvTab=t.dataset.rvt;drawDash();return}
+    if(ev.target.closest('#rvcsv')){resCSV();return}
     if(ev.target.closest('#rvref')){const b=$('#rvref');b.disabled=true;b.textContent='Sprawdzam…';const before=S.res.length;try{await pollRes()}catch(e){}if(S.res.length===before){toast('✔ Brak nowych odpowiedzi');drawDash()}}};
   const q=$('#rvq');if(q)q.oninput=()=>{rvQ=q.value;const p=q.selectionStart;drawDash();const n=$('#rvq');if(n){n.focus();try{n.setSelectionRange(p,p)}catch(e){}}}}
-function drawDash(){const m=document.querySelector('.main');if(!m||curE)return;m.innerHTML=resDash();bindDash()}
+function drawDash(){const m=document.querySelector('.main');if(!m||curE)return;if(pv!=='res'){teacher();return}m.innerHTML=resDash();bindDash()}
 
 /* ---------- v12: wspólne dla nowych ćwiczeń ---------- */
 const exHead=e=>{const st='padding:9px;border-radius:12px;border:2px solid var(--line);background:var(--field);color:var(--ink);font:500 14px Poppins';return `<label style="margin-top:0">Tytuł</label><input type="text" id="t" value="${esc(e.title)}">
@@ -1593,6 +1718,223 @@ window.__themeIntro=uid=>{const k='fw_thi_'+(uid||'');try{if(S.thIntro||localSto
   const done=()=>{try{localStorage.setItem(k,'1')}catch(e){}S.thIntro=1;save();m.remove()};
   m.onclick=ev=>{const b=ev.target.closest('.tho[data-th]');if(b&&window.__applyTheme){window.__applyTheme(b.dataset.th);fill();return}if(ev.target.closest('#thok')||ev.target===m)done()}};
 
+/* ---------- v13: wygląd, ustawienia, pulpit ---------- */
+let pv='home';
+const plN=(n,a,b,c)=>n+' '+(n===1?a:(n%10>=2&&n%10<=4&&(n%100<12||n%100>14))?b:c);
+const R0=document.documentElement;
+function applyLook(o){o=o||S;const f=document.getElementById('icf');if(f)f.media=o.ic==='emo'?'not all':'all';R0.classList.toggle('nodeco',!!o.nd)}
+function stuFlags(o){if(S.sth!==false){try{o.th=localStorage.getItem('luki_theme')||'pl'}catch(e){}}if(S.slg==='en')o.lg='en';if(S.sfs)o.fs=1;if(S.ssn===false)o.ns=1;if(S.scf===false)o.nc=1;if(S.ic==='emo')o.ic='emo';if(S.nd)o.nd=1;return o}
+function stuPrefs(ex){if(!ex||ex.p)return;try{if(ex.th&&window.__applyTheme)window.__applyTheme(ex.th)}catch(e){}applyLook(ex);if(ex.fs)R0.classList.add('bigtxt');if(ex.ns)window.__vmute=true;if(ex.nc)window.__nocf=true}
+const dlFile=(name,text,mime)=>{const b=new Blob([text],{type:mime||'text/plain'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)};
+const FSVG='<svg viewBox="0 0 64 52" aria-hidden="true"><path d="M3 9a6 6 0 0 1 6-6h14.5a4 4 0 0 1 3 1.4L31 10h24a6 6 0 0 1 6 6v27a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6z" fill="var(--fc)"/><path d="M3 19h58v24a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6z" fill="#fff" opacity=".24"/></svg>';
+const recKey=()=>'fw_recent_'+(window.__UID||'');
+const recGet=()=>{try{return JSON.parse(localStorage.getItem(recKey())||'[]')}catch(e){return []}};
+const recPush=id=>{try{const a=recGet().filter(x=>x!==id);a.unshift(id);localStorage.setItem(recKey(),JSON.stringify(a.slice(0,8)))}catch(e){}};
+const recentHTML=()=>{const L=recGet().map(id=>S.ex.find(x=>x.id===id)).filter(Boolean).slice(0,5);if(!L.length)return '';
+  return `<div class="card rcl"><h2>Ostatnio otwierane</h2>${L.map(x=>{const t=TYP[tyOf(x)];return `<button class="rci" data-e="${x.id}" style="--tc:${t[3]}"><span>${t[0]}</span><b>${esc(x.title||'Bez tytułu')}</b></button>`}).join('')}</div>`};
+function exHTML(){const cur=curF==='all'?'':curF,path=cur?fpath(cur):[];
+  return `<section class="card exw"><div class="exh"><div class="excr"><a data-f="all" data-dz="" class="${cur?'':'cur'}">🗂 Pulpit</a>${path.map((f,i)=>`<i>›</i><a data-f="${f.id}" data-dz="${f.id}" class="${i===path.length-1?'cur':''}">${esc(f.name)}</a>`).join('')}</div>
+  <div class="row" style="margin:0"><button class="btn" id="addF">${cur?'+ Podfolder':'+ Nowy folder'}</button>${cur?'<button class="btn" id="renF" title="Zmień nazwę">✏️ Zmień nazwę</button><button class="btn d" id="delF" title="Usuń folder">🗑</button>':''}</div></div>
+  <div class="exa"><input type="text" id="srch" class="srch" placeholder="🔍 Szukaj ćwiczenia lub folderu…" value="${esc(srch)}"><select id="exsort" title="Kolejność ćwiczeń">${[['new','Najnowsze'],['az','A–Z'],['ty','Wg typu']].map(o=>`<option value="${o[0]}" ${(S.srt||'new')===o[0]?'selected':''}>${o[1]}</option>`).join('')}</select></div>
+  <div class="exg" id="itl">${listHTML()}</div><div class="hint" style="margin-top:10px">Kliknij folder, żeby do niego wejść. Ćwiczenia i foldery możesz przeciągać do innych folderów albo na nazwę folderu u góry.</div></section>`}
+const rvRow=(r,x)=>{const p=pctOf(r),t=TYP[tyOf(x)];return `<button class="rvr" data-oe="${x.id}"><span class="av" style="--ac:${hcol(norm(r.n))}">${esc(iniOf(r.n))}</span><span class="rvm"><b>${esc(r.n)}</b>${String(r.d)>rvSeen?'<i class="nwt">Nowe</i>':''}<small>${t[0]} ${esc(x.title||'Bez tytułu')}</small></span><span class="scp ${scCls(p)}">${p}%</span><span class="rvt">${hm(r.d)}</span></button>`};
+function resMini(){if(rvSeen===null){rvSeen=getSeen();try{localStorage.setItem(seenKey(),new Date().toISOString())}catch(e){}}
+  const map={};S.ex.forEach(x=>map[x.id]=x);const rs=S.res.filter(r=>map[r.ex]).sort((a,b)=>String(b.d).localeCompare(String(a.d)));
+  let body='',last='';rs.slice(0,8).forEach(r=>{const l=dayLbl(r.d);if(l!==last){body+=`<div class="rvd">${esc(l)}</div>`;last=l}body+=rvRow(r,map[r.ex])});
+  return `<section class="card rvmini"><div class="rvmh"><h2>📊 Najnowsze odpowiedzi</h2><span class="pill">${rs.length}</span></div>${rs.length?body+`<div class="row" style="justify-content:center"><button class="btn" data-rv="1">Zobacz wszystkie odpowiedzi ➜</button></div>`:'<div class="rve0"><div>📭</div><b>Jeszcze nie ma odpowiedzi</b>Otwórz ćwiczenie, kliknij „🔗 Generuj link” i wyślij go uczniom. Wyniki pojawią się tutaj same.</div>'}</section>`}
+const resCSV=()=>{const q=v=>'"'+String(v==null?'':v).replace(/"/g,'""')+'"';const rows=[['Uczeń','Ćwiczenie','Typ','Folder','Punkty','Maksimum','Procent','Data']];
+  S.res.slice().sort((a,b)=>String(b.d).localeCompare(String(a.d))).forEach(r=>{const x=S.ex.find(z=>z.id===r.ex);if(!x)return;rows.push([r.n,x.title||'',TYP[tyOf(x)][1],x.folder?fpath(x.folder).map(f=>f.name).join(' / '):'',r.c,r.t,pctOf(r)+'%',new Date(r.d).toLocaleString('pl-PL')])});
+  dlFile('wyniki-flowork.csv','﻿'+rows.map(r=>r.map(q).join(';')).join('\r\n'),'text/csv;charset=utf-8')};
+const tglRow=(k,on,t,d)=>`<div class="srow"><div><b>${t}</b><small>${d}</small></div><button class="tgl ${on?'on':''}" data-tk="${k}" role="switch" aria-checked="${!!on}" title="${t}"></button></div>`;
+const segRow=(k,cur,opts,t,d)=>`<div class="srow"><div><b>${t}</b><small>${d}</small></div><div class="seg">${opts.map(o=>`<button data-sk="${k}" data-sv="${o[0]}" class="${cur===o[0]?'on':''}">${o[1]}</button>`).join('')}</div></div>`;
+function setHTML(){return `<div class="dt"><h3>🖌 Wygląd panelu</h3>
+  ${segRow('ic',S.ic==='emo'?'emo':'mono',[['mono','Proste ikony'],['emo','Kolorowe emoji']],'Styl ikon','Proste, jednokolorowe ikony albo kolorowe emoji z systemu.')}
+  ${tglRow('deco',!S.nd,'Ozdoby motywu','Animowane dekoracje w tle i przy nagłówku, np. w motywach świątecznych.')}</div>
+  <div class="dt"><h3>🎓 Strona ucznia</h3><div class="hint">Te ustawienia trafiają do linku. Po zmianie kliknij „Zaktualizuj link” przy ćwiczeniu.</div>
+  ${tglRow('sth',S.sth!==false,'Mój motyw u uczniów','Uczeń zobaczy ćwiczenie w tym samym motywie, który masz ustawiony w panelu.')}
+  ${segRow('slg',S.slg==='en'?'en':'pl',[['pl','Polski'],['en','English']],'Język przycisków i komunikatów','W jakim języku uczeń widzi przyciski, podpowiedzi i wynik.')}
+  ${segRow('sfs',S.sfs?'big':'std',[['std','Zwykły'],['big','Duży']],'Rozmiar tekstu','Większy tekst przyda się młodszym uczniom i na tablicy interaktywnej.')}
+  ${tglRow('ssn',S.ssn!==false,'Dźwięki','Krótkie sygnały przy dobrej i złej odpowiedzi.')}
+  ${tglRow('scf',S.scf!==false,'Konfetti po zakończeniu','Animacja na koniec ćwiczenia.')}</div>
+  <div class="dt"><h3>🧩 Ćwiczenia i pulpit</h3>
+  ${segRow('dmo',S.dmo?'many':'one',[['one','Jedna próba'],['many','Wiele prób']],'Domyślna liczba prób','Każde nowe ćwiczenie zacznie z tym ustawieniem. Można je zmienić osobno w każdym ćwiczeniu.')}
+  ${segRow('srt',S.srt||'new',[['new','Najnowsze'],['az','A–Z'],['ty','Wg typu']],'Kolejność na pulpicie','Jak układać ćwiczenia w folderach.')}</div>`}
+function setHTML2(){return `<div class="dt"><h3>💾 Kopia i eksport</h3>
+  <div class="srow"><div><b>Kopia zapasowa</b><small>Plik ze wszystkimi ćwiczeniami, folderami i wynikami. Możesz go potem wczytać z powrotem.</small></div><div class="row" style="margin:0;flex:none"><button class="btn" id="bkx">⬇ Pobierz</button><button class="btn" id="bki">⬆ Wczytaj</button></div></div>
+  <div class="srow"><div><b>Wyniki uczniów</b><small>Tabela wszystkich odpowiedzi do otwarcia w Excelu lub Arkuszach Google.</small></div><button class="btn" id="csvx" style="flex:none">⬇ Pobierz CSV</button></div><div class="msg" id="bkm" style="display:block;margin:6px 0 0"></div></div>`}
+function bindSet(){const smo=$('#smo');if(!smo)return;
+  const keep=f=>{const y=smo.scrollTop;f();const n=$('#smo');if(n)n.scrollTop=y};
+  smo.addEventListener('click',ev=>{const t=ev.target.closest('[data-tk]'),s=ev.target.closest('[data-sk]');
+    if(t){const k=t.dataset.tk,on=!t.classList.contains('on');t.classList.toggle('on',on);t.setAttribute('aria-checked',on);
+      if(k==='deco'){if(on)delete S.nd;else S.nd=1}else if(on)delete S[k];else S[k]=false;
+      save();applyLook();return}
+    if(s){const k=s.dataset.sk,v=s.dataset.sv;s.parentNode.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b===s));
+      if(k==='ic'){if(v==='emo')S.ic='emo';else delete S.ic}else if(k==='slg'){if(v==='en')S.slg='en';else delete S.slg}else if(k==='sfs'){if(v==='big')S.sfs=1;else delete S.sfs}else if(k==='dmo'){if(v==='many')S.dmo=1;else delete S.dmo}else if(k==='srt'){S.srt=v;save();keep(teacher);return}
+      save();applyLook();return}
+    if(ev.target.closest('#csvx')){if(!S.res.length){$('#bkm').textContent='Nie ma jeszcze żadnych wyników.';return}resCSV();return}
+    if(ev.target.closest('#bkx')){const o={flowork:1,date:new Date().toISOString(),folders:S.folders,ex:S.ex,res:S.res};dlFile('flowork-kopia-'+new Date().toISOString().slice(0,10)+'.json',JSON.stringify(o),'application/json');$('#bkm').textContent='Kopia pobrana. Zachowaj plik w bezpiecznym miejscu.';return}
+    if(ev.target.closest('#bki')){const i=document.createElement('input');i.type='file';i.accept='.json,application/json';i.onchange=async()=>{const f=i.files[0];if(!f)return;const m=$('#bkm');
+        try{const d=JSON.parse(await f.text());if(!d||!Array.isArray(d.ex))throw new Error('To nie jest plik kopii Flowork.');
+          if(!confirm('Wczytać kopię z pliku? Dodam z niej ćwiczenia, foldery i wyniki, których tu nie ma. Obecnych danych nie usuwam.'))return;
+          let a=0;const has=(L,id)=>L.some(z=>z.id===id);(d.folders||[]).forEach(z=>{if(z&&z.id&&!has(S.folders,z.id))S.folders.push(z)});d.ex.forEach(z=>{if(z&&z.id&&!has(S.ex,z.id)){S.ex.push(z);a++}});(d.res||[]).forEach(z=>{if(z&&z.id&&!has(S.res,z.id))S.res.push(z)});
+          save();keep(teacher);const m2=$('#bkm');if(m2)m2.textContent='Wczytano. Dodane ćwiczenia: '+a+'.'}
+        catch(x){m.textContent='Nie udało się wczytać pliku: '+((x&&x.message)||x);m.style.color='var(--bad)'}};i.click()}})}
+
+/* ---------- v13: TEST (wiele zadań na jednej stronie) ---------- */
+const TT={gap:['📝','Luki','#7758e8','Uzupełnij luki.'],abc:['🔘','Pytania ABCD','#ff6b9d','Wybierz poprawną odpowiedź.'],voc:['📚','Słówka','#20b486','Przetłumacz słowa.'],cw:['🧩','Krzyżówka','#f59e0b','Rozwiąż krzyżówkę.'],dlg:['💬','Dialog','#0ea5e9','Uzupełnij dialog.'],so:['🔤','Zdania','#e0457b','Ułóż słowa w odpowiedniej kolejności.'],mt:['🔗','Dopasuj','#8b5cf6','Dopasuj odpowiedzi do elementów.'],tf:['⚖️','Prawda / Fałsz','#14b8a6','Zdecyduj, czy zdania są prawdziwe.']};
+const TKNEW={gap:()=>({x:'Yesterday I [[went]] to school. We [[had]] a test.',b:true}),abc:()=>({q:[{q:'',o:['','','',''],c:0}]}),voc:()=>({l:'dog - pies\ncat - kot',dr:'pe'}),cw:()=>({l:'APPLE - owoc, często czerwony\nLEMON - kwaśny, żółty owoc\nPEAR - gruszka po angielsku'}),dlg:()=>({x:'Anna: Hi Tom, how [[are]] you?\nTom: I [[am]] fine, thanks.',b:true}),so:()=>({l:'I went to school yesterday.\nShe is reading a book.'}),mt:()=>({l:'dog - pies\ncat - kot\nbird - ptak'}),tf:()=>({l:'Tom lives in London.\nF: Tom has two sisters.'})};
+const tkL=t=>String(t.l||'').split('\n').map(s=>s.trim()).filter(Boolean);
+const tkPairs=t=>tkL(t).map(pairSplit).filter(Boolean);
+const tkTF=t=>tkL(t).map(l=>{const m=l.match(/^(F|Fałsz|FALSE|N|NIE)\s*[:\-–)]\s*(.+)$/i),p=l.match(/^(P|T|Prawda|TRUE|TAK)\s*[:\-–)]\s*(.+)$/i);return m?[m[2].trim(),0]:p?[p[2].trim(),1]:[l,1]});
+const tkAbc=t=>(t.q||[]).map(q=>{const o=[];let c=0;(q.o||[]).forEach((s,j)=>{s=String(s||'').trim();if(s){if(j===+q.c)c=o.length;o.push(s)}});return String(q.q||'').trim()&&o.length>=2?[String(q.q).trim(),o,c]:null}).filter(Boolean);
+const tkCw=t=>tkPairs(t).map(p=>({a:p[0],q:p[1]})).filter(p=>cwClean(p.a).length>1);
+const tkMax=t=>t.ty==='gap'||t.ty==='dlg'?gaps(t.x).length:t.ty==='abc'?tkAbc(t).length:t.ty==='tf'?tkTF(t).length:t.ty==='so'?tkL(t).length:t.ty==='cw'?tkCw(t).length:tkPairs(t).length;
+const testObj=e=>({i:e.id,t:e.title,n:e.inst,k:'x',tk:(e.tasks||[]).filter(t=>tkMax(t)>0).map(t=>{const o={ty:t.ty,n:t.n||''};if(t.im)o.im=t.im;if(t.tx&&t.ty!=='gap'&&t.ty!=='dlg')o.tx=t.tx;
+  if(t.ty==='gap'||t.ty==='dlg'){o.x=t.x;o.b=t.b?1:0}
+  else if(t.ty==='abc')o.q=tkAbc(t);
+  else if(t.ty==='voc')o.w=tkPairs(t).map(p=>t.dr==='ep'?[p[0],p[1]]:[p[1],p[0]]);
+  else if(t.ty==='cw'){const P=tkCw(t),b=cwBuild(P.map(p=>cwClean(p.a)),7);o.cl=P;o.lay=b.p}
+  else if(t.ty==='so')o.s=tkL(t);
+  else if(t.ty==='mt')o.pr=tkPairs(t);
+  else if(t.ty==='tf')o.st=tkTF(t);
+  return o})});
+const tkOpen={};
+function testEdit(e){e.tasks=e.tasks||[];const tot=e.tasks.reduce((s,t)=>s+tkMax(t),0);
+  const PH={voc:['Słówka (jedna para w linii: angielskie - polskie)','dog - pies&#10;cat - kot'],cw:['Hasła (jedno w linii: HASŁO - podpowiedź)','APPLE - owoc, często czerwony'],so:['Zdania (jedno w linii, uczeń dostanie wymieszane słowa)','I went to school yesterday.'],mt:['Pary (jedna w linii: lewa - prawa)','dog - pies&#10;cat - kot'],tf:['Zdania (jedno w linii; fałszywe zacznij od F:)','Tom lives in London.&#10;F: Tom has two sisters.']};
+  const body=(t,k)=>{
+    if(t.ty==='gap'||t.ty==='dlg')return `<label>${t.ty==='dlg'?'Dialog (każda kwestia w nowej linii, np. Anna: tekst)':'Tekst z lukami'}</label><textarea data-fld="x" data-k="${k}">${esc(t.x||'')}</textarea><div class="hint">Lukę oznacz podwójnymi nawiasami: I [[went]] home. Kilka poprawnych odpowiedzi rozdziel pionową kreską: [[didn't|did not]].</div><label class="onc" style="margin-top:8px"><input type="checkbox" data-fld="b" data-k="${k}" ${t.b?'checked':''}><span><b>Pokaż bank słów</b><small>Uczeń zobaczy wymieszane odpowiedzi nad tekstem.</small></span></label>`;
+    if(t.ty==='abc')return (t.q||[]).map((q,j)=>`<div class="tkq"><div class="tkqh"><b class="mtn">${j+1}</b><input type="text" data-fld="q" data-k="${k}" data-j="${j}" value="${esc(q.q||'')}" placeholder="Pytanie"><button class="btn d" data-v="rq" data-k="${k}" data-j="${j}" title="Usuń pytanie">✕</button></div>${[0,1,2,3].map(o=>`<label class="tko"><input type="radio" name="c_${t.id}_${j}" data-fld="c" data-k="${k}" data-j="${j}" value="${o}" ${+q.c===o?'checked':''} title="Poprawna odpowiedź"><input type="text" data-fld="o" data-k="${k}" data-j="${j}" data-o="${o}" value="${esc((q.o||[])[o]||'')}" placeholder="Odpowiedź ${'ABCD'[o]}${o>1?' (opcjonalnie)':''}"></label>`).join('')}</div>`).join('')+`<div class="row"><button class="btn p" data-v="aq" data-k="${k}">+ Dodaj pytanie</button></div><div class="hint">Zaznacz kółko przy poprawnej odpowiedzi. Puste odpowiedzi są pomijane.</div>`;
+    const p=PH[t.ty]||PH.mt;return `<label>${p[0]}</label><textarea data-fld="l" data-k="${k}" placeholder="${p[1]}">${esc(t.l||'')}</textarea>${t.ty==='voc'?`<label>Kierunek</label><select data-fld="dr" data-k="${k}" style="padding:9px;border-radius:12px;border:2px solid var(--line);background:var(--field);color:var(--ink);font:500 14px Poppins"><option value="pe" ${t.dr!=='ep'?'selected':''}>Uczeń widzi polskie słowo i pisze po angielsku</option><option value="ep" ${t.dr==='ep'?'selected':''}>Uczeń widzi angielskie słowo i pisze po polsku</option></select>`:''}`};
+  const card=(t,k)=>{const T=TT[t.ty]||TT.gap,tx=t.ty!=='gap'&&t.ty!=='dlg',has=!!(t.im||(tx&&t.tx));
+    return `<div class="tk" data-k="${k}" style="--tc:${T[2]}"><div class="tkh"><span class="tpi">${T[0]}</span><b>Zadanie ${k+1} · ${T[1]}</b><span class="pill tkp" data-k="${k}">${tkMax(t)} pkt</span><span class="tkb"><button class="btn" data-v="up" data-k="${k}" title="Przesuń wyżej" ${k?'':'disabled'}>↑</button><button class="btn" data-v="dn" data-k="${k}" title="Przesuń niżej" ${k<e.tasks.length-1?'':'disabled'}>↓</button><button class="btn d" data-v="del" data-k="${k}" title="Usuń zadanie">✕</button></span></div>
+    <label>Polecenie</label><input type="text" data-fld="n" data-k="${k}" value="${esc(t.n||'')}" placeholder="${T[3]}">${body(t,k)}
+    <details class="tkx" data-x="${t.id}" ${tkOpen[t.id]||has?'open':''}><summary>📎 ${tx?'Tekst lub zdjęcie':'Zdjęcie'} do zadania ${has?'(dodane)':'(opcjonalnie)'}</summary>${tx?`<label>Tekst, do którego odnoszą się pytania</label><textarea data-fld="tx" data-k="${k}" placeholder="Wklej tekst do przeczytania…">${esc(t.tx||'')}</textarea>`:''}
+    ${t.im?`<div class="tfim"><img src="${esc(t.im)}" alt=""><button class="btn d" data-v="rim" data-k="${k}">✕ Usuń zdjęcie</button></div>`:`<div class="row"><button class="btn" data-v="img" data-k="${k}">🖼 Dodaj zdjęcie</button><span class="hint" style="margin:0">albo przeciągnij plik ze zdjęciem na to zadanie</span></div>`}</details>
+    <div class="row"><button class="btn" data-v="imp" data-k="${k}">📥 Wstaw z gotowego ćwiczenia</button></div></div>`};
+  return exHead(e)+`<div class="dt" style="margin-top:14px"><b>📋 Zadania w teście</b> <span class="pill" id="tktot">${plN(e.tasks.length,'zadanie','zadania','zadań')} · ${tot} pkt</span><div class="hint" style="margin:4px 0 0">Uczeń widzi wszystkie zadania na jednej stronie, jedno pod drugim, i na końcu klika „Zakończ test”. Każda odpowiedź to 1 punkt. Bez limitu czasu.</div>
+  ${e.tasks.map(card).join('')}
+  <label style="margin-top:16px">Dodaj zadanie</label><div class="tkadd">${Object.keys(TT).map(k=>`<button data-v="add" data-ty="${k}" style="--tc:${TT[k][2]}"><span>${TT[k][0]}</span>${TT[k][1]}</button>`).join('')}</div></div>`+exFoot(e)}
+function tkImport(e,t){const ok={gap:x=>!x.kind&&!x.isD,dlg:x=>!x.kind&&!!x.isD,abc:x=>x.kind==='quiz',voc:x=>x.kind==='vocab',cw:x=>x.kind==='cw',so:x=>x.kind==='so',mt:x=>x.kind==='mt',tf:x=>x.kind==='tf'}[t.ty];
+  const L=S.ex.filter(x=>x.id!==e.id&&ok(x));if(!L.length){toast('⚠️ Nie masz jeszcze osobnego ćwiczenia tego typu.');return}
+  const m=document.createElement('div');m.className='mo imo';m.innerHTML=`<div class="mob"><h2 style="margin:0 0 6px">📥 Wstaw z gotowego ćwiczenia</h2><div class="hint" style="margin:0">Treść zostanie skopiowana do tego zadania. Oryginalne ćwiczenie się nie zmieni.</div><select id="imps">${L.map(x=>`<option value="${x.id}">${esc(x.title||'Bez tytułu')}</option>`).join('')}</select><div class="row" style="justify-content:flex-end"><button class="btn" id="impc">Anuluj</button><button class="btn p" id="impo">Wstaw</button></div></div>`;
+  document.body.appendChild(m);m.onclick=ev=>{if(ev.target===m||ev.target.closest('#impc')){m.remove();return}if(!ev.target.closest('#impo'))return;
+    const x=S.ex.find(z=>z.id===m.querySelector('#imps').value);m.remove();if(!x)return;
+    if(t.ty==='gap'||t.ty==='dlg'){t.x=x.text||'';t.b=!!x.bank}
+    else if(t.ty==='abc')t.q=(x.qs||[]).filter(q=>(q.o||[]).length>=2).map(q=>{const o=q.o.slice(0,4);return{q:q.q||'',o:o.map(z=>z[0]||''),c:Math.max(0,o.findIndex(isOk))}});
+    else if(t.ty==='voc')t.l=(x.words||[]).filter(w=>w[0]&&w[1]).map(w=>w[0]+' - '+w[1]).join('\n');
+    else if(t.ty==='cw')t.l=(x.cw||[]).filter(w=>w.a).map(w=>w.a+' - '+(w.q||'')).join('\n');
+    else if(t.ty==='so')t.l=(x.so||[]).map(s=>s.s).filter(Boolean).join('\n');
+    else if(t.ty==='mt')t.l=(x.pr||[]).filter(p=>p.l&&p.r).map(p=>p.l+' - '+p.r).join('\n');
+    else if(t.ty==='tf'){t.l=(x.st||[]).filter(s=>s.s).map(s=>(s.v===false?'F: ':'')+s.s).join('\n');if(x.tx)t.tx=x.tx;if(x.im)t.im=x.im}
+    if(x.inst)t.n=x.inst;save();teacher();toast('✔ Wstawiono treść z ćwiczenia „'+(x.title||'')+'”.')}}
+function testBind(e){const main=document.querySelector('.main');
+  const valid=()=>{const T=(e.tasks||[]).filter(t=>tkMax(t)>0);if(!T.length)return 'Dodaj co najmniej jedno zadanie z treścią.';
+    for(let k=0;k<e.tasks.length;k++){const t=e.tasks[k];if(t.ty==='cw'&&tkMax(t)){const P=tkCw(t),b=cwBuild(P.map(p=>cwClean(p.a)),7);if(b.un&&b.un.length)return 'Zadanie '+(k+1)+': hasła „'+b.un.map(i=>P[i].a).join(', ')+'” nie da się wpleść w krzyżówkę (nie mają wspólnych liter z innymi). Zmień je albo usuń.'}}
+    return ''};
+  exBindHead(e,valid,testPlay,testObj);
+  const pts=()=>{main.querySelectorAll('.tkp').forEach(p=>{const t=e.tasks[+p.dataset.k];if(t)p.textContent=tkMax(t)+' pkt'});const o=$('#tktot');if(o)o.textContent=plN(e.tasks.length,'zadanie','zadania','zadań')+' · '+e.tasks.reduce((s,t)=>s+tkMax(t),0)+' pkt'};
+  main.oninput=ev=>{const el=ev.target,f=el.dataset.fld,t=e.tasks[+el.dataset.k];if(!f||!t||el.type==='radio'||el.type==='checkbox'||el.tagName==='SELECT')return;
+    if(f==='q')t.q[+el.dataset.j].q=el.value;else if(f==='o'){const q=t.q[+el.dataset.j];q.o=q.o||[];q.o[+el.dataset.o]=el.value}else t[f]=el.value;save();pts()};
+  main.onchange=ev=>{const el=ev.target,f=el.dataset.fld,t=e.tasks[+el.dataset.k];if(!f||!t)return;if(f==='c'){t.q[+el.dataset.j].c=+el.value;save()}else if(f==='b'){t.b=el.checked;save()}else if(f==='dr'){t.dr=el.value;save()}};
+  main.querySelectorAll('details.tkx').forEach(d=>d.ontoggle=()=>{tkOpen[d.dataset.x]=d.open});
+  const setIm=async(k,f)=>{try{toast('⏳ Wgrywam zdjęcie…');e.tasks[k].im=await imgFile(f,1);tkOpen[e.tasks[k].id]=true;save();teacher()}catch(x){toast('⚠️ '+((x&&x.message)||x))}};
+  main.onclick=async ev=>{const b=ev.target.closest('[data-v]');if(!b)return;const a=b.dataset.v,k=+b.dataset.k,t=e.tasks[k];
+    if(a==='add'){const ty=b.dataset.ty;e.tasks.push(Object.assign({id:uid(),ty:ty,n:TT[ty][3]},TKNEW[ty]()))}
+    else if(a==='del'){if(!(await modal({title:'Usunąć zadanie '+(k+1)+'?',text:'Tej operacji nie można cofnąć.',ok:'Usuń'})))return;e.tasks.splice(k,1)}
+    else if(a==='up'&&k>0)e.tasks.splice(k-1,0,e.tasks.splice(k,1)[0]);
+    else if(a==='dn'&&k<e.tasks.length-1)e.tasks.splice(k+1,0,e.tasks.splice(k,1)[0]);
+    else if(a==='aq')t.q.push({q:'',o:['','','',''],c:0});
+    else if(a==='rq')t.q.splice(+b.dataset.j,1);
+    else if(a==='rim')delete t.im;
+    else if(a==='img'){const f=await pickImg();if(f)setIm(k,f);return}
+    else if(a==='imp'){tkImport(e,t);return}
+    else return;
+    save();teacher()};
+  main.ondragover=ev=>{const r=ev.target.closest('.tk');if(r&&[...(ev.dataTransfer.items||[])].some(i=>i.kind==='file')){ev.preventDefault();r.style.outline='3px dashed var(--purple)'}};
+  main.ondragleave=ev=>{const r=ev.target.closest('.tk');if(r&&!r.contains(ev.relatedTarget))r.style.outline=''};
+  main.ondrop=ev=>{const r=ev.target.closest('.tk');if(!r)return;const f=[...(ev.dataTransfer.files||[])][0];if(!f)return;ev.preventDefault();r.style.outline='';setIm(+r.dataset.k,f)}}
+const MK={};
+MK.gap=(t,el,upd)=>{const bank=[];let n=0;
+  const conv=txt=>{txt=String(txt);let out='',last=0;txt.replace(GAP,(m,a,i)=>{out+=big(esc(txt.slice(last,i)));const al=a.split('|').map(s=>s.trim()).filter(Boolean);bank.push(al[0]);out+=`<input class="blank" data-a="${esc(al.join('|'))}" aria-label="Luka" autocomplete="off" autocapitalize="off" spellcheck="false">`;n++;last=i+m.length;return m});return out+big(esc(txt.slice(last)))};
+  let body;
+  if(t.ty==='dlg'){const sp=[];body='<div class="tdl">'+String(t.x||'').split('\n').filter(l=>l.trim()).map(l=>{const m=l.match(/^([^:\[]{1,24}):\s*(.*)$/);const who=m?m[1].trim():'';if(who&&!sp.includes(who))sp.push(who);return `<div class="tdb ${who&&sp.indexOf(who)%2?'r':''}">${who?`<u>${esc(who)}</u>`:''}${conv(m?m[2]:l)}</div>`}).join('')+'</div>'}
+  else body='<div class="tgt">'+conv(t.x||'').replace(/\n/g,'<br>')+'</div>';
+  el.innerHTML=(t.b?`<div class="tbank">${shuf(bank).map(w=>`<button type="button">${esc(w)}</button>`).join('')}</div>`:'')+body;
+  const B=[...el.querySelectorAll('.blank')];let foc=null;
+  const ub=()=>{const need={};B.forEach(b=>{const k=norm(b.value);if(k)need[k]=(need[k]||0)+1});el.querySelectorAll('.tbank button').forEach(w=>{const k=norm(w.textContent);let u=false;if(need[k]>0){need[k]--;u=true}w.classList.toggle('used',u)})};
+  B.forEach(b=>{b.onfocus=()=>foc=b;b.oninput=()=>{ub();upd()}});
+  el.querySelectorAll('.tbank button').forEach(w=>w.onclick=()=>{const tg=(foc&&!foc.readOnly&&!foc.value)?foc:(B.find(b=>!b.value)||foc);if(!tg||tg.readOnly)return;tg.value=w.textContent;foc=B[B.indexOf(tg)+1]||tg;ub();upd()});
+  return{max:n,ans:()=>B.filter(b=>b.value.trim()).length,check(){let sc=0;const det=[];B.forEach(b=>{const al=b.dataset.a.split('|').map(norm),ok=al.includes(norm(b.value));b.readOnly=true;b.classList.add(ok?'ok':'bad');if(ok)sc++;else b.insertAdjacentHTML('afterend',`<span class="tfix">✔ ${esc(b.dataset.a.split('|')[0])}</span>`);det.push((ok?'✔':'✘')+(b.value.trim()||'—'))});el.querySelectorAll('.tbank button').forEach(w=>w.disabled=true);return{sc:sc,det:det.join(', ')}}}};
+MK.dlg=MK.gap;
+MK.abc=(t,el,upd)=>{const Q=Object.values(t.q||[]).map(q=>Object.values(q));const A=Array(Q.length).fill(null);let lock=false;
+  el.innerHTML=Q.map((q,j)=>`<div class="tqq"><b>${j+1}. ${big(esc(q[0]))}</b>${Object.values(q[1]).map((o,k)=>`<button type="button" class="tqo" data-j="${j}" data-o="${k}"><i>${'ABCDEF'[k]}</i><span>${big(esc(o))}</span></button>`).join('')}</div>`).join('');
+  el.onclick=ev=>{const b=ev.target.closest('.tqo');if(!b||lock)return;const j=+b.dataset.j;A[j]=+b.dataset.o;el.querySelectorAll(`.tqo[data-j="${j}"]`).forEach(x=>x.classList.toggle('on',x===b));upd()};
+  return{max:Q.length,ans:()=>A.filter(a=>a!==null).length,check(){lock=true;let sc=0;const det=[];Q.forEach((q,j)=>{const ok=A[j]===+q[2];if(ok)sc++;el.querySelectorAll(`.tqo[data-j="${j}"]`).forEach(x=>{const k=+x.dataset.o;x.disabled=true;x.classList.remove('on');if(k===+q[2])x.classList.add('good');else if(k===A[j])x.classList.add('bad')});det.push((ok?'✔':'✘')+(A[j]===null?'—':'ABCDEF'[A[j]]))});return{sc:sc,det:det.join(', ')}}}};
+MK.voc=(t,el,upd)=>{const W=Object.values(t.w||[]).map(w=>Object.values(w));
+  el.innerHTML=W.map((w,j)=>`<div class="tvr"><b>${j+1}. ${esc(w[0])}</b><input type="text" placeholder="Wpisz tłumaczenie" autocomplete="off" autocapitalize="off" spellcheck="false"></div>`).join('');
+  const I=[...el.querySelectorAll('input')];I.forEach(i=>i.oninput=upd);
+  return{max:W.length,ans:()=>I.filter(i=>i.value.trim()).length,check(){let sc=0;const det=[];I.forEach((i,j)=>{const al=String(W[j][1]).split(/[|\/]/).map(norm).filter(Boolean),ok=al.includes(norm(i.value));i.readOnly=true;i.classList.add(ok?'ok':'bad');if(ok)sc++;else i.insertAdjacentHTML('afterend',`<span class="tfix">✔ ${esc(W[j][1])}</span>`);det.push((ok?'✔':'✘')+(i.value.trim()||'—'))});return{sc:sc,det:det.join(', ')}}}};
+MK.so=(t,el,upd)=>{const SN=Object.values(t.s||[]).map(String);let lock=false;
+  const st=SN.map(s=>{const w=s.trim().split(/\s+/);let o=shuf(w.map((x,i)=>i));if(w.length>1&&o.every((x,i)=>x===i))o.reverse();return{w:w,pool:o,ans:[],res:''}});
+  const draw=()=>{el.innerHTML=st.map((s,j)=>`<div class="tso ${s.res}"><div class="tsol">${s.ans.map(i=>`<button type="button" class="tsw" data-j="${j}" data-a="${i}">${esc(s.w[i])}</button>`).join('')}</div><div class="tsop">${s.pool.map(i=>`<button type="button" class="tsw" data-j="${j}" data-p="${i}">${esc(s.w[i])}</button>`).join('')}</div>${s.res==='bad'?`<div class="tfix">✔ ${esc(SN[j])}</div>`:''}</div>`).join('')};
+  el.onclick=ev=>{const b=ev.target.closest('.tsw');if(!b||lock)return;const s=st[+b.dataset.j];if(b.dataset.p!==undefined){const i=+b.dataset.p;s.pool.splice(s.pool.indexOf(i),1);s.ans.push(i)}else{const i=+b.dataset.a;s.ans.splice(s.ans.indexOf(i),1);s.pool.push(i)}draw();upd()};
+  draw();
+  return{max:SN.length,ans:()=>st.filter(s=>!s.pool.length).length,check(){lock=true;let sc=0;const det=[];st.forEach(s=>{const ok=s.ans.map(i=>s.w[i]).join(' ')===s.w.join(' ');s.res=ok?'good':'bad';if(ok)sc++;det.push(ok?'✔':'✘')});draw();return{sc:sc,det:det.join(' ')}}}};
+MK.mt=(t,el,upd)=>{const P=Object.values(t.pr||[]).map(p=>Object.values(p));const ch=shuf(P.map(p=>String(p[1])));const slot=Array(P.length).fill(null);let sel=null,lock=false,res=null;
+  const chip=ci=>`<button type="button" class="mtc ${sel===ci?'sel':''}" draggable="${!lock}" data-c="${ci}">${esc(ch[ci])}</button>`;
+  const draw=()=>{const used=new Set(slot.filter(x=>x!==null));el.innerHTML=`<div class="mtb"><div>${P.map((p,i)=>`<div class="mtr ${res?(res[i]?'good':'bad'):''}"><div class="mtlft"><span>${big(esc(p[0]))}</span></div><div class="mtar">➜</div><div class="mtslot ${slot[i]!==null?'full':''} ${sel!==null&&!lock?'hot':''}" data-s="${i}">${slot[i]!==null?chip(slot[i]):'<span class="mtph">Upuść tutaj</span>'}</div>${res&&!res[i]?`<div class="mtcor">✔ ${esc(p[1])}</div>`:''}</div>`).join('')}</div><div class="mtpool"><div class="mtph">Odpowiedzi</div>${ch.map((c,ci)=>used.has(ci)?'':chip(ci)).join('')}</div></div>`};
+  const place=(ci,s)=>{const k=slot.indexOf(ci);if(k>=0)slot[k]=null;slot[s]=ci;sel=null;draw();upd()},back=ci=>{const k=slot.indexOf(ci);if(k>=0)slot[k]=null;sel=null;draw();upd()};
+  el.onclick=ev=>{if(lock)return;const c=ev.target.closest('.mtc'),s=ev.target.closest('.mtslot');if(c&&!s){const ci=+c.dataset.c;sel=sel===ci?null:ci;draw();return}if(s){const si=+s.dataset.s;if(sel!==null)place(sel,si);else if(slot[si]!==null)back(slot[si])}};
+  el.ondragstart=ev=>{const c=ev.target.closest&&ev.target.closest('.mtc');if(!c||lock){ev.preventDefault();return}ev.dataTransfer.setData('text/plain','c:'+c.dataset.c)};
+  el.ondragover=ev=>{if(!lock&&ev.target.closest('.mtslot,.mtpool'))ev.preventDefault()};
+  el.ondrop=ev=>{if(lock)return;const z=ev.target.closest('.mtslot,.mtpool');if(!z)return;ev.preventDefault();const d=(ev.dataTransfer.getData('text/plain')||'').split(':');if(d[0]!=='c')return;if(z.classList.contains('mtpool'))back(+d[1]);else place(+d[1],+z.dataset.s)};
+  draw();
+  return{max:P.length,ans:()=>slot.filter(x=>x!==null).length,check(){lock=true;sel=null;res=P.map((p,i)=>slot[i]!==null&&norm(ch[slot[i]])===norm(p[1]));draw();return{sc:res.filter(Boolean).length,det:res.map(r=>r?'✔':'✘').join(' ')}}}};
+MK.tf=(t,el,upd)=>{const ST=Object.values(t.st||[]).map(x=>Object.values(x));const A=Array(ST.length).fill(null);let lock=false;
+  el.innerHTML=ST.map((x,i)=>`<div class="tfs" data-i="${i}"><div class="tfh"><span class="tfn">${i+1}</span><span>${big(esc(x[0]))}</span></div><div class="tfbt"><button type="button" class="tfa t" data-i="${i}" data-x="1">✔ Prawda</button><button type="button" class="tfa f" data-i="${i}" data-x="0">✘ Fałsz</button></div><div class="tfcr"></div></div>`).join('');
+  el.onclick=ev=>{const b=ev.target.closest('.tfa');if(!b||lock)return;A[+b.dataset.i]=+b.dataset.x;b.closest('.tfs').querySelectorAll('.tfa').forEach(x=>x.classList.toggle('on',x===b));upd()};
+  return{max:ST.length,ans:()=>A.filter(a=>a!==null).length,check(){lock=true;let sc=0;const det=[];ST.forEach((x,i)=>{const ok=A[i]===+x[1];if(ok)sc++;const r=el.querySelector(`.tfs[data-i="${i}"]`);r.classList.add(ok?'good':'bad');r.querySelectorAll('.tfa').forEach(b=>{b.disabled=true;if(!b.classList.contains('on'))b.classList.add('dim')});r.querySelector('.tfcr').textContent=ok?'✔ Dobrze!':'✘ Poprawnie: '+(+x[1]?'Prawda':'Fałsz');det.push((ok?'✔':'✘')+(A[i]===null?'—':A[i]?'P':'F'))});return{sc:sc,det:det.join(', ')}}}};
+MK.cw=(t,el,upd)=>{const cl=Object.values(t.cl||[]);const L=cwLay(cl,Object.values(t.lay||[]).map(p=>Object.values(p)));
+  let h=`<div class="cwg" style="grid-template-columns:repeat(${L.C},var(--cs))">`;for(let r=0;r<L.R;r++)for(let c=0;c<L.C;c++){const x=L.cells.get(r+','+c);h+=x?`<div class="cc" data-r="${r}" data-c="${c}">${x.num?`<span class="cn">${x.num}</span>`:''}<input maxlength="2" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Litera" data-r="${r}" data-c="${c}"></div>`:'<div class="ce"></div>'}h+='</div>';
+  const clue=d=>L.words.map((w,wi)=>[w,wi]).filter(a=>a[0].d===d).sort((a,b)=>a[0].num-b[0].num).map(a=>`<div data-w="${a[1]}">${a[0].num}. ${esc(cl[a[0].i].q||'')} <small>(${a[0].len})</small></div>`).join('');
+  el.innerHTML=`<div class="tcw"><div class="cwscroll">${h}</div><div class="tcl"><b>Poziomo ➜</b>${clue('A')||'–'}<b>Pionowo ↓</b>${clue('D')||'–'}</div></div>`;
+  const inp=(r,c)=>el.querySelector(`input[data-r="${r}"][data-c="${c}"]`);let dir='A';
+  el.addEventListener('focusin',ev=>{const i=ev.target;if(i.tagName!=='INPUT')return;const x=L.cells.get(i.dataset.r+','+i.dataset.c);const ds=x.ws.map(w=>L.words[w].d);if(!ds.includes(dir))dir=ds[0];try{i.select()}catch(e){}});
+  el.addEventListener('input',ev=>{const i=ev.target;if(i.tagName!=='INPUT'||i.readOnly)return;i.value=i.value.slice(-1).toUpperCase();upd();if(i.value){const n=inp(+i.dataset.r+(dir==='D'?1:0),+i.dataset.c+(dir==='A'?1:0));if(n)n.focus()}});
+  el.addEventListener('keydown',ev=>{const i=ev.target;if(i.tagName!=='INPUT')return;const r=+i.dataset.r,c=+i.dataset.c;const mv={ArrowRight:[0,1],ArrowLeft:[0,-1],ArrowDown:[1,0],ArrowUp:[-1,0]}[ev.key];
+    if(mv){ev.preventDefault();dir=mv[0]?'D':'A';const n=inp(r+mv[0],c+mv[1]);if(n)n.focus()}
+    else if(ev.key==='Backspace'&&!i.value&&!i.readOnly){const n=inp(r-(dir==='D'?1:0),c-(dir==='A'?1:0));if(n){n.value='';n.focus();upd()}}});
+  const wv=w=>{let s='';for(let k=0;k<w.len;k++){const i=inp(w.r+(w.d==='D'?k:0),w.c+(w.d==='A'?k:0));s+=(i&&i.value)||' '}return s};
+  return{max:L.words.length,ans:()=>L.words.filter(w=>!wv(w).includes(' ')).length,check(){let sc=0;const det=[],good=new Set();L.words.forEach((w,wi)=>{const ok=cwFold(wv(w))===cwFold(w.ans);if(ok){sc++;for(let k=0;k<w.len;k++)good.add((w.r+(w.d==='D'?k:0))+','+(w.c+(w.d==='A'?k:0)))}const d=el.querySelector(`.tcl [data-w="${wi}"]`);if(d){d.classList.add(ok?'good':'bad');if(!ok)d.insertAdjacentHTML('beforeend',` <span class="tfix">✔ ${esc(w.ans)}</span>`)}det.push((ok?'✔':'✘')+w.ans)});
+    el.querySelectorAll('.cc').forEach(c=>{c.querySelector('input').readOnly=true;c.classList.add(good.has(c.dataset.r+','+c.dataset.c)?'ok':'bad')});return{sc:sc,det:det.join(', ')}}}};
+function testPlay(ex){
+  const TK=Object.values(ex.tk||[]);
+  let saved=null;if(!ex.p&&!ex.mo){try{saved=JSON.parse(localStorage.getItem('luki_done_'+ex.i))}catch(e){}}
+  app.innerHTML=hdr(esc(ex.t||'Test'),'📋 Test'+(ex.n?' · '+esc(ex.n):''))+'<div id="txa"></div>';
+  const box=$('#txa');
+  const sumRows=lg=>lg.map(x=>`<div class="rv"><span>${+x[1]===+x[2]?'✔':'✘'}</span><span style="flex:1">Zadanie ${(+x[3])+1} · ${esc(x[0])}</span><b>${x[1]} / ${x[2]}</b></div>`).join('');
+  const show=(nm,sc,lg,code,msg)=>exEnd(ex,box,nm,sc,lg.reduce((s,x)=>s+(+x[2]||0),0),sumRows(lg),code,msg,'📋',()=>board(nm));
+  function board(name){const C=[];let upd=()=>{};
+    box.onclick=ev=>{const z=ev.target.closest('[data-zoom]');if(z)z.classList.toggle('zoom')};
+    box.innerHTML=TK.map((t,i)=>{const T=TT[t.ty]||TT.gap;return `<section class="card tkc" id="tk${i}" style="--tc:${T[2]}"><div class="tkt"><span class="tkno"><i>${T[0]}</i>Zadanie ${i+1}</span><span class="chip2 tkpt"></span></div>${t.n?`<div class="polt" style="margin-bottom:10px">${esc(t.n)}</div>`:''}${t.im||t.tx?`<div class="tkpas">${t.im?`<img src="${esc(t.im)}" alt="" data-zoom="1">`:''}${t.tx?big(esc(t.tx)).replace(/\n/g,'<br>'):''}</div>`:''}<div class="tkbody"></div></section>`}).join('')+
+      `<div class="tend"><b id="tpr"></b><div class="qbar"><i id="tpb" style="width:0%"></i></div><button class="btn p" id="tfin" style="font-size:16px;padding:12px 24px">Zakończ test 🏁</button></div>`;
+    TK.forEach((t,i)=>{const c=(MK[t.ty]||MK.gap)(t,box.querySelector('#tk'+i+' .tkbody'),()=>upd());C.push(c);box.querySelector('#tk'+i+' .tkpt').textContent=c.max+' pkt'});
+    const TOT=C.reduce((s,c)=>s+c.max,0);
+    upd=()=>{const a=C.reduce((s,c)=>s+c.ans(),0);const p=$('#tpr');if(!p)return;p.textContent='Odpowiedzi: '+a+' / '+TOT;$('#tpb').style.width=(TOT?a/TOT*100:0)+'%'};upd();
+    $('#tfin').onclick=()=>{const a=C.reduce((s,c)=>s+c.ans(),0);
+      if(a<TOT){if(!confirm('Nie wszystko jest uzupełnione. Brakuje odpowiedzi: '+(TOT-a)+'. Zakończyć test mimo to?'))return}
+      else if(!ex.p&&!ex.mo&&!confirm('Test można zakończyć tylko raz. Czy na pewno chcesz zakończyć?'))return;
+      let sc=0;const log=C.map((c,i)=>{const r=c.check();sc+=r.sc;const pt=box.querySelector('#tk'+i+' .tkpt');pt.textContent=r.sc+' / '+c.max+' pkt';pt.className='scp '+scCls(c.max?r.sc/c.max*100:0);return [(TT[TK[i].ty]||TT.gap)[1],r.sc,c.max,i,String(r.det||'').slice(0,400)]});
+      box.querySelector('.tend').remove();
+      exFinish(ex,'tx',name,sc,TOT,log,(nm,s2,lg,code,msg)=>{const pc=TOT?Math.round(sc/TOT*100):0;
+        box.insertAdjacentHTML('afterbegin',`<section class="card" style="text-align:center"><div style="font-size:64px;animation:pop .6s">${pc>=90?'🏆':pc>=60?'📋':'💪'}</div><div class="sbig">${sc} / ${TOT}</div><div style="font-weight:800;font-size:18px">${esc(nm)}, wynik: ${sc} z ${TOT} (${pc}%)</div><div class="msg" id="sent" style="display:block;margin-top:10px">${msg||''}</div><div class="hint">Poniżej widzisz swoje odpowiedzi z poprawkami.</div>${(ex.p||ex.mo)?'<div class="row" style="justify-content:center"><button class="btn p" id="again">↺ Rozwiąż jeszcze raz</button></div>':''}</section>`);
+        if(code)cwShow(code,!ex.fb&&!ex.p);beep('win');confetti(TE(),pc>=50?36:12);const ag=$('#again');if(ag)ag.onclick=()=>{board(nm);window.scrollTo(0,0)};window.scrollTo({top:0,behavior:'smooth'})})}}
+  if(!TK.length){box.innerHTML='<section class="card">Ten test nie ma jeszcze zadań.</section>';return}
+  const TOT0=TK.reduce((s,t)=>s+(t.ty==='gap'||t.ty==='dlg'?gaps(t.x).length:t.ty==='abc'?Object.values(t.q||[]).length:t.ty==='voc'?Object.values(t.w||[]).length:t.ty==='cw'?Object.values(t.lay||[]).length:t.ty==='so'?Object.values(t.s||[]).length:t.ty==='mt'?Object.values(t.pr||[]).length:Object.values(t.st||[]).length),0);
+  if(saved&&saved.tx)show(saved.name,saved.score,saved.log||[],saved.code,'Ten test został już rozwiązany. Oto twój wynik.');
+  else if(ex.p)board('Podgląd');
+  else exIntro(ex,box,'📋 '+plN(TK.length,'zadanie','zadania','zadań')+' · '+TOT0+' pkt','Masz tylko jedną próbę. Rozwiąż wszystkie zadania i na końcu kliknij „Zakończ test”.',(nm,mine)=>{if(mine)show(mine.n,+mine.c||0,mine.a?Object.values(mine.a).map(x=>Object.values(x)):[],'','Ta osoba już rozwiązała ten test. To wynik z pierwszej próby.');else board(nm)})}
+
 /* ---------- START ---------- */
 async function init(){
   const m=location.hash.match(/^#u=(.+)$/);
@@ -1723,11 +2065,68 @@ I18_SB.push(['Masz tylko jedną próbę. Przeciągnij każdą odpowiedź do pasu
 ['✔ Prawda','✔ True'],['✘ Fałsz','✘ False'],['✔ Dobrze!','✔ Correct!'],['Dopasuj pary','Match the pairs'],['Prawda czy fałsz?','True or false?']);
 I18_PX.push([/^🔗 Dopasowano (\d+)\/(\d+)$/,'🔗 Matched $1/$2'],[/^Odpowiedziano (\d+)\/(\d+)$/,'Answered $1/$2'],[/^(.*), wynik: (\d+) z (\d+) \((\d+)%\)$/,'$1, score: $2 of $3 ($4%)'],[/^🔗 (\d+) par$/,'🔗 $1 pairs'],[/^⚖️ (\d+) zdań$/,'⚖️ $1 sentences'],
 [/^✘ Poprawnie: Prawda$/,'✘ Correct: True'],[/^✘ Poprawnie: Fałsz$/,'✘ Correct: False'],[/^Dobrze: (\d+) z (\d+)\.(.*)$/,'Correct: $1 of $2.'],[/^🔗 Dopasuj pary(.*)$/,'🔗 Match the pairs$1'],[/^⚖️ Prawda czy fałsz(.*)$/,'⚖️ True or false$1']);
+I18_PN2.push(
+['➕ Nowe ćwiczenie','➕ New exercise'],['Prawda / Fałsz','True / False'],['Pulpit','Desktop'],['🗂 Pulpit','🗂 Desktop'],['Odpowiedzi uczniów','Student answers'],['📊 Odpowiedzi uczniów','📊 Student answers'],
+['🖌 Wygląd panelu','🖌 Panel look'],['Styl ikon','Icon style'],['Proste ikony','Simple icons'],['Kolorowe emoji','Colour emoji'],['Proste, jednokolorowe ikony albo kolorowe emoji z systemu.','Simple one-colour icons or colour emoji from your system.'],
+['Ozdoby motywu','Theme decorations'],['Animowane dekoracje w tle i przy nagłówku, np. w motywach świątecznych.','Animated decorations in the background and by the header, e.g. in holiday themes.'],
+['🎓 Strona ucznia','🎓 Student page'],['Te ustawienia trafiają do linku. Po zmianie kliknij „Zaktualizuj link” przy ćwiczeniu.','These settings are stored in the link. After a change, click “Update link” in the exercise.'],
+['Mój motyw u uczniów','My theme for students'],['Uczeń zobaczy ćwiczenie w tym samym motywie, który masz ustawiony w panelu.','Students see the exercise in the same theme you use in the panel.'],
+['Język przycisków i komunikatów','Language of buttons and messages'],['W jakim języku uczeń widzi przyciski, podpowiedzi i wynik.','The language of buttons, hints and results on the student page.'],['Polski','Polish'],
+['Rozmiar tekstu','Text size'],['Większy tekst przyda się młodszym uczniom i na tablicy interaktywnej.','Larger text helps younger students and works well on an interactive whiteboard.'],['Zwykły','Normal'],['Duży','Large'],
+['Dźwięki','Sounds'],['Krótkie sygnały przy dobrej i złej odpowiedzi.','Short sounds for correct and wrong answers.'],['Konfetti po zakończeniu','Confetti at the end'],['Animacja na koniec ćwiczenia.','An animation when the exercise is finished.'],
+['🧩 Ćwiczenia i pulpit','🧩 Exercises and desktop'],['Domyślna liczba prób','Default number of attempts'],['Każde nowe ćwiczenie zacznie z tym ustawieniem. Można je zmienić osobno w każdym ćwiczeniu.','Every new exercise starts with this setting. You can change it in each exercise.'],
+['Jedna próba','One attempt'],['Wiele prób','Many attempts'],['Kolejność na pulpicie','Order on the desktop'],['Jak układać ćwiczenia w folderach.','How exercises are sorted in folders.'],['Najnowsze','Newest'],['Wg typu','By type'],
+['Gdy uczeń skończy ćwiczenie, dostaniesz e-mail na adres swojego konta. Nic nie trzeba wpisywać.','When a student finishes an exercise, you get an e-mail at your account address. Nothing to set up.'],
+['🔔 Włączone – kliknij, aby wyłączyć','🔔 On – click to turn off'],['🔕 Wyłączone – kliknij, aby włączyć','🔕 Off – click to turn on'],['Powiadomienia włączone.','Notifications on.'],['Powiadomienia wyłączone.','Notifications off.'],['Nie udało się zapisać ustawienia.','Could not save the setting.'],
+['💾 Kopia i eksport','💾 Backup and export'],['Kopia zapasowa','Backup'],['Plik ze wszystkimi ćwiczeniami, folderami i wynikami. Możesz go potem wczytać z powrotem.','A file with all exercises, folders and results. You can load it back later.'],
+['⬇ Pobierz','⬇ Download'],['⬆ Wczytaj','⬆ Load'],['⬇ Pobierz CSV','⬇ Download CSV'],['⬇ CSV','⬇ CSV'],['Wyniki uczniów','Student results'],['Tabela wszystkich odpowiedzi do otwarcia w Excelu lub Arkuszach Google.','A table of all answers to open in Excel or Google Sheets.'],
+['Kopia pobrana. Zachowaj plik w bezpiecznym miejscu.','Backup downloaded. Keep the file in a safe place.'],['Nie ma jeszcze żadnych wyników.','There are no results yet.'],
+['Kliknij folder, żeby do niego wejść. Ćwiczenia i foldery możesz przeciągać do innych folderów albo na nazwę folderu u góry.','Click a folder to open it. You can drag exercises and folders into other folders or onto a folder name at the top.'],
+['Dziś','Today'],['Wczoraj','Yesterday'],['Dzisiaj','Today'],['Zobacz wszystkie odpowiedzi ➜','See all answers ➜'],['📊 Najnowsze odpowiedzi','📊 Latest answers'],['Ostatnio otwierane','Recently opened'],
+['Uzupełnianie tekstu','Fill in the text'],['Pytania z czasem i punktami','Timed questions with points'],['Fiszki, parowanie, test','Flashcards, matching, test'],['Hasła i obrazki','Clues and pictures'],['Rozmowa z lukami','A conversation with gaps'],['Układanie słów w zdanie','Putting words in order'],['Przeciąganie par','Dragging pairs'],['Zdania z tekstem lub zdjęciem','Statements with a text or picture'],['Wiele zadań na jednej stronie','Many tasks on one page'],
+['🔍 Szukaj ćwiczenia lub folderu…','🔍 Search exercises or folders…'],['Kolejność ćwiczeń','Exercise order'],['✏️ Zmień nazwę','✏️ Rename'],['W górę','Up'],['Usuń folder','Delete folder'],['Poziom wyżej','Up one level'],['Nic nie znaleziono.','Nothing found.'],['Nic nie znaleziono','Nothing found'],
+['Ten folder jest pusty. Dodaj ćwiczenie z menu „Nowe ćwiczenie” albo przeciągnij tu gotowe.','This folder is empty. Add an exercise from the “New exercise” menu or drag an existing one here.'],['Pulpit jest pusty. Zacznij od menu „Nowe ćwiczenie” po lewej.','The desktop is empty. Start with the “New exercise” menu on the left.'],
+['Święto Niepodległości','Independence Day'],['Biały','White'],['Czarny','Black'],['Róż','Pink'],['Mięta','Mint'],['Fiolet','Violet'],['Zachód','Sunset'],['Systemowy','System'],
+['Wszystkie ćwiczenia, ze wszystkich folderów','All exercises, from all folders'],['↻ Odśwież','↻ Refresh'],['Średni wynik','Average score'],['Uczniów','Students'],['🕒 Najnowsze','🕒 Latest'],['📚 Wg ćwiczeń','📚 By exercise'],['📁 Wg folderów','📁 By folder'],['👤 Wg uczniów','👤 By student'],
+['Pobierz tabelę wyników','Download the results table'],['🔍 Szukaj ucznia lub ćwiczenia…','🔍 Search students or exercises…'],['Spróbuj wpisać inne imię albo tytuł.','Try a different name or title.'],['Jeszcze nie ma odpowiedzi','No answers yet'],['Bez folderu','No folder'],['Nowe','New'],['✔ Brak nowych odpowiedzi','✔ No new answers'],
+['Wybierz ćwiczenie, kliknij „🔗 Generuj link” i wyślij go uczniom. Ich odpowiedzi pojawią się tutaj automatycznie.','Open an exercise, click “🔗 Generate link” and send it to your students. Their answers will appear here automatically.'],['Otwórz ćwiczenie, kliknij „🔗 Generuj link” i wyślij go uczniom. Wyniki pojawią się tutaj same.','Open an exercise, click “🔗 Generate link” and send it to your students. Results will appear here on their own.'],
+['Brak luk. Zaznacz słowo w tekście.','No gaps. Select a word in the text.'],['⚠️ Dodaj przynajmniej jedną lukę.','⚠️ Add at least one gap.'],['Wyniki z bazy są aktualne.','Results are up to date.'],['⚠️ Dodaj przynajmniej jedno pytanie.','⚠️ Add at least one question.'],
+['Dodaj co najmniej 3 hasła z odpowiedziami, a układ pojawi się tutaj.','Add at least 3 clues with answers and the layout will appear here.'],['⚠️ Dodaj co najmniej 3 hasła z odpowiedziami.','⚠️ Add at least 3 clues with answers.'],['Link dla ucznia','Link for students'],
+['✔ Link gotowy. Kiedy zmienisz ćwiczenie, kliknij „Zaktualizuj link”, a ten sam link pokaże nowe dane.','✔ Link ready. When you change the exercise, click “Update link” and the same link will show the new content.'],['← Wróć do edycji','← Back to editing'],
+['✏️ Skreślanie słów: wyłączone','✏️ Strike-through: off'],['✏️ Skreślanie słów: włączone, klikaj słowa','✏️ Strike-through: on, click words'],
+['Uczeń dostaje pomieszane słowa i układa je w kolejności (przeciąganie albo dotknięcie). Kropka, wykrzyknik lub znak zapytania na końcu zostaje na stałe. Kilka poprawnych wersji rozdziel znakiem | (np.','The student gets shuffled words and puts them in order (by dragging or tapping). A full stop, exclamation mark or question mark at the end stays in place. Separate several correct versions with | (e.g.'],
+['🔗 Pary do dopasowania','🔗 Pairs to match'],['Lewa strona zostaje na miejscu, a uczeń przeciąga do niej pasującą odpowiedź (albo dotyka odpowiedzi, a potem miejsca).','The left side stays in place and the student drags the matching answer to it (or taps an answer, then the slot).'],
+['Dodatkowe błędne odpowiedzi (opcjonalnie, po przecinku)','Extra wrong answers (optional, comma-separated)'],['Wklej listę (jedna para w linii: lewa - prawa)','Paste a list (one pair per line: left - right)'],
+['Zdjęcie do lewej strony: kliknij 🖼 albo przeciągnij plik ze zdjęciem na wiersz pary. Błędne odpowiedzi utrudniają zgadywanie.','Picture for the left side: click 🖼 or drag an image file onto the pair row. Wrong answers make guessing harder.'],
+['Dodaj zdjęcie','Add picture'],['Usuń zdjęcie','Remove picture'],['Pasująca odpowiedź, np. pies','Matching answer, e.g. pies'],['Usuń parę','Remove pair'],['Lewa strona, np. dog','Left side, e.g. dog'],['Podpis (opcjonalnie)','Caption (optional)'],['+ Dodaj parę','+ Add pair'],['➕ Dodaj z listy','➕ Add from list'],
+['📖 Tekst albo zdjęcie (opcjonalnie)','📖 Text or picture (optional)'],['Pokaże się uczniowi nad zdaniami, np. tekst do przeczytania albo obrazek do opisania.','Shown to the student above the statements, e.g. a text to read or a picture to describe.'],['Tekst','Text'],['Zdjęcie','Picture'],
+['Przeciągnij tu zdjęcie albo wklej je skrótem Ctrl+V','Drag a picture here or paste it with Ctrl+V'],['🖼 Wybierz plik','🖼 Choose file'],['✕ Usuń zdjęcie','✕ Remove picture'],['⚖️ Zdania: prawda czy fałsz?','⚖️ Statements: true or false?'],
+['Wklej listę (jedno zdanie w linii; zdanie fałszywe zacznij od F:)','Paste a list (one statement per line; start a false one with F:)'],['Wklej tekst do przeczytania…','Paste a text to read…'],['Usuń zdanie','Remove statement'],['+ Dodaj zdanie','+ Add statement'],['Zdanie, np. Tom lives in London.','Statement, e.g. Tom lives in London.'],
+['⚠️ Wklej pary, np. dog - pies (jedna w linii).','⚠️ Paste pairs, e.g. dog - pies (one per line).'],['⚠️ Wklej zdania, jedno w linii.','⚠️ Paste statements, one per line.'],['⚠️ Dodaj co najmniej dwie pełne pary.','⚠️ Add at least two complete pairs.'],['⚠️ Dodaj co najmniej jedno zdanie.','⚠️ Add at least one statement.'],['⚠️ Dodaj co najmniej jedno zadanie z treścią.','⚠️ Add at least one task with content.'],
+['📋 Zadania w teście','📋 Tasks in the test'],['Uczeń widzi wszystkie zadania na jednej stronie, jedno pod drugim, i na końcu klika „Zakończ test”. Każda odpowiedź to 1 punkt. Bez limitu czasu.','The student sees all tasks on one page, one below another, and clicks “Finish test” at the end. Each answer is worth 1 point. No time limit.'],
+['Zaznacz kółko przy poprawnej odpowiedzi. Puste odpowiedzi są pomijane.','Select the circle next to the correct answer. Empty answers are skipped.'],['📎 Tekst lub zdjęcie do zadania (dodane)','📎 Text or picture for the task (added)'],['📎 Tekst lub zdjęcie do zadania (opcjonalnie)','📎 Text or picture for the task (optional)'],['📎 Zdjęcie do zadania (opcjonalnie)','📎 Picture for the task (optional)'],['📎 Zdjęcie do zadania (dodane)','📎 Picture for the task (added)'],
+['Tekst, do którego odnoszą się pytania','Text the questions refer to'],['🖼 Dodaj zdjęcie','🖼 Add picture'],['albo przeciągnij plik ze zdjęciem na to zadanie','or drag an image file onto this task'],['📥 Wstaw z gotowego ćwiczenia','📥 Insert from an existing exercise'],['Treść zostanie skopiowana do tego zadania. Oryginalne ćwiczenie się nie zmieni.','The content will be copied into this task. The original exercise stays unchanged.'],['Wstaw','Insert'],['⚠️ Nie masz jeszcze osobnego ćwiczenia tego typu.','⚠️ You have no separate exercise of this type yet.'],
+['Tekst z lukami','Text with gaps'],["Lukę oznacz podwójnymi nawiasami: I [[went]] home. Kilka poprawnych odpowiedzi rozdziel pionową kreską: [[didn't|did not]].","Mark a gap with double brackets: I [[went]] home. Separate several correct answers with a vertical bar: [[didn't|did not]]."],
+['Pokaż bank słów','Show word bank'],['Uczeń zobaczy wymieszane odpowiedzi nad tekstem.','The student sees the shuffled answers above the text.'],['Dodaj zadanie','Add a task'],['Przesuń wyżej','Move up'],['Przesuń niżej','Move down'],['Usuń zadanie','Delete task'],['Tej operacji nie można cofnąć.','This cannot be undone.'],
+['Wybierz poprawną odpowiedź.','Choose the correct answer.'],['Pytanie','Question'],['Poprawna odpowiedź','Correct answer'],['Odpowiedź A','Answer A'],['Odpowiedź B','Answer B'],['Odpowiedź C (opcjonalnie)','Answer C (optional)'],['Odpowiedź D (opcjonalnie)','Answer D (optional)'],
+['Uzupełnij luki.','Fill in the gaps.'],['Przetłumacz słowa.','Translate the words.'],['Rozwiąż krzyżówkę.','Solve the crossword.'],['Dopasuj odpowiedzi do elementów.','Match the answers to the items.'],['Zdecyduj, czy zdania są prawdziwe.','Decide if the statements are true.'],['Rozwiąż wszystkie zadania.','Do all the tasks.'],['Nowy test','New test'],
+['Polecenie','Instruction'],['+ Dodaj pytanie','+ Add question'],['Usuń pytanie','Remove question'],['Słówka (jedna para w linii: angielskie - polskie)','Words (one pair per line: English - Polish)'],['Kierunek','Direction'],['Uczeń widzi polskie słowo i pisze po angielsku','The student sees the Polish word and writes in English'],['Uczeń widzi angielskie słowo i pisze po polsku','The student sees the English word and writes in Polish'],
+['Hasła (jedno w linii: HASŁO - podpowiedź)','Entries (one per line: ANSWER - clue)'],['Dialog (każda kwestia w nowej linii, np. Anna: tekst)','Dialogue (each line on a new line, e.g. Anna: text)'],['Zdania (jedno w linii, uczeń dostanie wymieszane słowa)','Sentences (one per line; the student gets shuffled words)'],['Pary (jedna w linii: lewa - prawa)','Pairs (one per line: left - right)'],['Zdania (jedno w linii; fałszywe zacznij od F:)','Statements (one per line; start false ones with F:)'],
+['Wpisz tłumaczenie','Type the translation'],['Poniżej widzisz swoje odpowiedzi z poprawkami.','Below you can see your answers with corrections.'],['↺ Rozwiąż jeszcze raz','↺ Try again'],['Ten test nie ma jeszcze zadań.','This test has no tasks yet.'],['Ten test został już rozwiązany. Oto twój wynik.','This test has already been completed. Here is your result.'],['Ta osoba już rozwiązała ten test. To wynik z pierwszej próby.','This person has already completed this test. This is the result of the first attempt.'],
+['Masz tylko jedną próbę. Rozwiąż wszystkie zadania i na końcu kliknij „Zakończ test”.','You have only one attempt. Do all the tasks and click “Finish test” at the end.'],['Możesz próbować wiele razy. Rozwiąż wszystkie zadania i na końcu kliknij „Zakończ test”.','You can try as many times as you like. Do all the tasks and click “Finish test” at the end.'],
+['Test można zakończyć tylko raz. Czy na pewno chcesz zakończyć?','You can finish the test only once. Are you sure you want to finish?'],['Wybierz motyw panelu','Choose a panel theme'],['Gotowe ✓','Done ✓'],['Dopasuj','Match'],['Pytania ABCD','ABCD questions'],['Dialog','Dialogue'],['Luki','Gaps'],['Zdania','Sentences']);
+I18_PX.push([/^(\d+) ćwicze(?:nie|nia|ń)$/,'$1 exercises'],[/^(\d+) zada(?:nie|nia|ń) · (\d+) pkt$/,'$1 tasks · $2 pts'],[/^📋 (\d+) zada(?:nie|nia|ń) · (\d+) pkt$/,'📋 $1 tasks · $2 pts'],[/^(\d+) zada(?:nie|nia|ń)$/,'$1 tasks'],[/^(\d+) pkt$/,'$1 pts'],[/^(\d+) \/ (\d+) pkt$/,'$1 / $2 pts'],
+[/^Zadanie (\d+) · Luki$/,'Task $1 · Gaps'],[/^Zadanie (\d+) · Pytania ABCD$/,'Task $1 · ABCD questions'],[/^Zadanie (\d+) · Słówka$/,'Task $1 · Vocabulary'],[/^Zadanie (\d+) · Krzyżówka$/,'Task $1 · Crossword'],[/^Zadanie (\d+) · Dialog$/,'Task $1 · Dialogue'],[/^Zadanie (\d+) · Zdania$/,'Task $1 · Sentences'],[/^Zadanie (\d+) · Dopasuj$/,'Task $1 · Matching'],[/^Zadanie (\d+) · Prawda \/ Fałsz$/,'Task $1 · True / False'],
+[/^Zadanie (\d+)$/,'Task $1'],[/^Pytanie (\d+)$/,'Question $1'],[/^\((\d+) znaków\):$/,'($1 characters):'],[/^Motyw: (.+)$/,'Theme: $1'],[/^(\d+) nowe$/,'$1 new'],[/^(\d+) par[ay]?$/,'$1 pairs'],[/^(\d+) luk[ai]?$/,'$1 gaps'],[/^(\d+) pyta(?:nie|nia|ń)$/,'$1 questions'],[/^(\d+) słów(?:ko|ka|ek)$/,'$1 words'],[/^(\d+) has(?:ło|ła|eł)$/,'$1 clues'],[/^(\d+) zda(?:nie|nia|ń)$/,'$1 sentences'],
+[/^(\d+) odpowied(?:ź|zi) · ostatnia: dziś (.*?)( ·)?$/,'$1 answers · latest: today $2'],[/^(\d+) odpowied(?:ź|zi) · ostatnia: wczoraj (.*?)( ·)?$/,'$1 answers · latest: yesterday $2'],[/^(\d+) odpowied(?:ź|zi) · ostatnia: (.*?)( ·)?$/,'$1 answers · latest: $2'],[/^(\d+) odpowied(?:ź|zi) · (\d+) ćwicze(?:nie|nia|ń)$/,'$1 answers · $2 exercises'],
+[/^(\d+) ćwicze(?:nie|ń) · ostatnio: dziś (.*)$/,'$1 exercises · last: today $2'],[/^(\d+) ćwicze(?:nie|ń) · ostatnio: wczoraj (.*)$/,'$1 exercises · last: yesterday $2'],[/^(\d+) ćwicze(?:nie|ń) · ostatnio: (.*)$/,'$1 exercises · last: $2'],
+[/^Nie wszystko jest uzupełnione\. Brakuje odpowiedzi: (\d+)\. Zakończyć test mimo to\?$/,'Not everything is filled in. Missing answers: $1. Finish the test anyway?'],[/^(\d+) nowe$/,'$1 new'],[/^Wczytano\. Dodane ćwiczenia: (\d+)\.$/,'Loaded. Exercises added: $1.'],[/^Usunąć zadanie (\d+)\?$/,'Delete task $1?']);
+
 let __i18=null;
 function i18nInit(ex,panel){
   if(__i18){if(ex&&ex.p&&__i18.setPrev)__i18.setPrev(true);return}
-  const showBtn=!!(panel||(ex&&ex.p));if(!showBtn&&!(ex&&ex.mo))return;
-  let lang='pl';if(showBtn){try{lang=localStorage.getItem('luki_lang')||'pl'}catch(e){}}
+  const showBtn=!!(panel||(ex&&ex.p)),fl=!!(ex&&ex.lg==='en'&&!ex.p);if(!showBtn&&!(ex&&ex.mo)&&!fl)return;
+  let lang='pl';if(fl)lang='en';else if(showBtn){try{lang=localStorage.getItem('luki_lang')||'pl'}catch(e){}}
   const store=new WeakMap(),SB=(panel?I18_SB.concat(I18_PN):I18_SB).slice().sort((a,b)=>b[0].length-a[0].length);
   const mo=!!(ex&&ex.mo);
   const rw=(t)=>{let r=t;if(mo)I18_MO.forEach(([a,b])=>{if(r.includes(a))r=r.split(a).join(b)});return r};
