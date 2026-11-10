@@ -60,7 +60,7 @@ exports.createCheckout = onCall({ region: REGION, secrets: [STRIPE_KEY] }, async
     client_reference_id: auth.uid,
     metadata: { uid: auth.uid },
     subscription_data: { metadata: { uid: auth.uid } },
-    success_url: origin + "/konto.html?paid=1",
+    success_url: origin + "/konto.html?paid=1&sid={CHECKOUT_SESSION_ID}",
     cancel_url: origin + "/konto.html",
     locale: "pl",
     allow_promotion_codes: true,
@@ -141,6 +141,7 @@ exports.stripeWebhook = onRequest({ region: REGION, secrets: [STRIPE_KEY, STRIPE
   try {
     ev = stripe.webhooks.constructEvent(req.rawBody, req.headers["stripe-signature"], STRIPE_WH.value());
   } catch (e) {
+    console.error("stripeWebhook: zły podpis – sprawdź STRIPE_WEBHOOK_SECRET (whsec_ z webhooka w trybie live)", e && e.message);
     return res.status(400).send("Bad signature");
   }
   try {
@@ -164,6 +165,23 @@ exports.stripeWebhook = onRequest({ region: REGION, secrets: [STRIPE_KEY, STRIPE
   res.json({ received: true });
 });
  
+// ---------- Potwierdzenie zakupu po powrocie ze Stripe (niezależnie od webhooka) ----------
+exports.confirmCheckout = onCall({ region: REGION, secrets: [STRIPE_KEY] }, async req => {
+  const auth = need(req);
+  const sid = String((req.data && req.data.sid) || "");
+  if (!/^cs_[A-Za-z0-9_]+$/.test(sid)) throw new HttpsError("invalid-argument", "Brak identyfikatora płatności.");
+  const stripe = new Stripe(STRIPE_KEY.value(), { apiVersion: '2025-03-31.basil' });
+  let s;
+  try { s = await stripe.checkout.sessions.retrieve(sid); }
+  catch (e) { console.error("confirmCheckout retrieve", e && e.message); throw new HttpsError("not-found", "Nie znaleziono płatności."); }
+  const owner = s.client_reference_id || (s.metadata && s.metadata.uid);
+  if (owner !== auth.uid) throw new HttpsError("permission-denied", "Ta płatność należy do innego konta.");
+  if (s.status !== "complete" || !s.subscription) return { ok: false, status: s.status, payment: s.payment_status };
+  const sub = await stripe.subscriptions.retrieve(typeof s.subscription === "string" ? s.subscription : s.subscription.id);
+  await syncSub(sub, auth.uid);
+  return { ok: true, status: sub.status };
+});
+
 // ---------- Panel admina: ręczne przyznanie dni dostępu ----------
 exports.adminGrant = onCall({ region: REGION }, async req => {
   const a = need(req);
