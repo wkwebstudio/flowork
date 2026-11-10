@@ -73,10 +73,12 @@ onAuthStateChanged(auth,async u=>{
     // Po powrocie ze Stripe czekamy chwilę na potwierdzenie płatności (webhook).
     if(new URLSearchParams(location.search).get('paid')==='1'){
       say('Dziękujemy! Potwierdzamy płatność…');
+      const sid=new URLSearchParams(location.search).get('sid');
+      if(sid){for(let k=0;k<3;k++){try{const r=await callFn('confirmCheckout',{sid});if(r&&r.ok)break}catch(e){console.warn(e)}await new Promise(r=>setTimeout(r,2500))}}
       let n=0;const iv=setInterval(async()=>{
         n++;await loadSub();const a=accessState(profile,sub);
         if(a.state==='paid'){clearInterval(iv);say('Płatność potwierdzona. Dostęp aktywny! 🎉');history.replaceState(null,'','/konto.html')}
-        else if(n>20){clearInterval(iv);say('Płatność jeszcze się księguje. Odśwież stronę za chwilę. Jeśli nic się nie zmieni, napisz do nas.','err')}
+        else if(n>20){clearInterval(iv);say('Płatność przyjęta, ale nie udało się jeszcze włączyć dostępu. Odśwież stronę za minutę. Jeśli nic się nie zmieni, napisz na wkwebstudio@gmail.com – nic nie przepadnie.','err')}
       },2000);
     }
   }catch(e){$('#st').innerHTML='<div class="msg err on">'+errMsg(e)+'</div>'}
