@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Flowork – panel nauczyciela angielskiego</title>
-<meta name="description" content="Ćwiczenia z luk, quizy, słówka, krzyżówki, dialogi i układanie zdań. Wysyłasz uczniom link, a wyniki wracają do Ciebie. Bez zakładania kont przez uczniów.">
+<title>Flowork – ćwiczenia online dla nauczycieli języków</title>
+<meta name="description" content="Luki, quizy, słówka, krzyżówki, dialogi, dopasowywanie, prawda/fałsz i testy do nauki każdego języka. Wysyłasz uczniom link, a wyniki wracają do Ciebie. Uczniowie nie zakładają kont.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
@@ -153,99 +153,211 @@ footer a:hover{color:var(--ink)}
 .toast.on{opacity:1;transform:translateX(-50%)}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 .logo .lgi{width:36px;height:36px;object-fit:contain;flex:none}@media(prefers-color-scheme:dark){.logo .lgi{background:#fff;border-radius:10px;padding:3px}}
+@font-face{font-family:'FwI';src:url('/fwicons.woff2') format('woff2');font-display:swap}
+.ei{font-family:'FwI','Plus Jakarta Sans',sans-serif;font-style:normal;font-weight:400;line-height:1}
+/* hero: nowa grafika */
+.hv{position:relative;padding:18px 6px 26px}.hero{overflow-x:clip}
+.hv-glow{position:absolute;inset:-8% -6% -4% -6%;background:radial-gradient(closest-side at 30% 30%,color-mix(in srgb,var(--acc) 34%,transparent),transparent 70%),radial-gradient(closest-side at 78% 72%,color-mix(in srgb,var(--acc2) 30%,transparent),transparent 70%);filter:blur(26px);z-index:0}
+.win{position:relative;z-index:1;background:var(--card);border:1.5px solid var(--line);border-radius:22px;box-shadow:0 34px 80px -28px color-mix(in srgb,var(--acc) 55%,transparent);overflow:hidden}
+.wb{display:flex;align-items:center;gap:6px;padding:11px 14px;border-bottom:1.5px solid var(--line);background:color-mix(in srgb,var(--soft) 60%,var(--card))}
+.wb i{width:10px;height:10px;border-radius:50%;background:var(--line)}.wb i:first-child{background:#ff6b57}.wb i:nth-child(2){background:#f5b83d}.wb i:nth-child(3){background:#3ecf8e}
+.wb span{margin-left:10px;font-size:11.5px;font-weight:600;color:var(--mut);background:var(--card);border:1px solid var(--line);border-radius:99px;padding:3px 12px}
+.wg{display:grid;grid-template-columns:54px 1fr}
+.ws{display:flex;flex-direction:column;gap:8px;align-items:center;padding:14px 0;border-right:1.5px solid var(--line)}
+.ws b{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;font-size:16px;color:var(--mut)}.ws b.on{background:var(--soft);color:var(--acc)}
+.wm{padding:14px 16px 16px}
+.wt{font-weight:800;font-size:14px;margin-bottom:10px}.wt span{color:var(--mut);font-weight:600}
+.wd{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:12px}
+.wf,.we{display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 2px;border-radius:12px;text-align:center;min-width:0}
+.wf b,.we b{font-size:10.5px;font-weight:700;line-height:1.2;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.wf svg{width:44px;height:36px}
+.we span{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:19px;color:var(--c);background:color-mix(in srgb,var(--c) 14%,var(--card));box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--c) 34%,transparent)}
+.we.on{background:var(--soft)}
+.wr{display:flex;align-items:center;gap:10px;padding:8px 10px;border:1.5px solid var(--line);border-radius:12px;margin-top:6px;background:var(--bg)}
+.wr .av{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:800;font-size:11px;flex:none}
+.wr b{display:block;font-size:12.5px}.wr small{color:var(--mut);font-size:11px}
+.wr em{margin-left:auto;font-style:normal;font-weight:800;font-size:12px;padding:3px 10px;border-radius:99px}
+.wr em.hi{background:#17a67322;color:var(--ok)}.wr em.mid{background:#f59e0b2b;color:#b45309}
+@media(prefers-color-scheme:dark){.wr em.mid{color:#fbbf24}}
+.flt{position:absolute;z-index:2;background:var(--card);border:1.5px solid var(--line);border-radius:16px;box-shadow:0 16px 36px -14px #0006;padding:10px 14px;display:flex;align-items:center;gap:10px;font-size:12.5px;font-weight:700;animation:bob 5s ease-in-out infinite}
+.flt small{display:block;font-weight:600;color:var(--mut);font-size:11px}
+.flt>i{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;font-size:16px;background:var(--soft);color:var(--acc)}
+.flt.f1{right:-8px;top:-2px}.flt.f2{left:-10px;bottom:22px;animation-delay:-2.5s}
+@keyframes bob{50%{transform:translateY(-7px)}}
+@media(max-width:520px){.flt.f1{right:0}.flt.f2{left:0}.wd{grid-template-columns:repeat(4,1fr)}}
+.hvn{position:relative;z-index:1;text-align:center;font-size:11.5px;color:var(--mut);margin-top:14px}
+.langs{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.langs span{font-size:12.5px;font-weight:700;padding:5px 12px;border-radius:99px;border:1.5px solid var(--line);background:var(--card);color:var(--mut)}
+/* nowe podglądy typów */
+.pv .dm{display:grid;grid-template-columns:1fr 16px 1fr;gap:6px;align-items:center;font-size:12.5px;font-weight:700}
+.pv .dm i{font-style:normal;padding:5px 8px;border-radius:9px;background:var(--card);border:1.5px solid var(--line);text-align:center}
+.pv .dm b{text-align:center;color:var(--c)}
+.pv .dm em{font-style:normal;padding:5px 8px;border-radius:9px;text-align:center;color:#fff;background:var(--c)}
+.pv .dm em.sl0{background:none;color:var(--mut);border:1.5px dashed var(--c)}
+.tfp{background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:8px 10px;font-size:12.5px;font-weight:700}
+.tfp div{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.tfp i{font-style:normal;text-align:center;padding:4px;border-radius:8px;border:1.5px solid #17a673;color:#0d7a54;font-size:11.5px}
+.tfp i.f{border-color:#e0457b;color:#c22f63}.tfp i.on{background:#17a673;color:#fff}.tfp i.f.on{background:#e0457b;color:#fff}
+.tl{display:grid;gap:5px}
+.tl div{display:flex;align-items:center;gap:8px;background:var(--card);border:1.5px solid var(--line);border-radius:10px;padding:5px 9px;font-size:12px;font-weight:700}
+.tl div span{width:20px;height:20px;border-radius:6px;display:grid;place-items:center;font-size:11px;background:color-mix(in srgb,var(--c) 16%,transparent);color:var(--c)}
+.tl div em{margin-left:auto;font-style:normal;color:var(--ok)}
+.f .ic{color:var(--c)}
+/* bento */
+.bento{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:980px){.bento{grid-template-columns:1fr 1fr}}@media(max-width:560px){.bento{grid-template-columns:1fr}}
+.b{position:relative;background:var(--card);border:1.5px solid var(--line);border-radius:24px;padding:22px;overflow:hidden;transition:transform .25s,border-color .25s}
+.b:hover{transform:translateY(-3px);border-color:var(--c)}
+.b::after{content:"";position:absolute;right:-40px;top:-40px;width:130px;height:130px;border-radius:50%;background:color-mix(in srgb,var(--c) 14%,transparent)}
+.b>i{position:relative;z-index:1;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-size:22px;color:var(--c);background:color-mix(in srgb,var(--c) 14%,var(--card));box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--c) 34%,transparent);margin-bottom:14px}
+.b h3{font:800 17.5px 'Plus Jakarta Sans';margin-bottom:6px}.b p{color:var(--mut);font-size:14.5px}
+.b.w2{grid-column:span 2}@media(max-width:560px){.b.w2{grid-column:auto}}
+.b.dk{background:linear-gradient(135deg,#1c1740,#2a1f6b);border-color:transparent;color:#fff}.b.dk p{color:#cfc9f2}.b.dk>i{background:#ffffff1a;color:#fff;box-shadow:none}.b.dk::after{background:#ffffff12}
+.stcta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:26px}
+/* faq */
+.fq{display:grid;grid-template-columns:1fr 1fr;gap:12px 16px;align-items:start}
+@media(max-width:820px){.fq{grid-template-columns:1fr}}
+.fq details{margin:0;border-radius:18px;transition:border-color .2s,box-shadow .2s}
+.fq details[open]{border-color:var(--acc);box-shadow:0 14px 34px -20px color-mix(in srgb,var(--acc) 60%,transparent)}
+.fq summary{align-items:center}.fq summary::after{content:"";flex:none;width:28px;height:28px;border-radius:50%;background:var(--soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236340ff' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='M12 6v12M6 12h12'/%3E%3C/svg%3E") center/14px no-repeat;transition:transform .25s}
+.fq details[open] summary::after{content:"";transform:rotate(45deg)}
+.fq p a{color:var(--acc);font-weight:700}
+.cinfo{display:grid;gap:10px;margin-top:20px}
+.cinfo a{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1.5px solid var(--line);border-radius:16px;background:var(--card);font-weight:700}
+.cinfo a:hover{border-color:var(--acc)}.cinfo i{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-size:18px;background:var(--soft);color:var(--acc)}
+.cinfo small{display:block;font-weight:600;color:var(--mut);font-size:12px}
 </style>
-<link rel="icon" type="image/png" href="/favicon.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"></head>
+<link rel="icon" type="image/png" sizes="48x48" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAPOUlEQVR42tWaeZRU1Z3HP/e+92rr6r1ZRZbWxgiyiYiaGBASFg2gxi2OIhIzWcyoRx0TJ1GiY/SMuGWMGjUuYJRIDGoShSCoEcWgIiggjCBLQyN0N91NV9f63r2/+aOqm91GdM4k95w6r6rue/d+f+v9LU+x1xARRyllCt9PAs4DxgHHAxFAAMX/7WjfIwOsBRYCzyml3tsfI/uDL1z7i8hTIpKUf5yRLGDqvzfWvcG7hetEEakrPGRFJBAR8/8I3BQw2MLvOhGZuDfmvTk/XkQShRuzez30jzBsAZMUMI7vUCcR0UA18CbQDfAB70iU11pBrHRYiUKhNCilsCIgoPUXMqF2bDuBrwEbdWFiRgF88EXAa61wXI3j5D/aUXnwRtBKfVHwFLAFBawzAJSIjABeA6IF6z/iXRp3tLFqeR276tuor0+wfVszjTsS7Ny+m6pexcy4cwq9+pQjAkrRcT0CLyVAGjjDBS4AigAD6MNdQmx+FRCUVtRu2MW0bz/O2lXbESwNtFJEmCJChHBpJEFJNMzdT34HayyOozvAW5MnRB0e+xRgC5gv0MDYvSY6VxUD1oJyQDuAFpSCRS9/xPJVm6iMxKjuVcXsB69g0ugheEoT8TyKCFO7oTG/kVZYK7RsAz+TX0fpPFNskJfMYRABMFYDAwo/PpP7IvnFdQF43UpYO18Ikvn5iso4ZU4RjZkkrekMky4aRp+vVJGMZSnrEaVbjxJadqdJJbNorVhwk3DPUMuT51j+/qjQtLHAFHcvRTn0aMc6QIl0Tq/YPIcA6lbA0keF5U8bGlqF06cqpj3usvbDTxlz4kwmnT2Y08YcS/9BXUknfaLREH2OqWTzJ7v4/ndn8epb/04oKOXuYQG5jCadEgTo0htqxsGgyYoBEzTaOzwbcTsLD6wFraF1B7xxr2Xp48KnjZYSoO8xiqW/M5w21aXH0DhF5SGqB1dx6uhqttY2kUn7vL5oLU3bk9RtayGXCGhNJGldVkoiAX0GC4OmaFa/ZFm7LGDTbw1vPK7oP8Zh2uMe5b3UPsw7GG/1Z4EXyYNf9TzcN9LwlzuFTBOcepbmumUuJ01V7LaWBXfkCIUiDBnai3tu/StfHXwbJmspq4gz876XeWHu+7y7dCPpVJbm5gRb3oKUL4y4XPONmxQ/Wuxw1Usew8e5RGPCikU+784xoDq1B+V2pjb164SnLhEcF6qHwsBvKQZP0bx6n0GUcNo3NO8uynH26jjHnlDGwteydPHiPHr/a1gtFBPBYGgjR98upURzZax6ydLjaMvQC6D2HaGqRrHqT8I5d3r89W5Y/JRPea/D86/6cLxOkBa6Ha+YcqdmxR+E+TMsA8Zrvvavmpwv+I5h4V3CmLEDicUcsuR4+/X1rF1Rx8iRxzDlgmFcc9145vz5B6Q+7sbm7T5jrndZ8lvhjjE+zVuF3sPB5ODjNwN691cc/02n4LE6cUefZcTtUnj2csvfnhROOltR0RfCZZDLWTa/Zxn9Q5dF92ZZ+UaOn74cJ+i+hR21SfoP6E6XrsWEIh6OVjhagwOPfDvDS/NyjJ7kcvyIMK3bFHVrhLNu0ezaZrl7Worpv4hw5gwP4+f315+h6LqzIw9g1LWaSCk0bxOKu8Or91qKqzTn3+WxbqnP6mUZAgyiFEOGVTN+yiD61XQhXhohFHZwvDx4gEk/i3D+9+O0bHR58Y4UWxvS9Blp2VVreeXuLD1KNSd9x0UsOG7hrFFHKAHI+36l4c/XWp79leGcHzn0GCwsfyFg/fIcGxtynDGuiLNvDOH1ambFslrqaltpbU6TzeQQC66rCUU8ItEQXXtH6NKtiJ5V3fGSlfxxRo7V76Tp0d3l0y3C2EsiXD47DAoSdcLODy19z3BwD5FOdU6AyRPQ+LEwc5SPExEQw//UZomHYOp/lXLsmU3ce9fLLHxmPbtTKYzYggSl49iUfGyKoAi5DkVRj9FTjuEnN53Jhue78ewvWyivdPnx3CL6jtDULbX85cokm1bmmDa3hK+c72FNQSKfh4B2KWgXFtwWMOumNDGEE893mHB1jFSslosm/Za6uhYqVQzXcVA67/9UgQQpQNdaYawl6ecIE2Y3abr3LGbuS9+j1OmFExa693dY9fscL12ZJNFkqTk5xOSnYpTXOCAHGvVhEUA+lMf48NGCgHAp9D/dpaUlwcQTf82mLTvoGi4h4+eQgowVFkEQLBbBdTTpIIvjKoYOr2bDqkZsDlr8JAMGHsWLf7+SeDzKG/ekeeG6Nkpx+Nr1MU69IUKsy54wZn8VOrzosxApuiEYPNnluFEOSsOcR95n/ZbtdAkVk/Z9QKEVeK4CRyHKYpXBcSwp24aJpJn52EXMW3IVtz18Li1+kvJIER+tqWPhc2sRC4mGgKMHelw6v4SxM/PgoRAjqYOHEp8rErc2f1UK3li0Fk9pjDUdipIzORImTREhPFfhaEPST+OUwBOzfsSEKSfmMxNHIViUhkAZVi3fyrnTTmTCbUWcdYfGBtD4sSG5ExJ1FseBmm95uNF9jfnzEaDajUhhAktLfQpHNIZ8xuUbn9KKCOeePZw3X/uIzZt24GghVKZ58pmrOWPCIAAWPP8h13z/aaKOh1iLiJBozeR5FCjm/WQ3K/+YRrc5+C1gg7yifPdPJRw7qWDM7mcQ0G4VnUWCSjsF36LQjrDLpJhx6xSmXfl1Vq/Yyr+ccw8NTc089ey1fP2bJwDwwpz3uOqKWdiUIupGsFKQXkGZJRAaa3OkkoYeFQ7F1R6xuKaixqXbsANP54MSsD9wa6QjEdl7Tqzt0C0RwcVh5Tu12B/ACcOOZvZzV9GWTPPVUfmU45nH3+TaH8/Cy4aIhiMY3+C47j6q7RYpLn+yC8l6S6RCES5SqP1dZ2cEtDZl8X0hXuwRijhoZ88Wxs9zSytFUVkIqy1KgW8MpW6E2bOX4EU1Mx+6mCEn9et47pH7X+Gn1/6OImKEHAc/8NG4Hepc1SWOCOQyllDMoazvHpTW30t91SGM2BjBcRTvLN7OjVNfRWUVJWURuvcrYcDJVYwc3ZOaIeWUdQ0BgjVwyqh+vLpkDeVeFN8IVqAqEufhhxdig4D/vO9CwhGPX981n5tvnEOpV4SDIrAGhQNaECOEtMvJpx+DUhCOKvwU1H0gbPibsH0F1G+AviMV5z1wYH7QcQ4EvsX1NPOfXs81l8ynmDAGIUBh0MSI0H9IF8ZO7sfEqb3peWyUuk3NTDz1bhp27qYiEiNngrzvVwFNuVbGjxtKcVmEeXPfpsgL4yoXawWlHLRy8JRHXbaF8yeP5LEXpxNkNB88B8tnC5vfhmyboEOQy8Expyj+7U3dkfirA7xQ+x8hhacsjmdwrCKqHRzlgVVs+KCJ9R+08Zcnt3HO9Gqm3tyP3/z+Uqaf8xg7WloI4QCWkHaoCMVZsHAFACWhMMYXAoJ8WCFCgE+SBBMnnsC9sy5mw2KHBbcaNr+lUEC4RCjultf/dDOE4wevWhxgA1YsgfgEolGS98cG8JRDkefhaI+mrWkeumUdS15u4IYHTuC1VTdw/+2LWblsM02JVnbW7ibnG7rFSmlNpzCOECnzwILWDq4O0be6ggunn8SZo8bw+i0eb/3GIAai5fnwWazKh9MmXzSzRh0yJ97PxC1W+Yh20MpFiVMg2mDERwx4XoiYcln77i5+OHoZNzw0kNsfvJDANzQ1tnHh+HtYt3o7O1JtDBvej1tuv4iKqiJsYAnHXEq6hIlkKtnwosMj37A0bjEUVymUI4htz2UVWrfXi/Le72DJ+0EIEKz2yWQVBh/BR+Pg4OHhEyJEWBusNpRGY/i+z82Xvc+2T/oz/ZZqKquKMdawQxr5zuTT+e9Hr6Cqa0nH8ont8PpMWPmcoXGLT6zMobS7Ipu0mADE5LmtCmeDG1EdZUv1mRIoHF6ZlE+byVDdq5iu5aWUlsTx3BC+b2lLB+xuytG6I01TNokKEpRTTHm0iEdv/RjX1Vz68z7E4h7X/ngyM++7DO1ogsAgRvH2Q5bFd0LrTiEU1XgRRbLFkEETr3SoPEoRr8zru3YgnbS0NQkNWyDdUiiz7FeC6/BCYvMlwvVr6vlo5Q6Gn9abo/qWkWjOkGjNkkkZcmlDNhXQ2pRj+6YU6z5sYvnieupqM4QJowhz48ND+fpFJZTGixEF1lj8pOb5qy3vzBLckBAEEIs69Bup6HcqdB0IkZ5ZVCyNjgZ4EYjGXEoqYjg2xJb3hGQjDJys9hS+OgunG3ekuH76n9i0oZFsyuAbIRxyKS6N0LUqRnVNBf0HdaNHz1IaP/V5a149f3+9nsAqZi8dy8BTS7GBIFYx93uWv802xB1Nj+MchpwL3U/JscvWsXbtNj5aUU/tlmaam7OkEwFiIRr1cEsU0684mUuuHH7I8pUSEbv3TODnT9Z1Kxs4fcSvAEWMEGARFD5CDh+DEMLlqJJSvnpGH8446zhiqpinH9jA7p1Z5q4ZT7zc5c0HhSeuNBx/nMcpV0B00E6WLF/NgmfXserDBlrxUYCHxsPBLUT4GthKCz+YfBoPzDsP41u8yAHRvxwgARFBKcWunUmeuG8Z5RVFVHWN43h5NUunAnZuS7B5YzPr19SzbmUjn9JChBDjJtRw6fSRvPdygtJKl+/+bBC3D7AMO8ul+rwGXly0jDkPf8CmtmaqiHFcdTf6n9CVftWV9OxTTElZFNdTWAuZtM/GdY0MPaUXEy74Sr7H4BxcAhkgfCT9gOaGNFs/aWbJKxuZP3cdb63eRLEX5qrrR3HiiD6US3ey2yJsLFrGL29+hU3bWxne+2gmXzyIUeP60aemgsquRbghzRGOLCLy/l4NtX1G4Bvxc/t+cjkjvm8kCPZtoaXacvLsIytlbM2DEuJ6ufrieVK7pkWumfYHCXOdjK65X+Y8/L60Nmf2bX5ZK/5B9vEL+xhjD9X8ExF5HxGZ2Y7387bdrLViAitBsIf2XTuTcutVC6Q7P5fq8l9IT26Su/7jVWlpSu/Z3VgxgRFrrNgjayW2Y52JiIwQkbYCVV+oMxn4ewj585zV8u1xj8mSBZ90/Of75kgB79+xNAXMIxARXWgii4j4X7ixa+wBYg8OrQpHMtoxPiUi+ktts+6T/Be8mRXB0V/a2wkHbbMqpdQG4DKgrXBDrtMmT2fJfyH9/JLASwGTV8B4WQGz+ud/1eCf/WUP9c/+us3/An04fgkdCHVJAAAAAElFTkSuQmCC"><link rel="shortcut icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"></head>
 <body>
 
 <nav><div class="w">
   <a href="#" class="logo"><img class="lgi" src="/logo.png" alt="">Flowork</a>
-  <div class="lk"><a href="#funkcje">Funkcje</a><a href="#cennik">Cennik</a><a href="#wideo">Wideo</a><a href="#faq">FAQ</a><a href="#kontakt">Kontakt</a></div>
+  <div class="lk"><a href="#funkcje">Funkcje</a><a href="#cennik">Cennik</a><a href="/instrukcja.html">Instrukcja</a><a href="#faq">FAQ</a><a href="#kontakt">Kontakt</a></div>
   <div class="ac"><a class="btn g sm" href="/logowanie.html" data-act="login">Zaloguj się</a><a class="btn p sm" href="#cennik" data-act="trial">Wypróbuj 3 h</a></div>
 </div></nav>
 
 <header class="hero"><div class="w">
   <div>
-    <span class="tag">✨ Dla nauczycieli angielskiego</span>
+    <span class="tag"><i class="ei">🌍</i> Dla nauczycieli języków</span>
     <h1>Ćwiczenia dla uczniów w <em>kilka minut</em>, wyniki od razu u Ciebie</h1>
-    <p class="lead">Układasz luki, quizy, słówka, krzyżówki, dialogi i zdania do poskładania. Wysyłasz uczniom jeden link. Uczeń nie zakłada konta, a wynik trafia do Twojego panelu.</p>
+    <p class="lead">Luki, quizy, słówka, krzyżówki, dialogi, dopasowywanie, prawda/fałsz i całe testy. Wysyłasz uczniom jeden link. Uczeń nie zakłada konta, a wynik trafia do Twojego panelu.</p>
     <div class="cta">
       <a class="btn p" href="#cennik" data-act="trial">Zacznij 3-godzinną próbę</a>
-      <a class="btn g" href="#funkcje">Zobacz, co potrafi</a>
+      <a class="btn g" href="/instrukcja.html">Zobacz instrukcję</a>
     </div>
     <p class="fine">Bez zobowiązań na start. Subskrypcję możesz anulować w każdej chwili.</p>
+    <div class="langs" aria-label="Przykładowe języki"><span>angielski</span><span>niemiecki</span><span>hiszpański</span><span>francuski</span><span>włoski</span><span>polski jako obcy</span><span>i każdy inny</span></div>
   </div>
-  <div class="mock" aria-hidden="true">
-    <div class="bar"><i></i><i></i><i></i></div>
-    <div class="row"><span class="ic" style="background:#7758e826">📝</span><div><b>Past Simple – luki</b><small>12 uczniów · 1 próba</small></div><span class="sc">87%</span></div>
-    <div class="row"><span class="ic" style="background:#ff6b9d26">🎯</span><div><b>Quiz: czasy</b><small>9 uczniów · wiele prób</small></div><span class="sc">74%</span></div>
-    <div class="row"><span class="ic" style="background:#0ea5e926">💬</span><div><b>At the café – dialog</b><small>7 uczniów</small></div><span class="sc">91%</span></div>
-    <div class="res"><div class="t">Wyniki klasy</div><small>Średni wynik</small><div class="pb"><i style="width:84%"></i></div><small>Ranking, odpowiedzi uczniów, powiadomienie o ukończeniu. (Przykładowe dane.)</small></div>
+  <div class="hv" aria-hidden="true">
+    <div class="hv-glow"></div>
+    <div class="flt f1"><i class="ei">🔔</i><div>Ola skończyła test<small>wynik 18 / 20</small></div></div>
+    <div class="win">
+      <div class="wb"><i></i><i></i><i></i><span>flowork.pl/panel</span></div>
+      <div class="wg">
+        <div class="ws"><b class="on"><i class="ei">🗂</i></b><b><i class="ei">📊</i></b><b><i class="ei">⚙️</i></b></div>
+        <div class="wm">
+          <div class="wt">Pulpit <span>› Klasa 7a</span></div>
+          <div class="wd">
+            <div class="wf"><svg viewBox="0 0 64 52"><path d="M3 9a6 6 0 0 1 6-6h14.5a4 4 0 0 1 3 1.4L31 10h24a6 6 0 0 1 6 6v27a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6z" fill="#f59e0b"/><path d="M3 19h58v24a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6z" fill="#fff" opacity=".24"/></svg><b>Kartkówki</b></div>
+            <div class="wf"><svg viewBox="0 0 64 52"><path d="M3 9a6 6 0 0 1 6-6h14.5a4 4 0 0 1 3 1.4L31 10h24a6 6 0 0 1 6 6v27a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6z" fill="#0ea5e9"/><path d="M3 19h58v24a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6z" fill="#fff" opacity=".24"/></svg><b>Słówka</b></div>
+            <div class="we on" style="--c:#7758e8"><span><i class="ei">📝</i></span><b>Past Simple</b></div>
+            <div class="we" style="--c:#2563eb"><span><i class="ei">📋</i></span><b>Test, dział 3</b></div>
+          </div>
+          <div class="wr"><span class="av" style="background:#20b486">AN</span><div><b>Anna N.</b><small>Past Simple · luki</small></div><em class="hi">92%</em></div>
+          <div class="wr"><span class="av" style="background:#7758e8">PZ</span><div><b>Piotr Z.</b><small>Test, dział 3</small></div><em class="mid">74%</em></div>
+          <div class="wr"><span class="av" style="background:#e0457b">OL</span><div><b>Ola L.</b><small>Animals · słówka</small></div><em class="hi">100%</em></div>
+        </div>
+      </div>
+    </div>
+    <div class="flt f2"><i class="ei">🔗</i><div>Jeden link dla klasy<small>bez kont i haseł</small></div></div>
+    <p class="hvn">Przykładowe dane.</p>
   </div>
 </div></header>
 
 <section id="funkcje"><div class="w">
-  <div class="head"><h2>Sześć typów ćwiczeń w jednym miejscu</h2><p class="lead">Każde ćwiczenie ma własny edytor, podgląd tak, jak zobaczy go uczeń, i link do wysłania.</p></div>
+  <div class="head"><h2>Dziewięć typów ćwiczeń, jeden panel</h2><p class="lead">Każde ćwiczenie ma własny edytor, podgląd tak, jak zobaczy je uczeń, i link do wysłania. Z gotowych ćwiczeń złożysz też cały test.</p></div>
   <div class="fg">
 
     <article class="f" style="--c:#7758e8">
       <div class="pv lk"><div class="doc"><p>Last summer we <span class="gp ok">went ✓</span> to Spain.</p><p>We <span class="gp act">took</span> a lot of photos.</p><p>It <span class="gp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> very hot every day.</p></div><div class="chips"><i>was</i><i>were</i><i>is</i><i class="on">be</i></div></div>
-      <div class="ft"><span class="ic">📝</span><h3>Luki</h3></div>
-      <p>Wklejasz tekst i zaznaczasz brakujące słowa. Uczeń wpisuje odpowiedź albo wybiera ją z banku słów.</p>
-      <div class="tags"><span>Bank słów</span><span>Wpisywanie</span><span>Podpowiedzi</span></div>
+      <div class="ft"><span class="ic ei">📝</span><h3>Luki</h3></div>
+      <p>Wklejasz tekst i zaznaczasz brakujące słowa. Uczeń wpisuje odpowiedź albo wybiera ją z banku słów. Nad tekstem możesz dodać zdjęcia.</p>
+      <div class="tags"><span>Bank słów</span><span>Kilka poprawnych odpowiedzi</span><span>Zdjęcia</span></div>
     </article>
 
     <article class="f" style="--c:#ff6b9d">
       <div class="pv"><div class="qq"><b>Which tense is it?</b><span class="tm">12</span></div><div class="qa"><i style="background:#dc2f5a">Present</i><i style="background:#2a5bd7">Past</i><i style="background:#d99a0b">Future</i><i style="background:#475569">Perfect</i></div></div>
-      <div class="ft"><span class="ic">🎯</span><h3>Quiz</h3></div>
-      <p>Pytania z czasem na odpowiedź, punktami i bonusem za szybkość. Na końcu ranking i podsumowanie.</p>
-      <div class="tags"><span>Odliczanie</span><span>Punkty</span><span>Ranking</span></div>
+      <div class="ft"><span class="ic ei">🎯</span><h3>Quiz</h3></div>
+      <p>Pytania z czasem na odpowiedź, punktami i bonusem za szybkość. Wybór odpowiedzi, wpisywanie albo dopasowywanie, a na końcu ranking.</p>
+      <div class="tags"><span>Odliczanie</span><span>Punkty i ranking</span><span>Muzyka w tle</span></div>
     </article>
 
     <article class="f" style="--c:#20b486">
       <div class="pv vc"><div class="stack"><div class="fc back"></div><div class="fc"><small>EN</small><b>apple</b><span class="fl">stuknij, aby odwrócić</span></div></div><div class="mp"><div class="mr ok"><i>cat</i><b>✓</b><em>kot</em></div><div class="mr ok"><i>dog</i><b>✓</b><em>pies</em></div><div class="mr sel"><i>bird</i><b>↔</b><em>?</em></div><div class="pr2"><span style="width:66%"></span></div></div></div>
-      <div class="ft"><span class="ic">📚</span><h3>Słówka</h3></div>
-      <p>Fiszki, parowanie i test. Całą listę wklejasz naraz, w formacie „słowo – tłumaczenie”.</p>
-      <div class="tags"><span>Fiszki</span><span>Parowanie</span><span>Test</span></div>
+      <div class="ft"><span class="ic ei">📚</span><h3>Słówka</h3></div>
+      <p>Jedna lista, trzy tryby: fiszki do przesuwania, nauka seriami i test na ocenę. Listę wklejasz naraz, w formacie „słowo - tłumaczenie”.</p>
+      <div class="tags"><span>Fiszki</span><span>Ucz się</span><span>Test</span></div>
     </article>
 
     <article class="f" style="--c:#f59e0b">
       <div class="pv"><div class="cw"><i class="l">C</i><i class="l">A</i><i class="l">T</i><i class="l">O</i><i></i><i class="l">E</i><i class="l">W</i><i></i><i class="l">N</i></div></div>
-      <div class="ft"><span class="ic">🧩</span><h3>Krzyżówki</h3></div>
-      <p>Hasła z podpowiedziami, obrazki przy pytaniach i własne tło. Układ dopasowuje się do ekranu telefonu.</p>
-      <div class="tags"><span>Obrazki</span><span>Własne tło</span><span>Telefon</span></div>
+      <div class="ft"><span class="ic ei">🧩</span><h3>Krzyżówki</h3></div>
+      <p>Wpisujesz hasła z podpowiedziami albo zdjęciami, a układ tworzy się sam. Możesz dodać własne tło i podpowiedzi liter.</p>
+      <div class="tags"><span>Układ automatyczny</span><span>Obrazki</span><span>Własne tło</span></div>
     </article>
 
     <article class="f" style="--c:#0ea5e9">
       <div class="pv"><div class="bub l">Hi Tom, how <u class="e">&nbsp;&nbsp;&nbsp;&nbsp;</u> you?</div><div class="bub r">I <u>am</u> fine, thanks!</div></div>
-      <div class="ft"><span class="ic">💬</span><h3>Dialogi</h3></div>
+      <div class="ft"><span class="ic ei">💬</span><h3>Dialogi</h3></div>
       <p>Rozmowy z lukami w wyglądzie czatu: rozmówcy po lewej i prawej stronie, czytelnie jak w komunikatorze.</p>
       <div class="tags"><span>Wygląd czatu</span><span>Luki w rozmowie</span><span>Bank słów</span></div>
     </article>
 
     <article class="f" style="--c:#e0457b">
       <div class="pv"><div class="sl"><i>I</i><i>like</i><i class="g">…</i><i>.</i></div><div class="chips"><i>pizza</i><i>very</i><i>much</i></div></div>
-      <div class="ft"><span class="ic">🔤</span><h3>Układanie zdań</h3></div>
+      <div class="ft"><span class="ic ei">🔤</span><h3>Układanie zdań</h3></div>
       <p>Uczeń składa zdanie z rozsypanych słów, dotykiem albo przeciągnięciem. Możesz dopuścić kilka poprawnych wariantów.</p>
       <div class="tags"><span>Przeciąganie</span><span>Warianty</span><span>Podpowiedź</span></div>
+    </article>
+
+    <article class="f" style="--c:#8b5cf6">
+      <div class="pv"><div class="dm"><i>dog</i><b>➜</b><em>pies</em></div><div class="dm"><i>cat</i><b>➜</b><em class="sl0">upuść tutaj</em></div><div class="chips"><i class="on">kot</i><i>ptak</i><i>koń</i></div></div>
+      <div class="ft"><span class="ic ei">🔗</span><h3>Dopasuj</h3></div>
+      <p>Uczeń przeciąga odpowiedzi do pasujących elementów. Po lewej może być słowo albo zdjęcie, a błędne odpowiedzi utrudniają zgadywanie.</p>
+      <div class="tags"><span>Przeciąganie par</span><span>Zdjęcia</span><span>Błędne odpowiedzi</span></div>
+    </article>
+
+    <article class="f" style="--c:#14b8a6">
+      <div class="pv"><div class="tfp">Tom lives in London.<div><i class="on">✔ Prawda</i><i class="f">✘ Fałsz</i></div></div><div class="tfp">Tom has a brother.<div><i>✔ Prawda</i><i class="f on">✘ Fałsz</i></div></div></div>
+      <div class="ft"><span class="ic ei">⚖️</span><h3>Prawda / Fałsz</h3></div>
+      <p>Zdania do oceny z tekstem do przeczytania albo zdjęciem u góry. Dobre do czytania ze zrozumieniem i opisu obrazka.</p>
+      <div class="tags"><span>Tekst lub zdjęcie</span><span>Szybkie sprawdzanie</span></div>
+    </article>
+
+    <article class="f" style="--c:#2563eb">
+      <div class="pv"><div class="tl"><div><span class="ei">📝</span>Zadanie 1 · Luki<em>4 pkt</em></div><div><span class="ei">🎯</span>Zadanie 2 · Pytania ABCD<em>5 pkt</em></div><div><span class="ei">🧩</span>Zadanie 3 · Krzyżówka<em>6 pkt</em></div></div><div class="pr2"><span style="width:45%"></span></div></div>
+      <div class="ft"><span class="ic ei">📋</span><h3>Test</h3></div>
+      <p>Wiele zadań na jednej stronie: luki, pytania ABCD, słówka, krzyżówka, dialog, zdania, dopasowywanie i prawda/fałsz. Bez limitu czasu, z punktami za każde zadanie.</p>
+      <div class="tags"><span>8 rodzajów zadań</span><span>Tekst i zdjęcia</span><span>Punkty</span></div>
     </article>
 
   </div>
 </div></section>
 
-<section><div class="w"><div class="bn">
-  <h2>Mniej klikania, więcej nauczania</h2>
-  <p class="lead">Panel zaprojektowany tak, żeby przygotowanie zajęć nie zjadało wieczoru.</p>
-  <div class="bl">
-    <div><span>✓</span>Uczeń wchodzi z linku, bez zakładania konta i bez hasła</div>
-    <div><span>✓</span>Wyniki, ranking i odpowiedzi uczniów w jednym panelu</div>
-    <div><span>✓</span>Foldery i wyszukiwarka, żeby ćwiczenia się nie gubiły</div>
-    <div><span>✓</span>Jedna próba albo wiele prób, ustawiane osobno dla każdego ćwiczenia</div>
-    <div><span>✓</span>Powiadomienie e-mail, gdy uczeń skończy ćwiczenie</div>
-    <div><span>✓</span>Motywy kolorystyczne, także jasny i ciemny</div>
-    <div><span>✓</span>Działa w przeglądarce na telefonie, tablecie i komputerze</div>
-    <div><span>✓</span>Duplikowanie ćwiczeń i nowe linki jednym kliknięciem</div>
+<section id="zalety"><div class="w">
+  <div class="head"><h2>Mniej klikania, więcej nauczania</h2><p class="lead">Panel zaprojektowany tak, żeby przygotowanie zajęć nie zjadało wieczoru.</p></div>
+  <div class="bento">
+    <div class="b w2 dk" style="--c:#8b6dff"><i class="ei">🔗</i><h3>Jeden link, zero kont</h3><p>Uczeń otwiera link, wpisuje imię i od razu pracuje. Nie zakłada konta, nie pamięta hasła, niczego nie instaluje. Ty decydujesz, czy ma jedną próbę, czy wiele.</p></div>
+    <div class="b" style="--c:#20b486"><i class="ei">📊</i><h3>Odpowiedzi w jednym miejscu</h3><p>Najnowsze, według ćwiczeń, folderów albo uczniów. Całość pobierzesz do arkusza.</p></div>
+    <div class="b" style="--c:#f59e0b"><i class="ei">🔔</i><h3>E-mail, gdy uczeń skończy</h3><p>Z imieniem, tytułem ćwiczenia i wynikiem. Wyłączysz jednym kliknięciem.</p></div>
+    <div class="b" style="--c:#0ea5e9"><i class="ei">🗂</i><h3>Pulpit jak w komputerze</h3><p>Foldery w kolorach, przeciąganie, kopiuj i wklej prawym przyciskiem myszy.</p></div>
+    <div class="b w2" style="--c:#e0457b"><i class="ei">🌍</i><h3>Do nauki każdego języka</h3><p>Angielski, niemiecki, hiszpański, francuski, polski jako obcy i każdy inny. Treść ćwiczeń wpisujesz sam, więc panel nie ogranicza Cię do jednego języka. Przyciski i komunikaty na stronie ucznia mogą być po polsku albo po angielsku.</p></div>
+    <div class="b" style="--c:#8b5cf6"><i class="ei">🎨</i><h3>Motywy</h3><p>Jasne, ciemne i okolicznościowe. Uczeń może widzieć ćwiczenie w Twoim motywie.</p></div>
+    <div class="b" style="--c:#14b8a6"><i class="ei">📱</i><h3>Telefon, tablet, tablica</h3><p>Działa w przeglądarce. Większy tekst przyda się na tablicy interaktywnej.</p></div>
+    <div class="b" style="--c:#2563eb"><i class="ei">💾</i><h3>Kopia zapasowa</h3><p>Ćwiczenia, foldery i wyniki pobierzesz do pliku i wczytasz z powrotem.</p></div>
+    <div class="b w2" style="--c:#f97316"><i class="ei">📖</i><h3>Instrukcja krok po kroku</h3><p>Każda funkcja opisana po kolei, ze spisem treści. <a href="/instrukcja.html" style="color:var(--acc);font-weight:700">Otwórz instrukcję</a></p></div>
   </div>
-</div></div></section>
+</div></section>
 
 <section><div class="w">
   <div class="head"><h2>Jak to działa</h2></div>
@@ -254,6 +366,7 @@ footer a:hover{color:var(--ink)}
     <div><h3>Wyślij link</h3><p>Skopiuj link i wklej go w dzienniku, na czacie klasy albo w wiadomości.</p></div>
     <div><h3>Sprawdź wyniki</h3><p>Odpowiedzi pojawiają się w panelu, a Ty dostajesz maila, gdy ktoś skończy.</p></div>
   </div>
+  <div class="stcta"><a class="btn g" href="/instrukcja.html"><i class="ei">📖</i> Pełna instrukcja obsługi</a></div>
 </div></section>
 
 <section id="cennik"><div class="w">
@@ -262,20 +375,20 @@ footer a:hover{color:var(--ink)}
     <div class="pc">
       <h3>Miesięczny</h3><div class="sub">Elastycznie, bez wiązania</div>
       <div class="pr">30 zł<small> / mies.</small></div><div class="eq">Płatność co miesiąc</div>
-      <ul><li>Wszystkie typy ćwiczeń</li><li>Wyniki i powiadomienia e-mail</li><li>Anulujesz w dowolnym momencie</li></ul>
+      <ul><li>Wszystkie 9 typów ćwiczeń</li><li>Wyniki i powiadomienia e-mail</li><li>Anulujesz w dowolnym momencie</li></ul>
       <button class="btn g" data-act="buy" data-plan="monthly">Wybierz miesięczny</button>
     </div>
     <div class="pc hot">
       <span class="bd">Polecany</span>
       <h3>Kwartalny</h3><div class="sub">Płacisz raz na 3 miesiące</div>
       <div class="pr">80 zł<small> / 3 mies.</small></div><div class="eq">ok. 27 zł miesięcznie · <span class="sv">oszczędzasz 10 zł</span></div>
-      <ul><li>Wszystkie typy ćwiczeń</li><li>Wyniki i powiadomienia e-mail</li><li>Anulujesz w dowolnym momencie</li></ul>
+      <ul><li>Wszystkie 9 typów ćwiczeń</li><li>Wyniki i powiadomienia e-mail</li><li>Anulujesz w dowolnym momencie</li></ul>
       <button class="btn p" data-act="buy" data-plan="quarterly">Wybierz kwartalny</button>
     </div>
     <div class="pc">
       <h3>Roczny</h3><div class="sub">Najniższa cena miesięczna</div>
       <div class="pr">300 zł<small> / rok</small></div><div class="eq">25 zł miesięcznie · <span class="sv">oszczędzasz 60 zł</span></div>
-      <ul><li>Wszystkie typy ćwiczeń</li><li>Wyniki i powiadomienia e-mail</li><li>Anulujesz w dowolnym momencie</li></ul>
+      <ul><li>Wszystkie 9 typów ćwiczeń</li><li>Wyniki i powiadomienia e-mail</li><li>Anulujesz w dowolnym momencie</li></ul>
       <button class="btn g" data-act="buy" data-plan="yearly">Wybierz roczny</button>
     </div>
   </div>
@@ -292,18 +405,33 @@ footer a:hover{color:var(--ink)}
   </div>
 </div></section>
 
-<section id="faq"><div class="w" style="max-width:760px">
-  <div class="head"><h2>Pytania i odpowiedzi</h2></div>
-  <details><summary>Czy uczniowie muszą zakładać konta?</summary><p>Nie. Uczeń otwiera link, wpisuje imię i rozwiązuje ćwiczenie.</p></details>
-  <details><summary>Jak działa okres próbny?</summary><p>Zakładasz konto bez podawania karty i przez 3 godziny korzystasz z panelu. Po tym czasie dostęp do panelu i do linków wysłanych uczniom wygasa, chyba że wykupisz subskrypcję.</p></details>
-  <details><summary>Jak anulować subskrypcję?</summary><p>W panelu klikasz zarządzanie subskrypcją. Dostęp zostaje do końca opłaconego okresu.</p></details>
-  <details><summary>Jakie metody płatności są dostępne?</summary><p>Płatność kartą, także przez Apple Pay i Google Pay. Subskrypcja odnawia się automatycznie.</p></details>
-  <details><summary>Co się dzieje z moimi ćwiczeniami po zakończeniu subskrypcji?</summary><p>Twoje dane zostają zapisane. Po wznowieniu subskrypcji masz do nich dostęp.</p></details>
-  <details><summary>Czy mogę dostać fakturę?</summary><p>Napisz do nas w sprawie faktury. Podaj dane w wiadomości.</p></details>
+<section id="faq"><div class="w">
+  <div class="head"><h2>Pytania i odpowiedzi</h2><p class="lead">Nie ma tu Twojego pytania? Zajrzyj do <a href="/instrukcja.html" style="color:var(--acc);font-weight:700">instrukcji</a> albo napisz do nas.</p></div>
+  <div class="fq">
+    <details><summary>Czy uczniowie muszą zakładać konta?</summary><p>Nie. Uczeń otwiera link, wpisuje imię i rozwiązuje ćwiczenie. Niczego nie instaluje.</p></details>
+    <details><summary>Czy panel nadaje się do innych języków niż angielski?</summary><p>Tak. Treść ćwiczeń wpisujesz sam, więc możesz uczyć dowolnego języka. Przyciski i komunikaty na stronie ucznia ustawisz po polsku albo po angielsku. W zestawach słówek kolumny są podpisane „angielski” i „polski”, ale możesz w nie wpisać słowa w każdym języku.</p></details>
+    <details><summary>Jakie ćwiczenia mogę tworzyć?</summary><p>Luki, quiz, słówka (fiszki, nauka, test), krzyżówki, dialogi, układanie zdań, dopasowywanie, prawda/fałsz oraz test złożony z wielu zadań na jednej stronie.</p></details>
+    <details><summary>Jak działa okres próbny?</summary><p>Zakładasz konto bez podawania karty i przez 3 godziny korzystasz z panelu. Po tym czasie dostęp do panelu i do linków wysłanych uczniom wygasa, chyba że wykupisz subskrypcję.</p></details>
+    <details><summary>Na jakich urządzeniach to działa?</summary><p>W przeglądarce na komputerze, tablecie i telefonie, u Ciebie i u uczniów. Na tablicy interaktywnej przyda się ustawienie większego tekstu.</p></details>
+    <details><summary>Ile ćwiczeń i uczniów mogę mieć?</summary><p>Nie ma ustalonego limitu ćwiczeń, folderów ani uczniów. Powiadomień e-mail o wynikach wysyłamy do 30 dziennie na konto, a wszystkie wyniki i tak są w panelu.</p></details>
+    <details><summary>Czy uczeń może rozwiązać ćwiczenie kilka razy?</summary><p>Ty decydujesz. Każde ćwiczenie ma ustawienie „jedna próba” albo „wiele prób”, a w ustawieniach wybierzesz, co ma być domyślne.</p></details>
+    <details><summary>Skąd wiem, że uczeń skończył?</summary><p>Wynik pojawia się w panelu w sekcji „Odpowiedzi uczniów”, a na adres konta przychodzi e-mail. Powiadomienia e-mail możesz wyłączyć w ustawieniach.</p></details>
+    <details><summary>Jakie dane uczniów są zapisywane?</summary><p>Imię lub pseudonim, który uczeń wpisze, oraz jego odpowiedzi i wynik. Szczegóły są w <a href="/prywatnosc.html">Polityce prywatności</a>.</p></details>
+    <details><summary>Jak anulować subskrypcję?</summary><p>Na stronie konta klikasz „Zarządzaj subskrypcją”. Dostęp zostaje do końca opłaconego okresu.</p></details>
+    <details><summary>Jak mogę zapłacić?</summary><p>Płatności obsługuje Stripe. Zapłacisz kartą, a dostępne metody zobaczysz na stronie płatności. Subskrypcja odnawia się automatycznie.</p></details>
+    <details><summary>Co się dzieje z moimi ćwiczeniami po zakończeniu subskrypcji?</summary><p>Zostają zapisane. Po wznowieniu subskrypcji znów masz do nich dostęp. W każdej chwili możesz też pobrać kopię zapasową w ustawieniach panelu.</p></details>
+    <details><summary>Czy mogę dostać fakturę?</summary><p>Napisz do nas w sprawie faktury i podaj dane w wiadomości.</p></details>
+    <details><summary>Gdzie znajdę instrukcję obsługi?</summary><p>Na stronie <a href="/instrukcja.html">Instrukcja</a>. Link jest też w panelu, u góry obok „Konto”.</p></details>
+  </div>
 </div></section>
 
 <section id="kontakt"><div class="w ct">
-  <div><h2>Masz pytanie?</h2><p class="lead">Napisz, a odpowiemy najszybciej, jak się da.</p><p style="margin-top:18px"><b>E-mail:</b> <a href="mailto:wkwebstudio@gmail.com" style="color:var(--acc)">wkwebstudio@gmail.com</a></p></div>
+  <div><h2>Masz pytanie?</h2><p class="lead">Napisz albo zadzwoń, odpowiemy najszybciej, jak się da.</p>
+    <div class="cinfo">
+      <a href="mailto:wkwebstudio@gmail.com"><i class="ei">✉️</i><div>wkwebstudio@gmail.com<small>E-mail</small></div></a>
+      <a href="tel:+48603613661"><i class="ei">📞</i><div>603 613 661<small>Telefon</small></div></a>
+    </div>
+  </div>
   <form id="cf" novalidate>
     <input name="imie" id="cfn" placeholder="Imię" required autocomplete="name">
     <input name="email" id="cfe" type="email" placeholder="Adres e-mail" required autocomplete="email">
@@ -316,7 +444,7 @@ footer a:hover{color:var(--ink)}
 
 <footer><div class="w">
   <span>© <span id="yr"></span> Flowork</span>
-  <span><a href="/regulamin.html">Regulamin</a> · <a href="/prywatnosc.html">Polityka prywatności</a> · <a href="#kontakt">Kontakt</a> · <a href="/admin.html" style="opacity:.45;font-size:12px">Admin</a></span>
+  <span><a href="/instrukcja.html">Instrukcja</a> · <a href="/regulamin.html">Regulamin</a> · <a href="/prywatnosc.html">Polityka prywatności</a> · <a href="#kontakt">Kontakt</a> · <a href="/admin.html" style="opacity:.45;font-size:12px">Admin</a></span>
 </div></footer>
 
 <div class="toast" id="toast"></div>
