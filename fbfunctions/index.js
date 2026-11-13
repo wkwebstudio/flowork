@@ -201,5 +201,46 @@ exports.adminGrant = onCall({ region: REGION }, async req => {
   }, { merge: true });
   return { ok: true };
 });
+// ---------- Panel admina: blokada, ukrywanie, kosz i trwałe usuwanie kont ----------
+async function purgeAccount(uid, stripe) {
+  // 1) subskrypcja w Stripe (żeby nie pobierało opłat po usunięciu konta)
+  const sub = await db.doc("subs/" + uid).get();
+  if (sub.exists && sub.data().subscriptionId && stripe) {
+    try { await stripe.subscriptions.cancel(sub.data().subscriptionId); } catch (e) { console.error("purge: stripe", e && e.message); }
+  }
+  // 2) ćwiczenia pod linkami i ich wyniki
+  const exs = await db.collection("ex").where("owner", "==", uid).get();
+  const exIds = new Set();
+  for (const d of exs.docs) { try { const o = JSON.parse(d.data().p); if (o && o.i) exIds.add(String(o.i)); } catch (e) {} }
+  for (const id of exIds) await db.recursiveDelete(db.collection("res").doc(id));
+  for (const d of exs.docs) await d.ref.delete();
+  // 3) stan panelu, ustawienia, sygnały, profil
+  await db.recursiveDelete(db.doc("panels/" + uid));
+  for (const p of ["prefs/", "feed/", "subs/", "users/"]) await db.doc(p + uid).delete().catch(() => {});
+  // 4) konto logowania
+  try { await admin.auth().deleteUser(uid); } catch (e) { if (!(e && e.code === "auth/user-not-found")) throw e; }
+}
+exports.adminAccount = onCall({ region: REGION, secrets: [STRIPE_KEY], timeoutSeconds: 300 }, async req => {
+  const a = need(req);
+  if (a.token.email !== ADMIN_EMAIL) throw new HttpsError("permission-denied", "Brak uprawnień.");
+  const uid = String((req.data && req.data.uid) || ""), action = String((req.data && req.data.action) || "");
+  if (!uid) throw new HttpsError("invalid-argument", "Brak użytkownika.");
+  if (uid === a.uid) throw new HttpsError("failed-precondition", "Nie możesz wykonać tej operacji na własnym koncie administratora.");
+  const ref = db.doc("users/" + uid);
+  const setAuth = async disabled => { try { await admin.auth().updateUser(uid, { disabled }); } catch (e) { if (!(e && e.code === "auth/user-not-found")) throw e; } };
+  const now = admin.firestore.FieldValue.serverTimestamp(), del = admin.firestore.FieldValue.delete();
+  if (action === "block") { await setAuth(true); try { await admin.auth().revokeRefreshTokens(uid); } catch (e) {} await ref.set({ blocked: true, blockedAt: now }, { merge: true }); }
+  else if (action === "unblock") { await setAuth(false); await ref.set({ blocked: del, blockedAt: del }, { merge: true }); }
+  else if (action === "hide") await ref.set({ hidden: true }, { merge: true });
+  else if (action === "unhide") await ref.set({ hidden: del }, { merge: true });
+  else if (action === "trash") { await setAuth(true); try { await admin.auth().revokeRefreshTokens(uid); } catch (e) {} await ref.set({ trashed: true, trashedAt: now, blocked: true }, { merge: true }); }
+  else if (action === "restore") { await setAuth(false); await ref.set({ trashed: del, trashedAt: del, blocked: del, blockedAt: del }, { merge: true }); }
+  else if (action === "purge") {
+    const s = await ref.get();
+    if (s.exists && !s.data().trashed) throw new HttpsError("failed-precondition", "Najpierw przenieś konto do kosza.");
+    await purgeAccount(uid, new Stripe(STRIPE_KEY.value(), { apiVersion: '2025-03-31.basil' }));
+  } else throw new HttpsError("invalid-argument", "Nieznana operacja.");
+  return { ok: true };
+});
 // ---------- E-maile (Resend) ----------
 Object.assign(exports, require("./mail"));
