@@ -6,8 +6,9 @@ service cloud.firestore {
     function ownerActive(o) {
       let u = /databases/$(database)/documents/users/$(o);
       let s = /databases/$(database)/documents/subs/$(o);
-      return (exists(u) && get(u).data.createdAt + duration.value(3, 'h') > request.time)
-          || (exists(s) && get(s).data.accessUntil > request.time);
+      return exists(u) && get(u).data.get('blocked', false) != true
+          && ((get(u).data.createdAt + duration.value(3, 'h') > request.time)
+          || (exists(s) && get(s).data.accessUntil > request.time));
     }
     function signedIn() { return request.auth != null; }
     function isAdmin()  { return signedIn() && request.auth.token.email_verified == true && request.auth.token.email == 'wkwebstudio@gmail.com'; }
@@ -40,6 +41,12 @@ service cloud.firestore {
       allow create, update: if signedIn() && request.auth.uid == uid
         && request.resource.data.keys().hasOnly(['notify'])
         && request.resource.data.notify is bool;
+    }
+
+    // Sygnał „jest nowy wynik” zapisywany przez serwer; czyta go tylko właściciel.
+    match /feed/{uid} {
+      allow read: if signedIn() && request.auth.uid == uid;
+      allow write: if false;
     }
 
     match /panels/{uid} {
