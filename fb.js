@@ -6,7 +6,7 @@ import {
   sendPasswordResetEmail, updateProfile, onAuthStateChanged, signOut
 } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-functions.js";
-import { getFirestore, doc, getDoc, setDoc, serverTimestamp, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+import { getFirestore, doc, getDoc, setDoc, serverTimestamp, collection, getDocs, onSnapshot } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDXgyG6rMx8JfbUYSug0IV7ZBG12sSlyUE",
@@ -30,7 +30,7 @@ export const sendReset = email => callFn("sendReset", { email });
 
 export {
   createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification,
-  sendPasswordResetEmail, updateProfile, onAuthStateChanged, signOut, doc, getDoc, setDoc, serverTimestamp, collection, getDocs
+  sendPasswordResetEmail, updateProfile, onAuthStateChanged, signOut, doc, getDoc, setDoc, serverTimestamp, collection, getDocs, onSnapshot
 };
 
 const MSG = {
@@ -40,6 +40,7 @@ const MSG = {
   "auth/user-not-found": "Nieprawidłowy e-mail lub hasło.",
   "auth/wrong-password": "Nieprawidłowy e-mail lub hasło.",
   "auth/invalid-credential": "Nieprawidłowy e-mail lub hasło.",
+  "auth/user-disabled": "To konto zostało zablokowane. Napisz do nas, jeśli to pomyłka.",
   "auth/too-many-requests": "Zbyt wiele prób. Odczekaj chwilę i spróbuj ponownie.",
   "auth/network-request-failed": "Brak połączenia z internetem.",
   "auth/operation-not-allowed": "Logowanie e-mailem nie jest włączone w projekcie Firebase.",
