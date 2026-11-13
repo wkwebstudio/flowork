@@ -158,11 +158,11 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--mut);font-siz
 <h2><i class="ei">🧭</i> Poznaj panel</h2>
 <p class="ld">Panel ma menu po lewej i obszar roboczy po prawej. Na telefonie menu jest na górze, a reszta pod spodem.</p>
 <div class="map">
-<div><b><i class="ei">➕</i> Nowe ćwiczenie</b><p>Dziewięć kafelków, po jednym na każdy typ. Kliknięcie od razu tworzy ćwiczenie w folderze, w którym jesteś.</p></div>
+<div><b><i class="ei">➕</i> Nowe ćwiczenie</b><p>Dziesięć kafelków, po jednym na każdy typ. Kliknięcie od razu tworzy ćwiczenie w folderze, w którym jesteś.</p></div>
 <div><b><i class="ei">🗂</i> Pulpit</b><p>Twoje foldery i ćwiczenia w postaci ikon. Tu porządkujesz materiały.</p></div>
 <div><b><i class="ei">📊</i> Odpowiedzi uczniów</b><p>Wszystkie wyniki ze wszystkich ćwiczeń. Czerwona plakietka pokazuje, ile jest nowych.</p></div>
 <div><b><i class="ei">🕘</i> Ostatnio otwierane</b><p>Pięć ostatnich ćwiczeń, żeby szybko do nich wrócić.</p></div>
-<div><b><i class="ei">⚙️</i> Ustawienia</b><p>Przycisk w lewym górnym rogu. Motywy, strona ucznia, powiadomienia i kopia zapasowa.</p></div>
+<div><b><i class="ei">⚙</i> Ustawienia</b><p>Przycisk w lewym górnym rogu. Motywy, strona ucznia, powiadomienia i kopia zapasowa.</p></div>
 <div><b><i class="ei">👤</i> Pasek konta</b><p>U góry po prawej: Twój e-mail, czas próby, „Konto”, „Instrukcja” i „Wyloguj”.</p></div>
 </div>
 <h3 id="panel-powitanie">Pierwsze wejście</h3>
@@ -190,6 +190,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--mut);font-siz
 <li>Przeciągnij ćwiczenie albo folder <b>na nazwę w ścieżce</b>, żeby przenieść je poziom wyżej.</li>
 <li>Przeciągnij <b>folder na środek innego folderu</b>, żeby włożyć go do środka.</li>
 <li>Przeciągnij <b>folder na lewy albo prawy brzeg innego folderu</b>, żeby zmienić kolejność. Pionowa kreska pokazuje, gdzie folder wyląduje.</li>
+<li>Tak samo ustawisz <b>kolejność ćwiczeń</b>: upuść ćwiczenie na lewą albo prawą połowę innego ćwiczenia. Lista sortowania przełączy się wtedy na „Moja kolejność”.</li>
 </ul>
 <h3 id="pulpit-menu">Prawy przycisk myszy: kopiuj i wklej</h3>
 <p>Kliknij prawym przyciskiem na pulpicie, żeby otworzyć menu.</p>
@@ -205,7 +206,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--mut);font-siz
 <li>Skróty klawiszowe: wskaż ćwiczenie myszką i naciśnij <kbd>Ctrl</kbd>+<kbd>C</kbd> albo <kbd>Ctrl</kbd>+<kbd>X</kbd>, a w folderze docelowym <kbd>Ctrl</kbd>+<kbd>V</kbd>.</li>
 </ul>
 <h3 id="pulpit-szukanie">Szukanie i kolejność</h3>
-<p>Pole <span class="k">Szukaj ćwiczenia lub folderu</span> przeszukuje wszystkie foldery naraz. Lista obok ustawia kolejność ćwiczeń: najnowsze, alfabetycznie albo według typu. Kolejność folderów ustawiasz sam przeciąganiem.</p>
+<p>Pole <span class="k">Szukaj ćwiczenia lub folderu</span> przeszukuje wszystkie foldery naraz. Lista obok ustawia kolejność ćwiczeń: Twoja własna (ustawiona przeciąganiem), alfabetycznie albo według typu. Przycisk „Wstecz” w przeglądarce cofa do poprzedniego miejsca w panelu: z ćwiczenia na pulpit, z podglądu do edycji, z folderu poziom wyżej.</p>
 </section>
 
 <section class="sec" id="wspolne" data-t="Każde ćwiczenie: wspólne opcje">
@@ -231,7 +232,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--mut);font-siz
 <h2><i class="ei">🧩</i> Typy ćwiczeń</h2>
 <p class="ld">Wybierz typ, żeby przejść do jego opisu.</p>
 <div class="tnav">
-<a href="#t-luki" style="--c:#7758e8"><i class="ei">📝</i>Luki</a><a href="#t-quiz" style="--c:#ff6b9d"><i class="ei">🎯</i>Quiz</a><a href="#t-slowka" style="--c:#20b486"><i class="ei">📚</i>Słówka</a><a href="#t-krzyzowka" style="--c:#f59e0b"><i class="ei">🧩</i>Krzyżówka</a><a href="#t-dialogi" style="--c:#0ea5e9"><i class="ei">💬</i>Dialogi</a><a href="#t-zdania" style="--c:#e0457b"><i class="ei">🔤</i>Zdania</a><a href="#t-dopasuj" style="--c:#8b5cf6"><i class="ei">🔗</i>Dopasuj</a><a href="#t-pf" style="--c:#14b8a6"><i class="ei">⚖️</i>Prawda / Fałsz</a><a href="#t-test" style="--c:#2563eb"><i class="ei">📋</i>Test</a>
+<a href="#t-luki" style="--c:#7758e8"><i class="ei">📝</i>Luki</a><a href="#t-quiz" style="--c:#ff6b9d"><i class="ei">🎯</i>Quiz</a><a href="#t-slowka" style="--c:#20b486"><i class="ei">📚</i>Słówka</a><a href="#t-krzyzowka" style="--c:#f59e0b"><i class="ei">🧩</i>Krzyżówka</a><a href="#t-dialogi" style="--c:#0ea5e9"><i class="ei">💬</i>Dialogi</a><a href="#t-zdania" style="--c:#e0457b"><i class="ei">🔤</i>Zdania</a><a href="#t-dopasuj" style="--c:#8b5cf6"><i class="ei">🔗</i>Dopasuj</a><a href="#t-pf" style="--c:#14b8a6"><i class="ei">⚖</i>Prawda / Fałsz</a><a href="#t-wykreslanka" style="--c:#ea580c"><i class="ei">🔎</i>Wykreślanka</a><a href="#t-test" style="--c:#2563eb"><i class="ei">📋</i>Test</a>
 </div>
 
 <article class="ty" id="t-luki" style="--c:#7758e8"><h3><i class="ei">📝</i> Luki</h3>
@@ -337,7 +338,7 @@ Tom: I [[am]] fine, thanks!</pre>
 <p class="fine"><b>U ucznia:</b> na komputerze przeciąga odpowiedź na miejsce. Na telefonie dotyka odpowiedzi, a potem miejsca. Dotknięcie wypełnionego miejsca oddaje odpowiedź. „Sprawdź” działa po dopasowaniu wszystkich par.</p>
 </article>
 
-<article class="ty" id="t-pf" style="--c:#14b8a6"><h3><i class="ei">⚖️</i> Prawda / Fałsz</h3>
+<article class="ty" id="t-pf" style="--c:#14b8a6"><h3><i class="ei">⚖</i> Prawda / Fałsz</h3>
 <p>Zdania do oceny, opcjonalnie z tekstem albo zdjęciem u góry.</p>
 <ul>
 <li><b>Tekst albo zdjęcie:</b> oba pola są opcjonalne. Zdjęcie przeciągnij, wklej <kbd>Ctrl</kbd>+<kbd>V</kbd> albo wybierz z dysku.</li>
@@ -349,6 +350,26 @@ F: Tom has two sisters.</pre>
 <p class="fine"><b>U ucznia:</b> na komputerze tekst jest obok zdań, na telefonie nad nimi. Kliknięcie zdjęcia je powiększa.</p>
 </article>
 
+<article class="ty" id="t-wykreslanka" style="--c:#ea580c"><h3><i class="ei">🔎</i> Wykreślanka</h3>
+<p>Siatka liter, w której uczeń szuka ukrytych słów. Ty podajesz tylko słowa, a układ robi się sam.</p>
+<ol class="steps">
+<li>W polu po prawej wpisz <b>słowo</b>, które uczeń ma znaleźć. Potrzebne są co najmniej 3 słowa, każde od 2 do 18 liter.</li>
+<li>W polu po lewej możesz dodać <b>podpowiedź albo krótkie pytanie</b>, na przykład „a pet that barks”. To pole może zostać puste.</li>
+<li>Dużo słów naraz wkleisz w polu listy: jedno słowo w linii albo <code>podpowiedź - słowo</code>.</li>
+<li>Wybierz poziom trudności i sprawdź układ w sekcji „Układ (widok nauczyciela)”.</li>
+<li>Kliknij „Podgląd”, a potem „Generuj link”.</li>
+</ol>
+<div class="tbl"><table>
+<tr><th>Ustawienie</th><th>Co robi</th></tr>
+<tr><td>Poziom trudności</td><td>Łatwa: słowa poziomo i pionowo. Średnia: także po skosie. Trudna: we wszystkich kierunkach, również wspak.</td></tr>
+<tr><td>Co widzi uczeń na liście</td><td>„Słowa” pokazuje, czego szukać. „Tylko podpowiedzi” pokazuje pytania i liczbę liter, a słowo odkrywa się po znalezieniu.</td></tr>
+<tr><td>Przycisk podpowiedzi</td><td>Uczeń może podświetlić pierwszą literę jednego ze słów. Liczba użytych podpowiedzi jest na ekranie końcowym.</td></tr>
+<tr><td>Losuj inny układ</td><td>Układa te same słowa inaczej. Po zmianie kliknij „Zaktualizuj link”.</td></tr>
+</table></div>
+<p>Rozmiar siatki zależy od liczby i długości słów. Spacje i myślniki w słowach są pomijane, więc „ice cream” trafi do siatki jako ICECREAM. Wszyscy uczniowie z jednego linku widzą ten sam układ.</p>
+<p><b>Jak gra uczeń:</b> przeciąga palcem albo myszką od pierwszej do ostatniej litery słowa. Może też dotknąć pierwszej, a potem ostatniej litery. Znalezione słowo dostaje kolor i skreśla się na liście. Wynik to liczba znalezionych słów, a po zakończeniu siatka pokazuje przerywaną linią te, których zabrakło.</p>
+<div class="note"><b>Pomysł.</b> w trybie „Tylko podpowiedzi” wykreślanka działa jak zagadka. Uczeń najpierw musi wiedzieć, jakiego słowa szuka.</div>
+</article>
 <article class="ty" id="t-test" style="--c:#2563eb"><h3><i class="ei">📋</i> Test</h3>
 <p>Wiele zadań na jednej stronie, jedno pod drugim. Bez limitu czasu. Każda odpowiedź to 1 punkt.</p>
 <ol class="steps">
@@ -411,7 +432,7 @@ F: Tom has two sisters.</pre>
 <li>U góry są cztery liczby: wszystkie odpowiedzi, dzisiejsze, średni wynik i liczba uczniów.</li>
 <li>Pole wyszukiwania filtruje po imieniu ucznia albo tytule ćwiczenia.</li>
 <li>Znaczek <span class="k">Nowe</span> oznacza odpowiedzi, które przyszły od Twojej ostatniej wizyty.</li>
-<li><b>Odśwież</b> sprawdza nowe wyniki od razu. Panel robi to też sam co kilka minut.</li>
+<li>Nowy wynik pojawia się w panelu sam, zwykle w kilka sekund po tym, jak uczeń skończy. Panel sprawdza wyniki także przy każdym otwarciu i powrocie do karty. <b>Odśwież</b> robi to na żądanie.</li>
 <li><b>CSV</b> pobiera tabelę wszystkich wyników do Excela albo Arkuszy Google.</li>
 <li>Kliknięcie odpowiedzi otwiera zakładkę Wyniki tego ćwiczenia.</li>
 </ul>
@@ -426,10 +447,10 @@ F: Tom has two sisters.</pre>
 </section>
 
 <section class="sec" id="ustawienia" data-t="Ustawienia">
-<h2><i class="ei">⚙️</i> Ustawienia</h2>
+<h2><i class="ei">⚙</i> Ustawienia</h2>
 <p class="ld">Otwierasz je przyciskiem w lewym górnym rogu panelu. Zmiany zapisują się od razu.</p>
 <h3 id="ust-motywy">Motywy</h3>
-<p>Do wyboru są motywy jasne, ciemne i okolicznościowe oraz „Systemowy”, który dopasowuje się do ustawień Twojego urządzenia.</p>
+<p>Do wyboru są motywy jasne, ciemne i okolicznościowe oraz „Systemowy”, który dopasowuje się do ustawień Twojego urządzenia. Motyw „Święta” dodaje padający śnieg, lampki, sanie Mikołaja i śnieg na przyciskach.</p>
 <h3 id="ust-wyglad">Wygląd panelu</h3>
 <ul>
 <li><b>Styl ikon:</b> proste, jednokolorowe ikony albo kolorowe emoji.</li>
@@ -475,7 +496,7 @@ F: Tom has two sisters.</pre>
 </section>
 
 <section class="sec" id="skroty" data-t="Skróty i formaty">
-<h2><i class="ei">⌨️</i> Skróty i formaty</h2>
+<h2><i class="ei">⌨</i> Skróty i formaty</h2>
 <div class="tbl"><table>
 <tr><th>Skrót albo zapis</th><th>Działanie</th></tr>
 <tr><td><kbd>Ctrl</kbd>+<kbd>C</kbd> / <kbd>Ctrl</kbd>+<kbd>X</kbd> / <kbd>Ctrl</kbd>+<kbd>V</kbd></td><td>Kopiuj, wytnij i wklej ćwiczenie na pulpicie. Najpierw wskaż je myszką.</td></tr>
@@ -493,7 +514,7 @@ F: Tom has two sisters.</pre>
 <section class="sec" id="pomoc" data-t="Kontakt">
 <h2><i class="ei">💬</i> Kontakt</h2>
 <p>Jeśli czegoś tu nie ma albo coś nie działa, napisz albo zadzwoń.</p>
-<div class="cinfo"><a href="mailto:wkwebstudio@gmail.com"><i class="ei">✉️</i><div>wkwebstudio@gmail.com<small>E-mail</small></div></a><a href="tel:+48603613661"><i class="ei">📞</i><div>603 613 661<small>Telefon</small></div></a></div>
+<div class="cinfo"><a href="mailto:wkwebstudio@gmail.com"><i class="ei">✉</i><div>wkwebstudio@gmail.com<small>E-mail</small></div></a><a href="tel:+48603613661"><i class="ei">📞</i><div>603 613 661<small>Telefon</small></div></a></div>
 </section>
 
 </main>
