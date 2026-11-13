@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Flowork – ćwiczenia online dla nauczycieli języków</title>
-<meta name="description" content="Luki, quizy, słówka, krzyżówki, dialogi, dopasowywanie, prawda/fałsz i testy do nauki każdego języka. Wysyłasz uczniom link, a wyniki wracają do Ciebie. Uczniowie nie zakładają kont.">
+<meta name="description" content="Luki, quizy, słówka, krzyżówki, dialogi, dopasowywanie, wykreślanki, prawda/fałsz i testy do nauki każdego języka. Wysyłasz uczniom link, a wyniki wracają do Ciebie. Uczniowie nie zakładają kont.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
@@ -188,6 +188,10 @@ footer a:hover{color:var(--ink)}
 .hvn{position:relative;z-index:1;text-align:center;font-size:11.5px;color:var(--mut);margin-top:14px}
 .langs{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
 .langs span{font-size:12.5px;font-weight:700;padding:5px 12px;border-radius:99px;border:1.5px solid var(--line);background:var(--card);color:var(--mut)}
+.f{min-width:0}.wsm,.wsl{min-width:0}@media(max-width:560px){.fg{grid-template-columns:minmax(0,1fr)!important}}.wsv{flex-direction:row;align-items:center;gap:14px;padding:12px}.wsm{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;flex:1;max-width:190px}.wsm i{font-style:normal;font-weight:800;font-size:12px;aspect-ratio:1;display:grid;place-items:center;border-radius:6px;color:var(--ink);background:color-mix(in srgb,var(--card) 70%,transparent)}
+.wsm i.ha{background:#ea580c;color:#fff}.wsm i.hb{background:#2563eb;color:#fff}.wsm i.hc{background:color-mix(in srgb,#17a673 30%,var(--card))}.wsm i.hd{background:color-mix(in srgb,#8b5cf6 30%,var(--card))}
+.wsl{display:flex;flex-direction:column;gap:5px}.wsl span{font-size:11.5px;font-weight:800;padding:3px 9px;border-radius:99px;border:1.5px solid var(--line);background:var(--card)}.wsl span.on{text-decoration:line-through;opacity:.6}
+@media(min-width:901px){.f.fwd{grid-column:1/-1;display:grid;grid-template-columns:1fr 1.5fr;column-gap:24px;align-content:center;padding:14px 22px 14px 14px}.f.fwd .pv{grid-row:1/4;margin:0;height:auto;min-height:170px}.f.fwd .ft{align-self:end}.f.fwd .tags{align-self:start}}
 /* nowe podglądy typów */
 .pv .dm{display:grid;grid-template-columns:1fr 16px 1fr;gap:6px;align-items:center;font-size:12.5px;font-weight:700}
 .pv .dm i{font-style:normal;padding:5px 8px;border-radius:9px;background:var(--card);border:1.5px solid var(--line);text-align:center}
@@ -240,7 +244,7 @@ footer a:hover{color:var(--ink)}
   <div>
     <span class="tag"><i class="ei">🌍</i> Dla nauczycieli języków</span>
     <h1>Ćwiczenia dla uczniów w <em>kilka minut</em>, wyniki od razu u Ciebie</h1>
-    <p class="lead">Luki, quizy, słówka, krzyżówki, dialogi, dopasowywanie, prawda/fałsz i całe testy. Wysyłasz uczniom jeden link. Uczeń nie zakłada konta, a wynik trafia do Twojego panelu.</p>
+    <p class="lead">Luki, quizy, słówka, krzyżówki, dialogi, dopasowywanie, wykreślanki, prawda/fałsz i całe testy. Wysyłasz uczniom jeden link. Uczeń nie zakłada konta, a wynik trafia do Twojego panelu.</p>
     <div class="cta">
       <a class="btn p" href="#cennik" data-act="trial">Zacznij 3-godzinną próbę</a>
       <a class="btn g" href="/instrukcja.html">Zobacz instrukcję</a>
@@ -254,7 +258,7 @@ footer a:hover{color:var(--ink)}
     <div class="win">
       <div class="wb"><i></i><i></i><i></i><span>flowork.pl/panel</span></div>
       <div class="wg">
-        <div class="ws"><b class="on"><i class="ei">🗂</i></b><b><i class="ei">📊</i></b><b><i class="ei">⚙️</i></b></div>
+        <div class="ws"><b class="on"><i class="ei">🗂</i></b><b><i class="ei">📊</i></b><b><i class="ei">⚙</i></b></div>
         <div class="wm">
           <div class="wt">Pulpit <span>› Klasa 7a</span></div>
           <div class="wd">
@@ -275,7 +279,7 @@ footer a:hover{color:var(--ink)}
 </div></header>
 
 <section id="funkcje"><div class="w">
-  <div class="head"><h2>Dziewięć typów ćwiczeń, jeden panel</h2><p class="lead">Każde ćwiczenie ma własny edytor, podgląd tak, jak zobaczy je uczeń, i link do wysłania. Z gotowych ćwiczeń złożysz też cały test.</p></div>
+  <div class="head"><h2>Dziesięć typów ćwiczeń, jeden panel</h2><p class="lead">Każde ćwiczenie ma własny edytor, podgląd tak, jak zobaczy je uczeń, i link do wysłania. Z gotowych ćwiczeń złożysz też cały test.</p></div>
   <div class="fg">
 
     <article class="f" style="--c:#7758e8">
@@ -329,12 +333,19 @@ footer a:hover{color:var(--ink)}
 
     <article class="f" style="--c:#14b8a6">
       <div class="pv"><div class="tfp">Tom lives in London.<div><i class="on">✔ Prawda</i><i class="f">✘ Fałsz</i></div></div><div class="tfp">Tom has a brother.<div><i>✔ Prawda</i><i class="f on">✘ Fałsz</i></div></div></div>
-      <div class="ft"><span class="ic ei">⚖️</span><h3>Prawda / Fałsz</h3></div>
+      <div class="ft"><span class="ic ei">⚖</span><h3>Prawda / Fałsz</h3></div>
       <p>Zdania do oceny z tekstem do przeczytania albo zdjęciem u góry. Dobre do czytania ze zrozumieniem i opisu obrazka.</p>
       <div class="tags"><span>Tekst lub zdjęcie</span><span>Szybkie sprawdzanie</span></div>
     </article>
 
-    <article class="f" style="--c:#2563eb">
+    <article class="f" style="--c:#ea580c">
+      <div class="pv wsv"><div class="wsm"><i>K</i><i class="ha">D</i><i class="ha">O</i><i class="ha">G</i><i>S</i><i>L</i><i>M</i><i class="hd">C</i><i>R</i><i>A</i><i class="hb">F</i><i class="hb">I</i><i class="hb">S</i><i class="hb">H</i><i class="hd">A</i><i>O</i><i>B</i><i>E</i><i>P</i><i>W</i><i>T</i><i class="hd">T</i><i>N</i><i class="hc">B</i><i class="hc">I</i><i class="hc">R</i><i class="hc">D</i><i>U</i><i>E</i><i>Y</i><i>H</i><i>Z</i><i>Q</i><i>V</i><i>X</i></div><div class="wsl"><span class="on">DOG</span><span class="on">FISH</span><span>BIRD</span><span>CAT</span></div></div>
+      <div class="ft"><span class="ic ei">🔎</span><h3>Wykreślanka</h3></div>
+      <p>Podajesz słowa, a siatkę liter układa system. Uczeń szuka ich palcem albo myszką. Zamiast słów możesz pokazać same podpowiedzi lub pytania.</p>
+      <div class="tags"><span>3 poziomy trudności</span><span>Podpowiedzi</span><span>Czas</span></div>
+    </article>
+
+    <article class="f fwd" style="--c:#2563eb">
       <div class="pv"><div class="tl"><div><span class="ei">📝</span>Zadanie 1 · Luki<em>4 pkt</em></div><div><span class="ei">🎯</span>Zadanie 2 · Pytania ABCD<em>5 pkt</em></div><div><span class="ei">🧩</span>Zadanie 3 · Krzyżówka<em>6 pkt</em></div></div><div class="pr2"><span style="width:45%"></span></div></div>
       <div class="ft"><span class="ic ei">📋</span><h3>Test</h3></div>
       <p>Wiele zadań na jednej stronie: luki, pytania ABCD, słówka, krzyżówka, dialog, zdania, dopasowywanie i prawda/fałsz. Bez limitu czasu, z punktami za każde zadanie.</p>
@@ -375,20 +386,20 @@ footer a:hover{color:var(--ink)}
     <div class="pc">
       <h3>Miesięczny</h3><div class="sub">Elastycznie, bez wiązania</div>
       <div class="pr">30 zł<small> / mies.</small></div><div class="eq">Płatność co miesiąc</div>
-      <ul><li>Wszystkie 9 typów ćwiczeń</li><li>Wyniki i powiadomienia e-mail</li><li>Anulujesz w dowolnym momencie</li></ul>
+      <ul><li>Wszystkie 10 typów ćwiczeń</li><li>Wyniki i powiadomienia e-mail</li><li>Anulujesz w dowolnym momencie</li></ul>
       <button class="btn g" data-act="buy" data-plan="monthly">Wybierz miesięczny</button>
     </div>
     <div class="pc hot">
       <span class="bd">Polecany</span>
       <h3>Kwartalny</h3><div class="sub">Płacisz raz na 3 miesiące</div>
       <div class="pr">80 zł<small> / 3 mies.</small></div><div class="eq">ok. 27 zł miesięcznie · <span class="sv">oszczędzasz 10 zł</span></div>
-      <ul><li>Wszystkie 9 typów ćwiczeń</li><li>Wyniki i powiadomienia e-mail</li><li>Anulujesz w dowolnym momencie</li></ul>
+      <ul><li>Wszystkie 10 typów ćwiczeń</li><li>Wyniki i powiadomienia e-mail</li><li>Anulujesz w dowolnym momencie</li></ul>
       <button class="btn p" data-act="buy" data-plan="quarterly">Wybierz kwartalny</button>
     </div>
     <div class="pc">
       <h3>Roczny</h3><div class="sub">Najniższa cena miesięczna</div>
       <div class="pr">300 zł<small> / rok</small></div><div class="eq">25 zł miesięcznie · <span class="sv">oszczędzasz 60 zł</span></div>
-      <ul><li>Wszystkie 9 typów ćwiczeń</li><li>Wyniki i powiadomienia e-mail</li><li>Anulujesz w dowolnym momencie</li></ul>
+      <ul><li>Wszystkie 10 typów ćwiczeń</li><li>Wyniki i powiadomienia e-mail</li><li>Anulujesz w dowolnym momencie</li></ul>
       <button class="btn g" data-act="buy" data-plan="yearly">Wybierz roczny</button>
     </div>
   </div>
@@ -410,7 +421,7 @@ footer a:hover{color:var(--ink)}
   <div class="fq">
     <details><summary>Czy uczniowie muszą zakładać konta?</summary><p>Nie. Uczeń otwiera link, wpisuje imię i rozwiązuje ćwiczenie. Niczego nie instaluje.</p></details>
     <details><summary>Czy panel nadaje się do innych języków niż angielski?</summary><p>Tak. Treść ćwiczeń wpisujesz sam, więc możesz uczyć dowolnego języka. Przyciski i komunikaty na stronie ucznia ustawisz po polsku albo po angielsku. W zestawach słówek kolumny są podpisane „angielski” i „polski”, ale możesz w nie wpisać słowa w każdym języku.</p></details>
-    <details><summary>Jakie ćwiczenia mogę tworzyć?</summary><p>Luki, quiz, słówka (fiszki, nauka, test), krzyżówki, dialogi, układanie zdań, dopasowywanie, prawda/fałsz oraz test złożony z wielu zadań na jednej stronie.</p></details>
+    <details><summary>Jakie ćwiczenia mogę tworzyć?</summary><p>Luki, quiz, słówka (fiszki, nauka, test), krzyżówki, dialogi, układanie zdań, dopasowywanie, prawda/fałsz, wykreślanka oraz test złożony z wielu zadań na jednej stronie.</p></details>
     <details><summary>Jak działa okres próbny?</summary><p>Zakładasz konto bez podawania karty i przez 3 godziny korzystasz z panelu. Po tym czasie dostęp do panelu i do linków wysłanych uczniom wygasa, chyba że wykupisz subskrypcję.</p></details>
     <details><summary>Na jakich urządzeniach to działa?</summary><p>W przeglądarce na komputerze, tablecie i telefonie, u Ciebie i u uczniów. Na tablicy interaktywnej przyda się ustawienie większego tekstu.</p></details>
     <details><summary>Ile ćwiczeń i uczniów mogę mieć?</summary><p>Nie ma ustalonego limitu ćwiczeń, folderów ani uczniów. Powiadomień e-mail o wynikach wysyłamy do 30 dziennie na konto, a wszystkie wyniki i tak są w panelu.</p></details>
@@ -428,7 +439,7 @@ footer a:hover{color:var(--ink)}
 <section id="kontakt"><div class="w ct">
   <div><h2>Masz pytanie?</h2><p class="lead">Napisz albo zadzwoń, odpowiemy najszybciej, jak się da.</p>
     <div class="cinfo">
-      <a href="mailto:wkwebstudio@gmail.com"><i class="ei">✉️</i><div>wkwebstudio@gmail.com<small>E-mail</small></div></a>
+      <a href="mailto:wkwebstudio@gmail.com"><i class="ei">✉</i><div>wkwebstudio@gmail.com<small>E-mail</small></div></a>
       <a href="tel:+48603613661"><i class="ei">📞</i><div>603 613 661<small>Telefon</small></div></a>
     </div>
   </div>
