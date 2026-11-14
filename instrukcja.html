@@ -232,10 +232,10 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--mut);font-siz
 <h2><i class="ei">🧩</i> Typy ćwiczeń</h2>
 <p class="ld">Wybierz typ, żeby przejść do jego opisu.</p>
 <div class="tnav">
-<a href="#t-luki" style="--c:#7758e8"><i class="ei">📝</i>Luki</a><a href="#t-quiz" style="--c:#ff6b9d"><i class="ei">🎯</i>Quiz</a><a href="#t-slowka" style="--c:#20b486"><i class="ei">📚</i>Słówka</a><a href="#t-krzyzowka" style="--c:#f59e0b"><i class="ei">🧩</i>Krzyżówka</a><a href="#t-dialogi" style="--c:#0ea5e9"><i class="ei">💬</i>Dialogi</a><a href="#t-zdania" style="--c:#e0457b"><i class="ei">🔤</i>Zdania</a><a href="#t-dopasuj" style="--c:#8b5cf6"><i class="ei">🔗</i>Dopasuj</a><a href="#t-pf" style="--c:#14b8a6"><i class="ei">⚖</i>Prawda / Fałsz</a><a href="#t-wykreslanka" style="--c:#ea580c"><i class="ei">🔠</i>Wykreślanka</a><a href="#t-test" style="--c:#2563eb"><i class="ei">📋</i>Test</a>
+<a href="#t-luki" style="--c:#7758e8"><i class="ei">📝</i>Tekst z lukami</a><a href="#t-quiz" style="--c:#ff6b9d"><i class="ei">🎯</i>Quiz</a><a href="#t-slowka" style="--c:#20b486"><i class="ei">📚</i>Słówka</a><a href="#t-krzyzowka" style="--c:#f59e0b"><i class="ei">🧩</i>Krzyżówka</a><a href="#t-dialogi" style="--c:#0ea5e9"><i class="ei">💬</i>Dialogi</a><a href="#t-zdania" style="--c:#e0457b"><i class="ei">🔤</i>Zdania</a><a href="#t-dopasuj" style="--c:#8b5cf6"><i class="ei">🔗</i>Dopasuj</a><a href="#t-pf" style="--c:#14b8a6"><i class="ei">⚖</i>Prawda / Fałsz</a><a href="#t-wykreslanka" style="--c:#ea580c"><i class="ei">🔠</i>Wykreślanka</a><a href="#t-test" style="--c:#2563eb"><i class="ei">📋</i>Test</a>
 </div>
 
-<article class="ty" id="t-luki" style="--c:#7758e8"><h3><i class="ei">📝</i> Luki</h3>
+<article class="ty" id="t-luki" style="--c:#7758e8"><h3><i class="ei">📝</i> Tekst z lukami</h3>
 <p>Tekst, w którym uczeń uzupełnia brakujące słowa.</p>
 <ol class="steps">
 <li>Wklej albo wpisz tekst w duże pole.</li>
@@ -317,7 +317,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--mut);font-siz
 Tom: I [[am]] fine, thanks!</pre>
 </article>
 
-<article class="ty" id="t-zdania" style="--c:#e0457b"><h3><i class="ei">🔤</i> Zdania</h3>
+<article class="ty" id="t-zdania" style="--c:#e0457b"><h3><i class="ei">🔤</i> Układanie zdań</h3>
 <p>Uczeń dostaje wymieszane słowa i układa z nich zdanie, przeciągając je albo dotykając po kolei.</p>
 <ul>
 <li>Wpisz poprawne zdanie. Opcjonalnie dodaj podpowiedź, np. tłumaczenie.</li>
@@ -380,12 +380,12 @@ F: Tom has two sisters.</pre>
 </ol>
 <div class="tbl"><table>
 <tr><th>Zadanie</th><th>Jak wpisać treść</th></tr>
-<tr><td>Luki</td><td>Tekst z lukami w podwójnych nawiasach: <code>I [[went]] home.</code> Opcja „Pokaż bank słów”.</td></tr>
+<tr><td>Tekst z lukami</td><td>Tekst z lukami w podwójnych nawiasach: <code>I [[went]] home.</code> Opcja „Pokaż bank słów”.</td></tr>
 <tr><td>Pytania ABCD</td><td>Pytanie i od dwóch do czterech odpowiedzi. Zaznacz kółko przy poprawnej. Puste odpowiedzi są pomijane.</td></tr>
 <tr><td>Słówka</td><td>Jedna para w linii: <code>dog - pies</code>. Wybierasz, w którym języku uczeń pisze.</td></tr>
 <tr><td>Krzyżówka</td><td>Jedno hasło w linii: <code>APPLE - owoc, często czerwony</code>. Układ tworzy się sam.</td></tr>
 <tr><td>Dialog</td><td>Jedna kwestia w linii: <code>Anna: How [[are]] you?</code></td></tr>
-<tr><td>Zdania</td><td>Jedno zdanie w linii. Uczeń dostanie wymieszane słowa.</td></tr>
+<tr><td>Układanie zdań</td><td>Jedno zdanie w linii. Uczeń dostanie wymieszane słowa.</td></tr>
 <tr><td>Dopasuj</td><td>Jedna para w linii: <code>dog - pies</code>.</td></tr>
 <tr><td>Prawda / Fałsz</td><td>Jedno zdanie w linii. Fałszywe zacznij od <code>F:</code></td></tr>
 </table></div>
@@ -425,8 +425,8 @@ F: Tom has two sisters.</pre>
 <p>Na górze jest pytanie, a po ekranie latają cztery bańki z odpowiedziami. Uczeń steruje statkiem na dole i strzela w poprawną.</p>
 <ul>
 <li><b>Sterowanie:</b> palec lub myszka przesuwa statek, dotknięcie albo kliknięcie strzela. Na klawiaturze <kbd>←</kbd> <kbd>→</kbd> i <kbd>Spacja</kbd>.</li>
-<li><b>Życia:</b> trzy. Pierwsze trafienie złej bańki przy danym pytaniu odejmuje 50 punktów, drugie zabiera życie. Życie przepada też, gdy bańki dolecą do statku. Po każdym zaliczonym poziomie jedno życie wraca.</li>
-<li><b>Poziomy:</b> 3, 5 albo 7, po cztery pytania. Na każdym kolejnym bańki lecą szybciej.</li>
+<li><b>Życia:</b> trzy. Pierwsze trafienie złej bańki przy danym pytaniu odejmuje 50 punktów, drugie zabiera życie. Życie przepada też, gdy bańki dolecą do statku. </li>
+<li><b>Poziomy:</b> 3, 5 albo 7, po pięć pytań. Na każdym kolejnym bańki lecą szybciej.</li>
 <li><b>Punkty:</b> więcej za szybki strzał, wyższy poziom i serię trafień bez pomyłki.</li>
 </ul>
 <p class="fine">Bańki lecą w czterech rzędach, więc dolne zasłaniają górne. Trzeba wyczuć moment na strzał.</p>
@@ -461,10 +461,12 @@ F: Tom has two sisters.</pre>
 <p>Zombie idą przez cmentarz w stronę barykady. Uczeń odpowiada na pytania, a każda poprawna odpowiedź to strzał w najbliższego zombie.</p>
 <ul>
 <li><b>Odpowiedzi:</b> cztery przyciski na dole. Na klawiaturze działają klawisze <kbd>1</kbd> do <kbd>4</kbd>.</li>
-<li><b>Pomyłka:</b> zombie na chwilę przyspieszają, a błędna odpowiedź się wyłącza.</li>
+<li><b>Pomyłka:</b> blaster zacina się na sekundę, zombie na chwilę przyspieszają, a błędna odpowiedź się wyłącza.</li>
 <li><b>Barykada:</b> wytrzymuje trzy ugryzienia. Każde zabiera jedno serce.</li>
-<li><b>Fale:</b> 3, 5 albo 7. W każdej jest więcej zombie i idą szybciej. Po ostatniej wstaje świt i gra jest wygrana.</li>
-<li><b>Rodzaje zombie:</b> zwykły, szybki biegacz (od 2. fali) i zombie w kasku, który potrzebuje dwóch trafień (od 3. fali).</li>
+<li><b>Fale:</b> 3, 5 albo 7. W każdej jest więcej zombie i idą szybciej.</li>
+<li><b>Boss:</b> po ostatniej fali wychodzi Król Zombie. Potrzebuje 5, 7 albo 9 trafień, a w tym czasie dochodzą kolejne zombie. Jego ugryzienie zabiera dwa serca. Gdy padnie, wstaje świt i gra jest wygrana.</li>
+<li><b>Nazwy:</b> nad każdym zombie widać jego nazwę, a nad mocniejszymi także paski wytrzymałości.</li>
+<li><b>Rodzaje zombie:</b> zwykły, szybki biegacz i zombie w kasku, który potrzebuje dwóch trafień (oba od 2. fali).</li>
 </ul>
 <p class="fine">Postacie są rysunkowe i bez drastycznych scen, więc gra nadaje się też dla młodszych klas.</p>
 </article>
