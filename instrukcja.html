@@ -104,6 +104,81 @@ mark{background:color-mix(in srgb,var(--acc2) 35%,transparent);color:inherit;bor
 footer{border-top:1px solid var(--line);padding:26px 0;color:var(--mut);font-size:13.5px}footer .w{display:flex;gap:14px;flex-wrap:wrap;justify-content:space-between}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 @media print{nav,.toc,#up,.find,#tocb{display:none!important}.lay{display:block}.sec{break-inside:avoid;border-color:#ccc}}
+/* ---- v2: elementy interaktywne ---- */
+.hide{display:none!important}
+.goal{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:14px 0}
+.goal button,.wz button,.ts button,.pill{font:700 14.5px 'Plus Jakarta Sans';color:var(--ink);cursor:pointer}
+.goal button{display:flex;gap:10px;align-items:center;text-align:left;padding:13px 14px;border-radius:16px;border:1.5px solid var(--line);background:var(--bg);transition:transform .15s,border-color .15s}
+.goal button:hover{transform:translateY(-2px);border-color:var(--acc)}.goal button.on{border-color:var(--acc);background:var(--soft);box-shadow:0 0 0 3px color-mix(in srgb,var(--acc) 16%,transparent)}
+.goal i{width:36px;height:36px;flex:none;border-radius:11px;display:grid;place-items:center;font-size:18px;background:var(--soft);color:var(--acc)}
+.gres{border:1.5px solid var(--acc);border-radius:20px;padding:18px 20px;background:var(--soft);margin-top:6px;animation:pop .3s}
+.gres h4{font:800 18px 'Plus Jakarta Sans';margin-bottom:6px}.gres ol{margin:8px 0 10px}.gres .go{display:flex;flex-wrap:wrap;gap:8px}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:7px 13px;border-radius:99px;border:1.5px solid var(--line);background:var(--card);font-size:13.5px}.pill:hover{border-color:var(--acc)}
+/* tour */
+.tour{border:1.5px solid var(--line);border-radius:22px;overflow:hidden;margin:18px 0 6px;background:var(--bg)}
+.tourh{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1.5px solid var(--line);flex-wrap:wrap}.tourh b{flex:1;min-width:160px}
+.dots{display:flex;gap:6px}.dots i{width:26px;height:6px;border-radius:6px;background:var(--line);cursor:pointer;transition:.2s}.dots i.on{background:var(--acc);width:40px}
+.tourb{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:18px;padding:18px;align-items:center}@media(max-width:760px){.tourb{grid-template-columns:1fr}}
+.tourt small{font-weight:800;color:var(--acc);letter-spacing:.06em;text-transform:uppercase;font-size:12px}.tourt h4{font:800 20px 'Plus Jakarta Sans';margin:2px 0 6px}.tourt p{color:var(--mut);margin-bottom:12px}
+.mock{border:1.5px solid var(--line);border-radius:16px;background:var(--card);padding:12px;min-height:170px;font-size:13px;position:relative;overflow:hidden}
+.mk-t{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.mk-t span{padding:10px 2px;border-radius:10px;border:1.5px solid var(--line);text-align:center;font-weight:700;font-size:11px}.mk-t span.hl{border-color:var(--acc);background:var(--soft);animation:pulse 1.2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 5px color-mix(in srgb,var(--acc) 22%,transparent)}}
+.mk-in{border:1.5px solid var(--line);border-radius:10px;padding:9px 10px;background:var(--bg);line-height:1.9}.mk-in mark{background:color-mix(in srgb,var(--acc) 22%,transparent);color:var(--ink);border-radius:5px;padding:1px 4px;font-weight:700}
+.mk-b{display:inline-block;padding:7px 12px;border-radius:99px;font-weight:800;font-size:12px;background:var(--acc);color:#fff;margin:8px 6px 0 0}.mk-b.g{background:transparent;color:var(--ink);border:1.5px solid var(--line)}.mk-b.hl{animation:pulse 1.2s infinite}
+.mk-l{display:flex;gap:6px;margin-top:8px}.mk-l code{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:8px 10px}
+.mk-r{width:100%;font-size:12.5px}.mk-r td,.mk-r th{padding:6px 8px}
+/* mapa panelu */
+.pm{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:16px;margin:16px 0}@media(max-width:820px){.pm{grid-template-columns:1fr}}
+.pmv{position:relative;border:1.5px solid var(--line);border-radius:18px;background:var(--bg);padding:10px;display:grid;grid-template-columns:34% 1fr;gap:8px;min-height:300px;font-size:11.5px}
+.pmv>div{border:1.5px dashed var(--line);border-radius:12px;padding:8px;position:relative}
+.pmbar{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;min-height:38px}
+.pmx{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-top:6px}.pmx i{height:22px;border-radius:6px;background:var(--line);display:block}
+.pmn{display:block;height:26px;border-radius:8px;background:var(--line);margin-top:6px}
+.pmd{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:22px}.pmd i{aspect-ratio:1;border-radius:12px;background:var(--line);display:block}
+.hs{position:absolute;width:30px;height:30px;border-radius:50%;border:0;background:var(--acc);color:#fff;font:800 14px 'Plus Jakarta Sans';cursor:pointer;display:grid;place-items:center;box-shadow:0 0 0 0 color-mix(in srgb,var(--acc) 50%,transparent);animation:hs 2s infinite;z-index:2}
+.hs.on{background:var(--acc2);animation:none;transform:scale(1.15)}@keyframes hs{70%{box-shadow:0 0 0 10px transparent}}
+.pmi{border:1.5px solid var(--line);border-radius:18px;padding:16px 18px;background:var(--card);align-self:start}.pmi h4{font:800 17px 'Plus Jakarta Sans';margin-bottom:6px;display:flex;gap:8px;align-items:center}.pmi h4 span{width:26px;height:26px;border-radius:50%;background:var(--acc2);color:#fff;display:grid;place-items:center;font-size:13px;flex:none}.pmi p{color:var(--mut);font-size:14.5px;margin:0 0 8px}
+/* kreator typu */
+.wz{border:1.5px solid var(--line);border-radius:20px;padding:16px 18px;margin:14px 0 20px;background:var(--bg)}
+.wz h4{font:800 17px 'Plus Jakarta Sans';margin-bottom:2px}.wzq{margin-top:12px}.wzq>b{display:block;font-size:13px;color:var(--mut);margin-bottom:6px}
+.wzo{display:flex;flex-wrap:wrap;gap:7px}.wzo button{padding:8px 13px;border-radius:99px;border:1.5px solid var(--line);background:var(--card);font-size:13.5px}.wzo button.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.wzr{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin-top:14px}
+.wzr a{display:block;border:1.5px solid var(--c);border-left-width:5px;border-radius:14px;padding:11px 13px;background:var(--card);animation:pop .3s}.wzr a b{display:flex;gap:8px;align-items:center}.wzr a i{color:var(--c)}.wzr a small{display:block;color:var(--mut);font-size:13px;margin-top:2px}
+/* dema typów */
+.demo>b{display:flex;align-items:center;gap:8px}.demo>b::before{content:"▶";font-size:11px;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--c,var(--acc));color:#fff}
+.dz{margin-top:12px}.dmsg{min-height:22px;font-weight:700;font-size:14px;margin-top:10px}.dmsg.ok{color:var(--ok)}.dmsg.no{color:var(--bad)}
+.dq{display:grid;grid-template-columns:1fr 1fr;gap:8px}@media(max-width:520px){.dq{grid-template-columns:1fr}}
+.dq button,.dw span,.dmt button,.dtf button{font:700 14.5px 'Plus Jakarta Sans';cursor:pointer;color:var(--ink)}
+.dq button{padding:13px;border-radius:14px;border:2px solid var(--line);background:var(--bg);text-align:left}.dq button.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 14%,var(--card))}.dq button.no{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 12%,var(--card))}
+.dbar{height:7px;border-radius:7px;background:var(--line);overflow:hidden;margin:8px 0 12px}.dbar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,var(--acc),var(--acc2))}
+.dfc{perspective:900px;width:min(230px,100%);aspect-ratio:3/4;margin:0 auto;cursor:pointer}.dfi{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .5s}.dfc.fl .dfi{transform:rotateY(180deg)}
+.dfi>div{position:absolute;inset:0;border-radius:18px;display:grid;place-items:center;backface-visibility:hidden;-webkit-backface-visibility:hidden;font:800 26px 'Plus Jakarta Sans';border:2px solid var(--line);background:var(--bg);text-align:center;padding:10px}.dfi>div+div{transform:rotateY(180deg);background:color-mix(in srgb,var(--ok) 14%,var(--card));border-color:var(--ok)}
+.dfn{display:flex;justify-content:center;gap:8px;margin-top:10px}
+.dw{display:flex;flex-wrap:wrap;gap:7px;min-height:46px;padding:8px;border:1.5px dashed var(--line);border-radius:14px}.dw.ans{border-style:solid;background:var(--bg);margin-bottom:8px}
+.dw span{padding:8px 13px;border-radius:11px;border:1.5px solid var(--line);background:var(--card)}.dw span:hover{border-color:var(--acc)}
+.dmt{display:grid;grid-template-columns:1fr 1fr;gap:8px}.dmt button{padding:11px;border-radius:13px;border:2px solid var(--line);background:var(--bg)}.dmt button.sel{border-color:var(--acc);background:var(--soft)}.dmt button.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 14%,var(--card));pointer-events:none}.dmt button.no{border-color:var(--bad)}
+.dtf{display:flex;gap:8px;margin-top:8px}.dtf button{flex:1;padding:12px;border-radius:13px;border:2px solid var(--line);background:var(--bg)}.dtf button.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 14%,var(--card))}.dtf button.no{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 12%,var(--card))}
+.dws{display:grid;grid-template-columns:repeat(6,1fr);gap:3px;width:min(260px,100%);user-select:none}.dws i{aspect-ratio:1;display:grid;place-items:center;border-radius:8px;background:var(--bg);border:1.5px solid var(--line);font:800 15px 'Plus Jakarta Sans';font-style:normal;cursor:pointer}.dws i.s{border-color:var(--acc);background:var(--soft)}.dws i.f{background:var(--c);border-color:var(--c);color:#fff}
+.dwl{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}.dwl span{padding:4px 11px;border-radius:99px;border:1.5px solid var(--line);font-weight:700;font-size:13px}.dwl span.f{text-decoration:line-through;opacity:.55}
+.dmm{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:min(330px,100%)}.dmm button{aspect-ratio:4/3;border-radius:13px;border:2px solid var(--line);background:linear-gradient(145deg,#8b5cf6,#6d28d9);color:transparent;font:800 14.5px 'Plus Jakarta Sans';cursor:pointer;transition:.25s}.dmm button.up{background:var(--card);color:var(--ink)}.dmm button.ok{background:#16a34a;border-color:#bbf7d0;color:#fff;box-shadow:0 0 0 3px #4ade80}
+/* rozwijane szczegóły */
+.xd{border:1.5px solid var(--line);border-radius:14px;margin-top:8px;background:var(--card)}.xd summary{cursor:pointer;font-weight:700;padding:11px 14px;list-style:none;display:flex;justify-content:space-between;gap:10px}.xd summary::-webkit-details-marker{display:none}.xd summary::after{content:"+";color:var(--c,var(--acc));font-size:20px;line-height:1}.xd[open] summary::after{content:"–"}
+.xd>div{padding:0 14px 12px;font-size:14.8px}.xd ul{margin-bottom:0}
+/* narzędzia */
+.tool{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}@media(max-width:700px){.tool{grid-template-columns:1fr}}
+.tool textarea{width:100%;min-height:140px;padding:12px;border-radius:14px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:500 14.5px/1.6 ui-monospace,Menlo,Consolas,monospace;resize:vertical}
+.tout{border:1.5px solid var(--line);border-radius:14px;background:var(--bg);overflow:auto;max-height:260px;font-size:14px}.tout table{font-size:14px}.tout .bad td{color:var(--bad)}.tout ol{padding:10px 10px 10px 34px;margin:0}
+/* diagnoza */
+.ts{border:1.5px solid var(--line);border-radius:20px;padding:16px 18px;margin:0 0 16px;background:var(--bg)}.ts h4{font:800 17px 'Plus Jakarta Sans';margin-bottom:8px}
+.tso{display:grid;gap:7px}.ts button{text-align:left;padding:11px 14px;border-radius:13px;border:1.5px solid var(--line);background:var(--card)}.ts button:hover{border-color:var(--acc)}
+.tsa{border-left:4px solid var(--ok);background:color-mix(in srgb,var(--ok) 9%,var(--card));border-radius:0 14px 14px 0;padding:12px 16px;animation:pop .3s}.tsp{font-size:13px;color:var(--mut);margin-bottom:8px}
+/* przeczytane */
+.rd{display:flex;justify-content:flex-end;margin-top:14px}.rd button{font:700 13.5px 'Plus Jakarta Sans';padding:8px 14px;border-radius:99px;border:1.5px solid var(--line);background:var(--bg);color:var(--mut);cursor:pointer}.rd button.on{border-color:var(--ok);color:var(--ok);background:color-mix(in srgb,var(--ok) 9%,var(--card))}
+.toc a.rdk::after{content:"✓";float:right;color:var(--ok);font-weight:800}
+.rdc{font-size:12.5px;color:var(--mut);margin:0 8px 10px;font-weight:600}
+.cpy{float:right;font:700 12px 'Plus Jakarta Sans';padding:4px 10px;border-radius:99px;border:1.5px solid var(--line);background:var(--card);color:var(--mut);cursor:pointer;margin:-4px -6px 0 8px}
+@media print{nav,.toc,#tocb,.find,.rd,#up,.demo,.wz,.goal,.ts,.tour{display:none!important}.lay{display:block}.sec{break-inside:avoid-page;border:0;padding:0 0 16px}.xd>div{display:block}}
 </style>
 </head>
 <body>
@@ -128,6 +203,16 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--mut);font-siz
 <label><input type="checkbox" data-c="5"><span><b>Sprawdź wyniki w „Odpowiedzi uczniów”</b><small>Wynik pojawi się w panelu, a na Twój adres przyjdzie e-mail.</small></span></label>
 </div>
 <div class="pbar"><i id="chkb"></i></div><p class="fine" id="chkt"></p>
+<h3 id="start-tour">Pierwsze ćwiczenie krok po kroku</h3>
+<p>Przeklikaj pięć kroków. Po prawej widać, jak wygląda dany moment w panelu.</p>
+<div class="tour"><div class="tourh"><b>Od pustego panelu do wyników</b><div class="dots" id="tdots"></div></div><div class="tourb" id="tourb"></div></div>
+</section>
+
+<section class="sec" id="cel" data-t="Co chcesz zrobić?">
+<h2><i class="ei">🧭</i> Co chcesz zrobić?</h2>
+<p class="ld">Kliknij cel, a dostaniesz krótki plan i odnośniki do właściwych miejsc w instrukcji.</p>
+<div class="goal" id="goal"><button type="button" data-g="kart"><i class="ei">📋</i>Kartkówka z ocenami</button><button type="button" data-g="slow"><i class="ei">📚</i>Nauka słówek</button><button type="button" data-g="gram"><i class="ei">📝</i>Ćwiczenie gramatyki</button><button type="button" data-g="czyt"><i class="ei">📖</i>Czytanie ze zrozumieniem</button><button type="button" data-g="pow"><i class="ei">🎯</i>Powtórka przed sprawdzianem</button><button type="button" data-g="piec"><i class="ei">⏱</i>Coś na 5 minut</button><button type="button" data-g="kto"><i class="ei">👥</i>Kto jeszcze nie zrobił?</button><button type="button" data-g="druk"><i class="ei">🖨</i>Wersja na papierze</button><button type="button" data-g="tab"><i class="ei">🎮</i>Zabawa na tablicy</button><button type="button" data-g="por"><i class="ei">🗂</i>Porządek w materiałach</button></div>
+<div id="gres"></div>
 </section>
 
 <section class="sec" id="konto" data-t="Konto i dostęp">
@@ -157,6 +242,15 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--mut);font-siz
 <section class="sec" id="panel" data-t="Poznaj panel">
 <h2><i class="ei">🧭</i> Poznaj panel</h2>
 <p class="ld">Panel ma menu po lewej i obszar roboczy po prawej. Na telefonie menu jest na górze, a reszta pod spodem.</p>
+<p>Kliknij numer na schemacie, żeby zobaczyć, co jest w danym miejscu.</p>
+<div class="pm"><div class="pmv" id="pmv" aria-label="Schemat panelu">
+ <div class="pmbar"><span><button class="hs" data-h="0" style="position:static;display:inline-grid">1</button> ⚙</span><span>konto · Instrukcja · Wyloguj <button class="hs" data-h="1" style="position:static;display:inline-grid">2</button></span></div>
+ <div><b>Nowe ćwiczenie</b><button class="hs" data-h="2" style="right:6px;top:4px">3</button><div class="pmx"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div style="position:relative;margin-top:10px"><b>Gry</b><button class="hs" data-h="3" style="right:0;top:-6px">4</button><div class="pmx"><i></i><i></i><i></i><i></i></div></div>
+  <div style="position:relative"><span class="pmn"></span><span class="pmn"></span><button class="hs" data-h="4" style="right:0;top:14px">5</button></div>
+  <div style="position:relative;display:grid;grid-template-columns:1fr 1fr;gap:6px"><span class="pmn"></span><span class="pmn"></span><button class="hs" data-h="5" style="left:calc(50% - 15px);top:4px">6</button></div></div>
+ <div><b>Pulpit</b><button class="hs" data-h="7" style="right:8px;top:4px">8</button><div class="pmd"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><button class="hs" data-h="6" style="left:calc(50% - 15px);top:48%">7</button></div>
+</div><div class="pmi" id="pmi"></div></div>
 <div class="map">
 <div><b><i class="ei">➕</i> Nowe ćwiczenie</b><p>Dziesięć kafelków, po jednym na każdy typ. Pod nimi jest sekcja „Gry” z czterema grami. Kliknięcie od razu tworzy ćwiczenie w folderze, w którym jesteś.</p></div>
 <div><b><i class="ei">🗂</i> Pulpit</b><p>Twoje foldery i ćwiczenia w postaci ikon. Tu porządkujesz materiały.</p></div>
@@ -231,6 +325,10 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--mut);font-siz
 <section class="sec" id="typy" data-t="Typy ćwiczeń">
 <h2><i class="ei">🧩</i> Typy ćwiczeń</h2>
 <p class="ld">Wybierz typ, żeby przejść do jego opisu.</p>
+<div class="wz" id="wz"><h4>Nie wiesz, który typ wybrać?</h4><p class="fine">Odpowiedz na dwa pytania.</p>
+<div class="wzq"><b>1. Po co jest to zadanie?</b><div class="wzo"><button type="button" data-w="a:cw">Ćwiczenie i nauka</button><button type="button" data-w="a:sp">Sprawdzenie wiedzy na ocenę</button><button type="button" data-w="a:za">Zabawa i powtórka</button></div></div>
+<div class="wzq"><b>2. Czego dotyczy?</b><div class="wzo"><button type="button" data-w="b:sl">Słówka</button><button type="button" data-w="b:gr">Gramatyka</button><button type="button" data-w="b:cz">Czytanie lub dialog</button><button type="button" data-w="b:fa">Fakty i wiedza</button></div></div>
+<div class="wzr" id="wzr"></div></div>
 <div class="tnav">
 <a href="#t-luki" style="--c:#7758e8"><i class="ei">📝</i>Tekst z lukami</a><a href="#t-quiz" style="--c:#ff6b9d"><i class="ei">🎯</i>Quiz</a><a href="#t-slowka" style="--c:#20b486"><i class="ei">📚</i>Słówka</a><a href="#t-krzyzowka" style="--c:#f59e0b"><i class="ei">🧩</i>Krzyżówka</a><a href="#t-dialogi" style="--c:#0ea5e9"><i class="ei">💬</i>Dialogi</a><a href="#t-zdania" style="--c:#e0457b"><i class="ei">🔤</i>Zdania</a><a href="#t-dopasuj" style="--c:#8b5cf6"><i class="ei">🔗</i>Dopasuj</a><a href="#t-pf" style="--c:#14b8a6"><i class="ei">⚖</i>Prawda / Fałsz</a><a href="#t-wykreslanka" style="--c:#ea580c"><i class="ei">🔠</i>Wykreślanka</a><a href="#t-test" style="--c:#2563eb"><i class="ei">📋</i>Test</a>
 </div>
@@ -253,7 +351,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--mut);font-siz
 <div class="demo"><b>Wypróbuj zapis luk</b><p class="fine">Zmień tekst po lewej. Po prawej widać to, co dostanie uczeń. Wpisz odpowiedź, żeby sprawdzić ocenianie.</p>
 <div class="dg"><textarea id="gin" aria-label="Tekst z lukami">Yesterday I [[went]] to school. We [[didn't|did not]] have a test.</textarea><div id="gout" class="gout"></div></div></div>
 <p class="fine"><b>U ucznia:</b> klika słowo w banku, a potem lukę, albo wpisuje odpowiedź z klawiatury. Przycisk „Skreślanie słów” pozwala ręcznie skreślać i przywracać słowa w banku.</p>
-</article>
+<details class="xd"><summary>Kiedy używać</summary><div><ul><li>Czasy i formy gramatyczne w kontekście całego tekstu.</li><li>Słownictwo z czytanki: uczeń uzupełnia brakujące wyrazy.</li><li>Piosenki i dialogi z podręcznika z wyciętymi słowami.</li></ul></div></details><details class="xd"><summary>Częste błędy</summary><div><ul><li><b>Jedna poprawna odpowiedź tam, gdzie pasują dwie.</b> Dopisz warianty po znaku <code>|</code>, np. <code>[[do not|don't]]</code>.</li><li><b>Bank słów zdradza za dużo.</b> Dopisz do banku kilka słów-zmyłek albo go wyłącz.</li><li><b>Za dużo luk.</b> Najlepiej działa jedna luka na jedno lub dwa zdania.</li><li><b>Zmiana tekstu bez aktualizacji linku.</b> Po poprawkach kliknij „Zaktualizuj link”.</li></ul></div></details><details class="xd"><summary>Jak liczy się wynik</summary><div><ul><li>Każda luka to jeden punkt.</li><li>Wielkość liter i zbędne spacje nie mają znaczenia.</li><li>Apostrof prosty i ozdobny są traktowane tak samo.</li><li>W wynikach widzisz każdą odpowiedź ucznia, także błędne.</li></ul></div></details><details class="xd"><summary>Pomysł na lekcję</summary><div><p>Daj ten sam tekst dwa razy: najpierw z bankiem słów jako rozgrzewkę, a tydzień później bez banku jako powtórkę. Użyj „Kopiuj ćwiczenie”, żeby nie wpisywać tekstu od nowa.</p></div></details></article>
 
 <article class="ty" id="t-quiz" style="--c:#ff6b9d"><h3><i class="ei">🎯</i> Quiz</h3>
 <p>Pytania jedno po drugim, z odliczaniem czasu, punktami i rankingiem na końcu.</p>
@@ -274,7 +372,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--mut);font-siz
 <li>Do pytania możesz dodać <b>zdjęcie</b> (przyciskiem, przeciągnięciem albo <kbd>Ctrl</kbd>+<kbd>V</kbd>) i <b>dialog</b> w formacie „Imię: tekst”.</li>
 <li><b>Podgląd pytania</b> pokazuje jedno pytanie. Strzałki ↑ ↓ zmieniają kolejność.</li>
 </ul>
-</article>
+<div class="demo" style="--c:#ff6b9d"><b>Wypróbuj: tak wygląda pytanie w quizie</b><p class="fine">Pasek pokazuje uciekający czas. Szybsza odpowiedź daje większy bonus.</p><div class="dz" id="d-quiz"></div></div><details class="xd"><summary>Kiedy używać</summary><div><ul><li>Powtórka z emocjami: czas, punkty i ranking.</li><li>Szybkie sprawdzenie faktów, dat, definicji.</li><li>Rozgrzewka na początek lekcji albo podsumowanie na koniec.</li></ul></div></details><details class="xd"><summary>Częste błędy</summary><div><ul><li><b>Za mało czasu na długie pytania.</b> Ustaw czas osobno dla pytań z tekstem lub zdjęciem.</li><li><b>Brak zaznaczonej poprawnej odpowiedzi.</b> Panel ostrzeże przed wygenerowaniem linku.</li><li><b>Bardzo duże zdjęcia.</b> Wolniej się wczytują na telefonach uczniów.</li></ul></div></details><details class="xd"><summary>Pomysł na lekcję</summary><div><p>Wyświetl ranking na tablicy po quizie i powtórz quiz tydzień później. Uczniowie chętnie poprawiają własny wynik.</p></div></details></article>
 
 <article class="ty" id="t-slowka" style="--c:#20b486"><h3><i class="ei">📚</i> Słówka</h3>
 <p>Jedna lista słówek i trzy sposoby pracy. Każdy tryb ma własny link i własny podgląd.</p>
@@ -289,7 +387,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--mut);font-siz
 <tr><td><b>Ucz się</b></td><td>Seria kilku słówek: najpierw wybór A–D, potem te same słówka pisemnie. Ustawiasz liczbę słówek w serii.</td><td>Służy do nauki.</td></tr>
 <tr><td><b>Test</b></td><td>Pisze tłumaczenia wszystkich słówek.</td><td>Trafia do zakładki Wyniki.</td></tr>
 </table></div>
-</article>
+<div class="demo" style="--c:#20b486"><b>Wypróbuj: fiszka</b><p class="fine">Kliknij kartę, żeby zobaczyć tłumaczenie.</p><div class="dz" id="d-fc"></div></div><details class="xd"><summary>Kiedy używać</summary><div><ul><li>Nowy dział słownictwa: najpierw fiszki, potem „Ucz się”, na koniec test.</li><li>Praca domowa: uczeń uczy się we własnym tempie.</li><li>Kartkówka ze słówek: link do testu z jedną próbą.</li></ul></div></details><details class="xd"><summary>Trzy linki z jednej listy</summary><div><ul><li><b>Fiszki</b> nie mają wyniku. Uczeń zaznacza, co już umie.</li><li><b>Ucz się</b> prowadzi seriami: najpierw wybór A–D, potem pisanie.</li><li><b>Test</b> wysyła wynik do panelu.</li><li>Każdy link ma własny kierunek: polski → angielski, odwrotnie albo mieszany.</li></ul></div></details><details class="xd"><summary>Częste błędy</summary><div><ul><li><b>Kilka znaczeń w jednym polu bez separatora.</b> Rozdziel je znakiem <code>/</code> albo <code>;</code>, np. <code>dom / budynek</code>.</li><li><b>Za długie zestawy.</b> 10–20 słówek na raz uczy się najlepiej.</li><li><b>Czasowniki bez „to”.</b> Zdecyduj się na jeden zapis w całym zestawie.</li></ul></div></details></article>
 
 <article class="ty" id="t-krzyzowka" style="--c:#f59e0b"><h3><i class="ei">🧩</i> Krzyżówka</h3>
 <ol class="steps">
@@ -304,7 +402,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--mut);font-siz
 <li><b>Tło krzyżówki:</b> własne zdjęcie pod kratkami.</li>
 <li>Wszyscy uczniowie z jednego linku widzą ten sam układ. Zmiana odpowiedzi tworzy nowy układ.</li>
 </ul>
-</article>
+<details class="xd"><summary>Kiedy używać</summary><div><ul><li>Utrwalenie słownictwa z definicji albo obrazków.</li><li>Zadanie dla chętnych i szybszych uczniów.</li><li>Wersja papierowa na zastępstwo: przycisk „Drukuj / PDF” drukuje siatkę i hasła.</li></ul></div></details><details class="xd"><summary>Częste błędy</summary><div><ul><li><b>Mniej niż 3 hasła.</b> Układ pojawi się dopiero od trzech.</li><li><b>Hasła bez wspólnych liter.</b> Takie hasło może nie trafić do siatki. Panel pokaże, których haseł nie udało się ułożyć.</li><li><b>Bardzo długie frazy.</b> Spacje i myślniki znikają, więc „ice cream” to w siatce ICECREAM.</li></ul></div></details><details class="xd"><summary>Wskazówki</summary><div><ul><li>„Mieszaj” losuje inny układ z tych samych haseł.</li><li>Podpowiedź odkrywa jedną literę. Możesz ją wyłączyć.</li><li>Zdjęcie zamiast definicji działa świetnie w młodszych klasach.</li></ul></div></details></article>
 
 <article class="ty" id="t-dialogi" style="--c:#0ea5e9"><h3><i class="ei">💬</i> Dialogi</h3>
 <p>Rozmowa z lukami, pokazana jak czat. To ćwiczenie typu Luki z włączoną opcją „Wyświetl tekst jako dialog”.</p>
@@ -315,7 +413,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--mut);font-siz
 </ul>
 <pre>Anna: Hi Tom, how [[are]] you?
 Tom: I [[am]] fine, thanks!</pre>
-</article>
+<details class="xd"><summary>Kiedy używać</summary><div><ul><li>Scenki z życia: w sklepie, u lekarza, na lotnisku.</li><li>Zwroty grzecznościowe i pytania.</li><li>Praca z nagraniem z podręcznika: uczeń słucha i uzupełnia.</li></ul></div></details><details class="xd"><summary>Częste błędy</summary><div><ul><li><b>Brak dwukropka po imieniu.</b> Każda linia musi mieć format <code>Imię: tekst</code>.</li><li><b>Zbyt wiele osób.</b> Dymki są najczytelniejsze przy dwóch lub trzech rozmówcach.</li></ul></div></details></article>
 
 <article class="ty" id="t-zdania" style="--c:#e0457b"><h3><i class="ei">🔤</i> Układanie zdań</h3>
 <p>Uczeń dostaje wymieszane słowa i układa z nich zdanie, przeciągając je albo dotykając po kolei.</p>
@@ -325,7 +423,7 @@ Tom: I [[am]] fine, thanks!</pre>
 <li>Kropka, wykrzyknik albo znak zapytania na końcu zostają na miejscu.</li>
 <li>Wiele zdań naraz wkleisz w polu listy, jedno zdanie w linii.</li>
 </ul>
-</article>
+<div class="demo" style="--c:#e0457b"><b>Wypróbuj: ułóż zdanie</b><div class="dz" id="d-so"></div></div><details class="xd"><summary>Kiedy używać</summary><div><ul><li>Szyk zdania, pytania i przeczenia.</li><li>Nowy czas gramatyczny: uczeń widzi wszystkie elementy i układa je w całość.</li><li>Tłumaczenie: w podpowiedzi wpisz zdanie po polsku.</li></ul></div></details><details class="xd"><summary>Częste błędy</summary><div><ul><li><b>Zdanie ma dwie poprawne kolejności.</b> Dopisz drugą wersję po znaku <code>|</code>.</li><li><b>Zbyt długie zdania.</b> Powyżej 10 słów układanie robi się męczące na telefonie.</li><li><b>Wielka litera zdradza początek.</b> To normalne. Jeśli chcesz utrudnić, zacznij zdanie od imienia.</li></ul></div></details></article>
 
 <article class="ty" id="t-dopasuj" style="--c:#8b5cf6"><h3><i class="ei">🔗</i> Dopasuj</h3>
 <p>Uczeń przeciąga odpowiedzi do pasujących elementów. Lewa strona zostaje na miejscu.</p>
@@ -336,7 +434,7 @@ Tom: I [[am]] fine, thanks!</pre>
 <li><b>Lista:</b> jedna para w linii, <code>dog - pies</code>.</li>
 </ul>
 <p class="fine"><b>U ucznia:</b> na komputerze przeciąga odpowiedź na miejsce. Na telefonie dotyka odpowiedzi, a potem miejsca. Dotknięcie wypełnionego miejsca oddaje odpowiedź. „Sprawdź” działa po dopasowaniu wszystkich par.</p>
-</article>
+<div class="demo" style="--c:#8b5cf6"><b>Wypróbuj: połącz pary</b><div class="dz" id="d-mt"></div></div><details class="xd"><summary>Kiedy używać</summary><div><ul><li>Słowo i tłumaczenie, pojęcie i definicja, data i wydarzenie.</li><li>Obrazek i podpis: do lewej strony możesz dodać zdjęcie.</li><li>Szybka rozgrzewka na 3 minuty.</li></ul></div></details><details class="xd"><summary>Częste błędy</summary><div><ul><li><b>Dwie pary z taką samą prawą stroną.</b> Uczeń nie wie, którą wybrać. Zmień jedną z nich.</li><li><b>Za łatwo przez eliminację.</b> Dopisz dodatkowe błędne odpowiedzi w polu pod parami.</li></ul></div></details></article>
 
 <article class="ty" id="t-pf" style="--c:#14b8a6"><h3><i class="ei">⚖</i> Prawda / Fałsz</h3>
 <p>Zdania do oceny, opcjonalnie z tekstem albo zdjęciem u góry.</p>
@@ -348,7 +446,7 @@ Tom: I [[am]] fine, thanks!</pre>
 <pre>Tom lives in London.
 F: Tom has two sisters.</pre>
 <p class="fine"><b>U ucznia:</b> na komputerze tekst jest obok zdań, na telefonie nad nimi. Kliknięcie zdjęcia je powiększa.</p>
-</article>
+<div class="demo" style="--c:#14b8a6"><b>Wypróbuj: prawda czy fałsz</b><div class="dz" id="d-tf"></div></div><details class="xd"><summary>Kiedy używać</summary><div><ul><li>Czytanie ze zrozumieniem: tekst na górze, zdania pod spodem.</li><li>Opis obrazka: zdjęcie zamiast tekstu.</li><li>Szybkie sprawdzenie wiedzy o faktach.</li></ul></div></details><details class="xd"><summary>Częste błędy</summary><div><ul><li><b>Same prawdziwe zdania.</b> Mieszaj mniej więcej pół na pół.</li><li><b>Zdania dosłownie z tekstu.</b> Lepiej je sparafrazować, żeby uczeń musiał zrozumieć treść.</li><li><b>Przy wklejaniu listy brak oznaczenia fałszu.</b> Zdanie fałszywe zacznij od <code>F:</code>.</li></ul></div></details></article>
 
 <article class="ty" id="t-wykreslanka" style="--c:#ea580c"><h3><i class="ei">🔠</i> Wykreślanka</h3>
 <p>Siatka liter, w której uczeń szuka ukrytych słów. Ty podajesz tylko słowa, a układ robi się sam.</p>
@@ -369,7 +467,7 @@ F: Tom has two sisters.</pre>
 <p>Rozmiar siatki zależy od liczby i długości słów. Spacje i myślniki w słowach są pomijane, więc „ice cream” trafi do siatki jako ICECREAM. Wszyscy uczniowie z jednego linku widzą ten sam układ.</p>
 <p><b>Jak gra uczeń:</b> przeciąga palcem albo myszką od pierwszej do ostatniej litery słowa. Może też dotknąć pierwszej, a potem ostatniej litery. Znalezione słowo dostaje kolor i skreśla się na liście. Wynik to liczba znalezionych słów, a po zakończeniu siatka pokazuje przerywaną linią te, których zabrakło.</p>
 <div class="note"><b>Pomysł.</b> w trybie „Tylko podpowiedzi” wykreślanka działa jak zagadka. Uczeń najpierw musi wiedzieć, jakiego słowa szuka.</div>
-</article>
+<div class="demo" style="--c:#ea580c"><b>Wypróbuj: znajdź słowa</b><div class="dz" id="d-ws"></div></div><details class="xd"><summary>Kiedy używać</summary><div><ul><li>Zapamiętywanie pisowni nowych słów.</li><li>Zadanie na koniec lekcji albo na zastępstwo.</li><li>W trybie „Tylko podpowiedzi” jako zagadka: uczeń najpierw musi wiedzieć, czego szuka.</li></ul></div></details><details class="xd"><summary>Częste błędy</summary><div><ul><li><b>Mniej niż 3 słowa.</b> Tyle potrzeba, żeby powstała siatka.</li><li><b>Poziom „Trudna” dla młodszych klas.</b> Słowa pisane wspak są dla nich bardzo trudne. Zacznij od „Łatwej”.</li></ul></div></details></article>
 <article class="ty" id="t-test" style="--c:#2563eb"><h3><i class="ei">📋</i> Test</h3>
 <p>Wiele zadań na jednej stronie, jedno pod drugim. Bez limitu czasu. Każda odpowiedź to 1 punkt.</p>
 <ol class="steps">
@@ -395,7 +493,7 @@ F: Tom has two sisters.</pre>
 <li>Jeśli hasło w krzyżówce nie ma wspólnej litery z żadnym innym, panel poprosi o jego zmianę.</li>
 </ul>
 <p class="fine"><b>U ucznia:</b> na dole strony jest pasek z liczbą odpowiedzi i przyciskiem „Zakończ test”. Gdy czegoś brakuje, test pyta o potwierdzenie. Po zakończeniu uczeń widzi wynik, punkty za każde zadanie i swoje odpowiedzi z poprawkami.</p>
-</article>
+<details class="xd"><summary>Kiedy używać</summary><div><ul><li>Kartkówka albo sprawdzian z kilku umiejętności naraz.</li><li>Praca domowa z jednego działu: słówka, gramatyka i czytanie w jednym linku.</li><li>Wersja papierowa: cały test drukuje się razem z kluczem.</li></ul></div></details><details class="xd"><summary>Częste błędy</summary><div><ul><li><b>Bardzo długi test na telefonie.</b> Podziel materiał na dwa krótsze testy.</li><li><b>Brak tytułów zadań.</b> Krótkie polecenie przy każdym zadaniu pomaga uczniowi.</li><li><b>Zapomniany termin.</b> Przy kartkówce ustaw termin i zostaw jedną próbę.</li></ul></div></details><details class="xd"><summary>Jak liczy się wynik</summary><div><ul><li>Każda luka, pytanie, słówko, para i zdanie to osobny punkt.</li><li>Uczeń widzi wynik łączny po zakończeniu.</li><li>W panelu widzisz odpowiedzi do każdego zadania osobno.</li></ul></div></details></article>
 </section>
 
 <section class="sec" id="gry" data-t="Gry">
@@ -420,7 +518,7 @@ F: Tom has two sisters.</pre>
 <p><b>Skąd biorą się złe odpowiedzi?</b> Gra losuje je z pozostałych par. Dlatego najlepiej działają zestawy, w których odpowiedzi są do siebie podobne, na przykład same słówka albo same daty.</p>
 <div class="note"><b>Bez wyników.</b> Gra nie pyta o imię, nie wysyła wyniku i nie ma limitu prób. Uczeń widzi swój rekord, ale tylko na swoim urządzeniu. Jeśli potrzebujesz oceny, użyj zwykłego ćwiczenia, na przykład quizu albo testu.</div>
 <p class="fine"><b>U ucznia:</b> na górze gry są trzy przyciski: dźwięk, pełny ekran i zakończenie gry. Pełny ekran przydaje się na tablicy interaktywnej.</p>
-</article>
+<details class="xd"><summary>Jakie zestawy działają najlepiej</summary><div><ul><li>Krótkie odpowiedzi: jedno słowo albo krótka fraza mieszczą się w bańkach, kartach i przyciskach.</li><li>Odpowiedzi tego samego rodzaju, np. same tłumaczenia albo same daty. Wtedy złe odpowiedzi są wiarygodne.</li><li>8–20 par. Przy mniejszej liczbie pytania szybko się powtarzają.</li></ul></div></details><details class="xd"><summary>Częste błędy</summary><div><ul><li><b>Dwie pary z tą samą odpowiedzią.</b> Gra może pokazać poprawną odpowiedź jako „złą”. Zmień jedną z nich.</li><li><b>Bardzo długie pytania.</b> W Kosmosie i Zombie pytanie powinno dać się przeczytać w dwie sekundy.</li></ul></div></details></article>
 <article class="ty" id="g-kosmos" style="--c:#6366f1"><h3><i class="ei">🚀</i> Kosmiczny strzał</h3>
 <p>Na górze jest pytanie, a po ekranie latają cztery bańki z odpowiedziami. Uczeń steruje statkiem na dole i strzela w poprawną.</p>
 <ul>
@@ -441,7 +539,7 @@ F: Tom has two sisters.</pre>
 </table></div>
 <p>Przy większej liczbie par gra sama dzieli je na <b>rundy</b>: do 6 par na telefonie i do 8 na komputerze. Na koniec uczeń dostaje od jednej do trzech gwiazdek, zależnie od liczby ruchów albo czasu.</p>
 <p class="fine">Karty z pytaniami mają fioletową kropkę, a karty z odpowiedziami różowy kwadrat. Dzięki temu widać, że para to zawsze jedna karta każdego rodzaju.</p>
-</article>
+<div class="demo" style="--c:#db2777"><b>Wypróbuj: mini memory</b><div class="dz" id="d-mem"></div></div></article>
 <article class="ty" id="g-bloki" style="--c:#0891b2"><h3><i class="ei">🧱</i> Bloki</h3>
 <p>Układanka na planszy 8 × 8. Żeby dostać bloki, trzeba odpowiedzieć na pytanie.</p>
 <ol class="steps">
@@ -506,7 +604,11 @@ F: Tom has two sisters.</pre>
 </ul>
 <div class="note"><b>Prywatność.</b> Lista imion z przypisanej klasy jest widoczna dla każdego, kto ma link do tego ćwiczenia. Wysyłaj więc link tylko tej klasie.</div>
 <p class="fine">Gry nie mają wyników, więc nie przypisuje się do nich klasy.</p>
-</article>
+<div class="demo" style="--c:#7758e8"><b>Wypróbuj: tak panel czyści listę uczniów</b><p class="fine">Wklej listę z dziennika. Numery, powtórki i puste linie znikają, a nazwiska układają się alfabetycznie.</p><div class="tool"><textarea id="cin" aria-label="Lista uczniów">3. Nowak Jan
+1. Kowalska Anna
+
+2. Lis Ola
+kowalska  anna</textarea><div class="tout" id="cout"></div></div></div></article>
 <article class="ty" id="k-termin" style="--c:#e0457b"><h3><i class="ei">⏰</i> Termin</h3>
 <p>W ćwiczeniu, pod przyciskami linku, ustaw datę i godzinę w polu <b>Termin</b>, a potem kliknij „Generuj link” albo „Zaktualizuj link”.</p>
 <ul>
@@ -600,12 +702,13 @@ F: Tom has two sisters.</pre>
 <li><b>Pobierz</b> zapisuje plik ze wszystkimi ćwiczeniami, folderami i wynikami.</li>
 <li><b>Wczytaj</b> dodaje z pliku to, czego w panelu nie ma. Niczego nie usuwa ani nie nadpisuje.</li>
 <li><b>Pobierz CSV</b> zapisuje tabelę wyników.</li>
-<li><b>Stary panel → Przenieś</b> kopiuje ćwiczenia, foldery i wyniki uczniów z poprzedniej wersji panelu, która działała na własnej bazie Firebase. Wpisz adres starej bazy i kod panelu (oba są w starym panelu w Ustawieniach, w sekcji „Baza online”). Jeśli stary panel nie miał kodu, użyj zakładki „Wklej dane”. Stare linki dla uczniów nie są przenoszone, więc po przeniesieniu wygeneruj nowe.</li>
 </ul>
 </section>
 
 <section class="sec" id="problemy" data-t="Gdy coś nie działa">
 <h2><i class="ei">🛟</i> Gdy coś nie działa</h2>
+<div class="ts" id="ts"></div>
+<h3 id="problemy-lista">Wszystkie znane problemy</h3>
 <div class="qa">
 <details><summary>Nie przyszła wiadomość z potwierdzeniem albo zmianą hasła</summary><p>Sprawdź spam i zakładki „Oferty” lub „Powiadomienia”. Odczekaj minutę i wyślij wiadomość ponownie ze strony logowania. Między wiadomościami musi minąć co najmniej minuta.</p></details>
 <details><summary>Uczeń widzi informację, że link nie działa</summary><p>Najczęściej skończył się okres próbny albo subskrypcja. Linki wracają po wykupieniu planu. Sprawdź też, czy skopiowany został cały adres.</p></details>
@@ -632,6 +735,11 @@ F: Tom has two sisters.</pre>
 <tr><td><code>Imię: tekst</code></td><td>Kwestia w dialogu.</td></tr>
 <tr><td><code>zdanie 1|zdanie 2</code></td><td>Kilka poprawnych wersji w układaniu zdań.</td></tr>
 </table></div>
+<h3 id="skroty-pary">Sprawdź format par</h3><p>W Słówkach, Dopasuj, Krzyżówce, Wykreślance i Grach możesz wkleić całą listę. Każda linia to jedna para. Strony rozdziela myślnik, dwukropek, znak równości, średnik albo tabulator (czyli można wkleić dwie kolumny z Excela). Wpisz swoje pary i zobacz, jak panel je odczyta.</p><div class="demo"><b>Wypróbuj wklejanie listy</b><div class="tool"><textarea id="pin" aria-label="Pary">dog - pies
+cat – kot
+to run - biegać
+ice cream
+bird: ptak</textarea><div class="tout" id="pout"></div></div></div>
 </section>
 
 <section class="sec" id="pomoc" data-t="Kontakt">
@@ -675,6 +783,87 @@ q.oninput=()=>{const v=fold(q.value.trim());let n=0;secs.forEach((s,i)=>{const h
   links.forEach((a,i)=>{const t=tg[i],s=t&&t.closest('.sec');a.style.display=s&&s.classList.contains('hide')?'none':''});
   qs.textContent=!v?'':n?'Pasujące rozdziały: '+n:'Nic nie znaleziono. Spróbuj innego słowa albo napisz do nas.';spy()};
 if(location.hash){const t=document.getElementById(location.hash.slice(1));if(t)setTimeout(()=>t.scrollIntoView(),60)}
+// ===== v2: interaktywne elementy instrukcji =====
+(function(){const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],E=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])),sh=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const go=id=>{const t=document.getElementById(id);if(t)t.scrollIntoView({behavior:'smooth'})};
+// --- co chcesz zrobić
+const GO={kart:['Kartkówka z ocenami','Najlepiej sprawdzi się <b>Test</b>: wiele zadań na jednej stronie i jeden wynik w punktach.',['Kliknij kafelek „Test” i dodaj zadania (wybór, luki, słówka, prawda/fałsz).','Zostaw zaznaczone „Uczeń może rozwiązać tylko raz”.','Ustaw <b>Termin</b>, jeśli kartkówka ma trwać np. do 20:00.','Wygeneruj link. Wyniki z odpowiedziami zobaczysz w „Odpowiedziach uczniów”.'],[['t-test','Test'],['k-termin','Termin'],['wyniki','Wyniki']]],
+ slow:['Nauka słówek','Zrób zestaw <b>Słówek</b>. Z jednej listy dostajesz fiszki, tryb „Ucz się” i test.',['Kliknij „Słówka” i wklej listę w formacie <code>house - dom</code>.','Wyślij uczniom link do fiszek albo do trybu „Ucz się”.','Na koniec wyślij link do testu, a wynik trafi do panelu.','Dla rozluźnienia zrób z tych samych słówek grę Memory albo Zombie.'],[['t-slowka','Słówka'],['gry','Gry']]],
+ gram:['Ćwiczenie gramatyki','Użyj <b>Tekstu z lukami</b> albo <b>Układania zdań</b>.',['Wklej tekst, zaznacz słowo i kliknij „Zrób lukę”.','Dla form skróconych podaj kilka odpowiedzi: <code>[[did not|didn\'t]]</code>.','Włącz bank słów, jeśli uczniowie dopiero poznają temat.','Szyk zdania przećwiczysz typem „Układanie zdań”.'],[['t-luki','Tekst z lukami'],['t-zdania','Układanie zdań']]],
+ czyt:['Czytanie ze zrozumieniem','Wybierz <b>Prawda / Fałsz</b> z tekstem albo <b>Test</b> z tekstem nad zadaniem.',['Wklej tekst w pole „Tekst albo zdjęcie”.','Dopisz zdania i zaznacz, które są prawdziwe.','Na dłuższą pracę użyj Testu: tekst plus pytania wyboru i luki.'],[['t-pf','Prawda / Fałsz'],['t-test','Test']]],
+ pow:['Powtórka przed sprawdzianem','Połącz <b>Quiz</b> na rozgrzewkę z <b>grą</b> na koniec.',['Zrób quiz z czasem i punktami. Ranking podkręca emocje.','Odznacz „tylko raz”, żeby uczniowie mogli ćwiczyć wiele razy.','Te same pytania wpisz jako pary do gry, np. Kosmos albo Zombie.'],[['t-quiz','Quiz'],['gry','Gry']]],
+ piec:['Coś na 5 minut','Najszybsze są <b>Dopasuj</b>, <b>Wykreślanka</b> i <b>Memory</b>.',['Wklej 5–8 par w formacie <code>dog - pies</code>.','Kliknij „Generuj link” i wyślij go uczniom albo wyświetl na tablicy.','W grach nie ma wyników, więc nic nie trzeba sprawdzać.'],[['t-dopasuj','Dopasuj'],['t-wykreslanka','Wykreślanka'],['g-memory','Memory']]],
+ kto:['Chcę wiedzieć, kto nie zrobił','Dodaj <b>klasę</b> i przypisz ją do ćwiczenia.',['Pulpit → Klasy → Dodaj klasę i wklej listę uczniów.','W ćwiczeniu wybierz klasę i kliknij „Zaktualizuj link”.','W zakładce Wyniki zobaczysz listę „Jeszcze nie zrobili”.'],[['k-klasy','Klasy']]],
+ druk:['Wersja na papierze','Każde ćwiczenie ma przycisk <b>Drukuj / PDF</b>.',['Otwórz ćwiczenie i kliknij „Drukuj / PDF”.','Zaznacz kartkę dla ucznia i klucz odpowiedzi.','W oknie drukowania wybierz drukarkę albo „Zapisz jako PDF”.'],[['k-druk','Drukowanie']]],
+ tab:['Zabawa na tablicy interaktywnej','Wybierz <b>grę</b> i włącz pełny ekran.',['Zrób grę z kilkunastu par.','Otwórz link na komputerze przy tablicy i kliknij przycisk pełnego ekranu w grze.','Zombie i Kosmos działają też z klawiatury.'],[['gry','Gry'],['g-zombie','Zombie']]],
+ por:['Porządek w materiałach','Użyj <b>folderów</b>, kolorów i kosza.',['Na pulpicie utwórz folder dla każdej klasy lub działu.','Przeciągaj ćwiczenia na foldery, a kolejność ustawiaj upuszczaniem.','Usunięte ćwiczenia czekają 30 dni w koszu.'],[['pulpit','Pulpit i foldery'],['k-kosz','Kosz']]]};
+const gb=$('#goal'),gr=$('#gres');if(gb)gb.onclick=e=>{const b=e.target.closest('[data-g]');if(!b)return;$$('#goal button').forEach(x=>x.classList.toggle('on',x===b));const g=GO[b.dataset.g];
+  gr.innerHTML='<div class="gres"><h4>'+g[0]+'</h4><p>'+g[1]+'</p><ol>'+g[2].map(s=>'<li>'+s+'</li>').join('')+'</ol><div class="go">'+g[3].map(l=>'<a class="pill" href="#'+l[0]+'">Czytaj: '+l[1]+' →</a>').join('')+'</div></div>'};
+// --- przewodnik krok po kroku
+const TS=[['Wybierz typ','W menu „Nowe ćwiczenie” kliknij kafelek. Ćwiczenie tworzy się od razu, w folderze, w którym jesteś.','<div class="mk-t"><span class="hl">Tekst z lukami</span><span>Quiz</span><span>Słówka</span><span>Krzyżówka</span><span>Dialogi</span><span>Układanie zdań</span><span>Dopasuj</span><span>Prawda / Fałsz</span></div>'],
+ ['Wpisz treść','Wklej tekst, zaznacz słowo myszką i kliknij „Zrób lukę”. Luka zapisuje się jako słowo w podwójnych nawiasach.','<div class="mk-in">Yesterday I <mark>[[went]]</mark> to school and <mark>[[had]]</mark> a test.</div><span class="mk-b hl">✂ Zrób lukę z zaznaczenia</span>'],
+ ['Sprawdź w podglądzie','„Podgląd” pokazuje ćwiczenie dokładnie tak, jak zobaczy je uczeń. Możesz je rozwiązać, a wynik nigdzie się nie zapisze.','<div class="mk-in">Yesterday I <input style="width:70px;padding:3px 6px;border-radius:7px;border:2px solid var(--line);background:var(--card);color:var(--ink)" value="went"> to school…</div><span class="mk-b g">📄 Kopiuj</span><span class="mk-b hl">👁 Podgląd</span>'],
+ ['Wygeneruj link','Kliknij „Generuj link” i skopiuj adres. Po każdej zmianie w ćwiczeniu kliknij „Zaktualizuj link”. Adres zostaje ten sam.','<span class="mk-b hl">🔗 Generuj link</span><div class="mk-l"><code>flowork.pl/uczen.html#k=flowork/a1b2c3</code><span class="mk-b g" style="margin:0">Kopiuj</span></div>'],
+ ['Zobacz wyniki','Gdy uczeń skończy, wynik pojawia się w „Odpowiedziach uczniów”, a na Twój adres przychodzi e-mail.','<table class="mk-r"><tr><th>Uczeń</th><th>Wynik</th></tr><tr><td>Anna Kowalska</td><td style="color:var(--ok);font-weight:800">100%</td></tr><tr><td>Jan Nowak</td><td style="font-weight:800">50%</td></tr></table>']];
+let ti=0;const td=()=>{const s=TS[ti];$('#tourb').innerHTML='<div class="tourt"><small>Krok '+(ti+1)+' z '+TS.length+'</small><h4>'+s[0]+'</h4><p>'+s[1]+'</p><button class="btn" id="tp" '+(ti?'':'disabled style="opacity:.4"')+'>← Wstecz</button> <button class="btn p" id="tn">'+(ti<TS.length-1?'Dalej →':'Od początku ↺')+'</button></div><div class="mock">'+s[2]+'</div>';
+  $('#tdots').innerHTML=TS.map((x,i)=>'<i class="'+(i===ti?'on':'')+'" data-i="'+i+'"></i>').join('');$('#tp').onclick=()=>{ti=Math.max(0,ti-1);td()};$('#tn').onclick=()=>{ti=(ti+1)%TS.length;td()}};
+if($('#tourb')){td();$('#tdots').onclick=e=>{const d=e.target.closest('[data-i]');if(d){ti=+d.dataset.i;td()}}}
+// --- mapa panelu
+const PM=[['Ustawienia','Przycisk w lewym górnym rogu. Motyw, wygląd ikon, strona ucznia, powiadomienia e-mail, kopia zapasowa i eksport wyników.','ustawienia'],['Pasek konta','Twój e-mail, czas próby albo plan, przyciski „Konto”, „Instrukcja” i „Wyloguj”.','konto'],['Nowe ćwiczenie','Dziesięć kafelków z typami ćwiczeń. Kliknięcie tworzy ćwiczenie w bieżącym folderze.','typy'],['Gry','Cztery gry: Kosmos, Memory, Bloki, Zombie. Działają na parach pytanie i odpowiedź.','gry'],['Pulpit i Odpowiedzi uczniów','Dwa główne widoki. Plakietka przy odpowiedziach pokazuje liczbę nowych wyników.','wyniki'],['Klasy i Kosz','Listy uczniów do wyboru z listy oraz ćwiczenia usunięte w ostatnich 30 dniach.','klasy'],['Pulpit','Foldery i ćwiczenia jako ikony. Dwuklik otwiera, przeciąganie przenosi, prawy przycisk daje menu.','pulpit'],['Pasek pulpitu','Nowy folder, wyszukiwarka i sortowanie: własna kolejność, alfabetycznie albo według typu.','pulpit']];
+const pv=$('#pmv'),pi=$('#pmi');const pshow=i=>{$$('#pmv .hs').forEach(h=>h.classList.toggle('on',+h.dataset.h===i));const p=PM[i];pi.innerHTML='<h4><span>'+(i+1)+'</span>'+p[0]+'</h4><p>'+p[1]+'</p><a class="pill" href="#'+p[2]+'">Więcej o tym →</a>'};
+if(pv){pv.onclick=e=>{const h=e.target.closest('.hs');if(h)pshow(+h.dataset.h)};pshow(2)}
+// --- kreator typu
+const TY={luki:['t-luki','📝','Tekst z lukami','#7758e8','Gramatyka i słownictwo w kontekście.'],quiz:['t-quiz','🎯','Quiz','#ff6b9d','Pytania z czasem, punktami i rankingiem.'],slow:['t-slowka','📚','Słówka','#20b486','Fiszki, nauka i test z jednej listy.'],krz:['t-krzyzowka','🧩','Krzyżówka','#f59e0b','Hasła z definicji albo obrazków.'],dia:['t-dialogi','💬','Dialogi','#0ea5e9','Rozmowa w dymkach z lukami.'],zda:['t-zdania','🔤','Układanie zdań','#e0457b','Szyk zdania z rozsypanki.'],dop:['t-dopasuj','🔗','Dopasuj','#8b5cf6','Łączenie par przeciąganiem.'],pf:['t-pf','⚖','Prawda / Fałsz','#14b8a6','Zdania do tekstu lub zdjęcia.'],wyk:['t-wykreslanka','🔠','Wykreślanka','#ea580c','Szukanie słów w siatce liter.'],test:['t-test','📋','Test','#2563eb','Wiele zadań i jeden wynik.'],gra:['gry','🎮','Gry','#65a30d','Powtórka bez ocen, wiele prób.']};
+const WR={cw:{sl:['slow','dop','wyk','krz'],gr:['luki','zda','dia'],cz:['pf','luki','dia'],fa:['quiz','dop','pf']},sp:{sl:['slow','test'],gr:['test','luki'],cz:['test','pf'],fa:['test','quiz']},za:{sl:['gra','wyk','krz'],gr:['gra','quiz'],cz:['quiz','gra'],fa:['gra','quiz']}};
+const wz={a:null,b:null};const wd=()=>{const r=$('#wzr');if(!wz.a||!wz.b){r.innerHTML='<p class="fine" style="margin:0">Zaznacz obie odpowiedzi, a pokażę pasujące typy.</p>';return}r.innerHTML=WR[wz.a][wz.b].map((k,i)=>{const t=TY[k];return '<a href="#'+t[0]+'" style="--c:'+t[3]+'"><b><i class="ei">'+t[1]+'</i>'+t[2]+(i?'':' <span class="k">najlepszy wybór</span>')+'</b><small>'+t[4]+'</small></a>'}).join('')};
+if($('#wz')){$('#wz').onclick=e=>{const b=e.target.closest('[data-w]');if(!b)return;const [k,v]=b.dataset.w.split(':');wz[k]=v;b.parentNode.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));wd()};wd()}
+// --- dema
+const msg=(el,t,ok)=>{el.textContent=t;el.className='dmsg '+(ok===true?'ok':ok===false?'no':'')};
+(function(){const z=$('#d-quiz');if(!z)return;const Q=[['What is the past form of "go"?',['goed','went','gone','going'],1],['Which word is a fruit?',['carrot','potato','apple','onion'],2],['How do you say „kot”?',['dog','bird','fish','cat'],3]];let i=0,pts=0,tm=0,left=100;
+  const d=()=>{clearInterval(tm);left=100;const q=Q[i];z.innerHTML='<div class="fine">Pytanie '+(i+1)+' z '+Q.length+' · punkty: <b>'+pts+'</b></div><div class="dbar"><i></i></div><p style="font-weight:800;font-size:17px">'+q[0]+'</p><div class="dq">'+q[1].map((o,j)=>'<button data-j="'+j+'">'+'ABCD'[j]+') '+o+'</button>').join('')+'</div><div class="dmsg"></div>';
+    const bar=z.querySelector('.dbar i');tm=setInterval(()=>{left-=1;bar.style.width=left+'%';if(left<=0){clearInterval(tm);fin(-1)}},100)};
+  const fin=j=>{clearInterval(tm);const q=Q[i],ok=j===q[2],got=ok?100+Math.round(left/2):0;pts+=got;z.querySelectorAll('.dq button').forEach((b,k)=>{b.disabled=true;if(k===q[2])b.classList.add('ok');else if(k===j)b.classList.add('no')});
+    msg(z.querySelector('.dmsg'),j<0?'Czas minął. Poprawna odpowiedź jest zaznaczona.':ok?'Dobrze! 100 pkt + '+(got-100)+' pkt bonusu za szybkość.':'Źle. Bez punktów.',ok);setTimeout(()=>{i++;if(i>=Q.length){z.innerHTML='<p style="font-weight:800;font-size:18px">Koniec quizu: '+pts+' pkt</p><p class="fine">Im szybciej uczeń odpowiada, tym większy bonus. W prawdziwym quizie na końcu jest ranking.</p><button class="btn" id="dqr">↺ Jeszcze raz</button>';z.querySelector('#dqr').onclick=()=>{i=0;pts=0;d()}}else d()},1500)};
+  z.onclick=e=>{const b=e.target.closest('[data-j]');if(b&&!b.disabled)fin(+b.dataset.j)};z.innerHTML='<button class="btn p" id="dqs">▶ Zacznij przykładowy quiz</button>';z.querySelector('#dqs').onclick=d})();
+(function(){const z=$('#d-fc');if(!z)return;const W=[['house','dom'],['to run','biegać'],['apple','jabłko'],['bird','ptak']];let i=0,kn=0;const d=()=>{z.innerHTML='<div class="dfc"><div class="dfi"><div>'+W[i][0]+'</div><div>'+W[i][1]+'</div></div></div><div class="dfn"><button class="btn" data-k="0">✗ Jeszcze nie umiem</button><button class="btn p" data-k="1">✓ Umiem</button></div><div class="dmsg">Kliknij kartę, żeby ją odwrócić. Karta '+(i+1)+' z '+W.length+', umiesz: '+kn+'</div>'};
+  z.onclick=e=>{if(e.target.closest('.dfc')){z.querySelector('.dfc').classList.toggle('fl');return}const b=e.target.closest('[data-k]');if(!b)return;kn+=+b.dataset.k;i++;if(i>=W.length){z.innerHTML='<p style="font-weight:800">Zestaw przejrzany. Umiesz '+kn+' z '+W.length+'.</p><p class="fine">U ucznia postęp fiszek zapisuje się na jego urządzeniu, więc może wrócić do nauki później.</p><button class="btn" id="dfr">↺ Jeszcze raz</button>';z.querySelector('#dfr').onclick=()=>{i=0;kn=0;d()};return}d()};d()})();
+(function(){const z=$('#d-so');if(!z)return;const S='I went to school yesterday'.split(' ');let pool,ans;const d=()=>{z.innerHTML='<div class="dw ans">'+ans.map((w,i)=>'<span data-a="'+i+'">'+w+'</span>').join('')+'</div><div class="dw">'+pool.map((w,i)=>'<span data-p="'+i+'">'+w+'</span>').join('')+'</div><div class="dmsg"></div>';if(!pool.length){const ok=ans.join(' ')===S.join(' ');msg(z.querySelector('.dmsg'),ok?'Brawo, zdanie jest poprawne: I went to school yesterday.':'Jeszcze nie. Kliknij słowo w zdaniu, żeby je cofnąć.',ok)}else msg(z.querySelector('.dmsg'),'Klikaj słowa w dobrej kolejności.')};
+  const r=()=>{do{pool=sh(S)}while(pool.join(' ')===S.join(' '));ans=[];d()};z.onclick=e=>{const p=e.target.closest('[data-p]'),a=e.target.closest('[data-a]');if(p){ans.push(pool.splice(+p.dataset.p,1)[0]);d()}else if(a){pool.push(ans.splice(+a.dataset.a,1)[0]);d()}};r()})();
+(function(){const z=$('#d-mt');if(!z)return;const P=[['dog','pies'],['cat','kot'],['bird','ptak'],['fish','ryba']];let sel=null,done=0;const R=sh(P.map((p,i)=>i));
+  z.innerHTML='<div class="dmt">'+P.map((p,i)=>'<button data-l="'+i+'">'+p[0]+'</button><button data-r="'+R[i]+'">'+P[R[i]][1]+'</button>').join('')+'</div><div class="dmsg">Kliknij słowo po lewej, a potem jego tłumaczenie po prawej.</div>';
+  z.onclick=e=>{const l=e.target.closest('[data-l]'),r=e.target.closest('[data-r]'),m=z.querySelector('.dmsg');if(l){z.querySelectorAll('[data-l]').forEach(x=>x.classList.remove('sel'));l.classList.add('sel');sel=l;return}if(r&&sel){if(r.dataset.r===sel.dataset.l){r.classList.add('ok');sel.classList.remove('sel');sel.classList.add('ok');sel=null;done++;msg(m,done===P.length?'Wszystkie pary połączone!':'Dobrze!',true)}else{r.classList.add('no');setTimeout(()=>r.classList.remove('no'),500);msg(m,'To nie ta para. Spróbuj jeszcze raz.',false)}}}})();
+(function(){const z=$('#d-tf');if(!z)return;const S=[['London is the capital of England.',1],['A week has eight days.',0],['Cats can fly.',0]];let i=0,ok=0;const d=()=>{z.innerHTML='<div class="fine">Zdanie '+(i+1)+' z '+S.length+'</div><p style="font-weight:800;font-size:17px">'+S[i][0]+'</p><div class="dtf"><button data-v="1">✔ Prawda</button><button data-v="0">✘ Fałsz</button></div><div class="dmsg"></div>'};
+  z.onclick=e=>{const b=e.target.closest('[data-v]');if(!b||b.disabled)return;const good=+b.dataset.v===S[i][1];ok+=good;z.querySelectorAll('[data-v]').forEach(x=>{x.disabled=true;if(+x.dataset.v===S[i][1])x.classList.add('ok');else if(x===b)x.classList.add('no')});msg(z.querySelector('.dmsg'),good?'Dobrze!':'Niestety nie.',good);
+    setTimeout(()=>{i++;if(i>=S.length){z.innerHTML='<p style="font-weight:800">Wynik: '+ok+' z '+S.length+'</p><button class="btn" id="dtr">↺ Jeszcze raz</button>';z.querySelector('#dtr').onclick=()=>{i=0;ok=0;d()}}else d()},1100)};d()})();
+(function(){const z=$('#d-ws');if(!z)return;const G=['CATXDO','QBIRDG','FISHWE','ZLMKPA','HORSEN','YUTREV'];const WL=['CAT','BIRD','FISH','HORSE'];let first=null,found=[];
+  z.innerHTML='<div class="dws">'+G.map((r,y)=>r.split('').map((c,x)=>'<i data-y="'+y+'" data-x="'+x+'">'+c+'</i>').join('')).join('')+'</div><div class="dwl">'+WL.map(w=>'<span data-w="'+w+'">'+w+'</span>').join('')+'</div><div class="dmsg">Kliknij pierwszą, a potem ostatnią literę słowa.</div>';
+  const cell=(y,x)=>z.querySelector('[data-y="'+y+'"][data-x="'+x+'"]');
+  z.onclick=e=>{const c=e.target.closest('.dws i');if(!c)return;const y=+c.dataset.y,x=+c.dataset.x,m=z.querySelector('.dmsg');if(!first){first=[y,x];c.classList.add('s');return}const [y0,x0]=first;z.querySelectorAll('.s').forEach(s=>s.classList.remove('s'));first=null;const dy=Math.sign(y-y0),dx=Math.sign(x-x0),len=Math.max(Math.abs(y-y0),Math.abs(x-x0))+1;if(!((y===y0)||(x===x0)||Math.abs(y-y0)===Math.abs(x-x0))){msg(m,'Słowa leżą w linii prostej.',false);return}
+    let s='';const cs=[];for(let k=0;k<len;k++){const el=cell(y0+dy*k,x0+dx*k);s+=el.textContent;cs.push(el)}const rev=s.split('').reverse().join(''),w=WL.includes(s)?s:WL.includes(rev)?rev:null;if(w&&!found.includes(w)){found.push(w);cs.forEach(el=>el.classList.add('f'));z.querySelector('[data-w="'+w+'"]').classList.add('f');msg(m,found.length===WL.length?'Wszystkie słowa znalezione!':'Znalezione: '+w,true)}else msg(m,'Tu nie ma słowa z listy.',false)}})();
+(function(){const z=$('#d-mem');if(!z)return;const P=[['dog','pies'],['cat','kot'],['bird','ptak']];let C,sel=[],lock=false,mv=0;const d=()=>{C=sh(P.reduce((a,p,i)=>a.concat([[i,p[0]],[i,p[1]]]),[]));sel=[];mv=0;z.innerHTML='<div class="dmm">'+C.map((c,i)=>'<button data-i="'+i+'">'+c[1]+'</button>').join('')+'</div><div class="dmsg">Odkryj dwie karty. Szukaj słowa i jego tłumaczenia.</div>'};
+  z.onclick=e=>{const b=e.target.closest('[data-i]');if(e.target.closest('#dmr')){d();return}if(!b||lock||b.classList.contains('up')||b.classList.contains('ok'))return;b.classList.add('up');sel.push(b);if(sel.length<2)return;mv++;const [a,c]=sel,m=z.querySelector('.dmsg');sel=[];if(C[+a.dataset.i][0]===C[+c.dataset.i][0]){a.classList.add('ok');c.classList.add('ok');if(z.querySelectorAll('.ok').length===C.length){msg(m,'Wszystkie pary w '+mv+' ruchach!',true);m.insertAdjacentHTML('afterend','<button class="btn" id="dmr" style="margin-top:8px">↺ Jeszcze raz</button>')}else msg(m,'Para! Trafione karty zostają zielone.',true)}else{lock=true;msg(m,'To nie para.',false);setTimeout(()=>{a.classList.remove('up');c.classList.remove('up');lock=false},800)}};d()})();
+// --- narzędzia: pary i lista klasy
+(function(){const i=$('#pin'),o=$('#pout');if(!i)return;const sp=l=>{l=String(l||'').trim();if(!l)return null;let m=l.match(/^(.+?)\s*(?:\t|\s[-–—=:]\s|;)\s*(\S.*)$/)||l.match(/^(.+?)\s*=\s*(\S.*)$/);if(m)return[m[1].trim(),m[2].trim()];m=l.match(/^([^-–—:=]+?)\s*[-–—:=]\s*(\S.*)$/);return m?[m[1].trim(),m[2].trim()]:null};
+  const d=()=>{const L=i.value.split('\n').map(s=>s.trim()).filter(Boolean);if(!L.length){o.innerHTML='<p class="fine" style="padding:12px;margin:0">Wpisz pary po lewej.</p>';return}o.innerHTML='<table><tr><th>Lewa strona</th><th>Prawa strona</th></tr>'+L.map(l=>{const p=sp(l);return p?'<tr><td>'+E(p[0])+'</td><td>'+E(p[1])+'</td></tr>':'<tr class="bad"><td colspan="2">✗ „'+E(l)+'” – brakuje znaku rozdzielającego strony</td></tr>'}).join('')+'</table>'};i.oninput=d;d()})();
+(function(){const i=$('#cin'),o=$('#cout');if(!i)return;const nr=s=>s.toLowerCase().replace(/\s+/g,' ').trim();const d=()=>{const seen=new Set(),L=i.value.split('\n').map(s=>s.replace(/^\s*\d+[.)]\s*/,'').replace(/\s+/g,' ').trim()).filter(s=>{const k=nr(s);if(!s||seen.has(k))return false;seen.add(k);return true}).sort((a,b)=>a.localeCompare(b,'pl'));o.innerHTML=L.length?'<ol>'+L.map(n=>'<li>'+E(n)+'</li>').join('')+'</ol>':'<p class="fine" style="padding:12px;margin:0">Wklej listę po lewej.</p>'};i.oninput=d;d()})();
+// --- diagnoza
+const TR={q:'Co się dzieje?',o:[['Uczeń nie może otworzyć linku',{q:'Co widzi uczeń?',o:[['Komunikat „Termin minął”',{a:'Ćwiczenie ma ustawiony termin, który już minął. Otwórz ćwiczenie, zmień albo usuń termin i kliknij „Zaktualizuj link”. Adres linku zostaje ten sam.',l:'k-termin'}],['Informację, że link nie działa',{a:'Najczęściej skończyła się próba albo subskrypcja nauczyciela. Linki wracają po wykupieniu planu. Sprawdź też, czy uczeń skopiował cały adres, razem z częścią po znaku #.',l:'konto'}],['Stary wynik zamiast ćwiczenia',{a:'Ćwiczenie pozwala na jedną próbę i na tym urządzeniu już je rozwiązano. Odznacz „Uczeń może rozwiązać tylko raz” i kliknij „Zaktualizuj link”.',l:'wspolne'}],['Pustą albo białą stronę',{a:'Poproś ucznia o odświeżenie strony i sprawdzenie internetu. Jeśli to nie pomaga, niech otworzy link w innej przeglądarce (Chrome, Safari, Edge).',l:'pomoc'}]]}],
+ ['Nie widzę wyniku ucznia',{q:'Jakie to ćwiczenie?',o:[['Gra (Kosmos, Memory, Bloki, Zombie)',{a:'Gry nie zapisują wyników. To celowe: uczeń może grać wiele razy bez ocen. Jeśli potrzebujesz wyniku, użyj quizu albo testu.',l:'gry'}],['Zwykłe ćwiczenie',{q:'Czy uczeń doszedł do ekranu z wynikiem?',o:[['Tak',{a:'Kliknij „Odśwież” w Odpowiedziach uczniów. Jeśli wyniku nadal nie ma, uczeń mógł stracić internet. Poproś go o kod wyniku (przycisk z kluczem na ekranie końcowym) i wklej kod w zakładce Wyniki.',l:'wyniki'}],['Nie wiem albo nie',{a:'Wynik wysyła się dopiero po zakończeniu ćwiczenia. Poproś ucznia, żeby dokończył i poczekał na ekran z wynikiem.',l:'link'}]]}]]}],
+ ['Uczniowie widzą starą wersję ćwiczenia',{a:'Po każdej zmianie treści kliknij „Zaktualizuj link”. Uczeń, który ma stronę już otwartą, powinien ją odświeżyć.',l:'link'}],
+ ['Nie dostaję e-maili',{q:'O jakie e-maile chodzi?',o:[['Potwierdzenie konta albo zmiana hasła',{a:'Sprawdź spam oraz zakładki „Oferty” i „Powiadomienia”. Odczekaj minutę i wyślij wiadomość ponownie ze strony logowania.',l:'konto'}],['Powiadomienia o wynikach',{a:'Sprawdź w Ustawieniach, czy powiadomienia są włączone, i zajrzyj do spamu. Dziennie wysyłamy najwyżej 30 powiadomień, a wszystkie wyniki i tak są w panelu.',l:'ustawienia'}]]}],
+ ['Coś źle wygląda w panelu',{q:'Co dokładnie?',o:[['Brakuje ikon albo są dziwne znaki',{a:'Odśwież stronę skrótem Ctrl+F5 (na Macu Cmd+Shift+R), żeby przeglądarka pobrała najnowszą wersję.',l:'problemy'}],['Nie mogę przeciągnąć zdjęcia',{a:'Kliknij zdjęcie prawym przyciskiem, wybierz „Kopiuj obraz” i wklej je w panelu skrótem Ctrl+V. Możesz też zapisać zdjęcie na dysku i wybrać plik.',l:'wspolne'}],['Usunąłem coś przez pomyłkę',{a:'Otwórz Kosz na pulpicie i kliknij „Przywróć”. Ćwiczenia czekają tam 30 dni razem z wynikami.',l:'k-kosz'}]]}]]};
+(function(){const z=$('#ts');if(!z)return;let path=[];const node=()=>path.reduce((n,i)=>n.o[i][1],TR);const d=()=>{const n=node(),crumbs=path.map((i,k)=>path.slice(0,k).reduce((m,j)=>m.o[j][1],TR).o[i][0]);
+  z.innerHTML='<h4>Znajdź rozwiązanie w kilku kliknięciach</h4>'+(crumbs.length?'<div class="tsp">'+crumbs.map(E).join(' → ')+'</div>':'')+(n.a?'<div class="tsa"><b>Rozwiązanie.</b> '+n.a+'</div><div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap"><a class="pill" href="#'+n.l+'">Zobacz w instrukcji →</a><button class="pill" data-b="0">↺ Od początku</button></div>':'<p style="font-weight:700;margin-bottom:8px">'+n.q+'</p><div class="tso">'+n.o.map((o,i)=>'<button data-o="'+i+'">'+o[0]+'</button>').join('')+'</div>'+(path.length?'<button class="pill" data-b="1" style="margin-top:10px">← Wstecz</button>':''))};
+  z.onclick=e=>{const o=e.target.closest('[data-o]'),b=e.target.closest('[data-b]');if(o){path.push(+o.dataset.o);d()}else if(b){if(b.dataset.b==='1')path.pop();else path=[];d()}};d()})();
+// --- przeczytane rozdziały
+(function(){let rd={};try{rd=JSON.parse(localStorage.getItem('fw_guide_rd')||'{}')}catch(e){}const S=$$('.sec'),tl=document.getElementById('tocl');const cnt=document.createElement('div');cnt.className='rdc';tl.parentNode.insertBefore(cnt,tl);
+  const up=()=>{const n=S.filter(s=>rd[s.id]).length;cnt.textContent='Przeczytane rozdziały: '+n+' z '+S.length;S.forEach(s=>{const a=tl.querySelector('a[href="#'+s.id+'"]');if(a)a.classList.toggle('rdk',!!rd[s.id]);const b=s.querySelector('.rd button');if(b){b.classList.toggle('on',!!rd[s.id]);b.textContent=rd[s.id]?'✓ Przeczytane':'Oznacz jako przeczytane'}})};
+  S.forEach(s=>{s.insertAdjacentHTML('beforeend','<div class="rd"><button type="button"></button></div>');s.querySelector('.rd button').onclick=()=>{rd[s.id]=!rd[s.id];try{localStorage.setItem('fw_guide_rd',JSON.stringify(rd))}catch(e){}up()}});up()})();
+// --- kopiowanie przykładów, skrót do wyszukiwarki, otwieranie szczegółów przy szukaniu
+$$('pre').forEach(p=>{const b=document.createElement('button');b.className='cpy';b.type='button';b.textContent='Kopiuj';p.insertBefore(b,p.firstChild);b.onclick=()=>{const t=p.textContent.replace(/^Kopiuj/,'');(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>{b.textContent='Skopiowano ✓';setTimeout(()=>b.textContent='Kopiuj',1500)}).catch(()=>{})}});
+addEventListener('keydown',e=>{if(e.key==='/'&&!/INPUT|TEXTAREA/.test((e.target||{}).nodeName||'')){e.preventDefault();const q=document.getElementById('q');q.focus();q.scrollIntoView({block:'center'})}});
+const q0=document.getElementById('q');if(q0)q0.addEventListener('input',()=>{const v=q0.value.trim().toLowerCase();$$('details.xd').forEach(d=>{if(v.length>2&&d.textContent.toLowerCase().includes(v))d.open=true})});
+})();
 </script>
 </body>
 </html>
