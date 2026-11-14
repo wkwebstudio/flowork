@@ -158,7 +158,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--mut);font-siz
 <h2><i class="ei">🧭</i> Poznaj panel</h2>
 <p class="ld">Panel ma menu po lewej i obszar roboczy po prawej. Na telefonie menu jest na górze, a reszta pod spodem.</p>
 <div class="map">
-<div><b><i class="ei">➕</i> Nowe ćwiczenie</b><p>Dziesięć kafelków, po jednym na każdy typ. Kliknięcie od razu tworzy ćwiczenie w folderze, w którym jesteś.</p></div>
+<div><b><i class="ei">➕</i> Nowe ćwiczenie</b><p>Dziesięć kafelków, po jednym na każdy typ. Pod nimi jest sekcja „Gry” z czterema grami. Kliknięcie od razu tworzy ćwiczenie w folderze, w którym jesteś.</p></div>
 <div><b><i class="ei">🗂</i> Pulpit</b><p>Twoje foldery i ćwiczenia w postaci ikon. Tu porządkujesz materiały.</p></div>
 <div><b><i class="ei">📊</i> Odpowiedzi uczniów</b><p>Wszystkie wyniki ze wszystkich ćwiczeń. Czerwona plakietka pokazuje, ile jest nowych.</p></div>
 <div><b><i class="ei">🕘</i> Ostatnio otwierane</b><p>Pięć ostatnich ćwiczeń, żeby szybko do nich wrócić.</p></div>
@@ -395,6 +395,78 @@ F: Tom has two sisters.</pre>
 <li>Jeśli hasło w krzyżówce nie ma wspólnej litery z żadnym innym, panel poprosi o jego zmianę.</li>
 </ul>
 <p class="fine"><b>U ucznia:</b> na dole strony jest pasek z liczbą odpowiedzi i przyciskiem „Zakończ test”. Gdy czegoś brakuje, test pyta o potwierdzenie. Po zakończeniu uczeń widzi wynik, punkty za każde zadanie i swoje odpowiedzi z poprawkami.</p>
+</article>
+</section>
+
+<section class="sec" id="gry" data-t="Gry">
+<h2><i class="ei">🎮</i> Gry</h2>
+<p class="ld">Cztery gry do powtórek. Wpisujesz pary pytanie i odpowiedź, a panel robi z nich grę. W grach nie ma ocen ani wyników.</p>
+<div class="tnav">
+<a href="#g-kosmos" style="--c:#6366f1"><i class="ei">🚀</i>Kosmos</a><a href="#g-memory" style="--c:#db2777"><i class="ei">🃏</i>Memory</a><a href="#g-bloki" style="--c:#0891b2"><i class="ei">🧱</i>Bloki</a><a href="#g-zombie" style="--c:#65a30d"><i class="ei">🧟</i>Zombie</a>
+</div>
+<article class="ty" id="g-wspolne" style="--c:#7758e8"><h3><i class="ei">🎮</i> Jak zrobić grę</h3>
+<ol class="steps">
+<li>Na pulpicie, w sekcji <b>Gry</b> pod kafelkami ćwiczeń, kliknij jedną z czterech gier.</li>
+<li>Wpisz pary: po lewej <b>pytanie albo słowo</b>, po prawej <b>odpowiedź</b>. Potrzebne są co najmniej 4 pary. Całą listę wkleisz w formacie <code>pytanie - odpowiedź</code>, jedna para w linii.</li>
+<li>Kliknij „Podgląd”, żeby zagrać samemu, a potem „Generuj link”.</li>
+</ol>
+<div class="tbl"><table>
+<tr><th>Ustawienie</th><th>Co robi</th></tr>
+<tr><td>Rodzaj gry</td><td>Ten sam zestaw par działa w każdej grze. Grę zmienisz jednym kliknięciem, bez przepisywania pytań.</td></tr>
+<tr><td>Kierunek</td><td>„Pytanie → odpowiedź” pokazuje lewą stronę pary i każe wybrać prawą. „Odwrotnie” robi na odwrót. „Mieszane” losuje.</td></tr>
+<tr><td>Tempo</td><td>Spokojne, normalne albo szybkie. Decyduje, jak szybko rośnie trudność.</td></tr>
+<tr><td>Długość gry</td><td>Krótka, średnia albo długa. To liczba poziomów, rund albo fal, zależnie od gry.</td></tr>
+</table></div>
+<p><b>Skąd biorą się złe odpowiedzi?</b> Gra losuje je z pozostałych par. Dlatego najlepiej działają zestawy, w których odpowiedzi są do siebie podobne, na przykład same słówka albo same daty.</p>
+<div class="note"><b>Bez wyników.</b> Gra nie pyta o imię, nie wysyła wyniku i nie ma limitu prób. Uczeń widzi swój rekord, ale tylko na swoim urządzeniu. Jeśli potrzebujesz oceny, użyj zwykłego ćwiczenia, na przykład quizu albo testu.</div>
+<p class="fine"><b>U ucznia:</b> na górze gry są trzy przyciski: dźwięk, pełny ekran i zakończenie gry. Pełny ekran przydaje się na tablicy interaktywnej.</p>
+</article>
+<article class="ty" id="g-kosmos" style="--c:#6366f1"><h3><i class="ei">🚀</i> Kosmiczny strzał</h3>
+<p>Na górze jest pytanie, a po ekranie latają cztery bańki z odpowiedziami. Uczeń steruje statkiem na dole i strzela w poprawną.</p>
+<ul>
+<li><b>Sterowanie:</b> palec lub myszka przesuwa statek, dotknięcie albo kliknięcie strzela. Na klawiaturze <kbd>←</kbd> <kbd>→</kbd> i <kbd>Spacja</kbd>.</li>
+<li><b>Życia:</b> trzy. Pierwsze trafienie złej bańki przy danym pytaniu odejmuje 50 punktów, drugie zabiera życie. Życie przepada też, gdy bańki dolecą do statku. Po każdym zaliczonym poziomie jedno życie wraca.</li>
+<li><b>Poziomy:</b> 3, 5 albo 7, po cztery pytania. Na każdym kolejnym bańki lecą szybciej.</li>
+<li><b>Punkty:</b> więcej za szybki strzał, wyższy poziom i serię trafień bez pomyłki.</li>
+</ul>
+<p class="fine">Bańki lecą w czterech rzędach, więc dolne zasłaniają górne. Trzeba wyczuć moment na strzał.</p>
+</article>
+<article class="ty" id="g-memory" style="--c:#db2777"><h3><i class="ei">🃏</i> Memory</h3>
+<p>Każda para to dwie karty: pytanie i odpowiedź. Uczeń szuka kart, które do siebie pasują.</p>
+<div class="tbl"><table>
+<tr><th>Tryb kart</th><th>Jak wygląda gra</th></tr>
+<tr><td>Zakryte z podglądem</td><td>Klasyczne memory. Na początku rundy karty są przez chwilę odkryte.</td></tr>
+<tr><td>Zakryte</td><td>To samo, ale bez podglądu. Trudniejsze.</td></tr>
+<tr><td>Odkryte na czas</td><td>Wszystkie karty widać od razu. Uczeń łączy pary jak najszybciej, a każda pomyłka dolicza 2 sekundy.</td></tr>
+</table></div>
+<p>Przy większej liczbie par gra sama dzieli je na <b>rundy</b>: do 6 par na telefonie i do 8 na komputerze. Na koniec uczeń dostaje od jednej do trzech gwiazdek, zależnie od liczby ruchów albo czasu.</p>
+<p class="fine">Karty z pytaniami mają fioletową kropkę, a karty z odpowiedziami różowy kwadrat. Dzięki temu widać, że para to zawsze jedna karta każdego rodzaju.</p>
+</article>
+<article class="ty" id="g-bloki" style="--c:#0891b2"><h3><i class="ei">🧱</i> Bloki</h3>
+<p>Układanka na planszy 8 × 8. Żeby dostać bloki, trzeba odpowiedzieć na pytanie.</p>
+<ol class="steps">
+<li>Pojawia się pytanie i cztery odpowiedzi.</li>
+<li>Po odpowiedzi uczeń dostaje <b>trzy bloki</b> i przeciąga je na planszę.</li>
+<li>Pełny rząd albo kolumna znika i daje punkty. Kilka linii naraz daje dużo więcej.</li>
+<li>Gdy wszystkie trzy bloki leżą na planszy, przychodzi następne pytanie.</li>
+</ol>
+<ul>
+<li><b>Błędna odpowiedź</b> nie kończy gry, ale daje trudniejsze, większe bloki.</li>
+<li><b>Z każdą rundą</b> bloki robią się większe, więc gra nie trwa w nieskończoność.</li>
+<li><b>Koniec:</b> przegrana, gdy żaden blok się nie mieści. Wygrana po przejściu wszystkich rund: 8, 12 albo 16.</li>
+</ul>
+<p class="fine">Podczas przeciągania plansza podświetla miejsce, w które blok trafi, oraz linie, które znikną.</p>
+</article>
+<article class="ty" id="g-zombie" style="--c:#65a30d"><h3><i class="ei">🧟</i> Noc zombie</h3>
+<p>Zombie idą przez cmentarz w stronę barykady. Uczeń odpowiada na pytania, a każda poprawna odpowiedź to strzał w najbliższego zombie.</p>
+<ul>
+<li><b>Odpowiedzi:</b> cztery przyciski na dole. Na klawiaturze działają klawisze <kbd>1</kbd> do <kbd>4</kbd>.</li>
+<li><b>Pomyłka:</b> zombie na chwilę przyspieszają, a błędna odpowiedź się wyłącza.</li>
+<li><b>Barykada:</b> wytrzymuje trzy ugryzienia. Każde zabiera jedno serce.</li>
+<li><b>Fale:</b> 3, 5 albo 7. W każdej jest więcej zombie i idą szybciej. Po ostatniej wstaje świt i gra jest wygrana.</li>
+<li><b>Rodzaje zombie:</b> zwykły, szybki biegacz (od 2. fali) i zombie w kasku, który potrzebuje dwóch trafień (od 3. fali).</li>
+</ul>
+<p class="fine">Postacie są rysunkowe i bez drastycznych scen, więc gra nadaje się też dla młodszych klas.</p>
 </article>
 </section>
 
