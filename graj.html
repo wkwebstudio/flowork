@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#2e1065">
+<title>Flowork Live – dołącz do gry</title>
+<link rel="icon" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{font-family:Poppins,system-ui,sans-serif;color:#fff;background:linear-gradient(150deg,#2e1065,#6d28d9 55%,#be185d) fixed;display:flex;flex-direction:column;min-height:100dvh;overflow-x:hidden}
+#top{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;font-size:15px;opacity:.9}#top b{font-weight:900}#me{display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px;max-width:60%}#me span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}#me .avs{width:30px;height:auto;flex:none}
+#app{flex:1;display:flex;flex-direction:column;padding:8px 16px calc(16px + env(safe-area-inset-bottom));max-width:560px;width:100%;margin:0 auto}
+.c{margin:auto 0;text-align:center;animation:in .35s cubic-bezier(.2,1.3,.4,1)}@keyframes in{from{opacity:0;transform:translateY(14px) scale(.96)}}
+h1{font-size:30px;font-weight:900;line-height:1.15;margin-bottom:8px}p{font-size:16px;opacity:.9;line-height:1.5}
+.card{background:#fff;color:#1e1b4b;border-radius:24px;padding:20px;box-shadow:0 18px 40px #0006;text-align:center}
+input[type=text],input[type=tel]{width:100%;font:800 22px Poppins,sans-serif;text-align:center;padding:14px;border-radius:16px;border:2.5px solid #ddd6fe;color:#1e1b4b;background:#f5f3ff;outline:none}input:focus{border-color:#7c3aed}
+#code{font-size:34px;letter-spacing:.14em}
+.b{display:block;width:100%;font:800 20px Poppins,sans-serif;padding:15px;border-radius:16px;border:0;background:linear-gradient(100deg,#6d28d9,#db2777);color:#fff;cursor:pointer;box-shadow:0 6px 0 #0003;margin-top:12px}.b:active{transform:translateY(3px);box-shadow:0 3px 0 #0003}.b:disabled{opacity:.5}
+.b.g{background:#ede9fe;color:#5b21b6;box-shadow:none;font-size:16px;padding:11px}
+.err{color:#be123c;font-weight:700;font-size:14.5px;min-height:20px;margin-top:8px}
+.lbl{font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#7c3aed;margin:4px 0 8px}
+.avp{width:150px;margin:0 auto 6px;line-height:0}.avp svg{width:100%;height:auto;filter:drop-shadow(0 8px 10px #0003)}
+.pk{display:grid;grid-template-columns:44px 1fr 44px;align-items:center;gap:8px;margin-top:8px}.pk button{height:44px;border-radius:14px;border:0;background:#ede9fe;color:#5b21b6;font:900 22px Poppins;cursor:pointer}.pk button:active{background:#ddd6fe}.pk div{font-weight:700;font-size:15px}.pk small{display:block;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#a78bfa}
+.gn{font:800 24px Poppins;padding:14px;border-radius:16px;background:#f5f3ff;border:2.5px solid #ddd6fe}
+.big{width:170px;margin:0 auto 10px;line-height:0}.big svg{width:100%;height:auto;filter:drop-shadow(0 10px 14px #0006)}.big.bounce{animation:bo 1.4s ease-in-out infinite alternate}@keyframes bo{to{transform:translateY(-10px)}}
+.dots::after{content:"";animation:dots 1.4s steps(4) infinite}@keyframes dots{0%{content:""}25%{content:"."}50%{content:".."}75%{content:"..."}}
+.qh{font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;opacity:.85;text-align:center}.qt{font-size:19px;font-weight:800;text-align:center;line-height:1.3;margin:6px 0 10px;overflow-wrap:anywhere}
+.tb{height:9px;border-radius:9px;background:#ffffff33;overflow:hidden;margin-bottom:12px}.tb i{display:block;height:100%;background:#fff;width:100%}
+.opts{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:10px;min-height:300px}.opts.n2{grid-template-columns:1fr}.opts.long{grid-template-columns:1fr}
+.o{border:0;border-radius:20px;background:var(--c);color:#fff;font:800 18px Poppins,sans-serif;padding:12px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;cursor:pointer;box-shadow:inset 0 -6px 0 #0003,0 6px 14px #0004;overflow-wrap:anywhere;text-shadow:0 2px 0 #0003;min-height:84px}.o:active{transform:scale(.97)}.o svg{width:34px;height:34px;flex:none;filter:drop-shadow(0 2px 0 #0003)}.opts.long .o{flex-direction:row;justify-content:flex-start;text-align:left;padding:12px 16px}
+.res{border-radius:28px;padding:26px 18px;box-shadow:0 18px 40px #0006}.res.ok{background:linear-gradient(160deg,#22c55e,#15803d)}.res.no{background:linear-gradient(160deg,#f43f5e,#9f1239)}.res.na{background:linear-gradient(160deg,#64748b,#334155)}
+.res .ic{width:84px;height:84px;margin:0 auto 8px;border-radius:50%;background:#ffffff33;display:grid;place-items:center}.res .ic svg{width:48px;height:48px}
+.res b.pt{display:inline-block;margin-top:8px;background:#0003;border-radius:99px;padding:6px 18px;font-size:20px;font-weight:900}
+.stat{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:14px}.stat div{background:#ffffff1f;border:1.5px solid #ffffff33;border-radius:16px;padding:10px 4px}.stat small{display:block;font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;opacity:.8}.stat b{font-size:22px;font-weight:900}
+.medal{font-size:64px;font-weight:900;line-height:1;width:120px;height:120px;border-radius:50%;display:grid;place-items:center;margin:0 auto 10px;box-shadow:inset 0 -8px 0 #0003,0 10px 24px #0006}.m1{background:linear-gradient(#fde047,#f59e0b);color:#78350f}.m2{background:linear-gradient(#f1f5f9,#94a3b8);color:#334155}.m3{background:linear-gradient(#fdba74,#c2410c);color:#7c2d12}.m0{background:#ffffff26}
+.cor{margin-top:10px;font-size:15px;opacity:.95}
+</style>
+</head>
+<body>
+<div id="top"><span><b>Flowork</b> Live</span><span id="me"></span></div>
+<main id="app"><div class="c"><p class="dots">Wczytuję</p></div></main>
+<script>/* Flowork Live: awatary (SVG) i losowe nazwy */
+const AV=(()=>{
+ const FACES=[{sk:'#f7c9a3',sd:'#e2a67c',hair:'#6b3f1d',k:'short',eye:'dot',mouth:'smile'},{sk:'#e0a877',sd:'#c2875a',hair:'#1f1a17',k:'curly',eye:'happy',mouth:'grin'},{sk:'#8d5a3b',sd:'#6f4329',hair:'#17110d',k:'afro',eye:'dot',mouth:'teeth'},{sk:'#fbe0cc',sd:'#eab99b',hair:'#f2c14e',k:'long',eye:'wink',mouth:'smile'},
+  {sk:'#f5c6a0',sd:'#dda07a',hair:'#d9480f',k:'tails',eye:'dot',mouth:'tongue'},{sk:'#86d993',sd:'#57b56b',hair:'',k:'alien',eye:'alien',mouth:'tiny'},{sk:'#9fb4c9',sd:'#7890a8',hair:'',k:'robot',eye:'led',mouth:'grid'},{sk:'#f6a54a',sd:'#d9822b',hair:'',k:'cat',eye:'cat',mouth:'cat'}];
+ const SH=[['#ef4444','solid'],['#2563eb','stripes'],['#16a34a','dots'],['#facc15','zig'],['#7c3aed','grad'],['#111827','star'],['#f8fafc','heart'],['#f97316','check'],['#0d9488','bolt'],['#ec4899','flower']];
+ const ACC=['brak','czapka','cylinder','beanie','korona','okulary','okulary przeciwsłoneczne','słuchawki','kolczyki','kokarda','kapelusz czarodzieja'];
+ const shirt=(i,u)=>{const s=SH[i%SH.length],c=s[0],p=s[1],id='avs'+u;let d='',ov='';
+  if(p==='stripes')d=`<pattern id="${id}" width="10" height="10" patternUnits="userSpaceOnUse"><rect width="10" height="10" fill="${c}"/><rect width="10" height="4" fill="#fff" opacity=".85"/></pattern>`;
+  else if(p==='dots')d=`<pattern id="${id}" width="11" height="11" patternUnits="userSpaceOnUse"><rect width="11" height="11" fill="${c}"/><circle cx="5.500" cy="5.500" r="2.200" fill="#fff" opacity=".9"/></pattern>`;
+  else if(p==='zig')d=`<pattern id="${id}" width="12" height="9" patternUnits="userSpaceOnUse"><rect width="12" height="9" fill="${c}"/><path d="M0 7 L3 2 L6 7 L9 2 L12 7" fill="none" stroke="#b45309" stroke-width="2"/></pattern>`;
+  else if(p==='grad')d=`<linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a855f7"/><stop offset="1" stop-color="#2563eb"/></linearGradient>`;
+  else if(p==='check')d=`<pattern id="${id}" width="12" height="12" patternUnits="userSpaceOnUse"><rect width="12" height="12" fill="${c}"/><rect width="6" height="6" fill="#7c2d12" opacity=".55"/><rect x="6" y="6" width="6" height="6" fill="#7c2d12" opacity=".55"/></pattern>`;
+  if(p==='star')ov='<path d="M50 90l2.400 5 5.500.700-4 3.800 1 5.500-4.900-2.700-4.900 2.700 1-5.500-4-3.800 5.500-.700z" fill="#facc15"/>';
+  if(p==='heart')ov='<path d="M50 104c-6-4.500-9-7.500-9-11a4.600 4.600 0 0 1 9-1.500 4.600 4.600 0 0 1 9 1.500c0 3.500-3 6.500-9 11z" fill="#ef4444"/>';
+  if(p==='bolt')ov='<path d="M53 87l-9 11h6l-3 9 10-12h-6z" fill="#fde047"/>';
+  if(p==='flower')ov='<g transform="translate(50 97)"><g fill="#fff">'+[0,72,144,216,288].map(a=>`<circle r="3.600" cx="0" cy="-5" transform="rotate(${a})"/>`).join('')+'</g><circle r="2.600" fill="#facc15"/></g>';
+  const fill=d?`url(#${id})`:c;
+  return (d?`<defs>${d}</defs>`:'')+`<path d="M8 112 Q8 84 36 80 L64 80 Q92 84 92 112 Z" fill="${fill}" stroke="#0002" stroke-width="1"/><path d="M38 80 Q50 92 62 80 L60 79 Q50 86 40 79 Z" fill="#0002"/>`+ov};
+ const eyes=(k)=>k==='dot'?'<circle cx="39" cy="46" r="3.600" fill="#1b1209"/><circle cx="61" cy="46" r="3.600" fill="#1b1209"/><circle cx="40.200" cy="44.800" r="1.200" fill="#fff"/><circle cx="62.200" cy="44.800" r="1.200" fill="#fff"/>'
+  :k==='happy'?'<path d="M34 47 Q39 41 44 47 M56 47 Q61 41 66 47" fill="none" stroke="#1b1209" stroke-width="3" stroke-linecap="round"/>'
+  :k==='wink'?'<circle cx="39" cy="46" r="3.600" fill="#1b1209"/><circle cx="40.200" cy="44.800" r="1.200" fill="#fff"/><path d="M56 46.500 Q61 43 66 46.500" fill="none" stroke="#1b1209" stroke-width="3" stroke-linecap="round"/>'
+  :k==='alien'?'<ellipse cx="38" cy="46" rx="7" ry="9.500" fill="#0b1026" transform="rotate(18 38 46)"/><ellipse cx="62" cy="46" rx="7" ry="9.500" fill="#0b1026" transform="rotate(-18 62 46)"/><circle cx="36" cy="42" r="2" fill="#fff"/><circle cx="60" cy="42" r="2" fill="#fff"/>'
+  :k==='led'?'<rect x="31" y="40" width="14" height="10" rx="3" fill="#0b1026"/><rect x="55" y="40" width="14" height="10" rx="3" fill="#0b1026"/><rect x="34" y="43" width="8" height="4" rx="2" fill="#22d3ee"/><rect x="58" y="43" width="8" height="4" rx="2" fill="#22d3ee"/>'
+  :'<ellipse cx="39" cy="46" rx="5" ry="6" fill="#fef9c3"/><ellipse cx="61" cy="46" rx="5" ry="6" fill="#fef9c3"/><ellipse cx="39" cy="46" rx="1.600" ry="5" fill="#1b1209"/><ellipse cx="61" cy="46" rx="1.600" ry="5" fill="#1b1209"/>';
+ const mouth=(k)=>k==='smile'?'<path d="M40 60 Q50 69 60 60" fill="none" stroke="#7a2e1d" stroke-width="3" stroke-linecap="round"/>'
+  :k==='grin'?'<path d="M38 58 Q50 72 62 58 Z" fill="#7a2e1d"/><path d="M41 59.500 Q50 63 59 59.500 L58 58.500 H42 Z" fill="#fff"/>'
+  :k==='teeth'?'<path d="M39 58 H61 Q60 69 50 69 Q40 69 39 58 Z" fill="#5a1f14"/><rect x="42" y="58" width="16" height="4.500" rx="1" fill="#fff"/>'
+  :k==='tongue'?'<path d="M40 59 Q50 67 60 59" fill="none" stroke="#7a2e1d" stroke-width="3" stroke-linecap="round"/><path d="M47 62 h8 v4 a4 4 0 0 1 -8 0z" fill="#f87171"/>'
+  :k==='tiny'?'<ellipse cx="50" cy="63" rx="3.500" ry="2.200" fill="#14532d"/>'
+  :k==='grid'?'<rect x="39" y="58" width="22" height="8" rx="2" fill="#0b1026"/><path d="M44.500 58 v8 M50 58 v8 M55.500 58 v8" stroke="#9fb4c9" stroke-width="1.400"/>'
+  :'<path d="M50 56 l-3 -3 h6z" fill="#7a2e1d"/><path d="M50 56 v3 M50 59 Q46 63 42 60 M50 59 Q54 63 58 60" fill="none" stroke="#7a2e1d" stroke-width="2" stroke-linecap="round"/><path d="M30 55 l-9 -2 M30 58 l-9 2 M70 55 l9 -2 M70 58 l9 2" stroke="#7a2e1d" stroke-width="1.200" stroke-linecap="round"/>';
+ const head=(f)=>{const F=FACES[f%FACES.length],h=F.hair;let back='',front='',base='';
+  if(F.k==='robot'){base=`<path d="M50 14 v-8" stroke="#64748b" stroke-width="3"/><circle cx="50" cy="5" r="3.500" fill="#ef4444"/><rect x="18" y="38" width="6" height="16" rx="2" fill="#64748b"/><rect x="76" y="38" width="6" height="16" rx="2" fill="#64748b"/><rect x="23" y="18" width="54" height="56" rx="12" fill="${F.sk}"/><rect x="23" y="18" width="54" height="56" rx="12" fill="none" stroke="${F.sd}" stroke-width="2"/><circle cx="29" cy="24" r="1.600" fill="${F.sd}"/><circle cx="71" cy="24" r="1.600" fill="${F.sd}"/>`}
+  else{
+   if(F.k==='long')back=`<path d="M19 46 Q16 14 50 13 Q84 14 81 46 L83 84 Q72 80 70 60 L30 60 Q28 80 17 84 Z" fill="${h}"/>`;
+   if(F.k==='afro')back=`<circle cx="50" cy="36" r="36" fill="${h}"/><circle cx="22" cy="44" r="12" fill="${h}"/><circle cx="78" cy="44" r="12" fill="${h}"/>`;
+   if(F.k==='tails')back=`<circle cx="14" cy="50" r="10" fill="${h}"/><circle cx="86" cy="50" r="10" fill="${h}"/><circle cx="19" cy="42" r="3" fill="#22d3ee"/><circle cx="81" cy="42" r="3" fill="#22d3ee"/>`;
+   if(F.k==='cat')back=`<path d="M24 34 L20 6 L44 22 Z M76 34 L80 6 L56 22 Z" fill="${F.sk}"/><path d="M26 28 L24 13 L37 22 Z M74 28 L76 13 L63 22 Z" fill="#fbcfe8"/>`;
+   if(F.k==='alien')back=`<path d="M36 20 Q30 6 24 4 M64 20 Q70 6 76 4" stroke="${F.sd}" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="24" cy="4" r="4" fill="#fde047"/><circle cx="76" cy="4" r="4" fill="#fde047"/>`;
+   base=back+`<rect x="42" y="68" width="16" height="16" rx="6" fill="${F.sd}"/>`+(F.k==='alien'?`<path d="M50 14 C76 14 84 34 80 50 C76 66 62 78 50 78 C38 78 24 66 20 50 C16 34 24 14 50 14 Z" fill="${F.sk}"/>`:`<circle cx="50" cy="46" r="30" fill="${F.sk}"/>`)+`<ellipse cx="20" cy="48" rx="4" ry="6" fill="${F.sd}"/><ellipse cx="80" cy="48" rx="4" ry="6" fill="${F.sd}"/>`;
+   if(F.k==='cat')base+=`<path d="M38 18 l4 9 M50 16 v10 M62 18 l-4 9" stroke="${F.sd}" stroke-width="3" stroke-linecap="round"/>`;
+   if(F.k==='short')front=`<path d="M20 44 Q18 14 50 14 Q82 14 80 44 Q74 30 62 27 Q50 34 30 28 Q23 34 20 44 Z" fill="${h}"/>`;
+   if(F.k==='curly')front=[[26,28,10],[38,19,11],[52,16,11],[65,20,10],[75,30,9],[22,39,7],[79,40,6]].map(c=>`<circle cx="${c[0]}" cy="${c[1]}" r="${c[2]}" fill="${h}"/>`).join('');
+   if(F.k==='afro')front=`<path d="M21 42 Q24 20 50 19 Q76 20 79 42 Q68 30 50 30 Q32 30 21 42 Z" fill="${h}"/>`;
+   if(F.k==='long')front=`<path d="M20 46 Q18 15 50 15 Q82 15 80 46 Q76 32 60 26 Q44 36 24 34 Q21 40 20 46 Z" fill="${h}"/>`;
+   if(F.k==='tails')front=`<path d="M21 42 Q20 15 50 15 Q80 15 79 42 Q70 28 50 31 Q30 28 21 42 Z" fill="${h}"/><path d="M50 15 v15" stroke="#0002" stroke-width="1.500"/>`;
+   if(F.k!=='alien'&&F.k!=='cat')front+=`<circle cx="31" cy="56" r="4.500" fill="#f87171" opacity=".3"/><circle cx="69" cy="56" r="4.500" fill="#f87171" opacity=".3"/>`}
+  return base+front+eyes(F.eye)+mouth(F.mouth)};
+ const acc=(a)=>{switch(a){
+  case 1:return '<path d="M20 34 Q20 8 50 8 Q80 8 80 34 Z" fill="#2563eb"/><path d="M20 34 Q50 26 80 34 L80 37 Q50 30 20 37 Z" fill="#1d4ed8"/><path d="M76 32 Q98 30 100 40 Q88 40 76 38 Z" fill="#1e40af"/><circle cx="50" cy="8" r="3" fill="#1d4ed8"/><path d="M50 8 V30" stroke="#1d4ed8" stroke-width="1.500"/>';
+  case 2:return '<ellipse cx="50" cy="24" rx="38" ry="7" fill="#111827"/><path d="M28 24 V-6 Q28 -10 32 -10 H68 Q72 -10 72 -6 V24 Z" fill="#111827"/><rect x="28" y="12" width="44" height="8" fill="#b91c1c"/>';
+  case 3:return '<path d="M19 38 Q18 8 50 8 Q82 8 81 38 Z" fill="#0d9488"/><rect x="17" y="30" width="66" height="11" rx="5.500" fill="#f8fafc"/><path d="M24 30 v11 M32 30 v11 M40 30 v11 M48 30 v11 M56 30 v11 M64 30 v11 M72 30 v11" stroke="#cbd5e1" stroke-width="1.500"/><circle cx="50" cy="4" r="7" fill="#f8fafc"/>';
+  case 4:return '<path d="M24 28 L20 2 L35 14 L50 -4 L65 14 L80 2 L76 28 Z" fill="#fbbf24" stroke="#b45309" stroke-width="1.500"/><rect x="23" y="24" width="54" height="7" rx="2" fill="#f59e0b"/><circle cx="50" cy="-1" r="3.500" fill="#ef4444"/><circle cx="21" cy="3" r="2.600" fill="#22d3ee"/><circle cx="79" cy="3" r="2.600" fill="#22d3ee"/><circle cx="36" cy="27.500" r="2" fill="#ef4444"/><circle cx="64" cy="27.500" r="2" fill="#22d3ee"/>';
+  case 5:return '<g fill="#ffffff55" stroke="#1f2937" stroke-width="3"><circle cx="39" cy="46" r="9.500"/><circle cx="61" cy="46" r="9.500"/></g><path d="M48.500 45 Q50 43 51.500 45 M29.500 44 L20 41 M70.500 44 L80 41" stroke="#1f2937" stroke-width="3" fill="none" stroke-linecap="round"/>';
+  case 6:return '<path d="M27 40 H47 Q48 54 38 54 Q27 54 27 40 Z M53 40 H73 Q73 54 62 54 Q52 54 53 40 Z" fill="#111827"/><path d="M47 42 H53 M27 42 L19 40 M73 42 L81 40" stroke="#111827" stroke-width="3.200" stroke-linecap="round"/><path d="M31 43 l6 0 -3 6z M57 43 l6 0 -3 6z" fill="#fff" opacity=".28"/>';
+  case 7:return '<path d="M18 46 Q16 8 50 8 Q84 8 82 46" fill="none" stroke="#1f2937" stroke-width="5" stroke-linecap="round"/><rect x="10" y="38" width="13" height="22" rx="6" fill="#ef4444"/><rect x="77" y="38" width="13" height="22" rx="6" fill="#ef4444"/><rect x="13" y="42" width="7" height="14" rx="3.500" fill="#1f2937"/><rect x="80" y="42" width="7" height="14" rx="3.500" fill="#1f2937"/>';
+  case 8:return '<circle cx="19" cy="58" r="3" fill="#fbbf24"/><circle cx="19" cy="66" r="5" fill="none" stroke="#fbbf24" stroke-width="2.400"/><circle cx="81" cy="58" r="3" fill="#fbbf24"/><circle cx="81" cy="66" r="5" fill="none" stroke="#fbbf24" stroke-width="2.400"/>';
+  case 9:return '<path d="M50 15 L32 5 Q28 14 32 24 Z M50 15 L68 5 Q72 14 68 24 Z" fill="#ec4899"/><path d="M50 15 L34 8 M50 15 L66 8" stroke="#be185d" stroke-width="1.500"/><circle cx="50" cy="15" r="5.500" fill="#be185d"/>';
+  case 10:return '<path d="M14 30 Q50 18 86 30 Q50 38 14 30 Z" fill="#4c1d95"/><path d="M27 28 Q40 4 62 -14 Q60 10 73 28 Q50 22 27 28 Z" fill="#6d28d9"/><path d="M30 27 Q50 21 70 27 L71 30 Q50 25 29 30 Z" fill="#fbbf24"/><path d="M50 6l1.600 3.400 3.700.500-2.700 2.600.700 3.700-3.300-1.800-3.300 1.800.700-3.700-2.700-2.600 3.700-.500z" fill="#fde047"/>';
+  default:return ''}};
+ let uid=0;
+ const svg=(av,cls)=>{const a=av||[0,0,0];uid++;return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -16 104 128" class="${cls||'avs'}" aria-hidden="true">${shirt(+a[2]||0,uid)}${head(+a[0]||0)}${acc(+a[1]||0)}</svg>`};
+ const A1=['Szybki','Śpiący','Wesoły','Dzielny','Sprytny','Głodny','Tańczący','Latający','Zakręcony','Puchaty','Tajemniczy','Kosmiczny','Uparty','Odważny','Mądry','Zwinny','Skaczący','Błyskotliwy','Roześmiany','Niezwykły'],
+  A2=['Borsuk','Leniwiec','Pingwin','Chomik','Jeż','Kangur','Lis','Niedźwiedź','Tygrys','Bóbr','Wilk','Szop','Kot','Smok','Jednorożec','Koala','Flaming','Krokodyl','Hipopotam','Bocian','Żółw','Ślimak','Ogórek','Pączek','Pieróg','Naleśnik'];
+ const name=()=>A1[Math.floor(Math.random()*A1.length)]+' '+A2[Math.floor(Math.random()*A2.length)];
+ const rand=()=>[Math.floor(Math.random()*FACES.length),Math.floor(Math.random()*ACC.length),Math.floor(Math.random()*SH.length)];
+ return{svg,name,rand,NF:FACES.length,NA:ACC.length,NS:SH.length,ACC,SH}})();
+</script>
+<script type="module">
+import {db,doc,getDoc,setDoc,onSnapshot} from "/fb.js";
+const app=document.getElementById('app'),$=s=>app.querySelector(s),esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const COL=['#ef4444','#2563eb','#eab308','#16a34a','#9333ea','#ea580c'],SHP=['<path d="M12 3 22 21H2z"/>','<path d="M12 2 22 12 12 22 2 12z"/>','<circle cx="12" cy="12" r="10"/>','<rect x="3" y="3" width="18" height="18" rx="2"/>','<path d="M12 2l3 6.300 6.900.900-5 4.800 1.200 6.900L12 17.600 5.900 20.900l1.200-6.900-5-4.800 6.900-.900z"/>','<path d="M12 2l9.500 6.900-3.600 11.100H6.100L2.500 8.900z"/>'];
+const shape=i=>'<svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true">'+SHP[i%6]+'</svg>';
+const IC={ok:'<svg viewBox="0 0 24 24"><path d="M5 12.500l4.500 4.500L19 7.500" fill="none" stroke="#fff" stroke-width="3.400" stroke-linecap="round" stroke-linejoin="round"/></svg>',no:'<svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="#fff" stroke-width="3.400" stroke-linecap="round"/></svg>',na:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#fff" stroke-width="2.600"/><path d="M12 7v5.500l3.500 2" fill="none" stroke="#fff" stroke-width="2.600" stroke-linecap="round"/></svg>'};
+const LS={get(k){try{return JSON.parse(localStorage.getItem(k)||'null')}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}},del(k){try{localStorage.removeItem(k)}catch(e){}}};
+const TS=(()=>{try{return new URLSearchParams(location.search).get('t')||''}catch(e){return ''}})();
+let code='',pid='',me=null,S=null,unsub=null,view='',shownQ=-1,qStart=0,timer=0,sentQ=-1;
+const card=h=>{app.innerHTML='<div class="c">'+h+'</div>'};
+const meBar=()=>{document.getElementById('me').innerHTML=me?AV.svg(me.av)+'<span>'+esc(me.n)+'</span>':''};
+const vib=p=>{try{navigator.vibrate&&navigator.vibrate(p)}catch(e){}};
+function askCode(msg){view='code';if(unsub){unsub();unsub=null}me=null;meBar();card('<div class="card"><h1 style="font-size:26px">Dołącz do gry</h1><p style="opacity:.75;margin-bottom:14px">Wpisz kod z tablicy.</p><input id="code" type="tel" inputmode="numeric" maxlength="7" placeholder="000 000" autocomplete="off"><div class="err">'+(msg||'')+'</div><button class="b" id="go">Dalej</button></div>');
+  const i=$('#code'),go=async()=>{const c=i.value.replace(/\D/g,'');if(c.length!==6){$('.err').textContent='Kod ma 6 cyfr.';return}$('#go').disabled=true;await open(c)};$('#go').onclick=go;i.onkeydown=e=>{if(e.key==='Enter')go()};i.focus()}
+async function open(c){code=c;try{const s=await getDoc(doc(db,'live',code));if(!s.exists()){askCode('Nie ma gry o takim kodzie. Sprawdź kod na tablicy.');return}S=JSON.parse(s.data().s)}catch(e){askCode('Nie udało się połączyć. Sprawdź internet.');return}
+  history.replaceState(null,'',location.pathname+location.search+'#'+code);const sv=LS.get('fwl_'+code+TS);if(sv&&sv.pid&&!(S.kick||[]).includes(sv.pid)){pid=sv.pid;me={n:sv.n,av:sv.av,j:sv.j};await write();listen();return}join()}
+function join(){view='join';let av=AV.rand(),n=S.nm==='gen'?AV.name():'';const NM=['Twarz','Dodatek','Koszulka'],MAX=[AV.NF,AV.NA,AV.NS];
+  card('<div class="card"><div class="avp" id="avp"></div>'+[0,1,2].map(k=>'<div class="pk"><button data-k="'+k+'" data-d="-1" aria-label="Poprzedni">‹</button><div><small>'+NM[k]+'</small><span id="pv'+k+'"></span></div><button data-k="'+k+'" data-d="1" aria-label="Następny">›</button></div>').join('')+'<button class="b g" id="rnd">Losuj wygląd</button>'
+    +'<div class="lbl" style="margin-top:16px">Twoja nazwa</div>'+(S.nm==='gen'?'<div class="gn" id="gn"></div><button class="b g" id="rn">Losuj inną nazwę</button>':'<input type="text" id="nm" maxlength="18" placeholder="Wpisz nazwę" autocomplete="off">')+'<div class="err"></div><button class="b" id="jn">Dołącz do gry</button></div>');
+  const dr=()=>{$('#avp').innerHTML=AV.svg(av);[0,1,2].forEach(k=>$('#pv'+k).textContent=k===1?(av[1]?AV.ACC[av[1]]:'brak'):(av[k]+1)+' / '+MAX[k]);if(S.nm==='gen')$('#gn').textContent=n};dr();
+  app.onclick=async e=>{const b=e.target.closest('[data-k]');if(b){const k=+b.dataset.k;av[k]=(av[k]+(+b.dataset.d)+MAX[k])%MAX[k];dr();return}if(e.target.closest('#rnd')){av=AV.rand();dr();return}if(e.target.closest('#rn')){n=AV.name();dr();return}
+    if(e.target.closest('#jn')){if(S.nm!=='gen')n=($('#nm').value||'').replace(/\s+/g,' ').trim().slice(0,18);if(n.length<2){$('.err').textContent='Wpisz nazwę (co najmniej 2 znaki).';return}$('#jn').disabled=true;pid='p'+Math.random().toString(36).slice(2,10)+Date.now().toString(36).slice(-4);me={n:n,av:av,j:Date.now()};
+      try{await write()}catch(x){$('.err').textContent='Nie udało się dołączyć. Spróbuj jeszcze raz.';$('#jn').disabled=false;return}LS.set('fwl_'+code+TS,{pid:pid,n:n,av:av,j:me.j});app.onclick=null;vib(40);listen()}}}
+const write=a=>{const d={n:me.n,av:me.av,j:me.j};if(a)d.a=a;else if(me.a)d.a=me.a;if(a)me.a=a;return setDoc(doc(db,'live',code,'pl',pid),d)};
+function listen(){meBar();if(unsub)unsub();unsub=onSnapshot(doc(db,'live',code),s=>{if(!s.exists()){gone();return}try{S=JSON.parse(s.data().s)}catch(e){return}render()},()=>{})}
+function gone(){if(unsub){unsub();unsub=null}clearInterval(timer);LS.del('fwl_'+code+TS);view='gone';card('<h1>Gra zakończona</h1><p>Dzięki za grę! Nauczyciel zamknął pokój.</p><button class="b" id="ag" style="max-width:300px;margin:18px auto 0">Dołącz do innej gry</button>');$('#ag').onclick=()=>{history.replaceState(null,'','#');askCode()}}
+function render(){if((S.kick||[]).includes(pid)){if(unsub){unsub();unsub=null}clearInterval(timer);LS.del('fwl_'+code+TS);view='kick';card('<h1>Usunięto z gry</h1><p>Nauczyciel usunął Cię z tej gry'+(S.n>=40?' albo pokój jest już pełny':'')+'.</p><button class="b" id="ag" style="max-width:300px;margin:18px auto 0">Spróbuj ponownie</button>');$('#ag').onclick=()=>open(code);return}
+  const my=S.sc&&S.sc[pid];
+  if(S.ph==='lobby'){if(view!=='lobby'){view='lobby';clearInterval(timer);card('<div class="big bounce">'+AV.svg(me.av)+'</div><h1>'+esc(me.n)+'</h1><p>Jesteś w grze! Patrz na tablicę.</p><p class="dots" style="margin-top:10px;opacity:.7">Czekam na start</p>')}return}
+  if(S.ph==='get'){if(view!=='get'+S.qi){view='get'+S.qi;clearInterval(timer);card('<p class="qh">Pytanie '+(S.qi+1)+' z '+S.qn+'</p><h1 style="margin-top:8px">Przygotuj się!</h1><p>Przeczytaj pytanie na tablicy.</p>')}return}
+  if(S.ph==='q'){if(shownQ!==S.qi){shownQ=S.qi;qStart=Date.now();question()}return}
+  if(S.ph==='rev'||S.ph==='rank'){const k='res'+S.qi;if(view===k)return;view=k;clearInterval(timer);const lo=my?my[2]:-1,cls=lo===1?'ok':lo===0?'no':'na';if(lo===1)vib([40,60,40]);else if(lo===0)vib(180);
+    card('<div class="res '+cls+'"><div class="ic">'+IC[cls]+'</div><h1>'+(lo===1?'Dobrze!':lo===0?'Źle':'Brak odpowiedzi')+'</h1>'+(lo===1?'<b class="pt">+'+my[3]+' pkt</b>':'<div class="cor">Poprawna odpowiedź: <b>'+esc(S.cor||'')+'</b></div>')+'</div>'+(my?'<div class="stat"><div><small>Punkty</small><b>'+my[0]+'</b></div><div><small>Miejsce</small><b>'+my[1]+'</b></div><div><small>Seria</small><b>'+my[4]+'</b></div></div>':'<p style="margin-top:14px">Dołączono w trakcie gry. Grasz od następnego pytania.</p>'));return}
+  if(S.ph==='end'){if(view==='end')return;view='end';clearInterval(timer);const pl=my?my[1]:0;if(pl&&pl<=3)vib([60,80,60,80,160]);card('<div class="medal m'+(pl>=1&&pl<=3?pl:0)+'">'+(pl||'–')+'</div><h1>'+(pl===1?'Zwycięstwo!':pl&&pl<=3?'Podium!':'Koniec gry')+'</h1><p>'+esc(me.n)+(my?' · '+my[0]+' pkt':'')+'</p><div class="big" style="margin-top:14px">'+AV.svg(me.av)+'</div><p style="opacity:.75">Spójrz na tablicę, żeby zobaczyć podium.</p>')}}
+function question(){const q=S.q,done=sentQ===S.qi;view='q'+S.qi;clearInterval(timer);
+  if(done){waitScreen();return}
+  const long=q.o&&q.o.some(t=>String(t).length>26);
+  app.innerHTML='<p class="qh">Pytanie '+(S.qi+1)+' z '+S.qn+'</p><div class="qt">'+esc(q.t)+'</div><div class="tb"><i id="tbi"></i></div>'+(q.ty==='c'?'<div class="opts n'+q.o.length+(long?' long':'')+'">'+q.o.map((t,i)=>'<button class="o" style="--c:'+COL[i]+'" data-i="'+i+'">'+shape(i)+'<span>'+esc(t)+'</span></button>').join('')+'</div>':'<div class="card" style="margin:auto 0"><div class="lbl">Twoja odpowiedź</div><input type="text" id="ta" maxlength="80" autocomplete="off" autocapitalize="off" spellcheck="false"><button class="b" id="ts">Wyślij</button></div>');
+  const send=v=>{if(sentQ===S.qi)return;sentQ=S.qi;const ms=Date.now()-qStart;vib(30);write({q:S.qi,v:v,ms:ms}).catch(()=>{});waitScreen()};
+  if(q.ty==='c')app.querySelector('.opts').onclick=e=>{const b=e.target.closest('[data-i]');if(b)send(+b.dataset.i)};else{const i=$('#ta'),f=()=>{const v=i.value.trim();if(v)send(v)};$('#ts').onclick=f;i.onkeydown=e=>{if(e.key==='Enter')f()};setTimeout(()=>i.focus(),50)}
+  timer=setInterval(()=>{const left=Math.max(0,q.dur*1000-(Date.now()-qStart)),b=document.getElementById('tbi');if(b)b.style.width=(left/(q.dur*10))+'%';if(left<=0){clearInterval(timer);if(sentQ!==S.qi&&view==='q'+S.qi){view='late';card('<h1>Koniec czasu</h1><p class="dots">Czekam na wynik</p>')}}},100)}
+function waitScreen(){clearInterval(timer);view='sent'+S.qi;card('<div class="big bounce" style="width:120px">'+AV.svg(me.av)+'</div><h1>Odpowiedź wysłana</h1><p class="dots">Czekam na pozostałych</p>')}
+const h=(location.hash||'').replace(/\D/g,'');if(h.length===6)open(h);else askCode();
+window.__dbg={get S(){return S},get view(){return view},get pid(){return pid}};
+</script>
+</body>
+</html>
