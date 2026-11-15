@@ -6,7 +6,7 @@ import {
   sendPasswordResetEmail, updateProfile, onAuthStateChanged, signOut
 } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-functions.js";
-import { getFirestore, doc, getDoc, setDoc, serverTimestamp, collection, getDocs, onSnapshot } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+import { getFirestore, doc, getDoc, setDoc, serverTimestamp, collection, getDocs, onSnapshot, deleteDoc, query, where } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDXgyG6rMx8JfbUYSug0IV7ZBG12sSlyUE",
@@ -30,7 +30,7 @@ export const sendReset = email => callFn("sendReset", { email });
 
 export {
   createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification,
-  sendPasswordResetEmail, updateProfile, onAuthStateChanged, signOut, doc, getDoc, setDoc, serverTimestamp, collection, getDocs, onSnapshot
+  sendPasswordResetEmail, updateProfile, onAuthStateChanged, signOut, doc, getDoc, setDoc, serverTimestamp, collection, getDocs, onSnapshot, deleteDoc, query, where
 };
 
 const MSG = {
