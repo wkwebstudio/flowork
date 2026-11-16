@@ -187,6 +187,15 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--mut);font-siz
 .dbl span{display:inline-block;padding:9px 13px;border-radius:16px 16px 16px 4px;background:var(--card);border:1.5px solid var(--line);line-height:2;text-align:left}.dbl.r span{border-radius:16px 16px 4px 16px;background:var(--soft);border-color:color-mix(in srgb,var(--acc) 35%,var(--line))}
 .dbl.nn span{border-style:dashed;color:var(--bad)}
 .dbl input{width:84px;padding:3px 8px;border-radius:9px;border:2px solid var(--line);background:var(--bg);color:var(--ink);font:600 14.5px 'Plus Jakarta Sans';text-align:center}.dbl input.ok{border-color:var(--ok);color:var(--ok)}.dbl input.no{border-color:var(--bad);color:var(--bad)}
+
+.thtry{margin:14px 0 18px;padding:16px;border-radius:18px;background:var(--soft,#f4f0ff);border:1.5px solid var(--line,#e5e1f5)}.thtry b{font-size:16px}.thtry p{margin:6px 0 12px}
+.thb{display:flex;flex-wrap:wrap;gap:8px}.thb button{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--line,#ddd);background:#fff;color:#1f1b3a;border-radius:30px;padding:6px 14px 6px 6px;font:600 13.5px inherit;font-family:inherit;cursor:pointer;transition:transform .15s}
+.thb button:hover{transform:translateY(-2px)}.thb i{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:14px}
+.thv{position:fixed;inset:0;z-index:9999;background:#0b0718ee;display:flex;flex-direction:column;padding:10px;gap:8px}
+.thvb{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.thvb .thb{flex:1}.thvb .thb button.on{outline:3px solid #ff3ea5;outline-offset:1px}
+.thvb .thx{border:0;border-radius:30px;padding:10px 18px;background:#ff3ea5;color:#fff;font:700 14px inherit;font-family:inherit;cursor:pointer}
+.thv iframe{flex:1;width:100%;border:0;border-radius:14px;background:#111}
+.thvn{color:#fff;font:600 12.5px inherit;font-family:inherit;opacity:.8}
 </style>
 </head>
 <body>
@@ -265,7 +274,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--mut);font-siz
 <div><b><i class="ei">📊</i> Odpowiedzi uczniów</b><p>Wszystkie wyniki ze wszystkich ćwiczeń. Czerwona plakietka pokazuje, ile jest nowych.</p></div>
 <div><b><i class="ei">🕘</i> Ostatnio otwierane</b><p>Pięć ostatnich ćwiczeń, żeby szybko do nich wrócić.</p></div>
 <div><b><i class="ei">⚙</i> Ustawienia</b><p>Przycisk w lewym górnym rogu. Motywy, strona ucznia, powiadomienia i kopia zapasowa.</p></div>
-<div><b><i class="ei">👤</i> Pasek konta</b><p>U góry po prawej: Twój e-mail, czas próby, „Konto”, „Instrukcja” i „Wyloguj”.</p></div>
+<div><b><i class="ei">👤</i> Pasek konta</b><p>U góry po prawej: Twój e-mail, czas próby, „Konto”, „Instrukcja”, „Zgłoś błąd” i „Wyloguj”. „Zgłoś błąd” otwiera krótki formularz: wybierasz błąd, pomysł albo pytanie, opisujesz sprawę i możesz dołączyć zrzut ekranu. Wiadomość trafia do twórcy Flowork, a odpowiedź przyjdzie na Twój e-mail.</p></div>
 </div>
 <h3 id="panel-powitanie">Pierwsze wejście</h3>
 <p>Za pierwszym razem zobaczysz okno powitalne. Wybierasz w nim motyw panelu i możesz od razu otworzyć tę instrukcję. Okno pokazuje się tylko raz, a motyw zmienisz później w ustawieniach.</p>
@@ -368,16 +377,17 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--mut);font-siz
 <li><b>Bonus za szybkość</b> jest tym większy, im szybciej uczeń odpowie.</li>
 <li><b>Muzyka:</b> wybierz jedną z gotowych ścieżek albo ją wyłącz. Gra cicho w tle, a uczeń może ją wyciszyć.</li>
 </ul>
-<p><b>Rodzaje pytań</b></p>
+<p><b>Rodzaje pytań.</b> Rodzaj wybierasz kafelkiem na górze każdego pytania.</p>
 <div class="tbl"><table>
 <tr><th>Rodzaj</th><th>Jak działa</th></tr>
 <tr><td>Wybór odpowiedzi</td><td>Wpisujesz odpowiedzi i zaznaczasz ✓ przy poprawnych. Do odpowiedzi można dodać zdjęcie.</td></tr>
 <tr><td>Wpisz odpowiedź (oceniane)</td><td>Uczeń pisze odpowiedź, a panel porównuje ją z Twoją.</td></tr>
 <tr><td>Odpowiedź własna (bez punktów)</td><td>Pytanie otwarte. Odpowiedź zobaczysz w wynikach, ale nie jest punktowana.</td></tr>
-<tr><td>Dopasowywanie</td><td>Uczeń łączy elementy w pary.</td></tr>
+<tr><td>Dopasowywanie</td><td>Uczeń łączy elementy w pary. Punkty są proporcjonalne do liczby dobrych par.</td></tr>
+<tr><td>Kolejność</td><td>Wpisujesz elementy w poprawnej kolejności, a uczeń dostaje je pomieszane i dotyka ich po kolei, np. wydarzenia od najstarszego. Punkty są proporcjonalne do liczby elementów na dobrym miejscu. W wydruku uczeń wpisuje numery w kratki.</td></tr>
 </table></div>
 <ul>
-<li>Do pytania możesz dodać <b>zdjęcie</b> (przyciskiem, przeciągnięciem albo <kbd>Ctrl</kbd>+<kbd>V</kbd>) i <b>dialog</b> w formacie „Imię: tekst”.</li>
+<li>Do pytania możesz dodać <b>zdjęcie</b> (przyciskiem, przeciągnięciem albo <kbd>Ctrl</kbd>+<kbd>V</kbd>) i <b>dialog</b> w formacie „Imię: tekst” (przycisk „Dodaj dialog”).</li>
 <li><b>Podgląd pytania</b> pokazuje jedno pytanie. Strzałki ↑ ↓ zmieniają kolejność.</li>
 </ul>
 <div class="demo" style="--c:#ff6b9d"><b>Wypróbuj: tak wygląda pytanie w quizie</b><p class="fine">Pasek pokazuje uciekający czas. Szybsza odpowiedź daje większy bonus.</p><div class="dz" id="d-quiz"></div></div><details class="xd"><summary>Kiedy używać</summary><div><ul><li>Powtórka z emocjami: czas, punkty i ranking.</li><li>Szybkie sprawdzenie faktów, dat, definicji.</li><li>Rozgrzewka na początek lekcji albo podsumowanie na koniec.</li></ul></div></details><details class="xd"><summary>Częste błędy</summary><div><ul><li><b>Za mało czasu na długie pytania.</b> Ustaw czas osobno dla pytań z tekstem lub zdjęciem.</li><li><b>Brak zaznaczonej poprawnej odpowiedzi.</b> Panel ostrzeże przed wygenerowaniem linku.</li><li><b>Bardzo duże zdjęcia.</b> Wolniej się wczytują na telefonach uczniów.</li></ul></div></details><details class="xd"><summary>Pomysł na lekcję</summary><div><p>Wyświetl ranking na tablicy po quizie i powtórz quiz tydzień później. Uczniowie chętnie poprawiają własny wynik.</p></div></details></article>
@@ -535,7 +545,7 @@ F: Tom has two sisters.</pre>
 <ul>
 <li><b>Sterowanie:</b> palec lub myszka przesuwa statek, dotknięcie albo kliknięcie strzela. Na klawiaturze <kbd>←</kbd> <kbd>→</kbd> i <kbd>Spacja</kbd>.</li>
 <li><b>Życia:</b> trzy. Pierwsze trafienie złej bańki przy danym pytaniu odejmuje 50 punktów, drugie zabiera życie. Życie przepada też, gdy bańki dolecą do statku. </li>
-<li><b>Poziomy:</b> 3, 5 albo 7, po pięć pytań. Na każdym kolejnym bańki lecą szybciej.</li>
+<li><b>Bez końca:</b> gra trwa, dopóki uczeń ma życia. Co pięć pytań jest nowy poziom i bańki lecą coraz szybciej. Co trzy poziomy wraca jedno życie (najwyżej trzy). „Długość gry” decyduje, jak szybko rośnie tempo.</li>
 <li><b>Punkty:</b> więcej za szybki strzał, wyższy poziom i serię trafień bez pomyłki.</li>
 </ul>
 <p class="fine">Bańki lecą w czterech rzędach, więc dolne zasłaniają górne. Trzeba wyczuć moment na strzał.</p>
@@ -589,18 +599,19 @@ F: Tom has two sisters.</pre>
 <ol class="steps">
 <li>Na pulpicie, w sekcji <b>Na żywo</b> pod grami, kliknij <b>Quiz live</b>, <b>Wyścig</b> albo <b>Wieżę</b>.</li>
 <li>Dodaj pytania tak samo jak w zwykłym quizie.</li>
-<li>Kliknij <b>Graj na żywo</b> i wybierz sposób nadawania nazw, muzykę oraz to, czy po rankingu gra ma iść dalej sama (w wyścigu i wieży: czas gry).</li>
+<li>Kliknij <b>Graj na żywo</b> (przycisk jest na górze i pod listą pytań) i wybierz język gry, sposób nadawania nazw, muzykę oraz to, czy po rankingu gra ma iść dalej sama (w wyścigu i wieży: czas gry).</li>
 <li>Kliknij „Utwórz pokój” i pokaż ekran na tablicy albo rzutniku.</li>
 <li>Uczniowie skanują <b>kod QR</b> telefonem albo wchodzą na adres z ekranu i wpisują 6-cyfrowy kod.</li>
 <li>Gdy wszyscy są w poczekalni, kliknij <b>Start</b>.</li>
 </ol>
 <div class="tbl"><table>
 <tr><th>Ustawienie</th><th>Co robi</th></tr>
+<tr><td>Język gry</td><td>„Polski” albo „English”. Dotyczy wszystkich napisów gry: tablicy, telefonów uczniów, losowych nazw i nazw drużyn. Treść pytań zostaje taka, jak ją wpisałeś. Działa niezależnie od języka panelu.</td></tr>
 <tr><td>Nazwy uczniów</td><td>„Własne”: każdy wpisuje nazwę sam. „Losowe”: uczeń dostaje nazwę w stylu „Tańczący Pingwin” i może ją tylko przelosować.</td></tr>
 <tr><td>Muzyka</td><td>Gra tylko na tablicy. Przyciskiem z głośnikiem wyciszysz ją w trakcie gry.</td></tr>
 <tr><td>Po rankingu</td><td>Klikasz „Dalej” sam albo gra przechodzi do następnego pytania po 5, 10 lub 15 sekundach.</td></tr>
 </table></div>
-<p class="fine">Tablica ma taki sam motyw jak Twój panel, razem z ozdobami motywów okolicznościowych (świąteczny, Halloween, polski). Zmienisz go w Ustawieniach panelu.</p>
+<p class="fine">Tablica ma taki sam motyw jak Twój panel, razem z ozdobami motywów okolicznościowych (GTA, świąteczny, Halloween, polski). Zmienisz go w Ustawieniach panelu.</p>
 <h3 id="live-uczen">Co robi uczeń</h3>
 <ul>
 <li>Nie zakłada konta i niczego nie instaluje. Wystarczy przeglądarka w telefonie.</li>
@@ -663,7 +674,7 @@ F: Tom has two sisters.</pre>
 <h3 id="live-zasady">Zasady i ograniczenia</h3>
 <ul>
 <li>Do <b>40 graczy</b> w jednym pokoju. Kolejne osoby zobaczą informację, że pokój jest pełny.</li>
-<li>W grze na żywo działają pytania z wyborem odpowiedzi (do 6 odpowiedzi) i pytania „Wpisz odpowiedź”. Pytania „Odpowiedź własna” i „Dopasowywanie” są pomijane.</li>
+<li>W grze na żywo działają pytania z wyborem odpowiedzi (do 6 odpowiedzi), „Wpisz odpowiedź”, „Dopasowywanie” (do 6 par) i „Kolejność” (do 6 elementów). W dopasowywaniu i kolejności uczeń dostaje część punktów za częściowo dobrą odpowiedź, a tablica pokazuje, ile osób miało wszystko dobrze, częściowo i źle. Pytania „Odpowiedź własna” są pomijane.</li>
 <li>Po zakończeniu gry pokój i wszystkie dane tej rozgrywki są usuwane. Quiz zostaje w panelu i można zagrać ponownie.</li>
 <li>Wyniki gry na żywo nie trafiają do „Odpowiedzi uczniów”. Jeśli potrzebujesz ocen, wyślij ten sam quiz zwykłym linkiem.</li>
 <li>Wszyscy potrzebują internetu przez całą grę.</li>
@@ -778,7 +789,8 @@ kowalska  anna</textarea><div class="tout" id="cout"></div></div></div></article
 <h2><i class="ei">⚙</i> Ustawienia</h2>
 <p class="ld">Otwierasz je przyciskiem w lewym górnym rogu panelu. Zmiany zapisują się od razu.</p>
 <h3 id="ust-motywy">Motywy</h3>
-<p>Do wyboru są motywy jasne, ciemne i okolicznościowe oraz „Systemowy”, który dopasowuje się do ustawień Twojego urządzenia. Motyw „Święta” dodaje padający śnieg, lampki, sanie Mikołaja i śnieg na przyciskach.</p>
+<p>Do wyboru są motywy jasne, ciemne i okolicznościowe oraz „Systemowy”, który dopasowuje się do ustawień Twojego urządzenia. Motyw „Święta” dodaje padający śnieg, lampki, sanie Mikołaja i śnieg na przyciskach. Motyw „GTA” to zachód słońca w Miami: kołyszące się palmy, panorama miasta z neonami, morze, flamingi, mewy i co jakiś czas samolot z powiewającym banerem.</p>
+<div class="thtry" id="thtry"><b>🎨 Wypróbuj motywy</b><p>Kliknij motyw, a otworzy się podgląd z przykładowym quizem. Możesz w nim odpowiadać i przełączać motywy. Po zamknięciu podglądu nic się nie zmienia: Twój panel zostaje w swoim motywie.</p><div class="thb" id="thb"></div></div>
 <h3 id="ust-wyglad">Wygląd panelu</h3>
 <ul>
 <li><b>Styl ikon:</b> proste, jednokolorowe ikony albo kolorowe emoji.</li>
@@ -993,6 +1005,17 @@ $$('pre').forEach(p=>{const b=document.createElement('button');b.className='cpy'
 addEventListener('keydown',e=>{if(e.key==='/'&&!/INPUT|TEXTAREA/.test((e.target||{}).nodeName||'')){e.preventDefault();const q=document.getElementById('q');q.focus();q.scrollIntoView({block:'center'})}});
 const q0=document.getElementById('q');if(q0)q0.addEventListener('input',()=>{const v=q0.value.trim().toLowerCase();$$('details.xd').forEach(d=>{if(v.length>2&&d.textContent.toLowerCase().includes(v))d.open=true})});
 })();
+
+/* v22: podgląd motywów */
+(function(){const TH=[["xm","🎄","Święta","linear-gradient(135deg,#c1121f 45%,#0b6e4f)"],["gt","🌴","GTA","linear-gradient(135deg,#7b2ff7,#ff3ea5 55%,#ff9a3c)"],["pl","🦅","Święto Niepodległości","linear-gradient(135deg,#c8102e 50%,#fff 50%)"],["hw","🎃","Halloween","linear-gradient(135deg,#ff7a00,#5b21b6)"],["wh","⬜","Biały","linear-gradient(135deg,#fff 50%,#0a0a0a 50%)"],["bk","⬛","Czarny","linear-gradient(135deg,#000 50%,#fff 50%)"],["ro","🌸","Róż","linear-gradient(135deg,#ff4f93,#ffa0c6)"],["oc","🌊","Ocean","linear-gradient(135deg,#0b66c3,#19b6d9)"],["mi","🌿","Mięta","linear-gradient(135deg,#0f9a64,#6fdcae)"],["fi","🔮","Fiolet","linear-gradient(135deg,#7b3fe4,#d946ef)"],["zl","🌅","Zachód","linear-gradient(135deg,#ff6a2b,#ffb347)"],["plain","⚪","Systemowy","linear-gradient(135deg,#7858e8,#ff78ad)"]];
+  const btns=cur=>TH.map(x=>'<button type="button" data-th="'+x[0]+'" class="'+(x[0]===cur?'on':'')+'"><i style="background:'+x[3]+'">'+x[1]+'</i>'+x[2]+'</button>').join('');
+  const box=document.getElementById('thb');if(!box)return;box.innerHTML=btns('');
+  let v=null;const close=()=>{if(v){v.remove();v=null;document.body.style.overflow=''}};
+  const open=th=>{if(!v){v=document.createElement('div');v.className='thv';document.body.appendChild(v);document.body.style.overflow='hidden'}
+    v.innerHTML='<div class="thvb"><div class="thb">'+btns(th)+'</div><span class="thvn">Podgląd, nic się nie zapisuje</span><button type="button" class="thx">✕ Zamknij podgląd</button></div><iframe title="Podgląd motywu" src="uczen.html?demo=1&th='+th+'"></iframe>';
+    v.querySelector('.thx').onclick=close;v.querySelector('.thb').onclick=e=>{const b=e.target.closest('[data-th]');if(b)open(b.dataset.th)}};
+  box.onclick=e=>{const b=e.target.closest('[data-th]');if(b)open(b.dataset.th)};
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')close()})})();
 </script>
 </body>
 </html>
