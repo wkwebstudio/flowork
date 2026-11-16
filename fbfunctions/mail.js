@@ -14,11 +14,11 @@ const DAILY_CAP = 30; // maks. powiadomień o wynikach na nauczyciela na dobę
 
 const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
-async function send(to, subject, html, text) {
+async function send(to, subject, html, text, extra) {
   const r = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: { Authorization: "Bearer " + RESEND_KEY.value(), "Content-Type": "application/json" },
-    body: JSON.stringify({ from: FROM, to: [to], reply_to: REPLY_TO, subject, html, text })
+    body: JSON.stringify(Object.assign({ from: FROM, to: [to], reply_to: REPLY_TO, subject, html, text }, extra || {}))
   });
   if (!r.ok) throw new Error("Resend " + r.status + " " + (await r.text()).slice(0, 200));
 }
@@ -108,4 +108,27 @@ exports.notifyResult = onDocumentCreated({ document: "res/{exId}/items/{rid}", r
     `<br><br><span style="font-size:13px;color:#8a87a0">Powiadomienia możesz wyłączyć w panelu (przycisk 🔔 na dole ekranu).</span>`;
   await send(user.data().email, `${name} ukończył(a): ${title}`, layout("Nowy wynik ucznia", body, "Zobacz w panelu", SITE + "/panel.html"),
     `${name} ukończył(a) ćwiczenie „${title}”.` + (score ? " Wynik: " + score : "") + " " + SITE + "/panel.html");
+});
+
+// Zgłoszenie błędu / pomysłu z panelu nauczyciela → e-mail do twórcy (odpowiedź trafia do nauczyciela).
+const BUG_TO = "wkwebstudio@gmail.com";
+exports.reportBug = onCall({ region: REGION, secrets: [RESEND_KEY] }, async req => {
+  if (!req.auth || !req.auth.token.email) throw new HttpsError("unauthenticated", "Zaloguj się.");
+  const d = req.data || {};
+  const txt = String(d.t || "").trim().slice(0, 4000);
+  if (txt.length < 5) throw new HttpsError("invalid-argument", "Opis jest za krótki.");
+  if (!(await throttle("bug:" + req.auth.uid, 60000))) throw new HttpsError("resource-exhausted", "Poczekaj minutę przed kolejnym zgłoszeniem.");
+  const kind = { bug: "Błąd", idea: "Pomysł", q: "Pytanie" }[d.k] || "Zgłoszenie";
+  const c = d.ctx && typeof d.ctx === "object" ? d.ctx : {};
+  const email = req.auth.token.email;
+  const rows = [["Od", email], ["UID", req.auth.uid], ["Ćwiczenie", c.ex], ["Widok", c.view], ["Motyw", c.th], ["Język", c.lang], ["Ekran", c.scr], ["Przeglądarka", c.ua]]
+    .filter(r => r[1]).map(r => `<tr><td style="padding:3px 10px 3px 0;color:#8a87a0;vertical-align:top">${esc(r[0])}</td><td style="padding:3px 0">${esc(String(r[1]).slice(0, 400))}</td></tr>`).join("");
+  const extra = { reply_to: email };
+  let imgNote = "";
+  const m = typeof d.img === "string" && d.img.match(/^data:image\/(jpeg|png|webp);base64,([A-Za-z0-9+/=]+)$/);
+  if (m && m[2].length < 3000000) { extra.attachments = [{ filename: "zrzut." + (m[1] === "jpeg" ? "jpg" : m[1]), content: m[2] }]; imgNote = "<p>Zrzut ekranu w załączniku.</p>"; }
+  await send(BUG_TO, `[Flowork] ${kind}: ${txt.replace(/\s+/g, " ").slice(0, 60)}`,
+    layout(kind + " z panelu", `<div style="white-space:pre-wrap;background:#f5f3fb;border-radius:12px;padding:14px;color:#16132b">${esc(txt)}</div>${imgNote}<table style="margin-top:16px;font-size:13px">${rows}</table><p style="font-size:13px">Odpowiedz na tę wiadomość, a trafi prosto do nauczyciela.</p>`),
+    kind + " od " + email + ":\n\n" + txt, extra);
+  return { ok: true };
 });
