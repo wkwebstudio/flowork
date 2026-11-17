@@ -34,6 +34,8 @@ import {auth,createUserWithEmailAndPassword,updateProfile,sendVerif,errMsg} from
 const $=s=>document.querySelector(s);
 const params=new URLSearchParams(location.search);const plan=params.get('plan');
 if(plan){try{sessionStorage.setItem('flowork_plan',plan)}catch(e){}}
+const ref=(params.get('ref')||'').toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,12);
+if(ref){try{localStorage.setItem('fw_ref',ref)}catch(e){}const n=document.createElement('div');n.className='msg ok on';n.style.margin='0 0 14px';n.textContent='🎁 Zaproszenie od znajomego nauczyciela: po pierwszym zalogowaniu oboje dostaniecie 7 dni Flowork gratis.';const f=document.getElementById('rf');f.parentNode.insertBefore(n,f)}
 $('#sp').onclick=()=>{const h=$('#pw').type==='password';$('#pw').type=$('#pw2').type=h?'text':'password';$('#sp').textContent=h?'Ukryj':'Pokaż'};
 const showErr=m=>{const e=$('#er');e.textContent=m;e.classList.toggle('on',!!m)};
 $('#rf').onsubmit=async ev=>{
