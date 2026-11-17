@@ -81,6 +81,8 @@ exports.notifyResult = onDocumentCreated({ document: "res/{exId}/items/{rid}", r
   const db = admin.firestore();
   // Sygnał dla panelu nauczyciela: nowy wynik (panel nasłuchuje dokumentu feed/<uid> i od razu pobiera wyniki).
   try { await db.doc("feed/" + d.owner).set({ at: admin.firestore.FieldValue.serverTimestamp(), ex: ev.params.exId, n: admin.firestore.FieldValue.increment(1) }, { merge: true }); } catch (e) { console.error("feed", e && e.message); }
+  // Dzienne statystyki dla panelu admina (liczba wyników i aktywni nauczyciele).
+  try { await db.doc("stats/d_" + new Date().toISOString().slice(0, 10)).set({ res: admin.firestore.FieldValue.increment(1), o: { [d.owner]: admin.firestore.FieldValue.increment(1) } }, { merge: true }); } catch (e) { console.error("stats", e && e.message); }
   const prefs = await db.doc("prefs/" + d.owner).get();
   if (prefs.exists && prefs.data().notify === false) return;
   const user = await db.doc("users/" + d.owner).get();
