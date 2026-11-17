@@ -58,7 +58,25 @@ export async function ensureProfile(user) {
     await setDoc(ref, { name: user.displayName || "", email: user.email, createdAt: serverTimestamp() });
     snap = await getDoc(ref);
   }
+  await claimPendingRef();
   return snap.data();
+}
+
+// Kod polecający zapamiętany przy rejestracji (rejestracja.html?ref=KOD) – realizujemy go po pierwszym logowaniu.
+export const REF_KEY = "fw_ref";
+export async function claimPendingRef() {
+  let code = null;
+  try { code = localStorage.getItem(REF_KEY); } catch (e) {}
+  if (!code) return null;
+  try {
+    const r = await callFn("claimRef", { code });
+    try { localStorage.removeItem(REF_KEY); sessionStorage.setItem("fw_ref_ok", String((r && r.days) || 7)); } catch (e) {}
+    return r;
+  } catch (e) {
+    // Błąd sieci → spróbujemy przy następnym logowaniu; zły / zużyty kod → zapominamy go.
+    if (!/unavailable|internal|deadline|network/i.test((e && e.code) || "")) { try { localStorage.removeItem(REF_KEY); sessionStorage.setItem("fw_ref_err", (e && e.message) || ""); } catch (x) {} }
+    return null;
+  }
 }
 
 // Zwraca stan dostępu: trial / paid / expired
@@ -67,7 +85,7 @@ export function accessState(profile, sub) {
   const created = profile && profile.createdAt && profile.createdAt.toMillis ? profile.createdAt.toMillis() : now;
   const trialEnd = created + TRIAL_MS;
   const paidUntil = sub && sub.accessUntil && sub.accessUntil.toMillis ? sub.accessUntil.toMillis() : 0;
-  if (paidUntil > now) return { state: "paid", until: paidUntil };
+  if (paidUntil > now) return { state: "paid", until: paidUntil, gift: !!(sub && !sub.subscriptionId) };
   if (trialEnd > now) return { state: "trial", until: trialEnd };
   return { state: "expired", until: Math.max(trialEnd, paidUntil) };
 }
