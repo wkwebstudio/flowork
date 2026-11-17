@@ -122,7 +122,9 @@ async function syncSub(sub, hintUid) {
   const uid = await uidFor(sub, hintUid);
   if (!uid) { console.warn("Brak uid dla subskrypcji", sub.id); return; }
   const it = sub.items.data[0];
-  const until = accessFor(sub, Date.now());
+  let until = accessFor(sub, Date.now());
+  // Dni gratis za polecenie (bonusUntil) nie przepadają przy zmianie stanu subskrypcji.
+  try { const cur = await db.doc("subs/" + uid).get(); const bu = cur.exists && cur.data().bonusUntil && cur.data().bonusUntil.toMillis ? cur.data().bonusUntil.toMillis() : 0; if (bu > until) until = bu; } catch (e) {}
   await db.doc("subs/" + uid).set({
     customerId: typeof sub.customer === "string" ? sub.customer : sub.customer.id,
     subscriptionId: sub.id,
@@ -244,3 +246,5 @@ exports.adminAccount = onCall({ region: REGION, secrets: [STRIPE_KEY], timeoutSe
 });
 // ---------- E-maile (Resend) ----------
 Object.assign(exports, require("./mail"));
+// ---------- Polecenia i statystyki ----------
+Object.assign(exports, require("./ref"));
