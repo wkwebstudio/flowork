@@ -248,3 +248,4 @@ exports.adminAccount = onCall({ region: REGION, secrets: [STRIPE_KEY], timeoutSe
 Object.assign(exports, require("./mail"));
 // ---------- Polecenia i statystyki ----------
 Object.assign(exports, require("./ref"));
+Object.assign(exports, require("./lib"));
