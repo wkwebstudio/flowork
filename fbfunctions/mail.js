@@ -120,7 +120,7 @@ exports.reportBug = onCall({ region: REGION, secrets: [RESEND_KEY] }, async req 
   const txt = String(d.t || "").trim().slice(0, 4000);
   if (txt.length < 5) throw new HttpsError("invalid-argument", "Opis jest za krótki.");
   if (!(await throttle("bug:" + req.auth.uid, 60000))) throw new HttpsError("resource-exhausted", "Poczekaj minutę przed kolejnym zgłoszeniem.");
-  const kind = { bug: "Błąd", idea: "Pomysł", q: "Pytanie" }[d.k] || "Zgłoszenie";
+  const kind = { bug: "Błąd", idea: "Pomysł", q: "Pytanie", lib: "Zgłoszenie z biblioteki" }[d.k] || "Zgłoszenie";
   const c = d.ctx && typeof d.ctx === "object" ? d.ctx : {};
   const email = req.auth.token.email;
   const rows = [["Od", email], ["UID", req.auth.uid], ["Ćwiczenie", c.ex], ["Widok", c.view], ["Motyw", c.th], ["Język", c.lang], ["Ekran", c.scr], ["Przeglądarka", c.ua]]
