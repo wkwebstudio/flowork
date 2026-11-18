@@ -1320,6 +1320,8 @@ html.hd-gry .ngh:has(+.ngg),html.hd-gry .ngg,html.hd-live .ngh:has(+.ngl),html.h
 /* v25: dopasowywanie nie rozciąga się na cały ekran */
 .mt{max-width:860px;margin-left:auto;margin-right:auto}
 .mtb{max-width:1040px;margin-left:auto;margin-right:auto}
+.lcb{flex-wrap:wrap}.lbpv{flex-wrap:wrap;gap:8px}
+.lcb .btn{white-space:nowrap}.lcb [data-lcp]{order:-1;flex:1 1 100%}.lcb [data-lpv]{flex:1}.lcb .pill{order:0}
 
 .dt:has(#fbu){display:none!important}
 </style>
@@ -6088,7 +6090,7 @@ function libCard(it,adm){const T=TYP[it.ty]||['📄','Ćwiczenie','','#7758e8'];
    ${(it.sub||it.lv)?`<div class="lct">${it.sub?`<span>${esc(it.sub)}</span>`:''}${it.lv?`<span>${esc(it.lv)}</span>`:''}</div>`:''}
    ${it.d?`<p class="lcd" data-nt>${esc(it.d)}</p>`:''}${it.sm?`<p class="lcs" data-nt>${esc(it.sm)}</p>`:''}
    <div class="lcm"><span>👤 <span data-nt>${esc(it.by||'Nauczyciel')}</span></span><span title="Ilu nauczycieli skopiowało">⬇ ${it.n||0}</span>${it.at?`<span>${new Date(it.at).toLocaleDateString(document.documentElement.lang==='en'?'en-GB':'pl-PL')}</span>`:''}</div>
-   <div class="lcb">${it.mine?'<span class="pill">Twoje</span>':''}<button class="btn ${cp?'':'p'}" data-lcp="${it.id}">${cp?'✔ Skopiowano':'⬇ Kopiuj do pulpitu'}</button>${(it.mine||adm)?`<button class="btn d" data-ldl="${it.id}" title="Usuń z biblioteki">🗑</button>`:`<button class="btn" data-lrp="${it.id}" title="Zgłoś nieodpowiednią treść">🚩</button>`}</div></div>`}
+   <div class="lcb">${it.mine?'<span class="pill">Twoje</span>':''}<button class="btn" data-lpv="${it.id}" title="Zobacz, jak to ćwiczenie widzi uczeń">👁 Podgląd</button><button class="btn ${cp?'':'p'}" data-lcp="${it.id}">${cp?'✔ Skopiowano':'⬇ Kopiuj do pulpitu'}</button>${(it.mine||adm)?`<button class="btn d" data-ldl="${it.id}" title="Usuń z biblioteki">🗑</button>`:`<button class="btn" data-lrp="${it.id}" title="Zgłoś nieodpowiednią treść">🚩</button>`}</div></div>`}
 function libDraw(){const g=document.getElementById('libg');if(!g||!libCache)return;const q=v25fold(libQ);
   let L=libCache.items.filter(it=>libTab==='mine'?it.mine:true).filter(it=>(!libSub||it.sub===libSub)&&(!libTy||it.ty===libTy)&&(!q||v25fold([it.t,it.d,it.sm,it.by,it.sub,it.lv,libTyName(it.ty)].join(' ')).includes(q)));
   if(libTab==='mine')L.sort((a,b)=>(b.upd||b.at)-(a.upd||a.at));
@@ -6097,6 +6099,7 @@ async function libRender(force){const g=document.getElementById('libg');if(!g)re
 function libBind(){const w=document.querySelector('.libw');if(!w)return;
   const q=$('#libq');let t=0;q.oninput=()=>{clearTimeout(t);t=setTimeout(()=>{libQ=q.value;libDraw()},150)};$('#libs').onchange=ev=>{libSub=ev.target.value;libDraw()};$('#libt').onchange=ev=>{libTy=ev.target.value;libDraw()};
   w.onclick=async ev=>{const tb=ev.target.closest('[data-lt]');if(tb){libTab=tb.dataset.lt;w.querySelectorAll('[data-lt]').forEach(b=>b.classList.toggle('on',b===tb));libDraw();return}
+    const pvb=ev.target.closest('[data-lpv]');if(pvb){libPreview(pvb.dataset.lpv,pvb);return}
     const cp=ev.target.closest('[data-lcp]');if(cp){if(libBusy)return;libBusy=true;const id=cp.dataset.lcp;cp.disabled=true;cp.textContent='Kopiuję…';
       try{const r=await window.__LIB.get(id);const c=JSON.parse(r.p);c.id=uid();c.folder=curF==='all'?'':curF;c.created=new Date().toISOString();if(c.qs)c.qs.forEach(q=>q.id=uid());if(c.tasks)c.tasks.forEach(t=>t.id=uid());if(!c.title)c.title=r.t||'Ćwiczenie z biblioteki';
         S.ex.unshift(c);if(v25known)v25known.add(c.id);save();libCopied[id]=1;const it=libCache&&libCache.items.find(x=>x.id===id);if(it&&!it.mine)it.n=(it.n||0)+1;libDraw();
@@ -6106,6 +6109,16 @@ function libBind(){const w=document.querySelector('.libw');if(!w)return;
       try{await window.__LIB.del(it.id);libCache.items=libCache.items.filter(x=>x.id!==it.id);Object.keys(S.libp||{}).forEach(k=>{if(S.libp[k]===it.id)delete S.libp[k]});save();libDraw();toast('🗑 Usunięto z biblioteki.')}catch(x){toast('⚠ '+libErr(x))}return}
     const rp=ev.target.closest('[data-lrp]');if(rp){const it=libCache.items.find(x=>x.id===rp.dataset.lrp);if(!it)return;const why=await modal({title:'🚩 Zgłoś ćwiczenie',text:'„'+esc(it.t)+'”. Napisz krótko, co jest nie tak (np. błędy, nieodpowiednia treść, skopiowany podręcznik).',input:1,ph:'Powód zgłoszenia',ok:'Wyślij'});if(!why)return;
       try{if(window.__BUG)await window.__BUG({k:'lib',t:'Zgłoszenie ćwiczenia z biblioteki: „'+it.t+'” (autor: '+(it.by||'—')+', id: '+it.id+').\n\nPowód: '+why,ctx:{view:'Biblioteka ćwiczeń',ex:it.t+' ['+it.id+']',lang:document.documentElement.lang||'pl',scr:innerWidth+'×'+innerHeight,ua:navigator.userAgent}});toast('✔ Dziękujemy, zgłoszenie wysłane.')}catch(x){toast('⚠ '+libErr(x))}return}}}
+const libP={};
+function libStuObj(e,vm){if(e.kind==='vocab')return vObj(e,vm||'cards');if(!e.kind||e.isD)return {i:e.id,t:e.title,n:e.inst,x:e.text,b:e.bank,e:e.extra,bw:e.bw,dlg:e.dlg,im:e.images||[]};return prObj(e)}
+async function libPreview(id,btn,vm){if(libBusy)return;libBusy=true;const t0=btn&&btn.textContent;if(btn){btn.disabled=true;btn.textContent='Wczytuję…'}
+  try{if(!libP[id])libP[id]=await window.__LIB.get(id,1);const e=JSON.parse(libP[id].p);e.id=e.id||('lib'+id);if(!e.title)e.title=libP[id].t||'Ćwiczenie';
+    const it=libCache&&libCache.items.find(x=>x.id===id);const y=window.scrollY;
+    student(Object.assign(libStuObj(e,vm),{p:1}));window.scrollTo(0,0);const vmb=e.kind==='vocab'?[['cards','📇 Fiszki'],['learn','🧠 Ucz się'],['test','📝 Test']].map(m=>`<button class="btn ${(vm||'cards')===m[0]?'p':''}" data-lvm="${m[0]}">${m[1]}</button>`).join(''):'';
+    app.insertAdjacentHTML('afterbegin',`<div class="row lbpv" style="margin:0 0 12px;align-items:center"><button class="btn p" id="bkl">← Wróć do biblioteki</button><span class="pill">👁 Podgląd z biblioteki${it&&it.by?' · <span data-nt>'+esc(it.by)+'</span>':''}</span>${vmb}${libCopied[id]?'':'<button class="btn" id="lpcp">⬇ Kopiuj do pulpitu</button>'}</div>`);document.querySelectorAll('[data-lvm]').forEach(b=>b.onclick=()=>{libBusy=false;libPreview(id,null,b.dataset.lvm)});
+    const back=()=>{pv='lib';curE=null;teacher();setTimeout(()=>window.scrollTo(0,y),60)};$('#bkl').onclick=back;
+    const c=$('#lpcp');if(c)c.onclick=async()=>{back();setTimeout(()=>{const b=document.querySelector('[data-lcp="'+id+'"]');if(b)b.click()},250)}}
+  catch(x){toast('⚠ '+libErr(x))}finally{libBusy=false;if(btn&&btn.isConnected){btn.disabled=false;btn.textContent=t0}}}
 function libOpen(){curE=null;pv='lib';tab='edit';note='';teacher();window.scrollTo(0,0)}
 async function libShare(e){if(!e)return;if(!libOn()){toast('Biblioteka działa po zalogowaniu do panelu.');return}
   S.libp=S.libp||{};const was=S.libp[e.id];const p=JSON.stringify(libClean(e));const kb=Math.round(p.length/1024);
@@ -6957,6 +6970,7 @@ I18_PX.push([/^(\d+) (osoba|osoby|osób) spoza listy klasy:$/,'⚠ $1 people not
  [/^✔ Nowe ćwiczenia dostaną klasę „(.*)”\.$/,'✔ New exercises will get the class “$1”.'],
  [/^👥 Klasa „(.*)” przypisana do (\d+) (ćwiczenia|ćwiczeń)\.(.*)$/,(m,a,b,c,d)=>'👥 Class “'+a+'” assigned to '+b+(b==='1'?' exercise.':' exercises.')+d.replace(' Aktualizuję linki…',' Updating links…').replace(/ Zaktualizowane linki: (\d+)/,' Links updated: $1').replace(/\(błędy: (\d+)\)/,'(errors: $1)')],
  [/^👥 Usunięto klasę z (\d+) (ćwiczenia|ćwiczeń)\.(.*)$/,(m,b,c,d)=>'👥 Class removed from '+b+(b==='1'?' exercise.':' exercises.')+d.replace(' Aktualizuję linki…',' Updating links…').replace(/ Zaktualizowane linki: (\d+)/,' Links updated: $1').replace(/\(błędy: (\d+)\)/,'(errors: $1)')]);
+I18_PN2.push(['👁 Podgląd','👁 Preview'],['Zobacz, jak to ćwiczenie widzi uczeń','See how a student sees this exercise'],['Wczytuję…','Loading…'],['← Wróć do biblioteki','← Back to library'],['👁 Podgląd z biblioteki','👁 Library preview'],['👁 Podgląd z biblioteki ·','👁 Library preview ·']);
 
 const I18_THN={'Mięta':'Mint','Święta':'Christmas','Systemowy':'System','Róż':'Rose','Fiolet':'Violet','Zachód':'Sunset','Biały':'White','Czarny':'Black','Święto Niepodległości':'Independence Day'};
 I18_PX.unshift([/^Podgląd, wynik: (\d+) z (\d+)(.*)$/,'Preview, score: $1 of $2$3'],[/^Motyw: (.+)$/,(m,a)=>'Theme: '+(I18_THN[a]||a)]);
