@@ -78,9 +78,10 @@ exports.libList = onCall({ region: REGION }, async req => {
     db().collection("lib").where("owner", "==", a.uid).select(...sel).get(),
   ]);
   const seen = new Set(), items = [];
-  const add = d => { if (seen.has(d.id)) return; seen.add(d.id); const o = META(d); o.mine = d.get("owner") === a.uid; items.push(o); };
+  const adm = isAdmin(a);
+  const add = d => { if (seen.has(d.id)) return; seen.add(d.id); const o = META(d); o.mine = d.get("owner") === a.uid; if (adm) o.owner = d.get("owner"); items.push(o); };
   all.forEach(add); mine.forEach(add);
-  return { items, adm: isAdmin(a) };
+  return { items, adm };
 });
 
 // Pobierz treść do skopiowania (licznik kopii rośnie raz na nauczyciela).
@@ -92,7 +93,7 @@ exports.libGet = onCall({ region: REGION }, async req => {
   const ref = db().doc("lib/" + id);
   const d = await ref.get();
   if (!d.exists) throw new HttpsError("not-found", "Tego ćwiczenia nie ma już w bibliotece.");
-  if (d.get("owner") !== a.uid) {
+  if (d.get("owner") !== a.uid && !isAdmin(a) && !(req.data && req.data.peek)) {
     try {
       await db().runTransaction(async tx => {
         const c = db().doc("libcp/" + id + "_" + a.uid);
