@@ -17,7 +17,7 @@ const firebaseConfig = {
   appId: "1:153850625261:web:9d1beaa0d69a0ce34660e4"
 };
 
-export const TRIAL_MS = 3 * 60 * 60 * 1000; // 3 godziny
+export const TRIAL_MS = 5 * 60 * 60 * 1000; // 5 godzin
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
