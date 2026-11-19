@@ -11,7 +11,7 @@
 <style>
 :root{--bg:#fbfaf7;--card:#fff;--ink:#16132b;--mut:#6b6880;--line:#e7e4ee;--acc:#6340ff;--acc2:#ff6b57;--soft:#f1eeff;--ok:#17a673;--bad:#d6335a;--warn:#b45309;--warnbg:#fff4dd}
 @media(prefers-color-scheme:dark){:root{--bg:#0f0d1d;--card:#181530;--ink:#f3f1ff;--mut:#a9a5c4;--line:#2b2750;--acc:#8b6dff;--acc2:#ff8470;--soft:#1f1b3d;--ok:#3ed9a2;--bad:#ff7a9c;--warn:#fbbf24;--warnbg:#3a2c0c}}
-@font-face{font-family:'FwI';src:url('/fwicons.woff2?v=16') format('woff2');font-display:swap}
+@font-face{font-family:'FwI';src:url('/fwicons.woff2?v=23') format('woff2');font-display:swap}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth;scroll-padding-top:84px}
 body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
@@ -282,7 +282,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--mut);font-siz
  <div><b>Pulpit</b><button class="hs" data-h="7" style="right:8px;top:4px">8</button><div class="pmd"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><button class="hs" data-h="6" style="left:calc(50% - 15px);top:48%">7</button></div>
 </div><div class="pmi" id="pmi"></div></div>
 <div class="map">
-<div><b><i class="ei">➕</i> Nowe ćwiczenie</b><p>Dziesięć kafelków, po jednym na każdy typ. Pod nimi jest sekcja „Gry” z czterema grami. Kliknięcie od razu tworzy ćwiczenie w folderze, w którym jesteś.</p></div>
+<div><b><i class="ei">➕</i> Nowe ćwiczenie</b><p>Dziesięć kafelków, po jednym na każdy typ. Pod nimi jest sekcja „Gry” z pięcioma grami i sekcja „Na żywo” z pięcioma grami na tablicę. Kliknięcie od razu tworzy ćwiczenie w folderze, w którym jesteś.</p></div>
 <div><b><i class="ei">🗂</i> Pulpit</b><p>Twoje foldery i ćwiczenia w postaci ikon. Tu porządkujesz materiały.</p></div>
 <div><b><i class="ei">📊</i> Odpowiedzi uczniów</b><p>Wszystkie wyniki ze wszystkich ćwiczeń. Czerwona plakietka pokazuje, ile jest nowych.</p></div>
 <div><b><i class="ei">📚</i> Biblioteka ćwiczeń</b><p>Ćwiczenia udostępnione przez innych nauczycieli. Kopiujesz je jednym kliknięciem.</p></div>
@@ -545,9 +545,9 @@ F: Tom has two sisters.</pre>
 
 <section class="sec" id="gry" data-t="Gry">
 <h2><i class="ei">🎮</i> Gry</h2>
-<p class="ld">Cztery gry do powtórek. Wpisujesz pary pytanie i odpowiedź, a panel robi z nich grę. W grach nie ma ocen ani wyników.</p>
+<p class="ld">Pięć gier do powtórek. Wpisujesz pary pytanie i odpowiedź, a panel robi z nich grę. W grach nie ma ocen ani wyników.</p>
 <div class="tnav">
-<a href="#g-kosmos" style="--c:#6366f1"><i class="ei">🚀</i>Kosmos</a><a href="#g-memory" style="--c:#db2777"><i class="ei">🃏</i>Memory</a><a href="#g-bloki" style="--c:#0891b2"><i class="ei">🧱</i>Bloki</a><a href="#g-zombie" style="--c:#65a30d"><i class="ei">🧟</i>Zombie</a>
+<a href="#g-kosmos" style="--c:#6366f1"><i class="ei">🚀</i>Kosmos</a><a href="#g-memory" style="--c:#db2777"><i class="ei">🃏</i>Memory</a><a href="#g-bloki" style="--c:#0891b2"><i class="ei">🧱</i>Bloki</a><a href="#g-zombie" style="--c:#65a30d"><i class="ei">🧟</i>Zombie</a><a href="#g-skoczek" style="--c:#16a34a"><i class="ei">🦘</i>Skoczek</a>
 </div>
 <article class="ty" id="g-wspolne" style="--c:#7758e8"><h3><i class="ei">🎮</i> Jak zrobić grę</h3>
 <ol class="steps">
@@ -616,16 +616,29 @@ F: Tom has two sisters.</pre>
 </ul>
 <p class="fine">Postacie są rysunkowe i bez drastycznych scen, więc gra nadaje się też dla młodszych klas.</p>
 </article>
+<article class="ty" id="g-skoczek" style="--c:#16a34a"><h3><i class="ei">🦘</i> Skoczek</h3>
+<p>Królik w czerwonym szaliku skacze po latających wyspach. Nad nim jest pytanie, a przed nim 2–4 platformy z odpowiedziami. Uczeń klika platformę z poprawną odpowiedzią i królik na nią skacze.</p>
+<ul>
+<li><b>Sterowanie:</b> kliknięcie albo dotknięcie platformy. Na klawiaturze działają klawisze <kbd>1</kbd> do <kbd>4</kbd> (numery widać na platformach).</li>
+<li><b>Kruszejąca platforma:</b> pod pytaniem jest pasek czasu. Gdy się kończy, platforma pod królikiem pęka, a pod koniec drży. Szybki skok daje więcej punktów.</li>
+<li><b>Pomyłka:</b> zła platforma się rozpada, królik wpada do wody (albo w piasek, lawę czy chmury, zależnie od świata), a poprawna platforma świeci na zielono. Potem królik wraca na parasolu. Każdy upadek to jedno z trzech serc.</li>
+<li><b>Światy:</b> 3, 5 albo 7 (ustawienie „Długość gry”). Kolejno: Zielona Łąka, Złota Pustynia, Grzybowy Las, Lodowe Szczyty, Podniebne Chmury, Ognisty Wulkan i Gwiezdny Kosmos. Każdy ma własne tło, platformy i ozdoby, np. motyle, świetliki, śnieg albo spadające gwiazdy.</li>
+<li><b>Flaga i puchar:</b> po 5–6 dobrych skokach królik skacze do flagi i przechodzi do następnego świata. W ostatnim świecie na końcu czeka puchar.</li>
+<li><b>Seria:</b> po 3 dobrych skokach z rzędu królik płonie, a co 5. skok w serii daje podwójne punkty za następny skok.</li>
+<li><b>Tempo:</b> „Spokojne”, „Normalne” albo „Szybkie” zmienia czas na skok. W kolejnych światach platforma kruszy się trochę szybciej.</li>
+</ul>
+<p class="fine">Skoczek działa dobrze na telefonie: platformy ustawiają się wtedy w kolumnie.</p>
+</article>
 </section>
 
 <section class="sec" id="live" data-t="Quiz na żywo">
 <h2><i class="ei">🎬</i> Quiz na żywo</h2>
-<p class="ld">Gry wyświetlane na tablicy, w które cała klasa gra jednocześnie z telefonów. Są trzy tryby: <b>Quiz live</b> z rankingiem po każdym pytaniu, <b>Wyścig</b>, w którym poprawne odpowiedzi napędzają auta na torze, oraz <b>Wieża</b>, w której z poprawnych odpowiedzi rosną budynki.</p>
+<p class="ld">Gry wyświetlane na tablicy, w które cała klasa gra jednocześnie z telefonów. Jest pięć trybów: <b>Quiz live</b> z rankingiem po każdym pytaniu, <b>Wyścig</b>, w którym poprawne odpowiedzi napędzają auta na torze, <b>Wieża</b>, w której rosną budynki, <b>Drużyny</b>, czyli przeciąganie liny, oraz <b>Złoto</b> ze skrzyniami, kradzieżami i tarczami.</p>
 <h3 id="live-start">Jak zacząć</h3>
 <ol class="steps">
-<li>Na pulpicie, w sekcji <b>Na żywo</b> pod grami, kliknij <b>Quiz live</b>, <b>Wyścig</b> albo <b>Wieżę</b>.</li>
+<li>Na pulpicie, w sekcji <b>Na żywo</b> pod grami, kliknij <b>Quiz live</b>, <b>Wyścig</b>, <b>Wieżę</b>, <b>Drużyny</b> albo <b>Złoto</b>.</li>
 <li>Dodaj pytania tak samo jak w zwykłym quizie.</li>
-<li>Kliknij <b>Graj na żywo</b> (przycisk jest na górze i pod listą pytań) i wybierz język gry, sposób nadawania nazw, muzykę oraz to, czy po rankingu gra ma iść dalej sama (w wyścigu i wieży: czas gry).</li>
+<li>Kliknij <b>Graj na żywo</b> (przycisk jest na górze i pod listą pytań) i wybierz język gry, sposób nadawania nazw, muzykę oraz to, czy po rankingu gra ma iść dalej sama (w wyścigu, wieży, drużynach i złocie: czas gry; w drużynach także liczba drużyn).</li>
 <li>Kliknij „Utwórz pokój” i pokaż ekran na tablicy albo rzutniku.</li>
 <li>Uczniowie skanują <b>kod QR</b> telefonem albo wchodzą na adres z ekranu i wpisują 6-cyfrowy kod.</li>
 <li>Gdy wszyscy są w poczekalni, kliknij <b>Start</b>.</li>
@@ -696,7 +709,36 @@ F: Tom has two sisters.</pre>
 <li><b>Wysokie wieże:</b> gdy budynki przestają się mieścić, widok sam się oddala.</li>
 <li><b>Koniec:</b> po czasie są fajerwerki, podium i statystyki. Budowę możesz też zakończyć wcześniej przyciskiem „Zakończ budowę”.</li>
 </ul>
-<div class="note">W wyścigu i wieży uczniowie widzą pytania na telefonach, więc zdjęcia do pytań nie są pokazywane. Dialogi dodane do pytań są widoczne.</div>
+<h3 id="live-druzyny">Drużyny (przeciąganie liny)</h3>
+<p>Pytania lecą w pętli jak w wyścigu, ale cała klasa gra w drużynach. Na tablicy jest boisko z błotem pośrodku, a drużyny ciągną linę z węzłem. Na linie stoją postacie uczniów z ich awatarami, w koszulkach w kolorze drużyny.</p>
+<ul>
+<li><b>Liczba drużyn:</b> 2, 3 albo 4 (ustawiasz przed grą). Gra losuje składy i wyrównuje ich liczebność. Potrzeba co najmniej 2 graczy.</li>
+<li><b>Szarpnięcie:</b> każda poprawna odpowiedź to szarpnięcie liny. Postacie odchylają się do tyłu, a spod butów leci kurz.</li>
+<li><b>Węzeł:</b> przesuwa się w stronę drużyny, która prowadzi, tym bardziej, im większa przewaga nad drugą drużyną. Gdy węzeł dotrze na pole drużyny (przerywana linia z flagą), gra kończy się od razu, a przegrani lądują w błocie.</li>
+<li><b>Sprawiedliwie:</b> liczy się średnia poprawnych odpowiedzi na osobę, więc większa drużyna nie ma przewagi.</li>
+<li><b>Na tablicy:</b> tablica wyników drużyn z paskiem siły (ile szarpnięć w ostatnich sekundach), napis „SUPER CIĄG!” przy serii, komunikaty typu „Czerwoni przejmują prowadzenie!” i znaczek przy liderze.</li>
+<li><b>Na telefonie:</b> uczeń widzi kolor swojej drużyny i mały pasek z węzłem, który pokazuje, czy jego drużyna prowadzi.</li>
+<li><b>Koniec:</b> po czasie albo po wciągnięciu węzła jest podium drużyn i statystyki (dla drużyn i dla każdego ucznia).</li>
+</ul>
+<h3 id="live-zloto">Złoto (skrzynie)</h3>
+<p>Każdy gra na siebie. Za każdą poprawną odpowiedź uczeń wybiera na telefonie jedną z trzech skrzyń. Po otwarciu widzi, co było w pozostałych dwóch.</p>
+<div class="tbl"><table>
+<tr><th>W skrzyni</th><th>Co się dzieje</th></tr>
+<tr><td>💰 Złoto</td><td>Od 10 złota w górę. Im więcej poprawnych odpowiedzi, tym większe skarby.</td></tr>
+<tr><td>💎 Jackpot</td><td>Duży skarb, rzadko.</td></tr>
+<tr><td>✨ ×2</td><td>Podwaja złoto ucznia.</td></tr>
+<tr><td>🗡 Kradzież</td><td>Uczeń wybiera osobę z listy i zabiera jej 25% złota.</td></tr>
+<tr><td>🔄 Zamiana</td><td>Uczeń zamienia się całym złotem z wybraną osobą.</td></tr>
+<tr><td>🛡 Tarcza</td><td>Chroni przed jedną kradzieżą albo zamianą.</td></tr>
+<tr><td>💸 Pech</td><td>Uczeń traci 25% złota.</td></tr>
+<tr><td>🕸 Pusta skrzynia</td><td>Nic się nie dzieje.</td></tr>
+</table></div>
+<ul>
+<li><b>Na tablicy:</b> zatoka piratów o zachodzie słońca, a na plaży stosy złota 10 najbogatszych graczy z awatarami i skrzyniami. Lider ma koronę, a gracze z tarczą świecącą bańkę. Kradzież widać jako złote monety lecące między stosami. Obok jest „Dziennik skarbów” z ostatnimi wydarzeniami, a na górze łączna wartość skarbu w grze.</li>
+<li><b>Na telefonie:</b> uczeń widzi swoje złoto, a gdy ktoś go okradnie albo zamieni się z nim złotem, dostaje powiadomienie.</li>
+<li><b>Koniec:</b> po czasie wygrywa najbogatszy. W statystykach jest złoto, poprawność, liczba skrzyń, ile kto ukradł i ile stracił przez kradzieże.</li>
+</ul>
+<div class="note">W wyścigu, wieży, drużynach i złocie uczniowie widzą pytania na telefonach, więc zdjęcia do pytań nie są pokazywane. Dialogi dodane do pytań są widoczne. Każdy z tych trybów potrzebuje co najmniej 3 pytań.</div>
 <h3 id="live-zasady">Zasady i ograniczenia</h3>
 <ul>
 <li>Do <b>40 graczy</b> w jednym pokoju. Kolejne osoby zobaczą informację, że pokój jest pełny.</li>
