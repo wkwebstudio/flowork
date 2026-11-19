@@ -249,3 +249,4 @@ Object.assign(exports, require("./mail"));
 // ---------- Polecenia i statystyki ----------
 Object.assign(exports, require("./ref"));
 Object.assign(exports, require("./lib"));
+Object.assign(exports, require("./recover"));
