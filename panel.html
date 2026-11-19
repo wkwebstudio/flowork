@@ -6021,7 +6021,7 @@ async function lvHost(e,Q,cfg){const L=window.__LV;let code='',alive=true,unsub=
   /* ====== ZŁOTO: skrzynie, kradzieże, tarcze ====== */
   var GD={g:{},sh:{},seen:{},st:{},nt:{},ns:0,pT:0,pTo:0,tot:0,shown:{}},gdRaf=0;
   var gdSt=id=>GD.st[id]||(GD.st[id]={ch:0,s:0,sv:0,lost:0,best:0});
-  function gdProc(){const A=act(),fx=[];A.forEach(id=>{const a=P[id]&&P[id].a;if(!a||a.m!=='g'||!Array.isArray(a.ev))return;a.ev.slice().sort((x,y)=>x[0]-y[0]).forEach(e=>{if(!(+e[0]>(GD.seen[id]||0)))return;GD.seen[id]=+e[0];const r=gdApply(id,e);if(r)fx.push(r)})});
+  function gdProc(){const A=act(),fx=[];A.forEach(id=>{const a=P[id]&&P[id].a;if(!a||a.m!=='g'||!Array.isArray(a.ev))return;a.ev.map(e=>Array.isArray(e)?e:e&&typeof e==='object'?[e.s,e.k,e.v,e.t]:null).filter(Boolean).sort((x,y)=>x[0]-y[0]).forEach(e=>{if(!(+e[0]>(GD.seen[id]||0)))return;GD.seen[id]=+e[0];const r=gdApply(id,e);if(r)fx.push(r)})});
     if(fx.length){fx.forEach(gdFx);gdSoon()}return fx.length}
   function gdApply(id,e){const k=String(e[1]),G=GD.g,me=G[id]||0,s=gdSt(id),cc=rc(id).c,to=e[3]&&P[e[3]]&&act().indexOf(e[3])>=0?e[3]:null;if(s.ch>=cc)return null;s.ch++;
     if(k==='a'){const v=Math.max(0,Math.min(60*(1+Math.floor(cc/3)),Math.round(+e[2]||0)));G[id]=me+v;return{k:'a',id:id,v:v}}
