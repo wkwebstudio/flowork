@@ -11,7 +11,7 @@
 <style>
 :root{--bg:#fbfaf7;--card:#fff;--ink:#16132b;--mut:#6b6880;--line:#e7e4ee;--acc:#6340ff;--acc2:#ff6b57;--soft:#f1eeff;--ok:#17a673;--bad:#d6335a;--warn:#b45309;--warnbg:#fff4dd}
 @media(prefers-color-scheme:dark){:root{--bg:#0f0d1d;--card:#181530;--ink:#f3f1ff;--mut:#a9a5c4;--line:#2b2750;--acc:#8b6dff;--acc2:#ff8470;--soft:#1f1b3d;--ok:#3ed9a2;--bad:#ff7a9c;--warn:#fbbf24;--warnbg:#3a2c0c}}
-@font-face{font-family:'FwI';src:url('/fwicons.woff2?v=23') format('woff2');font-display:swap}
+@font-face{font-family:'FwI';src:url('/fwicons.woff2?v=24') format('woff2');font-display:swap}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth;scroll-padding-top:84px}
 body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
@@ -977,6 +977,13 @@ kowalska  anna</textarea><div class="tout" id="cout"></div></div></div></article
 </table></div>
 <h3 id="ust-powiadomienia">Powiadomienia e-mail</h3>
 <p>Jeden przycisk włącza i wyłącza wiadomości o ukończonych ćwiczeniach. Adresu nie trzeba wpisywać, bo wiadomości idą na adres konta.</p>
+<h3 id="ust-bezpieczenstwo">Bezpieczeństwo danych</h3>
+<p>Panel możesz mieć otwarty na kilku urządzeniach albo w kilku kartach naraz. Zmiany z każdego z nich są łączone, więc ćwiczenie dodane na jednym komputerze nie zniknie, gdy na drugim zapiszesz coś innego. Gdy panel dołączy zmiany z innego miejsca, zobaczysz krótki komunikat.</p>
+<ul>
+<li><b>🛟 Kopie zapasowe:</b> panel zapisuje w chmurze jedną kopię dziennie i trzyma ostatnie 14 dni. Przy każdym dniu widać liczbę ćwiczeń. „Sprawdź” pokazuje, których ćwiczeń z tej kopii brakuje teraz w panelu, i pozwala je przywrócić.</li>
+<li><b>🔗 Odzyskaj ćwiczenia z linków:</b> każde ćwiczenie, do którego kiedyś wygenerowałeś link dla uczniów, jest zapisane w chmurze. Panel pokaże te, których nie ma ani na pulpicie, ani w koszu. Po przywróceniu stary link działa dalej, a wyniki uczniów wracają. Tylko testów nie da się odtworzyć w ten sposób.</li>
+</ul>
+<p class="fine">Przywracanie zawsze tylko dodaje brakujące ćwiczenia. Niczego nie usuwa ani nie nadpisuje.</p>
 <h3 id="ust-kopia">Kopia i eksport</h3>
 <ul>
 <li><b>Pobierz</b> zapisuje plik ze wszystkimi ćwiczeniami, folderami i wynikami.</li>
