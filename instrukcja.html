@@ -282,7 +282,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--mut);font-siz
  <div><b>Pulpit</b><button class="hs" data-h="7" style="right:8px;top:4px">8</button><div class="pmd"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><button class="hs" data-h="6" style="left:calc(50% - 15px);top:48%">7</button></div>
 </div><div class="pmi" id="pmi"></div></div>
 <div class="map">
-<div><b><i class="ei">➕</i> Nowe ćwiczenie</b><p>Dziesięć kafelków, po jednym na każdy typ. Pod nimi jest sekcja „Gry” z pięcioma grami i sekcja „Na żywo” z pięcioma grami na tablicę. Kliknięcie od razu tworzy ćwiczenie w folderze, w którym jesteś.</p></div>
+<div><b><i class="ei">➕</i> Nowe ćwiczenie</b><p>Dziesięć kafelków, po jednym na każdy typ. Pod nimi jest sekcja „Gry” z pięcioma grami i sekcja „Na żywo” z pięcioma grami na tablicę. Kliknięcie od razu tworzy ćwiczenie w folderze, w którym jesteś, a na telefonie ekran sam zjeżdża do nowego ćwiczenia. Trójkącik ▼ przy nazwie sekcji (Ćwiczenia, Gry, Na żywo) chowa ją albo pokazuje. Panel zapamiętuje, co jest schowane.</p></div>
 <div><b><i class="ei">🗂</i> Pulpit</b><p>Twoje foldery i ćwiczenia w postaci ikon. Tu porządkujesz materiały.</p></div>
 <div><b><i class="ei">📊</i> Odpowiedzi uczniów</b><p>Wszystkie wyniki ze wszystkich ćwiczeń. Czerwona plakietka pokazuje, ile jest nowych.</p></div>
 <div><b><i class="ei">📚</i> Biblioteka ćwiczeń</b><p>Ćwiczenia udostępnione przez innych nauczycieli. Kopiujesz je jednym kliknięciem.</p></div>
@@ -400,7 +400,9 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--mut);font-siz
 <ul>
 <li><b>Wartości dla nowych pytań:</b> czas w sekundach, punkty i największy bonus za szybkość. Każde pytanie możesz potem ustawić osobno.</li>
 <li><b>Bonus za szybkość</b> jest tym większy, im szybciej uczeń odpowie.</li>
-<li><b>Muzyka:</b> wybierz jedną z gotowych ścieżek albo ją wyłącz. Gra cicho w tle, a uczeń może ją wyciszyć.</li>
+<li><b>Muzyka:</b> te same pięć utworów co w quizie na żywo (Quizowa, Mistrz quizu, Błysk, Namysł, Napięcie) albo bez muzyki. Gra cicho w tle, a uczeń może ją wyciszyć.</li>
+<li><b>⧉ Kopiuj pytanie</b> (pod pytaniem, obok „Usuń pytanie”) wstawia kopię pytania tuż pod nim. Przydaje się, gdy kolejne pytania różnią się tylko jednym słowem.</li>
+<li><b>Zdjęcie w pytaniu</b> na telefonie ucznia jest nad treścią, a na komputerze pod nią.</li>
 </ul>
 <p><b>Rodzaje pytań.</b> Rodzaj wybierasz kafelkiem na górze każdego pytania. Kolejność pytań zmienisz strzałkami ▲ ▼ w nagłówku pytania albo przyciskami „W górę” i „W dół” pod nim. W treści pytania działa pogrubienie (przycisk „𝐁 Pogrubienie”) i nowe linie (Enter).</p>
 <p><b>Transformacje (key word transformations).</b> Wpisz pytanie w trzech liniach albo w jednej, np. <code>They built this school in 1995. [WAS] This school (______) in 1995.</code> Flowork sam rozbije je na trzy linie, a słowo w nawiasie kwadratowym pokaże jako wyróżnioną ramkę.</p>
@@ -573,7 +575,19 @@ F: Tom has two sisters.</pre>
 <li><b>Życia:</b> trzy. Pierwsze trafienie złej bańki przy danym pytaniu odejmuje 50 punktów, drugie zabiera życie. Życie przepada też, gdy bańki dolecą do statku. </li>
 <li><b>Bez końca:</b> gra trwa, dopóki uczeń ma życia. Co pięć pytań jest nowy poziom i bańki lecą coraz szybciej. Co trzy poziomy wraca jedno życie (najwyżej trzy). „Długość gry” decyduje, jak szybko rośnie tempo.</li>
 <li><b>Punkty:</b> więcej za szybki strzał, wyższy poziom i serię trafień bez pomyłki.</li>
+<li><b>Bonusy:</b> co kilka pytań z góry spada świecąca kula. Uczeń łapie ją statkiem. Bonusy działają kilka sekund, a na dole ekranu widać, ile im zostało.</li>
 </ul>
+<div class="tbl"><table>
+<tr><th>Bonus</th><th>Co daje</th></tr>
+<tr><td>❤ Dodatkowe życie</td><td>+1 życie (najwyżej 5)</td></tr>
+<tr><td>⚡ Szybkie strzały</td><td>statek strzela prawie bez przerwy</td></tr>
+<tr><td>🔱 Potrójny strzał</td><td>trzy pociski naraz, na boki i prosto</td></tr>
+<tr><td>🐢 Spowolnienie · ❄ Zamrożenie</td><td>bańki zwalniają albo na chwilę stają w miejscu</td></tr>
+<tr><td>🛡 Tarcza</td><td>chroni przed jedną utratą życia</td></tr>
+<tr><td>⭐ Podwójne punkty</td><td>każde trafienie liczy się podwójnie</td></tr>
+<tr><td>🔍 Lupa</td><td>usuwa dwie złe bańki</td></tr>
+<tr><td>🧲 Magnes</td><td>kolejne bonusy same lecą do statku</td></tr>
+</table></div>
 <p class="fine">Bańki lecą w czterech rzędach, więc dolne zasłaniają górne. Trzeba wyczuć moment na strzał.</p>
 </article>
 <article class="ty" id="g-memory" style="--c:#db2777"><h3><i class="ei">🃏</i> Memory</h3>
@@ -582,7 +596,7 @@ F: Tom has two sisters.</pre>
 <tr><th>Tryb kart</th><th>Jak wygląda gra</th></tr>
 <tr><td>Zakryte z podglądem</td><td>Klasyczne memory. Na początku rundy karty są przez chwilę odkryte.</td></tr>
 <tr><td>Zakryte</td><td>To samo, ale bez podglądu. Trudniejsze.</td></tr>
-<tr><td>Odkryte na czas</td><td>Wszystkie karty widać od razu. Uczeń łączy pary jak najszybciej, a każda pomyłka dolicza 2 sekundy.</td></tr>
+<tr><td>Odkryte na czas</td><td>Wszystkie karty widać od razu. Uczeń łączy pary jak najszybciej, a każda pomyłka dolicza 2 sekundy. Zamiast punktów liczy się tylko czas, z dokładnością do milisekund (np. 18,452 s). Rekord to najkrótszy czas.</td></tr>
 </table></div>
 <p>Przy większej liczbie par gra sama dzieli je na <b>rundy</b>: do 6 par na telefonie i do 8 na komputerze. Na koniec uczeń dostaje od jednej do trzech gwiazdek, zależnie od liczby ruchów albo czasu.</p>
 <p class="fine">Karty z pytaniami mają fioletową kropkę, a karty z odpowiedziami różowy kwadrat. Dzięki temu widać, że para to zawsze jedna karta każdego rodzaju.</p>
@@ -830,7 +844,7 @@ kowalska  anna</textarea><div class="tout" id="cout"></div></div></div></article
 <ul>
 <li>Kosz otworzysz przyciskiem <b>Kosz</b> na pulpicie, pod „Odpowiedziami uczniów”.</li>
 <li><b>Przywróć</b> oddaje ćwiczenie na pulpit razem z wynikami.</li>
-<li><b>✕</b> usuwa jedno ćwiczenie na zawsze, a „Opróżnij kosz” wszystkie naraz.</li>
+<li><b>✕</b> usuwa jedno ćwiczenie na zawsze, a „🗑 Opróżnij cały kosz” na dole okna wszystkie naraz. Długą listę przewiniesz w oknie.</li>
 <li>Po 30 dniach ćwiczenie znika samo.</li>
 </ul>
 <p class="fine">Link ucznia do ćwiczenia w koszu dalej się otwiera, ale nowe wyniki zobaczysz dopiero po przywróceniu ćwiczenia.</p>
@@ -876,7 +890,7 @@ kowalska  anna</textarea><div class="tout" id="cout"></div></div></div></article
 </ul>
 </article>
 <article class="ty" id="u-odznaki" style="--c:#f59e0b"><h3><i class="ei">🏅</i> Odznaki i serie</h3>
-<p>Po skończeniu ćwiczenia uczeń widzi w rogu ekranu nowe odznaki i swoje serie. Przycisk <b>🏅 Moje odznaki</b> pokazuje wszystkie 13 odznak, w tym te jeszcze zablokowane.</p>
+<p>Po skończeniu ćwiczenia uczeń widzi w rogu ekranu nowe odznaki i swoje serie. Przycisk <b>🏅 Moje odznaki</b> pokazuje wszystkie 31 odznak, w tym te jeszcze zablokowane.</p>
 <div class="tbl"><table>
 <tr><th>Odznaka</th><th>Za co</th></tr>
 <tr><td>🌱 Pierwszy krok · 🎒 Pilny uczeń · 📚 Mól książkowy · 🏆 Mistrz nauki</td><td>1, 5, 10 i 25 ukończonych ćwiczeń</td></tr>
@@ -884,6 +898,14 @@ kowalska  anna</textarea><div class="tout" id="cout"></div></div></div></article
 <tr><td>📅 Trzy dni z rzędu · 🗓 Cały tydzień</td><td>ćwiczenia 3 i 7 dni pod rząd</td></tr>
 <tr><td>📈 Coraz lepiej · 🎯 Snajper</td><td>poprawa wyniku w tym samym ćwiczeniu, co najmniej 90% w 5 ćwiczeniach</td></tr>
 <tr><td>🦉 Nocny marek · 🐦 Ranny ptaszek</td><td>ćwiczenie po 21:00 albo przed 7:30</td></tr>
+<tr><td>🚀 Rakieta · 👑 Legenda</td><td>50 i 100 ukończonych ćwiczeń</td></tr>
+<tr><td>💎 Perfekcjonista · 🌟 Gwiazda klasy · ☄ Kometa</td><td>5 i 10 ćwiczeń bez błędu, 10 bezbłędnych z rzędu</td></tr>
+<tr><td>🌈 Dwa tygodnie · 🏔 Miesiąc nauki</td><td>ćwiczenia 14 i 30 dni pod rząd</td></tr>
+<tr><td>🐝 Pracowita pszczoła · 🏃 Maraton</td><td>3 i 10 ćwiczeń jednego dnia</td></tr>
+<tr><td>🧭 Odkrywca · 🗺 Podróżnik</td><td>3 i 6 różnych rodzajów ćwiczeń i gier</td></tr>
+<tr><td>💪 Nie poddaję się · 🔁 Do skutku · 🧠 Wielka głowa</td><td>bezbłędne ćwiczenie po wyniku poniżej 50%, to samo ćwiczenie 3 razy, bezbłędnie co najmniej 20 punktów</td></tr>
+<tr><td>🎮 Gracz</td><td>5 ukończonych gier</td></tr>
+<tr><td>🎈 Weekendowiec · 🎉 Piątek z nauką · 🎄 Świąteczny duch</td><td>nauka w weekend, w piątek po 15:00 albo między 20 a 31 grudnia</td></tr>
 </table></div>
 <p class="fine">Odznaki zapisują się na urządzeniu ucznia (w przeglądarce), więc na innym telefonie zaczyna od nowa. Nie trafiają do Twoich wyników. Podgląd ćwiczenia w panelu nie daje odznak.</p>
 </article>
@@ -1041,7 +1063,7 @@ bird: ptak</textarea><div class="tout" id="pout"></div></div></div>
 </main>
 </div>
 <button id="up" title="Do góry" aria-label="Do góry">↑</button>
-<footer><div class="w"><span>© <span id="yr"></span> Flowork</span><span><a href="/">Strona główna</a> · <a href="/regulamin.html">Regulamin</a> · <a href="/prywatnosc.html">Polityka prywatności</a></span></div></footer>
+<footer><div class="w"><span>© <span id="yr"></span> Flowork · Flagi: <a href="https://github.com/twitter/twemoji" rel="noopener">Twemoji</a> (CC-BY 4.0)</span><span><a href="/">Strona główna</a> · <a href="/regulamin.html">Regulamin</a> · <a href="/prywatnosc.html">Polityka prywatności</a></span></div></footer>
 <script>
 document.getElementById('yr').textContent=new Date().getFullYear();
 // spis treści
