@@ -1758,6 +1758,13 @@ html body .gfly{animation-name:gfly7;animation-duration:420s;animation-delay:-38
 .cpxi small{opacity:.7;font-size:12px}
 .cpxn{border-style:dashed}
 .cpxi small{display:block}
+.qmulti{display:flex;align-items:center;gap:12px;margin:0 auto 12px;max-width:720px;padding:10px 16px;border-radius:16px;background:#ffd23f;color:#2a1600;border:3px solid #fff;box-shadow:0 6px 20px #0006;animation:qmIn .5s cubic-bezier(.2,1.6,.4,1) both,qmP 2.4s ease-in-out .6s 3}
+.qmulti b{display:block;font-size:clamp(16px,2.4vw,22px);line-height:1.2}
+.qmulti small{display:block;font-size:clamp(13px,1.6vw,15px);opacity:.85;font-weight:600}
+.qmulti .qmi{font-size:26px;letter-spacing:-6px;flex:0 0 auto}
+@keyframes qmIn{from{transform:scale(.6);opacity:0}to{transform:none;opacity:1}}
+@keyframes qmP{0%,100%{transform:none}50%{transform:scale(1.04)}}
+@media (prefers-reduced-motion:reduce){.qmulti{animation:none}}
 
 .dt:has(#fbu){display:none!important}
 </style>
@@ -2429,7 +2436,7 @@ function quiz(ex){i18nInit(ex);
   const qa=$('#qa');
   const mu=()=>{const b=$('#mu');if(b){b.textContent=mute?'🔇':'🔊';b.onclick=()=>{mute=!mute;if(mp)mp.mute(mute);mu()}}};
   function intro(){qa.innerHTML=`${ex.n?`<section class="card big"><div class="pol">📌 Polecenie</div><div class="polt">${esc(ex.n)}</div></section>`:''}
-    <section class="card"><div class="row" style="margin:0"><span class="chip2">❓ ${Q.length} pytań</span><span class="chip2">⭐ do ${max} pkt</span><button class="btn" id="mu"></button></div>
+    <section class="card"><div class="row" style="margin:0"><span class="chip2">❓ ${plN(Q.length,'pytanie','pytania','pytań')}</span><span class="chip2">⭐ do ${max} pkt</span><button class="btn" id="mu"></button></div>
     <label>Twoje imię i nazwisko</label><input type="text" id="qn" placeholder="np. Anna Kowalska" style="max-width:340px">
     <div class="row"><button class="btn p" id="go" style="font-size:18px;padding:14px 30px">▶ Start</button></div>
     <div class="hint">Masz tylko jedną próbę. Im szybciej odpowiesz poprawnie, tym więcej punktów dostaniesz. Włącz dźwięk 🔊</div></section>`;mu();
@@ -2447,7 +2454,7 @@ function quiz(ex){i18nInit(ex);
     else if(ty==='f')body=`<div class="note">✍ Pytanie bez punktów. Twoja odpowiedź nie jest oceniana automatycznie, przeczyta ją nauczyciel.</div><textarea class="oin" id="fa" rows="3" placeholder="Napisz swoją odpowiedź…" style="text-align:left;font-weight:600"></textarea><div class="row" style="justify-content:center"><button class="btn p" id="ob">Wyślij odpowiedź ➜</button></div>`;
     else if(ty==='s')body=`<div class="hint" style="text-align:center">Dotykaj elementy po kolei, od pierwszego do ostatniego. Dotknięcie ułożonego elementu cofa go.</div><div class="sq"><div class="sqs" id="sqs"></div><div class="sqp" id="sqp"></div></div><div class="row" style="justify-content:center"><button class="btn p" id="ob">Zatwierdź ✔</button></div>`;
     else if(ty==='m')body=`<div class="hint" style="text-align:center">Dotknij elementu po lewej, potem pasującego po prawej (albo odwrotnie). Dotknięcie sparowanego elementu rozłącza parę.</div><div class="mt"><div id="mtl"></div><div id="mtr"></div></div><div class="row" style="justify-content:center"><button class="btn p" id="ob">Zatwierdź ✔</button></div>`;
-    else body=`<div class="qopts">${q.o.map((o,j)=>`<button class="opt" data-j="${j}"><span class="ol">${TO()[j%6]}</span><span>${big(esc(o[0]||''))}${o[1]?`<br><img src="${esc(o[1])}" alt="">`:''}</span></button>`).join('')}</div>${multi?`<div class="row" style="justify-content:center"><button class="btn p" id="ob">Zatwierdź ✔</button></div><div class="hint" style="text-align:center">Poprawnych odpowiedzi jest kilka</div>`:''}`;
+    else body=`${multi?'<div class="qmulti" role="note"><span class="qmi">☑☑</span><span><b>Poprawnych odpowiedzi jest kilka!</b><small>Zaznacz wszystkie dobre i kliknij „Zatwierdź”.</small></span></div>':''}<div class="qopts">${q.o.map((o,j)=>`<button class="opt" data-j="${j}"><span class="ol">${TO()[j%6]}</span><span>${big(esc(o[0]||''))}${o[1]?`<br><img src="${esc(o[1])}" alt="">`:''}</span></button>`).join('')}</div>${multi?`<div class="row" style="justify-content:center"><button class="btn p" id="ob">Zatwierdź ✔</button></div>`:''}`;
     qa.innerHTML=`<div class="qh"><span class="chip2">Pytanie ${i+1}/${Q.length}</span><span class="chip2">⭐ <b id="sc">${score}</b></span><button class="btn" id="mu"></button></div>
     <div class="qdots">${Q.map((x,k)=>`<i class="${k<i?(log[k]&&log[k][2]==1?'g':log[k]&&log[k][2]==2?'p':log[k]&&log[k][2]==3?'f':'b'):k===i?'c':''}"></i>`).join('')}</div>
     <div class="qcard ty-${ty}"><div class="qtimer" id="qt"><svg viewBox="0 0 44 44"><circle class="tr" cx="22" cy="22" r="19"/><circle class="tp" id="tp" cx="22" cy="22" r="19"/></svg><b id="tt">${tot}</b></div>
@@ -8064,6 +8071,7 @@ I18_PX.push([/^Przerwa przed: Fala (\d+)$/,'Break before: Wave $1'],[/^Przerwa p
 I18_PN2.push(['📤 Kopiuj do innego quizu','📤 Copy to another quiz'],['Skopiuj to pytanie do innego quizu','Copy this question to another quiz'],['⧉ Kopiuj pytanie do innego quizu','⧉ Copy question to another quiz'],['➕ Nowy quiz z tym pytaniem','➕ New quiz with this question'],['🔍 Szukaj quizu…','🔍 Search quizzes…'],['Kopiuj','Copy'],['Nie masz jeszcze innych quizów. Możesz utworzyć nowy.',"You don't have other quizzes yet. You can create a new one."]);
 I18_PX.push([/^Pytanie (\d+)(.*)\. Zaznacz quizy, do których ma trafić kopia\. Trafi na koniec każdego z nich\.$/,'Question $1$2. Tick the quizzes that should get a copy. It will be added at the end of each.'],[/^Kopiuj do (\d+) quizów$/,'Copy to $1 quizzes'],[/^⧉ Skopiowano pytanie do: (.*)\.$/,'⧉ Question copied to: $1.']);
 I18_PX.unshift([/^1 pytanie$/,'1 question'],[/^(\d+) pytani[ae]$/,'$1 questions'],[/^⧉ Skopiowano pytanie do: (.*)\.$/,(m,a)=>'⧉ Question copied to: '+a.replace(/^nowy quiz/,'a new quiz')+'.']);
+I18_PN2.push(['Poprawnych odpowiedzi jest kilka!','There are several correct answers!'],['Zaznacz wszystkie dobre i kliknij „Zatwierdź”.','Select all the correct ones and click “Confirm”.']);
 
 const I18_THN={'Mięta':'Mint','Święta':'Christmas','Systemowy':'System','Róż':'Rose','Fiolet':'Violet','Zachód':'Sunset','Biały':'White','Czarny':'Black','Święto Niepodległości':'Independence Day'};
 I18_PX.unshift([/^Podgląd, wynik: (\d+) z (\d+)(.*)$/,'Preview, score: $1 of $2$3'],[/^Motyw: (.+)$/,(m,a)=>'Theme: '+(I18_THN[a]||a)]);
