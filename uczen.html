@@ -1803,16 +1803,18 @@ const XA=(()=>{
   <path d="M6 56 Q4 50 10 48 L62 10 Q65 8 68 10 L120 48 Q126 50 124 56 Q120 62 114 57 Q110 63 104 55 Q99 60 94 50 L65 28 L38 49 Q33 58 27 54 Q22 62 17 56 Q11 62 6 56 Z" fill="#fff"/>
   <rect x="34" y="60" width="22" height="20" rx="2" fill="#ffd66b"/><path d="M45 60 V80 M34 70 H56" stroke="#70421f" stroke-width="2"/><rect x="74" y="62" width="18" height="30" rx="2" fill="#3b210c"/><circle cx="88" cy="78" r="1.6" fill="#ffd66b"/>
   <path d="M30 58 Q45 54 60 58 L60 61 Q45 58 30 61 Z" fill="#fff"/>`);
- const deerB=(lead,x,y)=>`<g transform="translate(${x} ${y})"><g fill="none" stroke="#6b4322" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"><path d="M41 52 L29 62 L18 61"/><path d="M76 52 L90 60 L99 55"/></g>
-  <g fill="none" stroke="#7e5229" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"><path d="M46 54 L37 68 L26 70"/><path d="M72 54 L85 66 L95 67"/></g>
-  <g stroke="#2a1a0d" stroke-width="4.8" stroke-linecap="round"><path d="M18 61 l-2 -.3 M26 70 l-2 .2 M99 55 l1.8 -1 M95 67 l2 .2"/></g>
+ const xAT=(ty,v,dl,du)=>`<animateTransform attributeName="transform" type="${ty}" values="${v}" dur="${du||.62}s" begin="${dl}s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.5;1" keySplines=".42 0 .58 1;.42 0 .58 1"/>`;
+ const xLeg=(col,d,hf,hx,hy,a,b,dl)=>`<g>${xAT('rotate',`${a} ${hx} ${hy};${b} ${hx} ${hy};${a} ${hx} ${hy}`,dl)}<path d="${d}" stroke="${col}"/><path d="${hf}" stroke="#2a1a0d" stroke-width="4.8"/></g>`;
+ const deerB=(lead,x,y)=>{const dl=-(x/104*.21).toFixed(2);return `<g transform="translate(${x} ${y})"><g>${xAT('translate',`0 1.5;0 -3.5;0 1.5`,dl)}<g>${xAT('rotate',`2.5 60 46;-3 60 46;2.5 60 46`,dl)}
+  <g fill="none" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round">${xLeg('#6b4322','M41 52 L29 62 L18 61','M18 61 l-2 -.3',41,52,32,-8,dl-.05)}${xLeg('#6b4322','M76 52 L90 60 L99 55','M99 55 l1.8 -1',76,52,-34,6,dl-.05)}</g>
+  <g fill="none" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round">${xLeg('#7e5229','M46 54 L37 68 L26 70','M26 70 l-2 .2',46,54,38,-6,dl)}${xLeg('#7e5229','M72 54 L85 66 L95 67','M95 67 l2 .2',72,54,-40,4,dl)}</g>
   <ellipse cx="59" cy="46" rx="27" ry="12.5" fill="#9a6a3a"/><ellipse cx="60" cy="52" rx="20" ry="6" fill="#b88a58" opacity=".7"/>
-  <path d="M36 46 Q29 36 26 23 L37 19 Q40 33 48 39 Z" fill="#9a6a3a"/><path d="M30 38 Q34 46 42 50 L36 46 Z" fill="#e9dcc6"/>
+  <g>${xAT('rotate',`-4 42 42;5 42 42;-4 42 42`,dl-.12)}<path d="M36 46 Q29 36 26 23 L37 19 Q40 33 48 39 Z" fill="#9a6a3a"/><path d="M30 38 Q34 46 42 50 L36 46 Z" fill="#e9dcc6"/>
   <ellipse cx="24" cy="20" rx="10.5" ry="6.6" transform="rotate(20 24 20)" fill="#9a6a3a"/><ellipse cx="34" cy="13" rx="5.4" ry="2.5" transform="rotate(-32 34 13)" fill="#7e5229"/>
   <circle cx="14.6" cy="18.6" r="${lead?3.4:2.6}" fill="${lead?'#ff3b4e':'#2a1a0d'}"/>${lead?'<circle cx="14.6" cy="18.6" r="7" fill="#ff3b4e" opacity=".28"/>':''}<circle cx="24.5" cy="17.5" r="1.3" fill="#1b1209"/>
-  <g fill="none" stroke="#ead7a8" stroke-width="2.1" stroke-linecap="round"><path d="M30 13 C28 6 33 2 31 -5"/><path d="M29.6 6.5 L24 2 M31 1 L36.5 -3"/><path d="M33.5 12 C34 6 39 4 39 -2" stroke="#cdb783"/><path d="M36 5 L41 3" stroke="#cdb783"/></g>
+  <g fill="none" stroke="#ead7a8" stroke-width="2.1" stroke-linecap="round"><path d="M30 13 C28 6 33 2 31 -5"/><path d="M29.6 6.5 L24 2 M31 1 L36.5 -3"/><path d="M33.5 12 C34 6 39 4 39 -2" stroke="#cdb783"/><path d="M36 5 L41 3" stroke="#cdb783"/></g></g>
   <ellipse cx="86" cy="40" rx="4.2" ry="3" fill="#f1e6d6"/>
-  <path d="M45 35.5 Q48.5 46 45.5 57" stroke="#d62839" stroke-width="3.2" fill="none" stroke-linecap="round"/><circle cx="45.5" cy="58" r="2.6" fill="#ffd23b"/></g>`;
+  <path d="M45 35.5 Q48.5 46 45.5 57" stroke="#d62839" stroke-width="3.2" fill="none" stroke-linecap="round"/><circle cx="45.5" cy="58" r="2.6" fill="#ffd23b"/></g></g></g>`};
  const sleighB=(x,y)=>`<g transform="translate(${x} ${y})"><g fill="none" stroke="#f2c14e" stroke-width="3" stroke-linecap="round"><path d="M22 84 Q9 84 9 73 Q9 65 17 66"/><path d="M22 84 H126 Q138 84 141 74"/><path d="M44 84 V71 M106 84 V71"/></g>
   <ellipse cx="108" cy="33" rx="17" ry="18" fill="#8b5a2b"/><path d="M96 20 Q108 10 120 20" stroke="#6b4322" stroke-width="2" fill="none"/><rect x="92" y="10" width="11" height="11" rx="1.5" fill="#4cc3ff" transform="rotate(-12 97 15)"/><rect x="108" y="6" width="12" height="12" rx="1.5" fill="#ffd23b" transform="rotate(10 114 12)"/><path d="M114 6 v12 M108 12 h12" stroke="#e63946" stroke-width="1.6" transform="rotate(10 114 12)"/>
   <path d="M26 72 Q20 50 33 45 Q37 44 38 49 L38 57 L92 57 Q95 32 120 27 Q131 26 130 35 Q123 37 122 47 L120 72 Z" fill="#c1121f"/><path d="M26 72 Q20 50 33 45 Q37 44 38 49 L38 57 L92 57 Q95 32 120 27 Q131 26 130 35" fill="none" stroke="#ffd166" stroke-width="1.8" stroke-linecap="round"/><path d="M34 65 Q70 61 116 65" stroke="#ffd166" stroke-width="1.6" fill="none"/>
@@ -1820,8 +1822,8 @@ const XA=(()=>{
   <path d="M70 44 L52 47" stroke="#d62839" stroke-width="6.5" stroke-linecap="round"/><circle cx="50.5" cy="47.3" r="3.6" fill="#1d2433"/><path d="M57 45.2 l1.2 5.4" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/>
   <circle cx="69" cy="27" r="8.2" fill="#f2c9a5"/><path d="M61.5 27 Q60 40 69 41 Q78 40 77 28 Q73 32 69 31 Q65 32 61.5 27 Z" fill="#fff"/><circle cx="63.6" cy="27.4" r="1.5" fill="#e79a8a"/><circle cx="66" cy="24.6" r="1" fill="#1b1209"/>
   <path d="M61 22 Q66 9 79 13 Q88 16 93 25 L84 22 Q80 19 77 23 Z" fill="#d62839"/><path d="M60.5 23.5 Q69 18 78 23" stroke="#fff" stroke-width="3.6" fill="none" stroke-linecap="round"/><circle cx="93.5" cy="25.5" r="3.4" fill="#fff"/></g>`;
- const sleigh=sv('0 -14 470 116',`<path d="M348 47 Q300 40 255 58 M348 47 Q230 30 150 52 M348 47 Q160 22 46 50" fill="none" stroke="#ead7a8" stroke-width="1.1" opacity=".9"/>`+deerB(1,0,-6)+deerB(0,104,2)+deerB(0,208,8)+sleighB(298,10)+
-  `<g fill="#ffe9a8"><circle cx="446" cy="70" r="2.2"/><circle cx="456" cy="60" r="1.4" opacity=".8"/><circle cx="462" cy="78" r="1.8" opacity=".6"/><path d="M450 84 l1.2 3 3 1.2-3 1.2-1.2 3-1.2-3-3-1.2 3-1.2z" opacity=".9"/><path d="M464 66 l.9 2.2 2.2.9-2.2.9-.9 2.2-.9-2.2-2.2-.9 2.2-.9z" opacity=".7"/></g>`,'xsl');
+ const sleigh=sv('0 -14 470 116',`<path d="M348 47 Q300 40 255 58 M348 47 Q230 30 150 52 M348 47 Q160 22 46 50" fill="none" stroke="#ead7a8" stroke-width="1.1" opacity=".9"><animate attributeName="d" values="M348 47 Q300 40 255 58 M348 47 Q230 30 150 52 M348 47 Q160 22 46 50;M348 49 Q300 46 255 54 M348 49 Q230 38 150 48 M348 49 Q160 30 46 46;M348 47 Q300 40 255 58 M348 47 Q230 30 150 52 M348 47 Q160 22 46 50" dur=".62s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.5;1" keySplines=".42 0 .58 1;.42 0 .58 1"/></path>`+deerB(1,0,-6)+deerB(0,104,2)+deerB(0,208,8)+`<g>${xAT('rotate','-1.6 372 88;1.8 372 88;-1.6 372 88',-.3,1.24)}<g>${xAT('translate','0 0;0 -2;0 0',-.1,.62)}`+sleighB(298,10)+`</g></g>`+
+  `<g fill="#ffe9a8"><animate attributeName="opacity" values="1;.35;1" dur=".9s" repeatCount="indefinite"/><circle cx="446" cy="70" r="2.2"/><circle cx="456" cy="60" r="1.4" opacity=".8"/><circle cx="462" cy="78" r="1.8" opacity=".6"/><path d="M450 84 l1.2 3 3 1.2-3 1.2-1.2 3-1.2-3-3-1.2 3-1.2z" opacity=".9"/><path d="M464 66 l.9 2.2 2.2.9-2.2.9-.9 2.2-.9-2.2-2.2-.9 2.2-.9z" opacity=".7"/></g>`,'xsl');
  const bauble=(c,d)=>sv('0 0 40 50',`<rect x="16" y="2" width="8" height="7" rx="1.5" fill="#d9b65c"/><circle cx="20" cy="28" r="17" fill="${c}"/><path d="M4.5 22 Q20 30 35.5 22 M3.6 31 Q20 39 36.4 31" stroke="${d}" stroke-width="2.4" fill="none"/><ellipse cx="13.5" cy="20" rx="4" ry="6" fill="#fff" opacity=".45" transform="rotate(28 13.5 20)"/>`);
  const holly=sv('0 0 120 50',`<g fill="#157a4b" stroke="#0c4f33" stroke-width="1"><path d="M56 30 C46 18 40 22 34 12 C30 20 22 16 16 20 C20 26 14 30 16 36 C24 34 26 42 34 40 C40 38 46 40 56 30 Z"/><path d="M64 30 C74 18 80 22 86 12 C90 20 98 16 104 20 C100 26 106 30 104 36 C96 34 94 42 86 40 C80 38 74 40 64 30 Z"/></g><path d="M54 30 L20 26 M66 30 L100 26" stroke="#0c4f33" stroke-width="1.2"/>
   <circle cx="54" cy="33" r="6.5" fill="#e63946"/><circle cx="66" cy="33" r="6.5" fill="#d62839"/><circle cx="60" cy="24" r="6.5" fill="#ff4d5a"/><g fill="#fff" opacity=".6"><circle cx="52" cy="31" r="1.6"/><circle cx="64" cy="31" r="1.6"/><circle cx="58" cy="22" r="1.6"/></g>`);
@@ -7011,7 +7013,7 @@ function gamePlay(ex){const gm=GMS[ex.gm]?ex.gm:'sp',G=GMS[gm],ic=TYP[G[0]][0];
   app.innerHTML=hdr(esc(ex.t||G[1]),ic+' '+esc(G[1])+(ex.n?' · '+esc(ex.n):''))+'<div id="gma"></div>';const box=$('#gma');let stop=null;
   const TM=gm==='me'&&ex.pk===2,bk='fw_gbest_'+ex.i+'_'+gm+(TM?'_t':''),best=()=>{try{return +localStorage.getItem(bk)||0}catch(e){return 0}},bfmt=v=>TM?gmMs(v):v;
   const n=Object.values(ex.gp||[]).length;if(n<3){box.innerHTML='<section class="card">Ta gra nie ma jeszcze pytań.</section>';return}
-  const RULES={sp:['Przesuwaj statek palcem, myszką albo strzałkami.','Strzelaj dotknięciem, kliknięciem lub spacją.','Traf w bańkę z poprawną odpowiedzią. Gra nie ma końca: z każdym poziomem bańki lecą szybciej, a co trzy poziomy dostajesz życie. Czasem spada bonus: złap go statkiem!'],
+  const RULES={sp:['Przesuwaj statek palcem, myszką albo strzałkami.','Strzelaj stuknięciem, kliknięciem lub spacją. Przytrzymaj palec w miejscu, żeby strzelać seriami.','Traf w bańkę z poprawną odpowiedzią. Gra nie ma końca: z każdym poziomem bańki lecą szybciej, a co trzy poziomy dostajesz życie. Czasem spada bonus: złap go statkiem!'],
     me:TM?['Wszystkie karty są odkryte.','Klikaj po dwie: pytanie i pasującą odpowiedź.','Liczy się tylko czas (sekundy i milisekundy). Każda pomyłka to +2 s kary.']:['Odkrywaj po dwie karty.','Szukaj par: pytanie i pasująca odpowiedź.','Im mniej ruchów, tym więcej gwiazdek.'],
     bl:['Odpowiedz na pytanie, żeby dostać trzy bloki.','Przeciągaj bloki na planszę i układaj pełne rzędy albo kolumny.','Błędna odpowiedź daje trudniejsze bloki. Gra trwa, dopóki bloki się mieszczą, a z czasem są coraz większe.'],
     zo:['Zombie idą w stronę barykady. Każda poprawna odpowiedź to celny strzał.','Za pokonane zombie dostajesz monety. Między falami otwiera się sklep: kup lepszą broń, granaty, kamizelkę, drugi płot albo wieżyczkę.','Błąd blokuje broń na sekundę i przyspiesza zombie. Przetrwaj wszystkie fale i pokonaj króla zombie.'],
@@ -7106,7 +7108,9 @@ function gmSpace(st,api){
   function puClear(){const bad=tg.filter(t=>!t.dead&&!t.ok);if(!bad.length){FX.clear=1;return}shuf(bad).slice(0,2).forEach(t=>{t.dead=1;boom(t.x,t.y,'#4ade80',16)})}
   function puGet(o){const p=o.p;S.pu++;boom(o.x,o.y,p.col,28);boom(o.x,o.y,'#ffffff',8);gsfx('lvl');ftx.push({t:p.ic+' '+p.n+'!',x:Math.min(W-90,Math.max(90,o.x)),y:ship.y-70,a:1.4,col:p.col});
     if(p.k==='life'){S.lives=Math.min(5,S.lives+1);hud()}else if(p.k==='shield')FX.shield=true;else if(p.k==='clear')puClear();else FX[p.k]=p.d;fxDraw(true)}
-  function fxDraw(force){fxT-=force?99:0;if(fxT>0)return;fxT=.12;const L=PU.filter(p=>p.d&&FX[p.k]>0).map(p=>`<span style="--c:${p.col}"><i>${p.ic}</i>${p.n}<em><b style="width:${Math.max(0,FX[p.k]/p.d*100).toFixed(0)}%"></b></em></span>`);if(FX.shield)L.push('<span style="--c:#60a5fa"><i>🛡</i>Tarcza</span>');fxEl.innerHTML=L.join('')}
+  const fxMap={};function fxDraw(force){fxT-=force?99:0;if(fxT>0)return;fxT=.12;const want=PU.filter(p=>p.d&&FX[p.k]>0).map(p=>[p.k,p.col,p.ic,p.n,FX[p.k]/p.d]);if(FX.shield)want.push(['shield','#60a5fa','🛡','Tarcza',-1]);
+    const keep={};want.forEach(([k,col,ic,n,f])=>{keep[k]=1;let el=fxMap[k];if(!el){el=document.createElement('span');el.style.setProperty('--c',col);el.innerHTML='<i>'+ic+'</i>'+n+(f>=0?'<em><b></b></em>':'');fxEl.appendChild(el);fxMap[k]=el}if(f>=0){const b=el.querySelector('em b');if(b)b.style.width=Math.max(0,f*100).toFixed(0)+'%'}});
+    Object.keys(fxMap).forEach(k=>{if(!keep[k]){fxMap[k].remove();delete fxMap[k]}})}
   function hud(){api.hud([['Poziom',S.lvl],['Punkty',S.score],['Seria',S.streak]]);api.lives(S.lives,Math.max(3,S.lives))}
   function boom(x,y,col,n){for(let i=0;i<n;i++){const a=Math.random()*6.3,v=rnd(40,260);par.push({x:x,y:y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,l:rnd(.4,.9),t:0,col:col,r:rnd(1.5,4)})}}
   function fire(){if(ship.cd>0||wait>0||!cur)return;ship.cd=FX.rapid>0?.075:.2;bul.push({x:ship.x,y:ship.y-30,vy:-680});if(FX.tri>0){bul.push({x:ship.x-10,y:ship.y-24,vy:-660,vx:-150});bul.push({x:ship.x+10,y:ship.y-24,vy:-660,vx:150})}gsfx('shot')}
@@ -7163,13 +7167,18 @@ function gmSpace(st,api){
     c.restore();if(flash>0){c.fillStyle='rgba(244,63,94,'+(flash*.7)+')';c.fillRect(0,0,W,H)}}
   function loop(t){if(!alive)return;raf=requestAnimationFrame(loop);const raw=Math.min(.05,(t-last)/1000||0);last=t;if(document.hidden)return;sdt+=(raw-sdt)*.25;const dt=sdt;step(dt);if(alive)draw()}
   const pos=ev=>{const r=cv.getBoundingClientRect();ship.tx=ev.clientX-r.left};
-  const pd=ev=>{if(ev.target.closest('.ghud,.gov'))return;ev.preventDefault();pos(ev);fireHold=true;pend=true},pm=ev=>{pos(ev)},pu=()=>{fireHold=false};
+  let tch=null;const pd=ev=>{if(ev.target.closest('.ghud,.gov'))return;ev.preventDefault();pos(ev);
+    if(ev.pointerType==='mouse'){fireHold=true;pend=true;return}
+    /* dotyk: stuknięcie = strzał, przesuwanie palcem = tylko ruch, przytrzymanie w miejscu = ciągły ogień */
+    tch={x:ev.clientX,t0:performance.now(),mv:false,id:ev.pointerId};clearTimeout(tch.h);tch.h=setTimeout(()=>{if(tch&&!tch.mv)fireHold=true},380)},
+  pm=ev=>{if(ev.pointerType!=='mouse'){if(!tch||ev.pointerId!==tch.id)return;if(Math.abs(ev.clientX-tch.x)>14){tch.mv=true;fireHold=false}}pos(ev)},
+  pu=ev=>{if(tch&&(!ev||ev.pointerId===tch.id)){clearTimeout(tch.h);if(!tch.mv&&!fireHold&&performance.now()-tch.t0<380)pend=true;tch=null}fireHold=false};
   const kd=ev=>{if(!document.body.contains(st)){stop();return}if([' ','ArrowLeft','ArrowRight','a','d'].indexOf(ev.key)>=0){if(/INPUT|TEXTAREA/.test((ev.target||{}).nodeName||''))return;keys[ev.key]=true;ev.preventDefault();if(ev.key===' ')fire()}},ku=ev=>{keys[ev.key]=false};
-  const stg=st.parentNode;stg.addEventListener('pointerdown',pd);stg.addEventListener('pointermove',pm);window.addEventListener('pointerup',pu);window.addEventListener('keydown',kd);window.addEventListener('keyup',ku);
+  const stg=st.parentNode;stg.addEventListener('pointerdown',pd);stg.addEventListener('pointermove',pm);window.addEventListener('pointerup',pu);window.addEventListener('pointercancel',pu);window.addEventListener('keydown',kd);window.addEventListener('keyup',ku);
   const ro=()=>{if(!document.body.contains(st)){stop();return}resize()};window.addEventListener('resize',ro);
-  function stop(){alive=false;cancelAnimationFrame(raf);stg.removeEventListener('pointerdown',pd);stg.removeEventListener('pointermove',pm);window.removeEventListener('pointerup',pu);window.removeEventListener('keydown',kd);window.removeEventListener('keyup',ku);window.removeEventListener('resize',ro)}
+  function stop(){alive=false;cancelAnimationFrame(raf);stg.removeEventListener('pointerdown',pd);stg.removeEventListener('pointermove',pm);window.removeEventListener('pointerup',pu);window.removeEventListener('pointercancel',pu);window.removeEventListener('keydown',kd);window.removeEventListener('keyup',ku);window.removeEventListener('resize',ro)}
   resize();hud();api.banner('Poziom 1','Traf w poprawną odpowiedź');wait=.9;raf=requestAnimationFrame(loop);
-  st.__dbg={S:S,ship:ship,FX:FX,get tg(){return tg},get orbs(){return orbs},fire:fire,spawn:k=>{const p=PU.find(x=>x.k===k)||PU[1];orbs.push({p:p,x:ship.x,y:ship.y-200,vy:200,ph:0})}};
+  st.__dbg={S:S,ship:ship,FX:FX,get bul(){return bul},get tg(){return tg},get orbs(){return orbs},fire:fire,spawn:k=>{const p=PU.find(x=>x.k===k)||PU[1];orbs.push({p:p,x:ship.x,y:ship.y-200,vy:200,ph:0})}};
   return stop}
 
 /* ---------- gra 2: memory ---------- */
@@ -8072,6 +8081,7 @@ I18_PN2.push(['📤 Kopiuj do innego quizu','📤 Copy to another quiz'],['Skopi
 I18_PX.push([/^Pytanie (\d+)(.*)\. Zaznacz quizy, do których ma trafić kopia\. Trafi na koniec każdego z nich\.$/,'Question $1$2. Tick the quizzes that should get a copy. It will be added at the end of each.'],[/^Kopiuj do (\d+) quizów$/,'Copy to $1 quizzes'],[/^⧉ Skopiowano pytanie do: (.*)\.$/,'⧉ Question copied to: $1.']);
 I18_PX.unshift([/^1 pytanie$/,'1 question'],[/^(\d+) pytani[ae]$/,'$1 questions'],[/^⧉ Skopiowano pytanie do: (.*)\.$/,(m,a)=>'⧉ Question copied to: '+a.replace(/^nowy quiz/,'a new quiz')+'.']);
 I18_PN2.push(['Poprawnych odpowiedzi jest kilka!','There are several correct answers!'],['Zaznacz wszystkie dobre i kliknij „Zatwierdź”.','Select all the correct ones and click “Confirm”.']);
+I18_PN2.push(['Strzelaj stuknięciem, kliknięciem lub spacją. Przytrzymaj palec w miejscu, żeby strzelać seriami.','Shoot by tapping, clicking or pressing space. Hold your finger still to fire continuously.']);
 
 const I18_THN={'Mięta':'Mint','Święta':'Christmas','Systemowy':'System','Róż':'Rose','Fiolet':'Violet','Zachód':'Sunset','Biały':'White','Czarny':'Black','Święto Niepodległości':'Independence Day'};
 I18_PX.unshift([/^Podgląd, wynik: (\d+) z (\d+)(.*)$/,'Preview, score: $1 of $2$3'],[/^Motyw: (.+)$/,(m,a)=>'Theme: '+(I18_THN[a]||a)]);
