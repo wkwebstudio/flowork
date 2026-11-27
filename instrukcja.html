@@ -271,7 +271,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--mut);font-siz
 
 <section class="sec" id="panel" data-t="Poznaj panel">
 <h2><i class="ei">🧭</i> Poznaj panel</h2>
-<p class="ld">Panel ma menu po lewej i obszar roboczy po prawej. Na telefonie menu jest na górze, a reszta pod spodem.</p>
+<p class="ld">Panel ma menu po lewej i obszar roboczy po prawej. Na telefonie menu jest na górze, a reszta pod spodem. Na telefonie kafelki „Nowe ćwiczenie” i „Ustawienia linku” są zwinięte, żeby pulpit i edytor były od razu pod ręką. Dotknij nagłówka, żeby je rozwinąć. Dane konta i „Wyloguj” są na samym dole strony, a nie w pasku, który zasłaniał treść.</p>
 <p>Kliknij numer na schemacie, żeby zobaczyć, co jest w danym miejscu.</p>
 <div class="pm"><div class="pmv" id="pmv" aria-label="Schemat panelu">
  <div class="pmbar"><span><button class="hs" data-h="0" style="position:static;display:inline-grid">1</button> ⚙</span><span>konto · Instrukcja · Wyloguj <button class="hs" data-h="1" style="position:static;display:inline-grid">2</button></span></div>
@@ -404,6 +404,8 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--mut);font-siz
 <li><b>⧉ Kopiuj pytanie</b> (pod pytaniem, obok „Usuń pytanie”) wstawia kopię pytania tuż pod nim. Przydaje się, gdy kolejne pytania różnią się tylko jednym słowem.</li>
 <li><b>📤 Kopiuj do innego quizu</b> (obok) otwiera listę Twoich quizów. Zaznacz jeden albo kilka, a kopia pytania trafi na koniec każdego z nich. Możesz też od razu utworzyć z tego pytania nowy quiz. Oryginał zostaje na miejscu.</li>
 <li><b>Zdjęcie w pytaniu</b> na telefonie ucznia jest nad treścią, a na komputerze pod nią.</li>
+<li><b>↕ Przenieś na miejsce</b> (pod pytaniem, obok strzałek): wybierz numer z listy, a pytanie od razu trafi na to miejsce, np. z 9. na 4. Nie trzeba klikać strzałki wiele razy.</li>
+<li><b>Na telefonie</b> rozwinięte jest tylko jedno pytanie naraz. Gdy otworzysz kolejne, poprzednie samo się zwinie i lista jest krótsza.</li>
 </ul>
 <p><b>Rodzaje pytań.</b> Rodzaj wybierasz kafelkiem na górze każdego pytania. Kolejność pytań zmienisz strzałkami ▲ ▼ w nagłówku pytania albo przyciskami „W górę” i „W dół” pod nim. W treści pytania działa pogrubienie (przycisk „𝐁 Pogrubienie”) i nowe linie (Enter).</p>
 <p><b>Transformacje (key word transformations).</b> Wpisz pytanie w trzech liniach albo w jednej, np. <code>They built this school in 1995. [WAS] This school (______) in 1995.</code> Flowork sam rozbije je na trzy linie, a słowo w nawiasie kwadratowym pokaże jako wyróżnioną ramkę.</p>
@@ -548,7 +550,9 @@ F: Tom has two sisters.</pre>
 
 <section class="sec" id="gry" data-t="Gry">
 <h2><i class="ei">🎮</i> Gry</h2>
-<p class="ld">Pięć gier do powtórek. Wpisujesz pary pytanie i odpowiedź, a panel robi z nich grę. W grach nie ma ocen ani wyników.</p>
+<p class="ld">Pięć gier do powtórek. Wpisujesz pary pytanie i odpowiedź, a panel robi z nich grę. W grach nie ma ocen, ale jest ranking klasy.</p>
+<div class="note"><b>🏆 Ranking klasy w grach.</b> Przed grą uczeń może wpisać imię. Po grze widzi ranking: najlepszy wynik każdego gracza (w Memory na czas wygrywa najkrótszy czas). Ty widzisz ten sam ranking w edytorze gry, na samym dole. Przycisk ✕ usuwa gracza z rankingu, np. gdy wpisał niestosowne imię. Ranking działa w grach wysłanych linkiem. W podglądzie wynik nie jest zapisywany.</div>
+<div class="note"><b>📱 Gry na telefonie</b> otwierają się na cały ekran, a strona pod spodem jest zablokowana. Nic nie zjeżdża w dół, gdy uczeń przesuwa palcem po grze.</div>
 <div class="tnav">
 <a href="#g-kosmos" style="--c:#6366f1"><i class="ei">🚀</i>Kosmos</a><a href="#g-memory" style="--c:#db2777"><i class="ei">🃏</i>Memory</a><a href="#g-bloki" style="--c:#0891b2"><i class="ei">🧱</i>Bloki</a><a href="#g-zombie" style="--c:#65a30d"><i class="ei">🧟</i>Zombie</a><a href="#g-skoczek" style="--c:#16a34a"><i class="ei">🦘</i>Skoczek</a>
 </div>
@@ -625,7 +629,7 @@ F: Tom has two sisters.</pre>
 <li><b>Pomyłka:</b> blaster zacina się na sekundę, zombie na chwilę przyspieszają, a błędna odpowiedź się wyłącza.</li>
 <li><b>Barykada:</b> wytrzymuje trzy ugryzienia. Każde zabiera jedno serce.</li>
 <li><b>Fale:</b> 3, 5 albo 7. W każdej jest więcej zombie i idą szybciej.</li>
-<li><b>Boss:</b> po ostatniej fali wychodzi Król Zombie. Ma tym więcej życia, im lepszą broń ma uczeń (przy zwykłym blasterze 5, 7 albo 9 trafień), a w tym czasie dochodzą kolejne zombie. Jego ugryzienie zabiera dwa serca. Gdy padnie, wstaje świt i gra jest wygrana.</li>
+<li><b>Boss:</b> po ostatniej fali wychodzi Król Zombie. Ma tym więcej życia, im lepszą broń ma uczeń (przy zwykłym blasterze 10, 13 albo 17 trafień), a w tym czasie co kilka sekund dochodzą kolejne zombie. Co kilka sekund robi też szarżę, czyli nagle przyspiesza. Gdy straci połowę życia, wpada w szał: świeci na czerwono, idzie szybciej i woła trzech pomocników, w tym jednego w kasku. Przy jednej czwartej życia na 3 sekundy włącza tarczę, przez którą nie przechodzą żadne strzały ani granaty, i woła jeszcze dwóch biegaczy. Jego ugryzienie zabiera dwa serca. Gdy padnie, wstaje świt i gra jest wygrana.</li>
 <li><b>Nazwy:</b> nad każdym zombie widać jego nazwę, a nad mocniejszymi także paski wytrzymałości.</li>
 <li><b>Rodzaje zombie:</b> zwykły, szybki biegacz i zombie w kasku, który jest najtwardszy (oba od 2. fali). W późniejszych falach wszystkie zombie wytrzymują więcej.</li>
 <li><b>Monety:</b> za każdego pokonanego zombie uczeń dostaje monety (10, 15 albo 25, a przy serii 5 trafień więcej). Fala bez utraty życia daje 30 monet premii.</li>
@@ -928,6 +932,8 @@ kowalska  anna</textarea><div class="tout" id="cout"></div></div></div></article
 <h2><i class="ei">📊</i> Odpowiedzi uczniów</h2>
 <h3 id="wyniki-pulpit">Na pulpicie</h3>
 <p>Po prawej stronie pulpitu widać osiem najnowszych odpowiedzi. Przycisk „Zobacz wszystkie odpowiedzi” otwiera pełny widok.</p>
+<h3 id="wyniki-pytania">📋 Zobacz pytania</h3>
+<p>W zakładce <b>Wyniki</b> każdego ćwiczenia jest przycisk „📋 Zobacz pytania”. Otwiera podgląd całej treści ćwiczenia z poprawnymi odpowiedziami zaznaczonymi na zielono. Dzięki temu sprawdzasz odpowiedzi uczniów bez przełączania się do edycji. W tym oknie niczego nie zmienisz. Przycisk „🖨 Drukuj” drukuje same pytania z odpowiedziami.</p>
 <h3 id="wyniki-pelny">Pełny widok</h3>
 <p>Otwierasz go z menu po lewej. Zawsze pokazuje wyniki ze wszystkich folderów.</p>
 <div class="tbl"><table>
@@ -972,8 +978,22 @@ kowalska  anna</textarea><div class="tout" id="cout"></div></div></div></article
 <h2><i class="ei">⚙</i> Ustawienia</h2>
 <p class="ld">Otwierasz je przyciskiem w lewym górnym rogu panelu. Zmiany zapisują się od razu.</p>
 <h3 id="ust-motywy">Motywy</h3>
-<p>Do wyboru są motywy jasne, ciemne i okolicznościowe oraz „Systemowy”, który dopasowuje się do ustawień Twojego urządzenia. Motyw „Święta” dodaje padający śnieg, lampki, sanie Mikołaja (przelatują raz na 7 minut) i śnieg na przyciskach. Motyw „GTA” to zachód słońca w Miami: kołyszące się palmy, panorama miasta z neonami, morze, flamingi, mewy i raz na 7 minut samolot z powiewającym banerem.</p>
-<div class="thtry" id="thtry"><b>🎨 Wypróbuj motywy</b><p>Kliknij motyw, a otworzy się podgląd z przykładowym quizem. Możesz w nim odpowiadać i przełączać motywy. Po zamknięciu podglądu nic się nie zmienia: Twój panel zostaje w swoim motywie.</p><div class="thb" id="thb"></div></div>
+<p>Do wyboru są motywy jasne, ciemne i okolicznościowe oraz „Systemowy”, który dopasowuje się do ustawień Twojego urządzenia. Motyw „Święta” dodaje padający śnieg, lampki, sanie Mikołaja (przelatują raz na 7 minut) i śnieg na przyciskach. Motyw „GTA” to zachód słońca w Miami: kołyszące się palmy, panorama miasta z neonami, morze, flamingi, mewy i raz na 7 minut samolot z powiewającym banerem. Motyw „Black Friday” to czarno-złota wyprzedaż: neon „BLACK FRIDAY”, metki z rabatami na sznurkach, torba i wózek z zakupami, spadające metki, monety i konfetti, wyskakujące naklejki z promocjami, przesuwający się pasek z żartobliwymi promocjami (np. „Kup 1 ćwiczenie, rozwiąż 3”) i raz na 7 minut sterowiec z napisem SALE.</p>
+<h3 id="ust-wlasny">🎨 Własny motyw</h3>
+<p>W Ustawieniach, pod listą motywów, kliknij <b>✏ Stwórz lub edytuj własny motyw</b>. Z boku otworzy się kreator, a każdą zmianę od razu widać na całej stronie. Na górze kreatora wpisujesz <b>nazwę motywu</b>. Przycisk <b>▾ Zwiń</b> chowa kreator do małego paska, żeby nie zasłaniał strony (np. gdy przesuwasz elementy), a <b>▴ Rozwiń</b> otwiera go z powrotem. Kreator ma sześć zakładek:</p>
+<div class="tbl"><table>
+<tr><th>Zakładka</th><th>Co ustawiasz</th></tr>
+<tr><td>✨ Start</td><td><b>Moje motywy</b>: lista Twoich motywów (do 8). Kliknij motyw, żeby go edytować, „➕ Nowy motyw”, żeby dodać kolejny, „⧉ Zrób kopię” albo „🗑 Usuń ten motyw”. Niżej dziesięć gotowych stylów: Kosmos, Ocean, Las, Sport, Neon, Zorza, Słodycze, Jesień, Zima i Szkoła. Styl zmienia wygląd motywu, który właśnie edytujesz.</td></tr>
+<tr><td>🖼 Tło</td><td>Jeden kolor, gradient z dwóch kolorów (z kierunkiem) albo własne zdjęcie z przyciemnieniem. Do tego <b>animowane tło</b>: płynący gradient, migoczące gwiazdy, bąbelki, zorza, pływające kształty, fale albo neonowa siatka.</td></tr>
+<tr><td>🎨 Wygląd</td><td>Kolory przycisków (dwa, tworzą gradient), kart, tekstu i nagłówka. <b>Czcionka całego panelu</b> (zwykła, zaokrąglona, Fredoka, Baloo, komiksowa, odręczna, szeryfowa, maszynowa) i osobno czcionka nagłówków (12 do wyboru). Styl nagłówka (gradient, jeden kolor, szkło, bez tła), krycie kart, efekt szkła (rozmyte karty), świecące przyciski i zaokrąglenie.</td></tr>
+<tr><td>🪝 Ozdoby</td><td>Do 10 ozdób zwisających z nagłówka, dwie duże po bokach nagłówka i do 16 ozdób na dole strony, każde z regulowaną wielkością. Wybierasz z <b>emotek</b> (kilkadziesiąt w każdej sekcji, możesz też wpisać własną), z <b>własnych zdjęć</b> („🖼 Moje zdjęcia” → „➕ Dodaj zdjęcie”, najlepiej PNG z przezroczystym tłem albo mały GIF) albo z animowanych grafik. Każde kliknięcie dodaje ozdobę, więc tę samą możesz dodać kilka razy (np. pięć gwiazdek). Krzyżyk ✕ przy ozdobie ją usuwa.</td></tr>
+<tr><td>🌨 Ruch</td><td>Co spada z góry (do 10 rodzajów, też własne zdjęcia), ile tego jest (od „mało” do „bardzo dużo”) i jak duże. Co przelatuje przez ekran, jak często (co 30 s, minutę, 3 minuty, 7 minut albo nigdy) i jak duże.</td></tr>
+<tr><td>🧩 Elementy</td><td>Swobodne elementy w dowolnym miejscu strony (do 16): emotka, <b>własne zdjęcie</b> (PNG z przezroczystym tłem albo animowany GIF), <b>napis</b> w stylu neonu, komiksu, kredy lub złota albo animowana grafika. Każdy element przeciągasz myszką albo palcem. Róg ↘ zmienia wielkość, a kółko u góry go obraca. Dla każdego ustawisz animację (kołysanie, unoszenie, obrót, puls, migotanie, podskoki, pływanie, drżenie), jej tempo, widoczność, odbicie lustrzane i to, czy jest za treścią, czy na wierzchu.</td></tr>
+</table></div>
+<p><b>Motyw zapisuje się sam</b> po każdej zmianie (przy nazwie pojawia się „✔ Zapisano”), także gdy zamkniesz kreator krzyżykiem. „✔ Gotowe” też zamyka kreator. „↩ Cofnij zmiany” przywraca wygląd motywu sprzed otwarcia kreatora. Motywy zapisują się w Twoim panelu, więc zobaczysz je też na innych urządzeniach.</p>
+<p><b>Przełączanie motywów:</b> Twoje motywy są w Ustawieniach pod nagłówkiem „📁 Moje motywy”. Kliknij nazwę, żeby włączyć ten motyw. Jeśli masz włączone „Mój motyw u uczniów”, uczniowie zobaczą włączony motyw w ćwiczeniach wysłanych potem (stare linki odśwież przyciskiem „Zaktualizuj link”). Zdjęcia zapisują się w panelu, więc nie dodawaj ich za dużo. Gdy wszystkie motywy razem mają za dużo zdjęć, kreator poprosi o usunięcie któregoś.</p>
+<h3 id="ust-motyw-cw">🎨 Motyw dla jednego ćwiczenia</h3>
+<p>W ustawieniach linku każdego ćwiczenia jest pole <b>Motyw ćwiczenia</b>. Wybierz motyw, a uczniowie zobaczą to jedno ćwiczenie właśnie w nim, niezależnie od motywu panelu i od ustawienia „Mój motyw u uczniów”. Na liście są też Twoje własne motywy (oznaczone „📁 Mój:”), więc każde ćwiczenie może mieć inny własny motyw. Możesz np. dać quizowi o świętach motyw „Święta”, a kartkówce własny motyw „Klasa 7b”. Przycisk <b>👁 Pokaż</b> na chwilę przełącza panel na ten motyw, a „Wróć do mojego motywu” przywraca Twój. Po zmianie kliknij „Zaktualizuj link”.</p>
 <h3 id="ust-wyglad">Wygląd panelu</h3>
 <ul>
 <li><b>Styl ikon:</b> proste, jednokolorowe ikony albo kolorowe emoji.</li>
@@ -1216,7 +1236,7 @@ const q0=document.getElementById('q');if(q0)q0.addEventListener('input',()=>{con
 })();
 
 /* v22: podgląd motywów */
-(function(){const TH=[["xm","🎄","Święta","linear-gradient(135deg,#c1121f 45%,#0b6e4f)"],["gt","🌴","GTA","linear-gradient(135deg,#7b2ff7,#ff3ea5 55%,#ff9a3c)"],["pl","🦅","Święto Niepodległości","linear-gradient(135deg,#c8102e 50%,#fff 50%)"],["hw","🎃","Halloween","linear-gradient(135deg,#ff7a00,#5b21b6)"],["wh","⬜","Biały","linear-gradient(135deg,#fff 50%,#0a0a0a 50%)"],["bk","⬛","Czarny","linear-gradient(135deg,#000 50%,#fff 50%)"],["ro","🌸","Róż","linear-gradient(135deg,#ff4f93,#ffa0c6)"],["oc","🌊","Ocean","linear-gradient(135deg,#0b66c3,#19b6d9)"],["mi","🌿","Mięta","linear-gradient(135deg,#0f9a64,#6fdcae)"],["fi","🔮","Fiolet","linear-gradient(135deg,#7b3fe4,#d946ef)"],["zl","🌅","Zachód","linear-gradient(135deg,#ff6a2b,#ffb347)"],["plain","⚪","Systemowy","linear-gradient(135deg,#7858e8,#ff78ad)"]];
+(function(){const TH=[["bf","🏷","Black Friday","linear-gradient(135deg,#000 0 55%,#ffd400 55% 75%,#ff2d55 75%)"],["xm","🎄","Święta","linear-gradient(135deg,#c1121f 45%,#0b6e4f)"],["gt","🌴","GTA","linear-gradient(135deg,#7b2ff7,#ff3ea5 55%,#ff9a3c)"],["pl","🦅","Święto Niepodległości","linear-gradient(135deg,#c8102e 50%,#fff 50%)"],["hw","🎃","Halloween","linear-gradient(135deg,#ff7a00,#5b21b6)"],["wh","⬜","Biały","linear-gradient(135deg,#fff 50%,#0a0a0a 50%)"],["bk","⬛","Czarny","linear-gradient(135deg,#000 50%,#fff 50%)"],["ro","🌸","Róż","linear-gradient(135deg,#ff4f93,#ffa0c6)"],["oc","🌊","Ocean","linear-gradient(135deg,#0b66c3,#19b6d9)"],["mi","🌿","Mięta","linear-gradient(135deg,#0f9a64,#6fdcae)"],["fi","🔮","Fiolet","linear-gradient(135deg,#7b3fe4,#d946ef)"],["zl","🌅","Zachód","linear-gradient(135deg,#ff6a2b,#ffb347)"],["plain","⚪","Systemowy","linear-gradient(135deg,#7858e8,#ff78ad)"]];
   const btns=cur=>TH.map(x=>'<button type="button" data-th="'+x[0]+'" class="'+(x[0]===cur?'on':'')+'"><i style="background:'+x[3]+'">'+x[1]+'</i>'+x[2]+'</button>').join('');
   const box=document.getElementById('thb');if(!box)return;box.innerHTML=btns('');
   let v=null;const close=()=>{if(v){v.remove();v=null;document.body.style.overflow=''}};
