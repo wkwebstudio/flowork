@@ -30,10 +30,16 @@ export function makeReq(uid) {
         throw e;
       }
     }
+    // Ranking gier: /res/<id gry>~lb<rodzaj> (ten sam zbiór reguł co wyniki), usuwanie wpisu: /res/<id>/<wpis> (tylko nauczyciel)
+    if (seg[0] === "res" && seg.length === 3 && method === "DELETE") {
+      if (!uid) throw new Error("Brak logowania");
+      await deleteDoc(doc(db, "res", seg[1], "items", seg[2]));
+      return null;
+    }
     if (seg[0] === "res" && seg.length === 2) {
       const col = collection(db, "res", seg[1], "items");
       if (method === "POST") {
-        const m = maps[seg[1]];
+        const m = maps[seg[1]] || maps[seg[1].split("~")[0]];
         if (!m) throw new Error("Brak kontekstu linku");
         const o = { owner: m.owner, lk: m.lk, n: String(body.n || "").slice(0, 60), c: +body.c || 0, t: +body.t || 0, d: String(body.d || ""), at: serverTimestamp() };
         if (body.a !== undefined) o.aj = JSON.stringify(body.a);
