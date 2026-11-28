@@ -105,8 +105,10 @@ exports.notifyResult = onDocumentCreated({ document: "res/{exId}/items/{rid}", r
     if (ex.exists) { const p = JSON.parse(ex.data().p); title = p.t || p.title || p.ti || title; }
   } catch (e) {}
   const name = String(d.n || "Uczeń").slice(0, 60);
-  const score = d.t ? `${+d.c || 0} / ${+d.t}` : "";
-  const body = `<b>${esc(name)}</b> ukończył(a) ćwiczenie „${esc(title)}”.` + (score ? `<br><br>Wynik: <b>${esc(score)}</b>` : "") +
+  const game = String(ev.params.exId).includes("~lb");
+  const score = game ? (+d.t < 0 ? ((+d.c || 0) / 1000).toFixed(2).replace(".", ",") + " s" : `${+d.c || 0} pkt`) : (d.t ? `${+d.c || 0} / ${+d.t}` : "");
+  const body = `<b>${esc(name)}</b> ukończył(a) ${game ? "grę" : "ćwiczenie"} „${esc(title)}”.` + (score ? `<br><br>Wynik: <b>${esc(score)}</b>` : "") +
+    (game ? `<br><br>Wyniki gier są w panelu: otwórz tę grę i kliknij zakładkę <b>🏆 Ranking klasy</b>.` : "") +
     `<br><br><span style="font-size:13px;color:#8a87a0">Powiadomienia możesz wyłączyć w panelu (przycisk 🔔 na dole ekranu).</span>`;
   await send(user.data().email, `${name} ukończył(a): ${title}`, layout("Nowy wynik ucznia", body, "Zobacz w panelu", SITE + "/panel.html"),
     `${name} ukończył(a) ćwiczenie „${title}”.` + (score ? " Wynik: " + score : "") + " " + SITE + "/panel.html");
