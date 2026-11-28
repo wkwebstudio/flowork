@@ -11,7 +11,7 @@
 <style>
 :root{--bg:#fbfaf7;--card:#fff;--ink:#16132b;--mut:#6b6880;--line:#e7e4ee;--acc:#6340ff;--acc2:#ff6b57;--soft:#f1eeff;--ok:#17a673;--bad:#d6335a;--warn:#b45309;--warnbg:#fff4dd}
 @media(prefers-color-scheme:dark){:root{--bg:#0f0d1d;--card:#181530;--ink:#f3f1ff;--mut:#a9a5c4;--line:#2b2750;--acc:#8b6dff;--acc2:#ff8470;--soft:#1f1b3d;--ok:#3ed9a2;--bad:#ff7a9c;--warn:#fbbf24;--warnbg:#3a2c0c}}
-@font-face{font-family:'FwI';src:url('/fwicons.woff2?v=31') format('woff2');font-display:swap}
+@font-face{font-family:'FwI';src:url('/fwicons.woff2?v=33') format('woff2');font-display:swap}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth;scroll-padding-top:84px}
 body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
@@ -384,7 +384,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--mut);font-siz
 <ul>
 <li><b>Kilka poprawnych odpowiedzi:</b> rozdziel je pionową kreską, np. <code>[[didn't|did not]]</code>.</li>
 <li><b>Luka wpisana ręcznie:</b> możesz po prostu napisać podwójne nawiasy w tekście.</li>
-<li><b>Pogrubienie i nagłówki:</b> zaznacz fragment i kliknij <span class="k">𝐁 Pogrubienie</span> (w tekście wygląda to jak <code>**tekst**</code>). Linia pogrubiona w całości staje się u ucznia nagłówkiem.</li>
+<li><b>Pogrubienie i nagłówki:</b> zaznacz fragment i kliknij <span class="k">𝐁 Pogrubienie</span> (w tekście wygląda to jak <code>**tekst**</code>). Linia pogrubiona w całości staje się u ucznia nagłówkiem. W dialogu możesz pogrubić imiona (<code>**Deborah**: tekst</code>), dialog i tak wyświetli się jako czat.</li>
 <li><b>Akapity:</b> każdy dłuższy akapit (osobna linia) dostaje u ucznia wcięcie na początku. Krótkie linie, np. numerowane zdania, zostają bez wcięcia.</li>
 <li><b>Zdjęcia:</b> Flowork rozkłada je w tekście jak w artykule. Jeśli tekst ma nagłówki, każde zdjęcie trafia do kolejnej sekcji (pierwsze zdjęcie do pierwszego nagłówka itd.), a bez nagłówków zdjęcia są rozłożone równo w tekście. Na komputerze zdjęcie stoi po prawej i tekst je opływa, a na telefonie jest na całą szerokość między akapitami. Dodasz je tak: przeciągnij plik na pole zdjęć, wklej skrótem <kbd>Ctrl</kbd>+<kbd>V</kbd> albo użyj „Wybierz plik”.</li>
 <li><b>Bank słów:</b> zaznacz „Pokaż bank słów uczniom”. Słowa możesz dowolnie zmieniać, dopisywać i usuwać, np. podać czasownik w bezokoliczniku. „Wygeneruj z odpowiedzi” wypełnia bank na nowo.</li>
@@ -473,7 +473,8 @@ Tom: I am going to the cinema.</textarea><div class="dch" id="dout"></div></div>
 <li>Wpisz poprawne zdanie. Opcjonalnie dodaj podpowiedź, np. tłumaczenie.</li>
 <li><b>Kilka poprawnych wersji</b> rozdziel pionową kreską: <code>I am fine.|I'm fine.</code></li>
 <li>Kropka, wykrzyknik albo znak zapytania na końcu zostają na miejscu.</li>
-<li>Wiele zdań naraz wkleisz w polu listy, jedno zdanie w linii.</li>
+<li><b>Zbędne słowa:</b> w polu „➕ Zbędne słowa” wpisz jedno lub kilka słów, które nie pasują do zdania (np. <code>go, going</code>). Trafią do puli razem z resztą, a uczeń musi je pominąć. Uczeń widzi informację, że część słów nie pasuje.</li>
+<li>Wiele zdań naraz wkleisz w polu listy, jedno zdanie w linii. Zbędne słowa dopisz po dwóch ukośnikach: <code>She goes to school. // go, going</code></li>
 </ul>
 <div class="demo" style="--c:#e0457b"><b>Wypróbuj: ułóż zdanie</b><div class="dz" id="d-so"></div></div><details class="xd"><summary>Kiedy używać</summary><div><ul><li>Szyk zdania, pytania i przeczenia.</li><li>Nowy czas gramatyczny: uczeń widzi wszystkie elementy i układa je w całość.</li><li>Tłumaczenie: w podpowiedzi wpisz zdanie po polsku.</li></ul></div></details><details class="xd"><summary>Częste błędy</summary><div><ul><li><b>Zdanie ma dwie poprawne kolejności.</b> Dopisz drugą wersję po znaku <code>|</code>.</li><li><b>Zbyt długie zdania.</b> Powyżej 10 słów układanie robi się męczące na telefonie.</li><li><b>Wielka litera zdradza początek.</b> To normalne. Jeśli chcesz utrudnić, zacznij zdanie od imienia.</li></ul></div></details></article>
 
@@ -551,7 +552,7 @@ F: Tom has two sisters.</pre>
 <section class="sec" id="gry" data-t="Gry">
 <h2><i class="ei">🎮</i> Gry</h2>
 <p class="ld">Pięć gier do powtórek. Wpisujesz pary pytanie i odpowiedź, a panel robi z nich grę. W grach nie ma ocen, ale jest ranking klasy.</p>
-<div class="note"><b>🏆 Ranking klasy w grach.</b> Przed grą uczeń może wpisać imię. Po grze widzi ranking: najlepszy wynik każdego gracza (w Memory na czas wygrywa najkrótszy czas). Ty widzisz ten sam ranking w edytorze gry, na samym dole. Przycisk ✕ usuwa gracza z rankingu, np. gdy wpisał niestosowne imię. Ranking działa w grach wysłanych linkiem. W podglądzie wynik nie jest zapisywany.</div>
+<div class="note"><b>🏆 Ranking klasy w grach.</b> Przed grą uczeń może wpisać imię. Po grze widzi ranking: najlepszy wynik każdego gracza (w Memory na czas wygrywa najkrótszy czas). Ty widzisz ten sam ranking po otwarciu gry, w zakładce <b>🏆 Ranking klasy</b> (obok „Edycja”): najlepszy wynik, liczbę gier i godzinę ostatniej gry każdego ucznia. Gry nie trafiają do listy „Odpowiedzi uczniów”, bo nie dają ocen. Przycisk ✕ usuwa gracza z rankingu, np. gdy wpisał niestosowne imię. Ranking działa w grach wysłanych linkiem. W podglądzie wynik nie jest zapisywany.</div>
 <div class="note"><b>📱 Gry na telefonie</b> otwierają się na cały ekran, a strona pod spodem jest zablokowana. Nic nie zjeżdża w dół, gdy uczeń przesuwa palcem po grze.</div>
 <div class="tnav">
 <a href="#g-kosmos" style="--c:#6366f1"><i class="ei">🚀</i>Kosmos</a><a href="#g-memory" style="--c:#db2777"><i class="ei">🃏</i>Memory</a><a href="#g-bloki" style="--c:#0891b2"><i class="ei">🧱</i>Bloki</a><a href="#g-zombie" style="--c:#65a30d"><i class="ei">🧟</i>Zombie</a><a href="#g-skoczek" style="--c:#16a34a"><i class="ei">🦘</i>Skoczek</a>
@@ -631,19 +632,23 @@ F: Tom has two sisters.</pre>
 <li><b>Fale:</b> 3, 5 albo 7. W każdej jest więcej zombie i idą szybciej.</li>
 <li><b>Boss:</b> po ostatniej fali wychodzi Król Zombie. Ma tym więcej życia, im lepszą broń ma uczeń (przy zwykłym blasterze 10, 13 albo 17 trafień), a w tym czasie co kilka sekund dochodzą kolejne zombie. Co kilka sekund robi też szarżę, czyli nagle przyspiesza. Gdy straci połowę życia, wpada w szał: świeci na czerwono, idzie szybciej i woła trzech pomocników, w tym jednego w kasku. Przy jednej czwartej życia na 3 sekundy włącza tarczę, przez którą nie przechodzą żadne strzały ani granaty, i woła jeszcze dwóch biegaczy. Jego ugryzienie zabiera dwa serca. Gdy padnie, wstaje świt i gra jest wygrana.</li>
 <li><b>Nazwy:</b> nad każdym zombie widać jego nazwę, a nad mocniejszymi także paski wytrzymałości.</li>
-<li><b>Rodzaje zombie:</b> zwykły, szybki biegacz i zombie w kasku, który jest najtwardszy (oba od 2. fali). W późniejszych falach wszystkie zombie wytrzymują więcej.</li>
-<li><b>Monety:</b> za każdego pokonanego zombie uczeń dostaje monety (10, 15 albo 25, a przy serii 5 trafień więcej). Fala bez utraty życia daje 30 monet premii.</li>
+<li><b>Rodzaje zombie:</b> zwykły i wyłażący spod ziemi szwendacz; od 2. fali szybki sprinter i twardy kaskowiec; od 3. fali powolny grubas, który po pokonaniu wypuszcza gaz raniący zombie obok; od 4. fali tarczownik, którego pierwszy strzał tylko pozbawia tarczy. W późniejszych falach wszystkie zombie wytrzymują więcej.</li>
+<li><b>Seria:</b> nad bohaterem widać płomyk z liczbą dobrych odpowiedzi z rzędu. Od 5 trafień z rzędu strzały są mocniejsze (+1 obrażenie). Pomyłka albo ugryzienie zeruje serię.</li>
+<li><b>Zrzut zaopatrzenia:</b> od 2. fali raz na falę spada paczka na spadochronie. Kliknięcie daje granat, granat mrożący albo monety. Paczka znika po kilku sekundach.</li>
+<li><b>Monety:</b> za każdego pokonanego zombie uczeń dostaje monety (od 10 do 30, a przy serii 5 trafień więcej). Fala bez utraty życia daje 30 monet premii.</li>
 <li><b>Sklep:</b> po każdej fali na środku ekranu otwiera się sklep zbrojmistrza i jest około 25 sekund przerwy na zakupy. Przycisk „Gotowe! Walczymy” kończy przerwę wcześniej.</li>
 </ul>
 <div class="tbl"><table>
 <tr><th>W sklepie</th><th>Co daje</th></tr>
 <tr><td>🔫 Bronie (kupowane po kolei)</td><td>Rewolwer laserowy (90): 2 obrażenia · Strzelba plazmowa (200): odłamek trafia też drugiego zombie · Karabin burzy (340): 3 obrażenia i przebija dwa zombie · Wyrzutnia rakiet (520): 5 obrażeń i wybuch dookoła</td></tr>
 <tr><td>💣 Granat (40)</td><td>rzucany przyciskiem 💣 albo klawiszem <kbd>G</kbd>, rani wszystkie zombie w pobliżu celu (do 5 sztuk)</td></tr>
+<tr><td>❄ Granat mrożący (60)</td><td>przycisk ❄ albo klawisz <kbd>F</kbd>: zamraża zombie wokół celu na 4 sekundy (króla na 2). Zamrożone stoją w lodzie i dostają +1 obrażenie od każdego trafienia (do 3 sztuk)</td></tr>
+<tr><td>🗡 Rycerz z mieczem (150)</td><td>przycisk 🗡 albo klawisz <kbd>R</kbd>: rycerz wybiega zza barykady, ścina mieczem dwa najbliższe zombie (królowi zadaje 6 obrażeń) i wraca (do 2 wezwań)</td></tr>
 <tr><td>🛡 Kamizelka i hełm (70)</td><td>ochrona: zatrzymuje jedno ugryzienie (najwyżej dwie)</td></tr>
 <tr><td>🧱 Drugi płot (120)</td><td>nowa barykada przed bohaterem, wytrzymuje 3 ataki; zniszczoną można odbudować</td></tr>
 <tr><td>❤ Apteczka (80)</td><td>+1 życie (najwyżej 3)</td></tr>
 <tr><td>🎯 Celownik laserowy (100)</td><td>po pomyłce broń zacina się tylko na chwilę, a zombie nie przyspieszają</td></tr>
-<tr><td>🗼 Wieżyczka (300)</td><td>stoi na barykadzie i sama strzela co 3 sekundy</td></tr>
+<tr><td>🗼 Wieżyczka (300)</td><td>stoi na barykadzie, obraca się w stronę zombie i sama strzela co 3 sekundy</td></tr>
 </table></div>
 <p class="fine">Postacie są rysunkowe i bez drastycznych scen, więc gra nadaje się też dla młodszych klas.</p>
 </article>
@@ -1079,6 +1084,7 @@ kowalska  anna</textarea><div class="tout" id="cout"></div></div></div></article
 <tr><td><code>F: zdanie</code></td><td>Zdanie fałszywe na liście prawda/fałsz.</td></tr>
 <tr><td><code>Imię: tekst</code></td><td>Kwestia w dialogu.</td></tr>
 <tr><td><code>zdanie 1|zdanie 2</code></td><td>Kilka poprawnych wersji w układaniu zdań.</td></tr>
+<tr><td><code>zdanie // słowo, słowo</code></td><td>Zbędne słowa w liście układania zdań.</td></tr>
 </table></div>
 <h3 id="skroty-pary">Sprawdź format par</h3><p>W Słówkach, Dopasuj, Krzyżówce, Wykreślance i Grach możesz wkleić całą listę. Każda linia to jedna para. Strony rozdziela myślnik, dwukropek, znak równości, średnik albo tabulator (czyli można wkleić dwie kolumny z Excela). Wpisz swoje pary i zobacz, jak panel je odczyta.</p><div class="demo"><b>Wypróbuj wklejanie listy</b><div class="tool"><textarea id="pin" aria-label="Pary">dog - pies
 cat – kot
