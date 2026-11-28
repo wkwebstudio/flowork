@@ -8245,13 +8245,13 @@ const ZWP=[{n:'Blaster',ic:'🔫',d:1,col:'#22d3ee',t:'Strzela jednym pociskiem.
   {n:'Wyrzutnia rakiet',ic:'🚀',d:5,splash:2,col:'#fb923c',p:520,t:'5 obrażeń, a wybuch rani zombie dookoła.'}];
 const ZSH=[{k:'wpn'},
   {k:'gren',ic:'💣',n:'Granat',p:40,col:'#f97316',t:'Wybuch rani wszystkie zombie w pobliżu celu. Przycisk 💣 albo klawisz G.',max:5},
-  {k:'ice',ic:'❄',n:'Granat mrożący',p:60,col:'#38bdf8',t:'Zamraża zombie w pobliżu celu na 4 sekundy. Stoją w miejscu i dostają większe obrażenia. Przycisk ❄ albo klawisz F.',max:3},
+  {k:'ice',ic:'❄',n:'Granat mrożący',p:25,col:'#38bdf8',t:'Zamraża zombie w pobliżu celu na 5 sekund. Stoją w miejscu i dostają większe obrażenia. Przycisk ❄ albo klawisz F.',max:3},
   {k:'ally',ic:'🗡',n:'Rycerz z mieczem',p:150,col:'#fbbf24',t:'Wybiega zza barykady i ścina mieczem dwa najbliższe zombie. Przycisk 🗡 albo klawisz R.',max:2},
   {k:'vest',ic:'🛡',n:'Kamizelka i hełm',p:70,col:'#60a5fa',t:'Ochrona: zatrzymuje jedno ugryzienie. Możesz mieć dwie.',max:2},
   {k:'fence',ic:'🧱',n:'Drugi płot',p:120,col:'#d97706',t:'Nowa barykada przed tobą. Wytrzyma 3 ataki zombie.'},
   {k:'med',ic:'❤',n:'Apteczka',p:80,col:'#f43f5e',t:'Odnawia jedno życie (najwyżej 3).'},
   {k:'sight',ic:'🎯',n:'Celownik laserowy',p:100,col:'#ef4444',t:'Po złej odpowiedzi broń zacina się tylko na chwilę, a zombie nie przyspieszają.'},
-  {k:'tur',ic:'🗼',n:'Wieżyczka',p:300,col:'#a78bfa',t:'Sama strzela w najbliższego zombie co 3 sekundy.'}];
+  {k:'tur',ic:'🗼',n:'Wieżyczka',p:200,col:'#a78bfa',t:'Sama strzela w najbliższego zombie co 3 sekundy.'}];
 const ZGRN=c=>`<svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="14" rx="7.500" ry="8" fill="${c}"/><path d="M6 12 h12 M6.500 16 h11" stroke="#0004" stroke-width="1.300"/><rect x="9" y="3.500" width="6" height="4" rx="1" fill="#475569"/><path d="M15 5 q5 -2 5 3" stroke="#94a3b8" stroke-width="1.600" fill="none"/><circle cx="9" cy="11" r="2" fill="#fff" opacity=".45"/></svg>`;
 function gmZombie(st,api){const WV=[3,5,7][api.len],S={w:0,score:0,lives:3,kills:0,ok:0,bad:0,streak:0,best:0,coins:0,earn:0,buys:0,wl:3,sh:0,frz:0,kn:0,crates:0},I={wpn:0,gren:0,ice:0,ally:0,vest:0,sight:0,tur:0};
   st.innerHTML=`<div class="zw"><div class="zq"><small>Odpowiedz, żeby strzelić</small><b data-nt id="zqt"></b></div>
@@ -8322,7 +8322,7 @@ function gmZombie(st,api){const WV=[3,5,7][api.len],S={w:0,score:0,lives:3,kills
   function grenade(){if(!I.gren||over||shop)return;if(toss('','#f97316',(t,x,y)=>{boomAt(x,y,'#f97316');Z.filter(z=>!z.dead&&Math.abs(z.x-t.x)<17).forEach(z=>{const [zx,zy]=pos(z.el);hit(z,zx,zy,z.type==='b'?4:3,'#f97316',true)})})){I.gren--;gear()}}
   function freeze(z,sec){if(z.dead)return;z.frz=Math.max(z.frz,sec);z.dash=0;z.el.classList.remove('thaw','rage');z.el.classList.add('frz')}
   function iceNade(){if(!I.ice||over||shop)return;if(toss('ice','#38bdf8',(t,x,y)=>{const b=document.createElement('div');b.className='zfrb';b.style.left=x+'px';b.style.top=y+'px';sc.appendChild(b);later(()=>b.remove(),900);puff(x,y,'#e0f2fe',16,'snw');puff(x,y,'#38bdf8',8);gsfx('ice');
-      let n=0;Z.filter(z=>!z.dead&&Math.abs(z.x-t.x)<22).forEach(z=>{freeze(z,z.type==='b'?2:4);n++});S.frz+=n;if(n)flo(x,y-40,n>1?'Zamrożone: '+n:'Zamrożony!','blu')})){I.ice--;gear()}}
+      let n=0;Z.filter(z=>!z.dead&&Math.abs(z.x-t.x)<22).forEach(z=>{freeze(z,z.type==='b'?2.5:5);n++});S.frz+=n;if(n)flo(x,y-40,n>1?'Zamrożone: '+n:'Zamrożony!','blu')})){I.ice--;gear()}}
   /* rycerz */
   function callAlly(){if(!I.ally||over||shop||ally)return;if(!Z.some(z=>!z.dead))return;I.ally--;const el=document.createElement('div');el.className='zally';el.innerHTML=ZA.ally+'<div class="zksay">Za mną!</div>';zl.appendChild(el);
     ally={x:STOP-3,el:el,st:'run',left:2,tg:null,t:0};el.style.left=ally.x+'%';gsfx('horn');gear()}
@@ -8336,7 +8336,7 @@ function gmZombie(st,api){const WV=[3,5,7][api.len],S={w:0,score:0,lives:3,kills
   /* zrzut zaopatrzenia */
   function dropCrate(){if(crate||over)return;const x=rnd(38,72),el=document.createElement('button');el.type='button';el.className='zcrate';el.title='Zrzut! Kliknij, żeby otworzyć';el.innerHTML='<span class="zchu"></span><span class="zcbx">📦</span>';el.style.left=x+'%';sc.appendChild(el);crate={el:el,t:9};S.crates++;
     el.onclick=()=>{if(!crate)return;const r=el.getBoundingClientRect(),s=sc.getBoundingClientRect(),cx=r.left-s.left+r.width/2,cy=r.top-s.top;let txt;const o=[];if(I.gren<5)o.push('g');if(I.ice<3)o.push('i');o.push('c','c');const k=o[Math.floor(Math.random()*o.length)];
-      if(k==='g'){I.gren++;txt='+1 granat'}else if(k==='i'){I.ice++;txt='+1 granat mrożący'}else{coin(25,cx,cy);txt='Monety!'}gear();flo(cx,cy-10,txt,'gld');gsfx('ok');el.classList.add('open');crate=null;later(()=>el.remove(),500)}}
+      if(k==='g'){I.gren++;txt='+1 granat'}else if(k==='i'){I.ice++;txt='+1 granat mrożący'}else{const m=50+5*Math.floor(Math.random()*7);coin(m,cx,cy);txt='+'+m+' monet!'}gear();flo(cx,cy-10,txt,'gld');gsfx('ok');el.classList.add('open');crate=null;later(()=>el.remove(),500)}}
   gb.onclick=grenade;ib.onclick=iceNade;kb.onclick=callAlly;
   /* ugryzienia, drugi płot i ochrona */
   function hurtFx(){S.streak=0;combo();gsfx('hit');bw.classList.remove('shk');void bw.offsetWidth;bw.classList.add('shk');sc.classList.remove('hurt');void sc.offsetWidth;sc.classList.add('hurt');hw.classList.remove('ouch');void hw.offsetWidth;hw.classList.add('ouch')}
@@ -8585,6 +8585,19 @@ GPOST.sk=(()=>{const A=JA.B.laka,u=v=>v.slice(5,-2).replace(/^"|"$/g,'');const d
   <g transform="translate(124 34) scale(.62)">${JA.hero.replace('class="jhs"','')}</g>
   <rect x="96" y="8" width="128" height="22" rx="11" fill="#fff" opacity=".93"/><text x="160" y="23" text-anchor="middle" font-family="Poppins,sans-serif" font-weight="800" font-size="11" fill="#0f172a">cat = ?</text></svg>`})();
 
+
+/* v33: na telefonie dotknięcie przycisku zdejmuje zaznaczenie z pola tekstu. Zapamiętujemy ostatnie zaznaczenie
+   i przywracamy je przed kliknięciem „Zrób lukę”, „Pogrubienie” i „Wstaw emotikonę”. */
+(function(){let lt=null;const BTN='#mk,#em,#bd,[data-a="bold"]';
+  document.addEventListener('selectionchange',()=>{const t=document.activeElement;if(t&&t.tagName==='TEXTAREA'&&t.selectionStart!==t.selectionEnd){t.__sel=[t.selectionStart,t.selectionEnd];t.__selV=t.value;lt=t}});
+  document.addEventListener('select',ev=>{const t=ev.target;if(t&&t.tagName==='TEXTAREA'&&t.selectionStart!==t.selectionEnd){t.__sel=[t.selectionStart,t.selectionEnd];t.__selV=t.value;lt=t}},true);
+  const clr=ev=>{const t=ev.target;if(t&&t.tagName==='TEXTAREA'&&!(ev.shiftKey))t.__sel=null};
+  document.addEventListener('pointerdown',ev=>{if(ev.target&&ev.target.tagName==='TEXTAREA'){clr(ev);return}if(ev.target.closest&&ev.target.closest(BTN))ev.preventDefault()},true);
+  document.addEventListener('keydown',clr,true);
+  document.addEventListener('mousedown',ev=>{if(ev.target.closest&&ev.target.closest(BTN))ev.preventDefault()},true);
+  document.addEventListener('click',ev=>{if(!(ev.target.closest&&ev.target.closest(BTN)))return;const b=ev.target.closest(BTN);
+    let t=b.id==='mk'||b.id==='em'||b.id==='bd'?document.getElementById('x'):null;if(!t&&b.dataset.a==='bold')t=document.querySelector('textarea[data-fld="q"][data-i="'+b.dataset.i+'"]');t=t||lt;
+    if(t&&document.body.contains(t)&&t.selectionStart===t.selectionEnd&&t.__sel&&t.__selV===t.value){try{t.setSelectionRange(t.__sel[0],t.__sel[1])}catch(e){}}},true)})();
 
 /* ---------- v15: WYKREŚLANKA (word search) ---------- */
 const WSC=['#f87171','#34d399','#60a5fa','#fbbf24','#a78bfa','#f472b6','#2dd4bf','#fb923c','#818cf8','#a3e635','#22d3ee','#e879f9'];
@@ -9156,10 +9169,11 @@ I18_PX.push([/^Tu mieści się najwyżej (\d+)\. Usuń coś \(✕\), żeby doda�
 I18_PN2.push(['Klikaj, żeby dodać (to samo też kilka razy). ✕ usuwa.','Click to add (the same one several times too). ✕ removes.']);
 I18_PN2.push(['🏆 Ranking klasy','🏆 Class ranking'],['➕ Zbędne słowa:','➕ Extra words:'],['opcjonalnie, np. goes, going','optional, e.g. goes, going'],['Te słowa trafią do puli, ale nie pasują do zdania','These words go into the pool but do not fit the sentence'],['Jedno słowo nie pasuje do zdania. Pomiń je.','One word does not fit the sentence. Leave it out.'],['Niektóre słowa nie pasują do zdania. Pomiń je.','Some words do not fit the sentence. Leave them out.'],['🏆 Wyniki uczniów (ranking klasy) są w zakładce','🏆 Student results (class ranking) are in the tab'],['na górze.','at the top.'],['Dodatkowe słowa','Extra words'],['trafią do puli razem z resztą, ale nie pasują do zdania. Uczeń musi je pominąć. W liście wpisz je po dwóch ukośnikach, np.','go into the pool with the others but do not fit the sentence. The student has to leave them out. In the list, write them after two slashes, e.g.']);
 I18_PX.push([/^(\d+ (?:gra|gry|gier)) · ostatnio (.+)$/,'$1 · last $2'],[/^\(zbędne: (.+)\)$/,'(extra: $1)']);
-I18_PN2.push(['Granat mrożący','Ice grenade'],['Zamraża zombie w pobliżu celu na 4 sekundy. Stoją w miejscu i dostają większe obrażenia. Przycisk ❄ albo klawisz F.','Freezes zombies near the target for 4 seconds. They stand still and take more damage. ❄ button or the F key.'],['Rycerz z mieczem','Knight with a sword'],['Wybiega zza barykady i ścina mieczem dwa najbliższe zombie. Przycisk 🗡 albo klawisz R.','Runs out from behind the barricade and cuts down the two nearest zombies. 🗡 button or the R key.'],['Wybuch rani wszystkie zombie w pobliżu celu. Przycisk 💣 albo klawisz G.','The blast hurts all zombies near the target. 💣 button or the G key.'],['Broń zacięta!','Weapon jammed!'],['Grubas','Fatso'],['Brzuchacz','Big Belly'],['Pan Bąbel','Mr Bubble'],['🛡 Tarczownik','🛡 Shield Bearer'],['🛡 Strażnik','🛡 Guard'],['🛡 Glina','🛡 Cop'],['Za mną!','Follow me!'],['Gotowe!','Done!'],['Tarcza!','Shield!'],['Tarcza rozbita!','Shield broken!'],['Zamrożony!','Frozen!'],['+1 granat','+1 grenade'],['+1 granat mrożący','+1 ice grenade'],['Monety!','Coins!'],['Zrzut! Kliknij, żeby otworzyć','Supply drop! Click to open'],['Mocniejsze strzały: +1 obrażenie','Stronger shots: +1 damage'],['Tak trzymaj!','Keep it up!'],['Uwaga: grubasy!','Watch out: fatsos!'],['Uwaga: zombie z tarczami!','Watch out: shield zombies!'],['Najdłuższa seria','Longest streak'],['Rzuć granat mrożący (F)','Throw an ice grenade (F)'],['Wezwij rycerza (R)','Call the knight (R)'],['Rzuć granat (G)','Throw a grenade (G)'],
+I18_PN2.push(['Granat mrożący','Ice grenade'],['Zamraża zombie w pobliżu celu na 5 sekund. Stoją w miejscu i dostają większe obrażenia. Przycisk ❄ albo klawisz F.','Freezes zombies near the target for 5 seconds. They stand still and take more damage. ❄ button or the F key.'],['Rycerz z mieczem','Knight with a sword'],['Wybiega zza barykady i ścina mieczem dwa najbliższe zombie. Przycisk 🗡 albo klawisz R.','Runs out from behind the barricade and cuts down the two nearest zombies. 🗡 button or the R key.'],['Wybuch rani wszystkie zombie w pobliżu celu. Przycisk 💣 albo klawisz G.','The blast hurts all zombies near the target. 💣 button or the G key.'],['Broń zacięta!','Weapon jammed!'],['Grubas','Fatso'],['Brzuchacz','Big Belly'],['Pan Bąbel','Mr Bubble'],['🛡 Tarczownik','🛡 Shield Bearer'],['🛡 Strażnik','🛡 Guard'],['🛡 Glina','🛡 Cop'],['Za mną!','Follow me!'],['Gotowe!','Done!'],['Tarcza!','Shield!'],['Tarcza rozbita!','Shield broken!'],['Zamrożony!','Frozen!'],['+1 granat','+1 grenade'],['+1 granat mrożący','+1 ice grenade'],['Monety!','Coins!'],['Zrzut! Kliknij, żeby otworzyć','Supply drop! Click to open'],['Mocniejsze strzały: +1 obrażenie','Stronger shots: +1 damage'],['Tak trzymaj!','Keep it up!'],['Uwaga: grubasy!','Watch out: fatsos!'],['Uwaga: zombie z tarczami!','Watch out: shield zombies!'],['Najdłuższa seria','Longest streak'],['Rzuć granat mrożący (F)','Throw an ice grenade (F)'],['Wezwij rycerza (R)','Call the knight (R)'],['Rzuć granat (G)','Throw a grenade (G)'],
  ['Zombie idą w stronę barykady. Każda poprawna odpowiedź to celny strzał. Pięć dobrych odpowiedzi z rzędu daje mocniejsze strzały.','Zombies walk toward the barricade. Every correct answer is an accurate shot. Five correct answers in a row make your shots stronger.'],
  ['Za pokonane zombie dostajesz monety. Między falami otwiera się sklep: lepsza broń, granaty, granaty mrożące, rycerz z mieczem, kamizelka, drugi płot i wieżyczka. Czasem spada też zrzut z niespodzianką: kliknij paczkę!','You earn coins for defeated zombies. Between waves a shop opens: a better weapon, grenades, ice grenades, a knight with a sword, a vest, a second fence and a turret. Sometimes a surprise supply drop falls: click the box!']);
 I18_PX.push([/^Zamrożone: (\d+)$/,'Frozen: $1'],[/^Seria (\d+)!$/,'Streak $1!']);
+I18_PX.push([/^\+(\d+) monet!$/,'+$1 coins!']);
 
 const I18_THN={'Mięta':'Mint','Święta':'Christmas','Systemowy':'System','Róż':'Rose','Fiolet':'Violet','Zachód':'Sunset','Biały':'White','Czarny':'Black','Święto Niepodległości':'Independence Day'};
 I18_PX.unshift([/^Podgląd, wynik: (\d+) z (\d+)(.*)$/,'Preview, score: $1 of $2$3'],[/^Motyw: (.+)$/,(m,a)=>'Theme: '+(I18_THN[a]||a)]);
